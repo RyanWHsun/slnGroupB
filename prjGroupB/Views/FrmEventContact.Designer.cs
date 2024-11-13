@@ -149,10 +149,17 @@
             this.comboBox1.Font = new System.Drawing.Font("新細明體", 14F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "風土民情",
-            "文化交流",
-            "登山健行",
-            "海邊風情"});
+            "自然探險：例如登山、露營、賞鳥、徒步旅行等。",
+            "",
+            "文化探索：古蹟遊覽、地方文化體驗等。",
+            "",
+            "美食之旅：品味各地特色美食、參觀當地市場、學習烹飪等。",
+            "",
+            "親子活動：適合家庭與兒童的活動，如主題公園、親子工作坊等。",
+            "",
+            "健康養生：瑜伽、冥想、溫泉療養等與健康相關的活動。",
+            "",
+            "海灘度假：海灘派對、沙灘運動、水上活動等。"});
             this.comboBox1.Location = new System.Drawing.Point(12, 120);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(225, 27);
@@ -207,7 +214,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 24);
             this.label8.TabIndex = 54;
-            this.label8.Text = "類別描述";
+            this.label8.Text = "類別敘述";
             // 
             // label6
             // 

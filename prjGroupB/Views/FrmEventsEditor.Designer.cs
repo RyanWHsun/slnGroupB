@@ -55,6 +55,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -205,7 +207,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(39, 408);
+            this.pictureBox1.Location = new System.Drawing.Point(39, 465);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(328, 163);
             this.pictureBox1.TabIndex = 16;
@@ -216,7 +218,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(35, 372);
+            this.label9.Location = new System.Drawing.Point(12, 428);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(116, 20);
@@ -264,7 +266,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(402, 408);
+            this.label13.Location = new System.Drawing.Point(403, 514);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(161, 20);
@@ -274,7 +276,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(499, 527);
+            this.button1.Location = new System.Drawing.Point(499, 584);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 44);
             this.button1.TabIndex = 21;
@@ -284,7 +286,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(391, 527);
+            this.button2.Location = new System.Drawing.Point(391, 584);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 44);
             this.button2.TabIndex = 22;
@@ -296,7 +298,7 @@
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label14.Location = new System.Drawing.Point(373, 512);
+            this.label14.Location = new System.Drawing.Point(373, 569);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(236, 2);
             this.label14.TabIndex = 23;
@@ -305,7 +307,7 @@
             // textBox9
             // 
             this.textBox9.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox9.Location = new System.Drawing.Point(39, 339);
+            this.textBox9.Location = new System.Drawing.Point(39, 343);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(225, 30);
             this.textBox9.TabIndex = 25;
@@ -314,18 +316,38 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label15.Location = new System.Drawing.Point(35, 312);
+            this.label15.Location = new System.Drawing.Point(35, 316);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(86, 24);
             this.label15.TabIndex = 24;
-            this.label15.Text = "活動網址";
+            this.label15.Text = "活動費用";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label16.Location = new System.Drawing.Point(294, 316);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(86, 24);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "活動網址";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.textBox10.Location = new System.Drawing.Point(298, 343);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(225, 30);
+            this.textBox10.TabIndex = 25;
             // 
             // FrmEventsEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 583);
+            this.ClientSize = new System.Drawing.Size(609, 640);
+            this.Controls.Add(this.textBox10);
             this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button2);
@@ -389,5 +411,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox10;
     }
 }
