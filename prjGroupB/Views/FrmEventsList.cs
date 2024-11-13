@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace prjGroupB.Views
 {
-    public partial class FrmEvents : Form
+    public partial class FrmEventsList : Form
     {
-        public FrmEvents()
+        public FrmEventsList()
         {
             InitializeComponent();
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
