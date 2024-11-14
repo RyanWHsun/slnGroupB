@@ -13,8 +13,10 @@ using System.Windows.Forms;
 
 namespace prjGroupB.Views
 {
+    public delegate void D(bool isVisible);
     public partial class FrmLogin : Form
     {
+        public event D DshowBackend;
         private bool _isClosed = true;
         public FrmLogin()
         {
@@ -49,7 +51,10 @@ namespace prjGroupB.Views
             if (reader.Read())
             {
                 CUserSession.fUserId = Convert.ToInt32(reader["fUserId"]);
+                CUserSession.fRankId = Convert.ToInt32(reader["fRankId"]);
                 _isClosed = false;
+                if (CUserSession.fRankId == 99)
+                    DshowBackend(true);
                 Close();
             }
             else
