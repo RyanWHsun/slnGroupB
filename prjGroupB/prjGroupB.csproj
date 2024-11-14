@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CEventCategories.cs" />
+    <Compile Include="Models\CEventCategoryMapping.cs" />
+    <Compile Include="Models\CEventImage.cs" />
+    <Compile Include="Models\CEventRegistrationForm.cs" />
+    <Compile Include="Models\CEvents.cs" />
     <Compile Include="Views\FrmAttractions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,8 +183,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

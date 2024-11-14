@@ -376,6 +376,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmEventsEditor";
             this.Text = "FrmEventsEditor";
+            this.Load += new System.EventHandler(this.FrmEventsEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

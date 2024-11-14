@@ -26,5 +26,17 @@ namespace prjGroupB.Views
         {
 
         }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            showEventsystem();
+        }
+
+        private void showEventsystem()
+        {
+            FrmEventsList f = new FrmEventsList();
+            f.MdiParent = this;
+            f.Show();
+        }
     }
 }
