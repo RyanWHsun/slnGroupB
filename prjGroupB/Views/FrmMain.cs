@@ -17,6 +17,12 @@ namespace prjGroupB
         {
             InitializeComponent();
         }
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            FrmLogin f = new FrmLogin();
+            f.TopMost = true;
+            f.ShowDialog();
+        }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
@@ -65,6 +71,12 @@ namespace prjGroupB
             FrmUserPosts f = new FrmUserPosts();
             f.MdiParent = this;
             f.Show();
+        }
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            FrmLogin f = new FrmLogin();
+            f.TopMost = true;
+            f.ShowDialog();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

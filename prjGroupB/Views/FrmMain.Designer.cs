@@ -39,8 +39,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClose = new System.Windows.Forms.ToolStripButton();
             this.btnExit = new System.Windows.Forms.ToolStripButton();
-            this.btnUserPosts = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnUserPosts = new System.Windows.Forms.ToolStripButton();
+            this.btnLogin = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,8 @@
             this.btnClose,
             this.btnExit,
             this.toolStripSeparator2,
-            this.btnUserPosts});
+            this.btnUserPosts,
+            this.btnLogin});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(101, 480);
@@ -152,6 +154,11 @@
             this.btnExit.Text = "結束";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(98, 6);
+            // 
             // btnUserPosts
             // 
             this.btnUserPosts.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -162,10 +169,15 @@
             this.btnUserPosts.Text = "個人文章";
             this.btnUserPosts.Click += new System.EventHandler(this.btnUserPosts_Click);
             // 
-            // toolStripSeparator2
+            // btnLogin
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(98, 6);
+            this.btnLogin.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
+            this.btnLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(98, 36);
+            this.btnLogin.Text = "登出";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // FrmMain
             // 
@@ -178,6 +190,7 @@
             this.Name = "FrmMain";
             this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -198,6 +211,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnUserPosts;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnLogin;
     }
 }
 
