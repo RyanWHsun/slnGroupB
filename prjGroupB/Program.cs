@@ -17,7 +17,7 @@ namespace prjGroupB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmEvents());
+            Application.Run(new FrmMain());
         }
     }
 }

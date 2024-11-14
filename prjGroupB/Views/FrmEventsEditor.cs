@@ -16,7 +16,7 @@ namespace prjGroupB.Views
     {
         public DialogResult IsOk { get; set; }
         private CEvents _Events;
-        public CEvents Events
+        public CEvents Event
         { 
             get
             {
@@ -59,6 +59,37 @@ namespace prjGroupB.Views
         private void FrmEventsEditor_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string message = " ";
+            if (string.IsNullOrEmpty(textBox2.Text))
+                message += "\r\n名稱不可空白";
+            if (string.IsNullOrEmpty(textBox4.Text))
+                message += "\r\n地點不可空白";
+            if (string.IsNullOrEmpty(textBox9.Text))
+                message += "\r\n費用不可空白";
+            if (string.IsNullOrEmpty(textBox10.Text))
+                message += "\r\n網址不可空白";
+
+            else
+            {
+                if (!IsNumber(textBox9.Text))
+                    message += "\r\n必須填數字";
+            }
+            if (!string.IsNullOrEmpty(message))
+                MessageBox.Show(message);
+            return;
+        }
+        private bool IsNumber(string p)
+        {
+            try 
+            {
+                double d = Convert.ToDouble(p);
+                return  true;
+            }
+            catch { return false; }
         }
     }
 }

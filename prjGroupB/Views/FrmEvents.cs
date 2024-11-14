@@ -17,26 +17,17 @@ namespace prjGroupB.Views
             InitializeComponent();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void showEventsSystem()
         {
-
-        }
-
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-
+            FrmEventsList f = new FrmEventsList();             
+            f.ShowDialog();
         }
 
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
-            showEventsystem();
+            showEventsSystem();
         }
 
-        private void showEventsystem()
-        {
-            FrmEventsList f = new FrmEventsList();
-            f.MdiParent = this;
-            f.Show();
-        }
+        
     }
 }

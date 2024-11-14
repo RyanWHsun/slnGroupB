@@ -30,15 +30,15 @@ namespace prjGroupB.Views
             { 
                 DataTable dt=dataGridView1.DataSource as DataTable;
                 DataRow row=dt.NewRow();
-                row["fEventName"] = f.Events.fEventName;
-                row["fEventDescription"] = f.Events.fEventDescription;
-                row["fEventStartDate"]=f.Events.fEventStartDate;
-                row["fEventEndDate"]=f.Events.fEventEndDate;
-                row["fEventLocation"]=f.Events.fEventLocation;
-                row["fEventCreatedDate"]=f.Events.fEventCreatedDate;
-                row["fEventUpdatedDate"]=f.Events.fEventUpdatedDate;
-                row["fEventActivityfee"] = f.Events.fEventActivityfee;
-                row["fEventURL"] = f.Events.fEventURL;
+                row["fEventName"] = f.Event.fEventName;
+                row["fEventDescription"] = f.Event.fEventDescription;
+                row["fEventStartDate"]=f.Event.fEventStartDate;
+                row["fEventEndDate"]=f.Event.fEventEndDate;
+                row["fEventLocation"]=f.Event.fEventLocation;
+                row["fEventCreatedDate"]=f.Event.fEventCreatedDate;
+                row["fEventUpdatedDate"]=f.Event.fEventUpdatedDate;
+                row["fEventActivityfee"] = f.Event.fEventActivityfee;
+                row["fEventURL"] = f.Event.fEventURL;
             }
         }
     }

@@ -145,7 +145,6 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "FrmEventsList";
             this.Text = "FrmtEventsList";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
