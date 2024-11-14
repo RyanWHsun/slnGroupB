@@ -36,11 +36,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -49,10 +46,13 @@
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -62,9 +62,9 @@
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.Location = new System.Drawing.Point(0, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 35);
+            this.label1.Size = new System.Drawing.Size(150, 35);
             this.label1.TabIndex = 0;
-            this.label1.Text = "報名資訊";
+            this.label1.Text = "報名者資訊";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -140,13 +140,6 @@
             this.label8.Text = "姓名";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(394, 274);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(136, 22);
-            this.textBox7.TabIndex = 7;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -156,13 +149,6 @@
             this.label13.Size = new System.Drawing.Size(48, 24);
             this.label13.TabIndex = 8;
             this.label13.Text = "電話";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(151, 276);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(136, 22);
-            this.textBox12.TabIndex = 14;
             // 
             // label5
             // 
@@ -174,15 +160,6 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "報名人數";
             this.label5.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // textBox11
-            // 
-            this.textBox11.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox11.Location = new System.Drawing.Point(394, 162);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(136, 27);
-            this.textBox11.TabIndex = 14;
-            this.textBox11.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label10
             // 
@@ -253,6 +230,7 @@
             // 
             // comboBox4
             // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
@@ -267,6 +245,7 @@
             // 
             // comboBox5
             // 
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Items.AddRange(new object[] {
@@ -281,6 +260,7 @@
             // 
             // comboBox6
             // 
+            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Items.AddRange(new object[] {
@@ -292,14 +272,6 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(136, 28);
             this.comboBox6.TabIndex = 60;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(151, 159);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(136, 27);
-            this.textBox1.TabIndex = 64;
             // 
             // label11
             // 
@@ -326,21 +298,84 @@
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.SystemColors.Control;
-            this.label12.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label12.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label12.Location = new System.Drawing.Point(0, 224);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(150, 35);
+            this.label12.Size = new System.Drawing.Size(117, 26);
             this.label12.TabIndex = 65;
             this.label12.Text = "緊急聯絡人";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Items.AddRange(new object[] {
+            "風土民情",
+            "文化交流",
+            "登山健行",
+            "海邊風情"});
+            this.comboBox7.Location = new System.Drawing.Point(151, 159);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(136, 28);
+            this.comboBox7.TabIndex = 66;
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox8.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Items.AddRange(new object[] {
+            "風土民情",
+            "文化交流",
+            "登山健行",
+            "海邊風情"});
+            this.comboBox8.Location = new System.Drawing.Point(394, 159);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(136, 28);
+            this.comboBox8.TabIndex = 67;
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.Items.AddRange(new object[] {
+            "風土民情",
+            "文化交流",
+            "登山健行",
+            "海邊風情"});
+            this.comboBox9.Location = new System.Drawing.Point(151, 274);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(136, 28);
+            this.comboBox9.TabIndex = 68;
+            // 
+            // comboBox10
+            // 
+            this.comboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox10.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBox10.FormattingEnabled = true;
+            this.comboBox10.Items.AddRange(new object[] {
+            "風土民情",
+            "文化交流",
+            "登山健行",
+            "海邊風情"});
+            this.comboBox10.Location = new System.Drawing.Point(394, 274);
+            this.comboBox10.Name = "comboBox10";
+            this.comboBox10.Size = new System.Drawing.Size(136, 28);
+            this.comboBox10.TabIndex = 68;
             // 
             // FrmEventRegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 390);
+            this.Controls.Add(this.comboBox10);
+            this.Controls.Add(this.comboBox9);
+            this.Controls.Add(this.comboBox8);
+            this.Controls.Add(this.comboBox7);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
@@ -351,12 +386,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox12);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label8);
@@ -383,11 +415,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -396,9 +425,12 @@
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.ComboBox comboBox10;
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace prjGroupB.Views
 {
-    public partial class FrmEventContact : Form
+    public partial class FrmEventCategoriesList : Form
     {
-        public FrmEventContact()
+        public FrmEventCategoriesList()
         {
             InitializeComponent();
         }

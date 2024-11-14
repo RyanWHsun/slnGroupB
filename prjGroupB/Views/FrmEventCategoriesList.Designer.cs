@@ -1,6 +1,6 @@
 ﻿namespace prjGroupB.Views
 {
-    partial class FrmEventContact
+    partial class FrmEventCategoriesList
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEventContact));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEventCategoriesList));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -263,7 +263,7 @@
             this.label2.TabIndex = 60;
             this.label2.Text = "建立日期";
             // 
-            // FrmEventContact
+            // FrmEventCategoriesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -281,8 +281,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "FrmEventContact";
-            this.Text = "FrmEventContact";
+            this.Name = "FrmEventCategoriesList";
+            this.Text = "FrmEventCategoriesList";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
