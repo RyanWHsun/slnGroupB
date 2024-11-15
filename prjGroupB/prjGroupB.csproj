@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CCategory.cs" />
+    <Compile Include="Models\CPost.cs" />
+    <Compile Include="Models\CPostManager.cs" />
+    <Compile Include="Models\CUserSession.cs" />
     <Compile Include="Models\CEventCategories.cs" />
     <Compile Include="Models\CEventCategoryMapping.cs" />
     <Compile Include="Models\CEventImage.cs" />
@@ -87,6 +91,12 @@
     <Compile Include="Views\FrmEvents.Designer.cs">
       <DependentUpon>FrmEvents.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +116,12 @@
     </Compile>
     <Compile Include="Views\FrmOrders.Designer.cs">
       <DependentUpon>FrmOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmPostEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmPostEditor.Designer.cs">
+      <DependentUpon>FrmPostEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmPosts.cs">
       <SubType>Form</SubType>
@@ -169,6 +185,12 @@
     <Compile Include="Views\User\FrmHomePage.Designer.cs">
       <DependentUpon>FrmHomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\LoginBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\LoginBox.Designer.cs">
+      <DependentUpon>LoginBox.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\FrmAttractions.resx">
       <DependentUpon>FrmAttractions.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +209,9 @@
     <EmbeddedResource Include="Views\FrmEvents.resx">
       <DependentUpon>FrmEvents.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmOrders.resx">
       <DependentUpon>FrmOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmPostEditor.resx">
+      <DependentUpon>FrmPostEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmPosts.resx">
       <DependentUpon>FrmPosts.cs</DependentUpon>
@@ -231,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\User\FrmHomePage.resx">
       <DependentUpon>FrmHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginBox.resx">
+      <DependentUpon>LoginBox.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
