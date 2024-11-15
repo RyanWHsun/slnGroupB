@@ -1,5 +1,4 @@
-﻿using prjGroupB.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,16 +10,11 @@ using System.Windows.Forms;
 
 namespace prjGroupB.Views
 {
-    public partial class FrmPosts : Form
+    public partial class FrmOrderCreate : Form
     {
-        public FrmPosts()
+        public FrmOrderCreate()
         {
             InitializeComponent();
-        }
-
-        private void btnInsert_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

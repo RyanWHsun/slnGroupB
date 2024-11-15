@@ -17,10 +17,23 @@ namespace prjGroupB
         {
             InitializeComponent();
         }
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            login();
+        }
+
+        private void login()
+        {
+            showBackend(false);
+            FrmLogin f = new FrmLogin();
+            f.TopMost = true;
+            f.DshowBackend += this.showBackend;
+            f.ShowDialog();
+        }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            FrmUsers f = new FrmUsers();
+            FrmHomePage f = new FrmHomePage();
             f.MdiParent = this;
             f.Show();
         }
@@ -66,6 +79,12 @@ namespace prjGroupB
             f.MdiParent = this;
             f.Show();
         }
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            while(this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+            login();
+        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -76,6 +95,15 @@ namespace prjGroupB
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void showBackend(bool isVisible)
+        {
+            btnUsers.Visible = isVisible;
+            btnPosts.Visible = isVisible;
+            btnAttractions.Visible = isVisible;
+            btnEvents.Visible = isVisible;
+            btnProducts.Visible = isVisible;
+            btnOrders.Visible = isVisible;
         }
     }
 }

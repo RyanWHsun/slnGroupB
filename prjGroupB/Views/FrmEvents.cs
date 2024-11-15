@@ -15,6 +15,20 @@ namespace prjGroupB.Views
         public FrmEvents()
         {
             InitializeComponent();
+           
         }
+
+        private void showEventsSystem()
+        {
+            FrmEventsList f = new FrmEventsList();           
+            f.ShowDialog();
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            showEventsSystem();
+        }
+
+        
     }
 }

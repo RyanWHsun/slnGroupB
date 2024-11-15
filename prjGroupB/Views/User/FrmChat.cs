@@ -1,5 +1,4 @@
-﻿using prjGroupB.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace prjGroupB.Views
+namespace prjGroupB.Views.User
 {
-    public partial class FrmPosts : Form
+    public partial class FrmChat : Form
     {
-        public FrmPosts()
+        public FrmChat()
         {
             InitializeComponent();
-        }
-
-        private void btnInsert_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
