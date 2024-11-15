@@ -8,6 +8,7 @@ namespace prjGroupB.Models
 {
     public class CProduct
     {
+        public int test {  get; set; }
         public int fProductId { get; set; }
         public int fUserId { get; set; }
 
