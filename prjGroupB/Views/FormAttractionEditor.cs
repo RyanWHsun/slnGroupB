@@ -274,10 +274,11 @@ namespace Attractions.Views {
 
                     using (SqlDataReader reader = command.ExecuteReader()) {
                         // List<byte[]> imageData = new List<byte[]>();
+                        if (this._attractionImage.fImage == null)
+                            this._attractionImage.fImage = new List<byte[]>();
                         while (reader.Read()) {
                             // 取得圖片資料 
-                            if(this._attractionImage.fImage==null)
-                                this._attractionImage.fImage = new List<byte[]>();
+                            
                             this._attractionImage.fImage.Add(reader["fImage"] as byte[]);
                         }
                         if (this._attractionImage.fImage.Count > 0) {

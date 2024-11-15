@@ -70,6 +70,97 @@
     <Compile Include="Views\fieldBox.Designer.cs">
       <DependentUpon>fieldBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\fieldBox1.cs" />
+    <Compile Include="Views\FormAttractionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormAttractionEditor.Designer.cs">
+      <DependentUpon>FormAttractionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormAttractionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormAttractionList.Designer.cs">
+      <DependentUpon>FormAttractionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormAttractionMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormAttractionMain.Designer.cs">
+      <DependentUpon>FormAttractionMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormCategoryEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormCategoryEditor.Designer.cs">
+      <DependentUpon>FormCategoryEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormCategoryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormCategoryList.Designer.cs">
+      <DependentUpon>FormCategoryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormCommentEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormCommentEditor.Designer.cs">
+      <DependentUpon>FormCommentEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormCommentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormCommentList.Designer.cs">
+      <DependentUpon>FormCommentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormImageEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormImageEditor.Designer.cs">
+      <DependentUpon>FormImageEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormImageList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormImageList.Designer.cs">
+      <DependentUpon>FormImageList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormRecommendationEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormRecommendationEditor.Designer.cs">
+      <DependentUpon>FormRecommendationEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormRecommendationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormRecommendationList.Designer.cs">
+      <DependentUpon>FormRecommendationList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormTagEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormTagEditor.Designer.cs">
+      <DependentUpon>FormTagEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormTagList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormTagList.Designer.cs">
+      <DependentUpon>FormTagList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormTicketEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormTicketEditor.Designer.cs">
+      <DependentUpon>FormTicketEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormTicketList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormTicketList.Designer.cs">
+      <DependentUpon>FormTicketList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmAttractions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +302,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\fieldBox.resx">
       <DependentUpon>fieldBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAttractionEditor.resx">
+      <DependentUpon>FormAttractionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAttractionList.resx">
+      <DependentUpon>FormAttractionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAttractionMain.resx">
+      <DependentUpon>FormAttractionMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormCategoryList.resx">
+      <DependentUpon>FormCategoryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormCommentList.resx">
+      <DependentUpon>FormCommentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormImageList.resx">
+      <DependentUpon>FormImageList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormRecommendationList.resx">
+      <DependentUpon>FormRecommendationList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormTagList.resx">
+      <DependentUpon>FormTagList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormTicketList.resx">
+      <DependentUpon>FormTicketList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmAttractions.resx">
       <DependentUpon>FrmAttractions.cs</DependentUpon>
