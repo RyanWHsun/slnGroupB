@@ -1,6 +1,6 @@
-﻿namespace prjGroupB.Views
+﻿namespace prjGroupB.Views.User
 {
-    partial class FrmUsers
+    partial class FrmChat
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // FrmUsers
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "FrmUsers";
-            this.Text = "FrmUsers";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.ResumeLayout(false);
-
+            this.Text = "FrmChat";
         }
 
         #endregion
