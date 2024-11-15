@@ -121,7 +121,10 @@ namespace prjGroupB.Views
                         Stream streamImage = new MemoryStream(_EventImage.fEventImage);
                         pictureBox1.Image = Bitmap.FromStream(streamImage);
                     }
-                    catch { }
+                    catch 
+                    { 
+
+                    }
                 }
 
             }

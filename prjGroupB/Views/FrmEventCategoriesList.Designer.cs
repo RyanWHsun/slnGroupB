@@ -233,7 +233,6 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(225, 33);
             this.textBox6.TabIndex = 52;
-            this.textBox6.Text = "0";
             // 
             // label1
             // 
