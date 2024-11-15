@@ -117,10 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnNext.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EgAACxIB0t1+/AAABEhJREFUaEPd2VtMVFcUBmBj34x9afrSRNsnahVEvNUaUmuMCtPa2FgSYzRVY02q
+        ttRqvRMFrdaG8uAlXlJv01q1abV4HRVBBKGVKIhGNBEVRbxQ0Gq5DAhrySLZZh/2LzPOOTA9Pnwv/+zs
+        868MzJ7M7sLMLwUYuhEM3QiGbgRDN4JhILdr+e29t3juuiu0KeUCHVhcRBl2JJ0nX1oJeb3X6LsLD3l4
+        M/Er6LntgeHznKniMTPPUNGHWcwdaXwuVe0p48X+Ju6GeiAwbOtxI7+WVERH0UM70sQ8un3pX45FndqC
+        oa6ijiM+z6Or6EGdYWw2+bPu8UTUTQdD5VEjvz41n66jB3SmMdnUcPEhD0MdFRgqycV0EG0cDgnZ9KC6
+        gd9APQUMRWE1j0IbhtPay7QZdRUwFHPOUR7aLJw+zqQnlX7uifoagfjHzz0+OkGENgu3/eWciDobgfBV
+        8HS0SbCGrs/n0Ycew9fskmMAdTYCsa2UV6NNAsokHvz9YY6YvIwjE9dznK8Wr7Nh2l9UijobgUgtoZ/R
+        JoF84L3SOoQSNWczxx/zw7WhGneKalBnIxArLtI+tEkw1DuiRM/fzp7jjXBtqPSuihEIO4PIn9eA5fss
+        w8Qs+ZU9J5rw+hDoXRUjELYGaeHJbOaYpN2WYQYk/9E6JFr/ovSuihEIu4MIT8YT7rfQaxlm0MqDjgyj
+        d1WMQDgxiIg/3sB95/5kGebd1Ay49kXoXRUjEE4NIuJ8dRw1e4NlmPfW5MC1wdK7KkYgnBxEyOHY58s1
+        lmFiNxbAtcHQuypGIJweRIza/4B7z0jThknm97cUw7WB6F0VIxAdMYgcjHJA6u/KkLRMuDYQvatiBMLp
+        QeQTLHrBDssQg1f74Npg6F0VIxBODiIHYUzSLssQA1ek2/oY1rsqRiAcG0RO+ZS9liH6L/2t9cCE64Ok
+        d1WMQDg1yKBVhyxD9Fv0iyNfVfSuihEIJwaRf2R9iOh5Wx378qh3VYxA2B1k6NrTliGivtnI8Ufr4dpQ
+        6F0VIxB2BonddLalfPKzISIT13HckRq4NlR6V8UIxA+XaBfaIJDhO0s5YkrKsyHkAJSDEK0N1SdZVI86
+        G4HYcpV+RJsEIl8S1XnxzhepPDK9Cq6zY+ppuoE6G4FIL+ev0SbBkE+lgcv/5BG/V8DX7fq2kE6hzkYg
+        ymu5F9rk/2BPGS9BnY1Amf43laCNwu1mDfdBfY1AybrHk9BG4ZRSTOmoq4ChIOKuXxVQIdowHOQX+Vu1
+        3Bt1FTBU5G5kfC5Vo407W8ZdnoI6KjDUyZ1eQg49Qpt3Fu81Wom66WDYVlkNR8pPleghHUluq47d4Wmo
+        U1swROqa+FX5TfjTk/QfeqiTPCepWe5CKuv5TdQFgWF7WgbqnlvJCXKdLHcon+XTTblNsmNCDt2dVUDn
+        5apbrg3u1/Nb6NntgaEbwdCNYOhGMHQjGLoPd3kK1pwMdt22OCQAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnPrevious.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAN5SURBVGhD7ZlLSFRhFMeldlGbaBP0WFn5SM1HJVJKpHOv
+        Dq1qVZAQQUHYQ3oq+ShLMBeWpFJR08PoZaaW1njnamiLiB6bCJIiKNqYUFlqpqfzDV/D3OHAfc1818X9
+        w49ZeO45//99fN84N86VK1euSG25DbOLVMiTFThZGAAffnYjfjtgnw78bJYDUCr7YRkfFRt5O2AODjqG
+        DONgiCUY6pWsgpePjp7QfA7ymRoaSzBQT0EPzOc27EkKwFZsOh45RBgKvC/qg3hux5qwyXq8EhPkAIHg
+        lfngVWEBt2VOnn5YiA1GqMaOoEAnt2ZOeCVayIYOIvdCPrdnTAX9sBjPwCTVzEnw5A5yi8aEB5VENpkR
+        KDAtqbCI29QXW/bIRjYp6PoB2Y3PyL8ZBb3t5Db1hQcMRTawi6f7FySVNEL89grIOv0Qz+40WacHBqnl
+        NvWFB4xGNrCD9Hgckg+0BEP8J9f3jqzVA5+Tq9ymvqgGVpGf/IGUQ5c1IYJXhKg1AgZp4zb1RTWwgtz7
+        F9LKbmhCpFe3Wb6tGOKDoNn0yruaEGnlN/Een6LrDSI2CIbIrOnUhEg94gPZP0nXm0BokNV1fk2IlaUX
+        QHoyQdaaRViQtQ1PNSGS953Hpfc3WWsFIUFymp5rQiTuaQhuglStVWIeZN3FN2i+MhQiYXc95D8YIWvt
+        EPMga+qVUAgG2wDZRkjV2kHIrZVV260Jk3L4SlRWqnDEPOy47GacaNeESStvDW6MZL0FxARB2Ia36vgt
+        TZj0qnu2dvNwhAVhsCuQevSaJkzmqS6y1ixCgzCCXxYPXtKEYQsCVWsG4UEYUs8YJO9v0oTJPjtA1hrF
+        kSAMz6NR/IfqXFiYSshpfkHWGsFcEAXGqCZWYRsj2yBDYYqrIO/6EFmrBwZp5Tb1hUE+Uk3ssLF9GFbs
+        qgsGYfuL5S+RCpzhNvWFqfvJJjbZcOcLZFTft7WvoLe93Ka+8ICyyAYzBY8Cy7lNfUm9kEg1cRpZgbfc
+        onHhQe1UM0dRYRu3Z1yFfZCA96Pjv8SHUOBlRQXM4vbMCc9AMdlUPN+i8Y6khmgsku/snSW3Y0/YbAfi
+        xFurIVylkriN6MjrhyX4zLQgU8TA6KLAT/Yb76YBmMfHR184ZCkOY68dOjDUaxz4FRmxRQA+IYPY0yep
+        sDlXhbl8nCtXrlyFKy7uH5vJOYQV2Gj4AAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>50</value>
   </metadata>
 </root>

@@ -26,13 +26,6 @@ namespace prjGroupB.Models
         public string fProductUpdated { get; set; }
 
         public int fStock { get; set; }        
-    }
-
-    public class ProductImage
-    {
-        public int fProductImageId { get; set; }
-        public int fProductId { get; set; }
-        public byte[] fImage { get; set; }
-    }
+    }    
 }
 

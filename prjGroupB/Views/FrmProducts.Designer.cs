@@ -54,7 +54,7 @@
             this.txtQuery});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1310, 42);
+            this.toolStrip1.Size = new System.Drawing.Size(1310, 44);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -64,7 +64,7 @@
             this.btnCreateProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateProduct.Image")));
             this.btnCreateProduct.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCreateProduct.Name = "btnCreateProduct";
-            this.btnCreateProduct.Size = new System.Drawing.Size(90, 36);
+            this.btnCreateProduct.Size = new System.Drawing.Size(90, 38);
             this.btnCreateProduct.Text = "新增";
             this.btnCreateProduct.Click += new System.EventHandler(this.btnCreateProduct_Click);
             // 
@@ -74,7 +74,7 @@
             this.btnEditProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnEditProduct.Image")));
             this.btnEditProduct.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEditProduct.Name = "btnEditProduct";
-            this.btnEditProduct.Size = new System.Drawing.Size(90, 36);
+            this.btnEditProduct.Size = new System.Drawing.Size(90, 38);
             this.btnEditProduct.Text = "修改";
             this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
             // 
@@ -84,7 +84,7 @@
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(90, 36);
+            this.btnDelete.Size = new System.Drawing.Size(90, 38);
             this.btnDelete.Text = "刪除";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -95,7 +95,7 @@
             this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
             this.btnReset.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(90, 36);
+            this.btnReset.Size = new System.Drawing.Size(90, 38);
             this.btnReset.Text = "重置";
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
@@ -106,7 +106,7 @@
             this.btnQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnQuery.Image")));
             this.btnQuery.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(90, 36);
+            this.btnQuery.Size = new System.Drawing.Size(90, 38);
             this.btnQuery.Text = "查詢";
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
@@ -115,7 +115,7 @@
             this.txtQuery.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtQuery.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F);
             this.txtQuery.Name = "txtQuery";
-            this.txtQuery.Size = new System.Drawing.Size(150, 42);
+            this.txtQuery.Size = new System.Drawing.Size(150, 44);
             this.txtQuery.Text = "關鍵字查詢";
             this.txtQuery.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuery.Click += new System.EventHandler(this.txtQuery_Click);
@@ -128,11 +128,11 @@
             this.dgvProduct.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProduct.Location = new System.Drawing.Point(0, 42);
+            this.dgvProduct.Location = new System.Drawing.Point(0, 44);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.RowHeadersWidth = 72;
             this.dgvProduct.RowTemplate.Height = 35;
-            this.dgvProduct.Size = new System.Drawing.Size(1310, 655);
+            this.dgvProduct.Size = new System.Drawing.Size(1310, 653);
             this.dgvProduct.TabIndex = 1;
             this.dgvProduct.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_RowEnter);
             // 

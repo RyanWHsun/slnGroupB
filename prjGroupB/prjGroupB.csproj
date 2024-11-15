@@ -55,6 +55,7 @@
     <Compile Include="Models\CCategory.cs" />
     <Compile Include="Models\CPost.cs" />
     <Compile Include="Models\CPostManager.cs" />
+    <Compile Include="Models\CProductImage.cs" />
     <Compile Include="Models\CUserSession.cs" />
     <Compile Include="Views\FrmAttractions.cs">
       <SubType>Form</SubType>

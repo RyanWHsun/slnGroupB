@@ -26,7 +26,7 @@ namespace prjGroupB.Views
                     if (_product == null)
                         _product = new CProduct();
                     _product.fProductId = Convert.ToInt32(txtProductId.Text);
-                    _product.fUserId = Convert.ToInt32(txtSellerId.Text);
+                    _product.fUserId = Convert.ToInt32(CUserSession.fUserId);
                     _product.fProductCategoryId = Convert.ToInt32(cmbProductCate.SelectedValue);
                     _product.fProductName = txtProductName.Text;
                     _product.fProductDescription = txtDescription.Text;
@@ -40,8 +40,7 @@ namespace prjGroupB.Views
             set
             {
                 _product = value;
-                txtProductId.Text = _product.fProductId.ToString();
-                txtSellerId.Text = _product.fUserId.ToString();
+                txtProductId.Text = _product.fProductId.ToString();                
                 txtProductName.Text = _product.fProductName;
                 txtDescription.Text = _product.fProductDescription;
                 txtPrice.Text = _product.fProductPrice.ToString();
@@ -80,8 +79,6 @@ namespace prjGroupB.Views
                 MessageBox.Show(message);
                 return;
             }
-
-
             this.isOK = DialogResult.OK;
             Close();
         }
@@ -115,7 +112,6 @@ namespace prjGroupB.Views
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
 
-
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -123,6 +119,10 @@ namespace prjGroupB.Views
             cmbProductCate.DisplayMember = "fCategoryName"; // 顯示在 ComboBox 中的名稱
             cmbProductCate.ValueMember = "fProductCategoryId"; // 實際選擇的值
             con.Close();
+        }
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
