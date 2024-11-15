@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CAttraction.cs" />
+    <Compile Include="Models\CAttrationImage.cs" />
     <Compile Include="Models\CEventCategories.cs" />
     <Compile Include="Models\CEventCategoryMapping.cs" />
     <Compile Include="Models\CEventImage.cs" />
