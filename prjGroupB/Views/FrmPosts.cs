@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjGroupB.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace prjGroupB.Views
         public FrmPosts()
         {
             InitializeComponent();
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

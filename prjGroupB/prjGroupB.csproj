@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CCategory.cs" />
     <Compile Include="Models\CPost.cs" />
+    <Compile Include="Models\CPostManager.cs" />
     <Compile Include="Models\CUserSession.cs" />
     <Compile Include="Views\FrmAttractions.cs">
       <SubType>Form</SubType>
@@ -79,6 +81,12 @@
     </Compile>
     <Compile Include="Views\FrmOrders.Designer.cs">
       <DependentUpon>FrmOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmPostEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmPostEditor.Designer.cs">
+      <DependentUpon>FrmPostEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmPosts.cs">
       <SubType>Form</SubType>
@@ -133,6 +141,9 @@
     </Compile>
     <EmbeddedResource Include="Views\FrmOrders.resx">
       <DependentUpon>FrmOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmPostEditor.resx">
+      <DependentUpon>FrmPostEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmPosts.resx">
       <DependentUpon>FrmPosts.cs</DependentUpon>
