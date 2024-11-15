@@ -17,7 +17,7 @@ namespace prjGroupB.Views
     {
         public DialogResult isOK { get; internal set; }
         private CProduct _product;
-        private CProduct _productImage;
+
         public CProduct product
         {
             get
@@ -54,6 +54,7 @@ namespace prjGroupB.Views
         {
             InitializeComponent();
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
@@ -81,10 +82,10 @@ namespace prjGroupB.Views
                 return;
             }
 
-
             this.isOK = DialogResult.OK;
             Close();
         }
+
         private bool isNumber(string p)
         {
             try
@@ -97,6 +98,7 @@ namespace prjGroupB.Views
                 return false;
             }
         }
+
         private void FrmProductEditor_Load(object sender, EventArgs e)
         {
             LoadProductCategories();
@@ -107,6 +109,7 @@ namespace prjGroupB.Views
                 cmbProductCate.SelectedValue = _product.fProductCategoryId;
             }
         }
+
         private void LoadProductCategories() //讀取資料表的選項並放入下拉選單
         {
             SqlConnection con = new SqlConnection();
@@ -114,7 +117,6 @@ namespace prjGroupB.Views
             string sql = "SELECT * FROM tProductCategories";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
-
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -126,4 +128,3 @@ namespace prjGroupB.Views
         }
     }
 }
-

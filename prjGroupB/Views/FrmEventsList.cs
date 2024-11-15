@@ -14,10 +14,11 @@ namespace prjGroupB.Views
 {
     public partial class FrmEventsList : Form
     {
-        SqlDataAdapter _da;
-        DataSet _ds = null;
-        SqlCommandBuilder _builder;
-        int _position = -1;
+        private SqlDataAdapter _da;
+        private DataSet _ds = null;
+        private SqlCommandBuilder _builder;
+        private int _position = -1;
+
         public FrmEventsList()
         {
             InitializeComponent();
@@ -25,7 +26,6 @@ namespace prjGroupB.Views
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -35,6 +35,7 @@ namespace prjGroupB.Views
             if (f.IsOk == DialogResult.OK)
             {
                 DataTable dt = dataGridView1.DataSource as DataTable;
+
                 DataRow row = dt.NewRow();
                 row["fEventName"] = f.Event.fEventName;
                 row["fEventDescription"] = f.Event.fEventDescription;
@@ -46,6 +47,8 @@ namespace prjGroupB.Views
                 row["fEventActivityfee"] = f.Event.fEventActivityfee;
                 row["fEventURL"] = f.Event.fEventURL;
                 dt.Rows.Add(row);
+                _da.Update(dt);
+                MessageBox.Show("活動已成功儲存");
             }
         }
 
@@ -65,9 +68,9 @@ namespace prjGroupB.Views
             sql += " OR fEventDescription LIKE @K_KEYWORD";
             sql += " OR fEventLocation LIKE @K_KEYWORD";
 
-
             displayEventsBySql(sql, true);
         }
+
         private void displayEventsBySql(string sql, bool isKeyword)
         {
             SqlConnection con = new SqlConnection();
@@ -85,9 +88,9 @@ namespace prjGroupB.Views
             con.Close();
             dataGridView1.DataSource = _ds.Tables[0];
 
-
             resetGridStyle();
         }
+
         private void resetGridStyle()
         {
             dataGridView1.Columns[0].Width = 50;
@@ -117,7 +120,7 @@ namespace prjGroupB.Views
             List<CEvents> activities = new List<CEvents>
         {
             new CEvents { fEventName = "", fEventCreatedDate = DateTime.Now.AddHours(2) },
-            new CEvents { fEventName = "", fEventCreatedDate = DateTime.Now.AddHours(1) },
+            new CEvents { fEventName = "春季一日遊", fEventCreatedDate = DateTime.Now.AddHours(1) },
             new CEvents { fEventName = "", fEventCreatedDate = DateTime.Now.AddHours(3) }
         };
 
@@ -132,11 +135,17 @@ namespace prjGroupB.Views
         private void FrmEventsList_Load(object sender, EventArgs e)
         {
             displayEventsBySql("SELECT * FROM tEvents ", false);
+            DataTable dt = _ds.Tables[0];
+            if (dt != null)
+            {
+                dataGridView1.DataSource = dt;
+            }
         }
 
         private void FrmEventsList_FormClosed(object sender, FormClosedEventArgs e)
         {
             _da.Update(dataGridView1.DataSource as DataTable);
+            resetGridStyle();
         }
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -147,6 +156,54 @@ namespace prjGroupB.Views
         private void FrmEventsList_Paint(object sender, PaintEventArgs e)
         {
             resetGridStyle();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            if (_position < 0)
+            {
+                MessageBox.Show("請選擇要修改的活動項目");
+                return;
+            }
+
+            // 取得要修改的 DataRow
+            DataRow row = (dataGridView1.DataSource as DataTable).Rows[_position];
+
+            // 初始化編輯視窗並填入選擇的活動資料
+            FrmEventsEditor f = new FrmEventsEditor();
+            f.Event = new CEvents
+            {
+                fEventId = Convert.ToInt32(row["fEventId"]),
+                fEventName = row["fEventName"].ToString(),
+                fEventDescription = row["fEventDescription"].ToString(),
+                fEventStartDate = row["fEventStartDate"] == DBNull.Value ? null : row["fEventStartDate"].ToString(),
+                fEventEndDate = row["fEventEndDate"] == DBNull.Value ? null : row["fEventEndDate"].ToString(),
+                fEventLocation = row["fEventLocation"].ToString(),
+                fEventActivityfee = Convert.ToDecimal(row["fEventActivityfee"]),
+                fEventURL = row["fEventURL"].ToString(),
+                fEventCreatedDate = DateTime.Parse(row["fEventCreatedDate"].ToString()),
+                fEventUpdatedDate = DateTime.Parse(row["fEventUpdatedDate"].ToString())
+            };
+
+            // 顯示編輯視窗
+            f.ShowDialog();
+
+            // 如果使用者按下 OK，則將更新的資料寫回 DataRow
+            if (f.IsOk == DialogResult.OK)
+            {
+                row["fEventName"] = f.Event.fEventName;
+                row["fEventDescription"] = f.Event.fEventDescription;
+                row["fEventStartDate"] = f.Event.fEventStartDate;
+                row["fEventEndDate"] = f.Event.fEventEndDate;
+                row["fEventLocation"] = f.Event.fEventLocation;
+                row["fEventActivityfee"] = f.Event.fEventActivityfee;
+                row["fEventURL"] = f.Event.fEventURL;
+                row["fEventUpdatedDate"] = DateTime.UtcNow;
+
+                // 確保 DataAdapter 更新至資料庫
+                _da.Update(dataGridView1.DataSource as DataTable);
+                MessageBox.Show("活動資料已成功更新");
+            }
         }
     }
 }
