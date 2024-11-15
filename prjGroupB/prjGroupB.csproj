@@ -90,11 +90,37 @@
     <Compile Include="Views\FrmUserPosts.Designer.cs">
       <DependentUpon>FrmUserPosts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmUsers.cs">
+    <Compile Include="Views\User\CUserManager.cs" />
+    <Compile Include="Views\User\FrmChat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmUsers.Designer.cs">
-      <DependentUpon>FrmUsers.cs</DependentUpon>
+    <Compile Include="Views\User\FrmChat.Designer.cs">
+      <DependentUpon>FrmChat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\userBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\User\userBox.Designer.cs">
+      <DependentUpon>userBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CUser.cs" />
+    <Compile Include="Views\User\FrmDataEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\User\FrmDataEntry.Designer.cs">
+      <DependentUpon>FrmDataEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\FrmUserSignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\User\FrmUserSignIn.Designer.cs">
+      <DependentUpon>FrmUserSignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\FrmHomePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\User\FrmHomePage.Designer.cs">
+      <DependentUpon>FrmHomePage.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Views\FrmAttractions.resx">
       <DependentUpon>FrmAttractions.cs</DependentUpon>
@@ -126,8 +152,17 @@
     <EmbeddedResource Include="Views\FrmUserPosts.resx">
       <DependentUpon>FrmUserPosts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmUsers.resx">
-      <DependentUpon>FrmUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Views\User\userBox.resx">
+      <DependentUpon>userBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\User\FrmDataEntry.resx">
+      <DependentUpon>FrmDataEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\User\FrmUserSignIn.resx">
+      <DependentUpon>FrmUserSignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\User\FrmHomePage.resx">
+      <DependentUpon>FrmHomePage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

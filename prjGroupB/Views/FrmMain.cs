@@ -20,7 +20,7 @@ namespace prjGroupB
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            FrmUsers f = new FrmUsers();
+            FrmHomePage f = new FrmHomePage();
             f.MdiParent = this;
             f.Show();
         }
