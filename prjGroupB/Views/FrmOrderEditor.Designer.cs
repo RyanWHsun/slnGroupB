@@ -31,17 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrderCreate));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.cmbSellerId = new System.Windows.Forms.ToolStripComboBox();
             this.txtQuery = new System.Windows.Forms.ToolStripTextBox();
             this.btnQuery = new System.Windows.Forms.ToolStripButton();
-            this.cmbSellerId = new System.Windows.Forms.ToolStripComboBox();
             this.btnReset = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -53,10 +50,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Size = new System.Drawing.Size(1428, 865);
             this.splitContainer1.SplitterDistance = 966;
             this.splitContainer1.TabIndex = 0;
@@ -75,6 +68,12 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // cmbSellerId
+            // 
+            this.cmbSellerId.Name = "cmbSellerId";
+            this.cmbSellerId.Size = new System.Drawing.Size(150, 38);
+            this.cmbSellerId.Text = "賣家ID";
+            // 
             // txtQuery
             // 
             this.txtQuery.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F);
@@ -92,12 +91,6 @@
             this.btnQuery.Size = new System.Drawing.Size(86, 32);
             this.btnQuery.Text = "查詢";
             // 
-            // cmbSellerId
-            // 
-            this.cmbSellerId.Name = "cmbSellerId";
-            this.cmbSellerId.Size = new System.Drawing.Size(150, 38);
-            this.cmbSellerId.Text = "賣家ID";
-            // 
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -106,16 +99,6 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(86, 32);
             this.btnReset.Text = "重置";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 147);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 72;
-            this.dataGridView1.RowTemplate.Height = 35;
-            this.dataGridView1.Size = new System.Drawing.Size(452, 261);
-            this.dataGridView1.TabIndex = 0;
             // 
             // FrmOrderCreate
             // 
@@ -127,12 +110,10 @@
             this.Text = "訂單作業";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -145,6 +126,5 @@
         private System.Windows.Forms.ToolStripTextBox txtQuery;
         private System.Windows.Forms.ToolStripButton btnQuery;
         private System.Windows.Forms.ToolStripButton btnReset;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

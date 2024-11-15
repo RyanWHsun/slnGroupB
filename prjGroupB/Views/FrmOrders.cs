@@ -31,7 +31,7 @@ namespace prjGroupB.Views
             SqlDataReader reader = cmd.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(reader);
-            dgvOrder.DataSource = dt;
+            dgvOrders.DataSource = dt;
 
             con.Close();
         }
