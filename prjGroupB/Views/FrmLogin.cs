@@ -53,7 +53,7 @@ namespace prjGroupB.Views
                 CUserSession.fUserId = Convert.ToInt32(reader["fUserId"]);
                 CUserSession.fRankId = Convert.ToInt32(reader["fRankId"]);
                 _isClosed = false;
-                if (CUserSession.fRankId == 99)
+                if (CUserSession.fRankId == 5)
                     DshowBackend(true);
                 Close();
             }
