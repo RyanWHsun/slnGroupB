@@ -15,11 +15,12 @@ namespace prjGroupB.Views
         public FrmEvents()
         {
             InitializeComponent();
+           
         }
 
         private void showEventsSystem()
         {
-            FrmEventsList f = new FrmEventsList();             
+            FrmEventsList f = new FrmEventsList();           
             f.ShowDialog();
         }
 

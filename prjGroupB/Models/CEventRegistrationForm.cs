@@ -17,5 +17,7 @@ namespace prjGroupB.Models
         public string fEventContact { get; set; }
         // 連絡人電話
         public string fEventContactPhone { get; set; }
+        // 報名日期
+        public DateTime FERegistrationDate { get; set; }
     }
 }

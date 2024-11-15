@@ -282,6 +282,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "FrmEventCategoriesList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEventCategoriesList";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

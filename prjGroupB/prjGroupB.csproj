@@ -69,6 +69,12 @@
     <Compile Include="Views\FrmEventRegistrationForm.Designer.cs">
       <DependentUpon>FrmEventRegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmEventRegistrationinformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmEventRegistrationinformation.Designer.cs">
+      <DependentUpon>FrmEventRegistrationinformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmEventsEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmEventRegistrationForm.resx">
       <DependentUpon>FrmEventRegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmEventRegistrationinformation.resx">
+      <DependentUpon>FrmEventRegistrationinformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmEventsEditor.resx">
       <DependentUpon>FrmEventsEditor.cs</DependentUpon>
