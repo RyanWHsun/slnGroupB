@@ -1,4 +1,5 @@
-﻿using prjGroupB.Views;
+﻿using prjGroupB.Views.User;
+using prjGroupB.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;

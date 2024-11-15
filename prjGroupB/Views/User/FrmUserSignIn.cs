@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace prjGroupB.Views
+namespace prjGroupB.Views.User
 {
-    public partial class FrmUsers : Form
+    public partial class FrmUserSignIn : Form
     {
-        public FrmUsers()
+        public FrmUserSignIn()
         {
             InitializeComponent();
         }
