@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CEventCategories.cs" />
+    <Compile Include="Models\CEventCategoryMapping.cs" />
+    <Compile Include="Models\CEventImage.cs" />
+    <Compile Include="Models\CEventRegistrationForm.cs" />
+    <Compile Include="Models\CEvents.cs" />
     <Compile Include="Models\CProduct.cs" />
     <Compile Include="Models\CCategory.cs" />
     <Compile Include="Models\CPost.cs" />
@@ -56,6 +61,30 @@
     </Compile>
     <Compile Include="Views\FrmAttractions.Designer.cs">
       <DependentUpon>FrmAttractions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmEventCategoriesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmEventCategoriesList.Designer.cs">
+      <DependentUpon>FrmEventCategoriesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmEventRegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmEventRegistrationForm.Designer.cs">
+      <DependentUpon>FrmEventRegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmEventRegistrationinformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmEventRegistrationinformation.Designer.cs">
+      <DependentUpon>FrmEventRegistrationinformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmEventsEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmEventsEditor.Designer.cs">
+      <DependentUpon>FrmEventsEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmEvents.cs">
       <SubType>Form</SubType>
@@ -113,6 +142,12 @@
     <Compile Include="Views\FrmProducts.Designer.cs">
       <DependentUpon>FrmProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmEventsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmEventsList.Designer.cs">
+      <DependentUpon>FrmEventsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmUserPosts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +195,18 @@
     <EmbeddedResource Include="Views\FrmAttractions.resx">
       <DependentUpon>FrmAttractions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmEventCategoriesList.resx">
+      <DependentUpon>FrmEventCategoriesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmEventRegistrationForm.resx">
+      <DependentUpon>FrmEventRegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmEventRegistrationinformation.resx">
+      <DependentUpon>FrmEventRegistrationinformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmEventsEditor.resx">
+      <DependentUpon>FrmEventsEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmEvents.resx">
       <DependentUpon>FrmEvents.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmProducts.resx">
       <DependentUpon>FrmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmEventsList.resx">
+      <DependentUpon>FrmEventsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmUserPosts.resx">
       <DependentUpon>FrmUserPosts.cs</DependentUpon>
