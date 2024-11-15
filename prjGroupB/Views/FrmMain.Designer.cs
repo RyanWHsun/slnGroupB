@@ -42,6 +42,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnUserPosts = new System.Windows.Forms.ToolStripButton();
             this.btnLogin = new System.Windows.Forms.ToolStripButton();
+            this.btnCreateOrder = new System.Windows.Forms.ToolStripButton();
+            this.btnRegister = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +64,8 @@
             this.btnExit,
             this.toolStripSeparator2,
             this.btnUserPosts,
+            this.btnCreateOrder,
+            this.btnRegister,
             this.btnLogin});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -175,9 +179,27 @@
             this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
             this.btnLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(98, 36);
+            this.btnLogin.Size = new System.Drawing.Size(72, 36);
             this.btnLogin.Text = "登出";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnCreateOrder
+            // 
+            this.btnCreateOrder.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnCreateOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateOrder.Image")));
+            this.btnCreateOrder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCreateOrder.Name = "btnCreateOrder";
+            this.btnCreateOrder.Size = new System.Drawing.Size(98, 36);
+            this.btnCreateOrder.Text = "新增訂單";
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnRegister.Image = ((System.Drawing.Image)(resources.GetObject("btnRegister.Image")));
+            this.btnRegister.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(98, 36);
+            this.btnRegister.Text = "活動報名";
             // 
             // FrmMain
             // 
@@ -212,6 +234,8 @@
         private System.Windows.Forms.ToolStripButton btnUserPosts;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnLogin;
+        private System.Windows.Forms.ToolStripButton btnCreateOrder;
+        private System.Windows.Forms.ToolStripButton btnRegister;
     }
 }
 

@@ -35,8 +35,8 @@ namespace prjGroupB.Views
         private void btnOk_Click(object sender, EventArgs e)
         {
             string sql = "SELECT * FROM tUSER WHERE";
-            sql += " fEmail = @K_FEmail";
-            sql += " AND fPassword = @K_FPASSWORD";
+            sql += " fUserEmail = @K_FEmail";
+            sql += " AND fUserPassword = @K_FPASSWORD";
 
             SqlConnection con = new SqlConnection();
             con.ConnectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
@@ -51,9 +51,9 @@ namespace prjGroupB.Views
             if (reader.Read())
             {
                 CUserSession.fUserId = Convert.ToInt32(reader["fUserId"]);
-                CUserSession.fRankId = Convert.ToInt32(reader["fRankId"]);
+                CUserSession.fRankId = Convert.ToInt32(reader["fUserRankId"]);
                 _isClosed = false;
-                if (CUserSession.fRankId == 99)
+                if (CUserSession.fRankId == 5)
                     DshowBackend(true);
                 Close();
             }
