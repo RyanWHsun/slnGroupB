@@ -58,6 +58,18 @@
     <Compile Include="Models\CPost.cs" />
     <Compile Include="Models\CPostManager.cs" />
     <Compile Include="Models\CUserSession.cs" />
+    <Compile Include="Views\CustomImageBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CustomImageBox.Designer.cs">
+      <DependentUpon>CustomImageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\fieldBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\fieldBox.Designer.cs">
+      <DependentUpon>fieldBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmAttractions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +206,12 @@
     <Compile Include="Views\LoginBox.Designer.cs">
       <DependentUpon>LoginBox.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\CustomImageBox.resx">
+      <DependentUpon>CustomImageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\fieldBox.resx">
+      <DependentUpon>fieldBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmAttractions.resx">
       <DependentUpon>FrmAttractions.cs</DependentUpon>
     </EmbeddedResource>
