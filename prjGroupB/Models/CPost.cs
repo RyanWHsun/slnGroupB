@@ -14,6 +14,6 @@ namespace prjGroupB.Models
         public DateTime fUpdatedAt { get; set; }
         public bool fIsPublic { get; set; }
         public string fCategory { get; set; }
-        public byte[] fImage { get; set; }
+        public List<byte[]> fImages { get; set; }
     }
 }

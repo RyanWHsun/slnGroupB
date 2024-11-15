@@ -45,17 +45,20 @@ namespace prjGroupB.Models
                 postId = (int)reader["PostId"];
             }
             reader.Close();
-
-            sql = "INSERT INTO tPostImages(";
-            sql += "fPostId,";
-            sql += "fImage";
-            sql += ")VALUES(";
-            sql += "@K_FPOSTID,";
-            sql += "@K_FIMAGE)";
-            cmd.CommandText = sql;
-            cmd.Parameters.Add(new SqlParameter("K_FPOSTID", (object)postId));
-            cmd.Parameters.Add(new SqlParameter("K_FIMAGE", (object)p.fImage));
-            cmd.ExecuteNonQuery();
+            foreach (byte[] image in p.fImages)
+            {
+                sql = "INSERT INTO tPostImages(";
+                sql += "fPostId,";
+                sql += "fImage";
+                sql += ")VALUES(";
+                sql += "@K_FPOSTID,";
+                sql += "@K_FIMAGE)";
+                cmd.CommandText = sql;
+                cmd.Parameters.Add(new SqlParameter("K_FPOSTID", (object)postId));
+                cmd.Parameters.Add(new SqlParameter("K_FIMAGE", (object)image));
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+            }
             con.Close();
         }
     }

@@ -51,6 +51,7 @@
     <Compile Include="Models\CEventImage.cs" />
     <Compile Include="Models\CEventRegistrationForm.cs" />
     <Compile Include="Models\CEvents.cs" />
+    <Compile Include="Models\CPostPictureManager.cs" />
     <Compile Include="Models\CProduct.cs" />
     <Compile Include="Models\CCategory.cs" />
     <Compile Include="Models\CPost.cs" />
