@@ -17,7 +17,7 @@ using Image = System.Drawing.Image;
 
 namespace Attractions.Views {
     public partial class FormAttractionEditor : Form {
-        private string pipe = "np:\\\\.\\pipe\\LOCALDB#7C99B448\\tsql\\query;";
+        private string pipe = " np:\\\\.\\pipe\\LOCALDB#7C99B448\\tsql\\query;";
         private CAttraction _attraction;
         
         // 圖片

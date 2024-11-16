@@ -1,4 +1,5 @@
-﻿using prjGroupB.Views;
+﻿using Attractions.Views;
+using prjGroupB.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,7 +48,7 @@ namespace prjGroupB
 
         private void btnAttractions_Click(object sender, EventArgs e)
         {
-            FrmAttractions f = new FrmAttractions();
+            FormAttractionMain f = new FormAttractionMain();
             f.MdiParent = this;
             f.Show();
         }

@@ -47,6 +47,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -56,7 +57,6 @@
             this.tableLayoutPanel1.Controls.Add(this.btnAttraction, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnRecommendation, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -68,6 +68,7 @@
             // 
             // btnImage
             // 
+            this.btnImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnImage.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnImage.Location = new System.Drawing.Point(219, 131);
             this.btnImage.Name = "btnImage";
@@ -76,6 +77,8 @@
             this.btnImage.Text = "圖片管理";
             this.btnImage.UseVisualStyleBackColor = true;
             this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
+            this.btnImage.MouseLeave += new System.EventHandler(this.btnImage_MouseLeave);
+            this.btnImage.MouseHover += new System.EventHandler(this.btnImage_MouseHover);
             // 
             // btnTicket
             // 
@@ -88,6 +91,8 @@
             this.btnTicket.Text = "票務管理";
             this.btnTicket.UseVisualStyleBackColor = true;
             this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
+            this.btnTicket.MouseLeave += new System.EventHandler(this.btnTicket_MouseLeave);
+            this.btnTicket.MouseHover += new System.EventHandler(this.btnTicket_MouseHover);
             // 
             // btnComment
             // 
@@ -100,6 +105,8 @@
             this.btnComment.Text = "評論管理";
             this.btnComment.UseVisualStyleBackColor = true;
             this.btnComment.Click += new System.EventHandler(this.btnComment_Click);
+            this.btnComment.MouseLeave += new System.EventHandler(this.btnComment_MouseLeave);
+            this.btnComment.MouseHover += new System.EventHandler(this.btnComment_MouseHover);
             // 
             // btnAttraction
             // 
@@ -112,6 +119,8 @@
             this.btnAttraction.Text = "景點管理";
             this.btnAttraction.UseVisualStyleBackColor = true;
             this.btnAttraction.Click += new System.EventHandler(this.button1_Click);
+            this.btnAttraction.MouseLeave += new System.EventHandler(this.btnAttraction_MouseLeave);
+            this.btnAttraction.MouseHover += new System.EventHandler(this.btnAttraction_MouseHover);
             // 
             // splitContainer1
             // 
@@ -127,7 +136,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnTag);
             this.splitContainer1.Size = new System.Drawing.Size(210, 122);
-            this.splitContainer1.SplitterDistance = 101;
+            this.splitContainer1.SplitterDistance = 99;
             this.splitContainer1.TabIndex = 6;
             // 
             // btnCategory
@@ -136,11 +145,13 @@
             this.btnCategory.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnCategory.Location = new System.Drawing.Point(0, 0);
             this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(101, 122);
+            this.btnCategory.Size = new System.Drawing.Size(99, 122);
             this.btnCategory.TabIndex = 1;
             this.btnCategory.Text = "分類管理";
             this.btnCategory.UseVisualStyleBackColor = true;
             this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
+            this.btnCategory.MouseLeave += new System.EventHandler(this.btnCategory_MouseLeave);
+            this.btnCategory.MouseHover += new System.EventHandler(this.btnCategory_MouseHover);
             // 
             // btnTag
             // 
@@ -148,14 +159,17 @@
             this.btnTag.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnTag.Location = new System.Drawing.Point(0, 0);
             this.btnTag.Name = "btnTag";
-            this.btnTag.Size = new System.Drawing.Size(105, 122);
+            this.btnTag.Size = new System.Drawing.Size(107, 122);
             this.btnTag.TabIndex = 3;
             this.btnTag.Text = "標籤管理";
             this.btnTag.UseVisualStyleBackColor = true;
             this.btnTag.Click += new System.EventHandler(this.btnTag_Click);
+            this.btnTag.MouseLeave += new System.EventHandler(this.btnTag_MouseLeave);
+            this.btnTag.MouseHover += new System.EventHandler(this.btnTag_MouseHover);
             // 
             // btnRecommendation
             // 
+            this.btnRecommendation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRecommendation.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnRecommendation.Location = new System.Drawing.Point(3, 131);
             this.btnRecommendation.Name = "btnRecommendation";
@@ -164,6 +178,8 @@
             this.btnRecommendation.Text = "推薦管理";
             this.btnRecommendation.UseVisualStyleBackColor = true;
             this.btnRecommendation.Click += new System.EventHandler(this.btnRecommendation_Click);
+            this.btnRecommendation.MouseLeave += new System.EventHandler(this.btnRecommendation_MouseLeave);
+            this.btnRecommendation.MouseHover += new System.EventHandler(this.btnRecommendation_MouseHover);
             // 
             // panel1
             // 
@@ -218,6 +234,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormAttractionMain";
             this.Text = "FormAttractionMain";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

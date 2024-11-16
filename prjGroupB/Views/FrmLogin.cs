@@ -16,6 +16,8 @@ namespace prjGroupB.Views
     public delegate void D(bool isVisible);
     public partial class FrmLogin : Form
     {
+        public string pipe = " np:\\\\.\\pipe\\LOCALDB#7C99B448\\tsql\\query;";
+
         public event D DshowBackend;
         private bool _isClosed = true;
         public FrmLogin()
@@ -39,7 +41,8 @@ namespace prjGroupB.Views
             sql += " AND fUserPassword = @K_FPASSWORD";
 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
+            // con.ConnectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
+            con.ConnectionString = @"Data Source = np:\\.\pipe\LOCALDB#7C99B448\tsql\query;Initial Catalog=dbGroupB;Integrated Security=True;";
             con.Open();
 
             SqlCommand cmd = new SqlCommand();
@@ -53,7 +56,7 @@ namespace prjGroupB.Views
                 CUserSession.fUserId = Convert.ToInt32(reader["fUserId"]);
                 CUserSession.fRankId = Convert.ToInt32(reader["fUserRankId"]);
                 _isClosed = false;
-                if (CUserSession.fRankId == 5)
+                if (CUserSession.fRankId == 99)
                     DshowBackend(true);
                 Close();
             }
