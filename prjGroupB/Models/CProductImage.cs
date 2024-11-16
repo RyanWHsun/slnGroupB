@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace prjGroupB.Models
 {
-    public class ProductImage
+    public class CProductImage
     {
         public int fProductImageId { get; set; }
         public int fProductId { get; set; }
-        public byte[] fImage { get; set; }
+        public byte[] fImage { get; set; } 
     }
 }

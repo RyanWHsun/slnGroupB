@@ -17,6 +17,7 @@ namespace prjGroupB.Views
         SqlDataAdapter _da;
         SqlCommandBuilder _builder;
         int _position = -1;
+
         public FrmProducts()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace prjGroupB.Views
         {
             displayProductsBySql("SELECT * FROM tProduct");
         }
+
         private void displayProductsBySql(string sql)
         {
             SqlConnection con = new SqlConnection();
@@ -41,11 +43,11 @@ namespace prjGroupB.Views
 
             dgvProduct.DataSource = ds.Tables[0];
         }
+
         private void btnCreateProduct_Click(object sender, EventArgs e)
         {
             FrmProductEditor f = new FrmProductEditor();
             f.ShowDialog();
-
 
             if (f.isOK == DialogResult.OK)
             {
@@ -60,6 +62,9 @@ namespace prjGroupB.Views
                 row["fProductDateAdd"] = f.product.fProductDateAdd;
                 row["fStock"] = f.product.fStock;
                 dt.Rows.Add(row);
+
+                _da.Update(dgvProduct.DataSource as DataTable);
+                displayProductsBySql("SELECT * FROM tProduct");
             }
         }
 
@@ -79,6 +84,7 @@ namespace prjGroupB.Views
             DataTable dt = dgvProduct.DataSource as DataTable;
             DataRow row = dt.Rows[_position];
             row.Delete();
+            
             _da.Update(dgvProduct.DataSource as DataTable);
         }
 
@@ -91,6 +97,7 @@ namespace prjGroupB.Views
             FrmProductEditor f = new FrmProductEditor();
             CProduct x = new CProduct();
             x.fUserId = (int)row["fUserId"];
+            x.fProductId = (int)row["fProductId"];
             x.fProductCategoryId = (int)row["fProductCategoryId"];
             x.fProductName = row["fProductName"].ToString();
             x.fProductDescription = row["fProductDescription"].ToString();
@@ -111,6 +118,19 @@ namespace prjGroupB.Views
                 row["fProductUpdated"] = f.product.fProductUpdated;
                 row["fStock"] = f.product.fStock;
             }
+        }
+        private void btnPicManagement_Click(object sender, EventArgs e)
+        {
+            if (_position < 0)
+                return;
+            DataTable dt = dgvProduct.DataSource as DataTable;
+            DataRow row = dt.Rows[_position];
+            FrmProductImageManagement f = new FrmProductImageManagement();
+            CProduct x = new CProduct();            
+            x.fProductId = (int)row["fProductId"];
+            x.fProductName = row["fProductName"].ToString();
+            f.product = x;
+            f.ShowDialog();
         }
         private void btnQuery_Click(object sender, EventArgs e)
         {
@@ -134,6 +154,7 @@ namespace prjGroupB.Views
             string sql = "SELECT * FROM tProduct";
             displayProductsBySql(sql);
         }
+
 
     }
 }

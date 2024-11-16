@@ -51,10 +51,13 @@
     <Compile Include="Models\CEventImage.cs" />
     <Compile Include="Models\CEventRegistrationForm.cs" />
     <Compile Include="Models\CEvents.cs" />
+    <Compile Include="Models\COrder.cs" />
+    <Compile Include="Models\COrderManagement.cs" />
     <Compile Include="Models\CProduct.cs" />
     <Compile Include="Models\CCategory.cs" />
     <Compile Include="Models\CPost.cs" />
     <Compile Include="Models\CPostManager.cs" />
+    <Compile Include="Models\CProductDisplay.cs" />
     <Compile Include="Models\CProductImage.cs" />
     <Compile Include="Models\CUserSession.cs" />
     <Compile Include="Views\FrmAttractions.cs">
@@ -119,6 +122,12 @@
     <Compile Include="Views\FrmOrders.Designer.cs">
       <DependentUpon>FrmOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmPlaceOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmPlaceOrder.Designer.cs">
+      <DependentUpon>FrmPlaceOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmPostEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +145,12 @@
     </Compile>
     <Compile Include="Views\FrmProductEditor.Designer.cs">
       <DependentUpon>FrmProductEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmProductImageManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmProductImageManagement.Designer.cs">
+      <DependentUpon>FrmProductImageManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmProducts.cs">
       <SubType>Form</SubType>
@@ -232,6 +247,9 @@
     <EmbeddedResource Include="Views\FrmOrders.resx">
       <DependentUpon>FrmOrders.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmPlaceOrder.resx">
+      <DependentUpon>FrmPlaceOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmPostEditor.resx">
       <DependentUpon>FrmPostEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmProductEditor.resx">
       <DependentUpon>FrmProductEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmProductImageManagement.resx">
+      <DependentUpon>FrmProductImageManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmProducts.resx">
       <DependentUpon>FrmProducts.cs</DependentUpon>

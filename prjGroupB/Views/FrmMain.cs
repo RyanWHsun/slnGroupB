@@ -105,5 +105,12 @@ namespace prjGroupB
             btnProducts.Visible = isVisible;
             btnOrders.Visible = isVisible;
         }
+
+        private void btnCreateOrder_Click(object sender, EventArgs e)
+        {
+            FrmPlaceOrder f = new FrmPlaceOrder();
+            f.MdiParent = this;
+            f.Show();
+        }
     }
 }

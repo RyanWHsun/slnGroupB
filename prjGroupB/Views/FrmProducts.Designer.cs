@@ -32,6 +32,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnCreateProduct = new System.Windows.Forms.ToolStripButton();
             this.btnEditProduct = new System.Windows.Forms.ToolStripButton();
+            this.btnPicManagement = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnReset = new System.Windows.Forms.ToolStripButton();
             this.btnQuery = new System.Windows.Forms.ToolStripButton();
@@ -48,13 +49,14 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCreateProduct,
             this.btnEditProduct,
+            this.btnPicManagement,
             this.btnDelete,
             this.btnReset,
             this.btnQuery,
             this.txtQuery});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1310, 44);
+            this.toolStrip1.Size = new System.Drawing.Size(1310, 42);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -64,7 +66,7 @@
             this.btnCreateProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateProduct.Image")));
             this.btnCreateProduct.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCreateProduct.Name = "btnCreateProduct";
-            this.btnCreateProduct.Size = new System.Drawing.Size(90, 38);
+            this.btnCreateProduct.Size = new System.Drawing.Size(90, 36);
             this.btnCreateProduct.Text = "新增";
             this.btnCreateProduct.Click += new System.EventHandler(this.btnCreateProduct_Click);
             // 
@@ -77,6 +79,16 @@
             this.btnEditProduct.Size = new System.Drawing.Size(90, 38);
             this.btnEditProduct.Text = "修改";
             this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
+            // 
+            // btnPicManagement
+            // 
+            this.btnPicManagement.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnPicManagement.Image = ((System.Drawing.Image)(resources.GetObject("btnPicManagement.Image")));
+            this.btnPicManagement.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPicManagement.Name = "btnPicManagement";
+            this.btnPicManagement.Size = new System.Drawing.Size(132, 38);
+            this.btnPicManagement.Text = "圖片管理";
+            this.btnPicManagement.Click += new System.EventHandler(this.btnPicManagement_Click);
             // 
             // btnDelete
             // 
@@ -128,11 +140,11 @@
             this.dgvProduct.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProduct.Location = new System.Drawing.Point(0, 44);
+            this.dgvProduct.Location = new System.Drawing.Point(0, 42);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.RowHeadersWidth = 72;
             this.dgvProduct.RowTemplate.Height = 35;
-            this.dgvProduct.Size = new System.Drawing.Size(1310, 653);
+            this.dgvProduct.Size = new System.Drawing.Size(1310, 655);
             this.dgvProduct.TabIndex = 1;
             this.dgvProduct.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_RowEnter);
             // 
@@ -168,5 +180,6 @@
         private System.Windows.Forms.ToolStripButton btnReset;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.DataGridView dgvProduct;
+        private System.Windows.Forms.ToolStripButton btnPicManagement;
     }
 }

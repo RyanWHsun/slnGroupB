@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +19,6 @@ namespace prjGroupB.Views
     {
         public DialogResult isOK { get; internal set; }
         private CProduct _product;
-        private CProduct _productImage;
         public CProduct product
         {
             get
@@ -40,7 +41,7 @@ namespace prjGroupB.Views
             set
             {
                 _product = value;
-                txtProductId.Text = _product.fProductId.ToString();                
+                txtProductId.Text = _product.fProductId.ToString();
                 txtProductName.Text = _product.fProductName;
                 txtDescription.Text = _product.fProductDescription;
                 txtPrice.Text = _product.fProductPrice.ToString();
@@ -57,7 +58,6 @@ namespace prjGroupB.Views
         {
             Close();
         }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             string message = "";
@@ -96,34 +96,32 @@ namespace prjGroupB.Views
         }
         private void FrmProductEditor_Load(object sender, EventArgs e)
         {
-            LoadProductCategories();
-
-            // 設置 ComboBox 的選中值
-            if (_product != null)
+            DataTable dt= LoadProductCategories();            
+            cmbProductCate.DataSource = dt;
+            cmbProductCate.DisplayMember = "fCategoryName"; // 顯示在 ComboBox 中的名稱
+            cmbProductCate.ValueMember = "fProductCategoryId"; // 實際選擇的值
+                                                               
+            if (_product != null)                    // 設置 ComboBox 的選中值
             {
                 cmbProductCate.SelectedValue = _product.fProductCategoryId;
             }
         }
-        private void LoadProductCategories() //讀取資料表的選項並放入下拉選單
+        public DataTable LoadProductCategories() // 讀取資料表的選項並返回 DataTable
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=.;Database = dbGroupB; " + "Integrated Security = SSPI";
-            string sql = "SELECT * FROM tProductCategories";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
-            da.Fill(dt);
-            cmbProductCate.DataSource = dt;
-            cmbProductCate.DisplayMember = "fCategoryName"; // 顯示在 ComboBox 中的名稱
-            cmbProductCate.ValueMember = "fProductCategoryId"; // 實際選擇的值
-            con.Close();
-        }
-        private void btnUpload_Click(object sender, EventArgs e)
-        {
 
+            using (SqlConnection con = new SqlConnection(@"Data Source=.;Database = dbGroupB; Integrated Security = SSPI"))
+            {
+                string sql = "SELECT * FROM tProductCategories";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    con.Open();
+                    da.Fill(dt);
+                    con.Close();
+                }
+            }
+            return dt;
         }
     }
 }
-

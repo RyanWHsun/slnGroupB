@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProductEditor));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label15 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.chkOnSales = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -48,20 +49,11 @@
             this.txtProductId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnConfirm = new System.Windows.Forms.Button();
-            this.picProductBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnUpload = new System.Windows.Forms.Button();
-            this.btnPrevious = new System.Windows.Forms.PictureBox();
-            this.btnNext = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picProductBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrevious)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnNext)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -83,10 +75,8 @@
             this.splitContainer1.Panel1.Controls.Add(this.chkOnSales);
             this.splitContainer1.Panel1.Controls.Add(this.label10);
             this.splitContainer1.Panel1.Controls.Add(this.cmbProductCate);
-            this.splitContainer1.Panel1.Controls.Add(this.txtDescription);
             this.splitContainer1.Panel1.Controls.Add(this.txtStock);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this.label9);
             this.splitContainer1.Panel1.Controls.Add(this.label8);
             this.splitContainer1.Panel1.Controls.Add(this.txtPrice);
             this.splitContainer1.Panel1.Controls.Add(this.txtProductName);
@@ -98,16 +88,15 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Honeydew;
-            this.splitContainer1.Panel2.Controls.Add(this.btnNext);
-            this.splitContainer1.Panel2.Controls.Add(this.btnPrevious);
-            this.splitContainer1.Panel2.Controls.Add(this.btnUpload);
-            this.splitContainer1.Panel2.Controls.Add(this.picProductBox);
-            this.splitContainer1.Size = new System.Drawing.Size(1379, 627);
-            this.splitContainer1.SplitterDistance = 864;
+            this.splitContainer1.Panel2.Controls.Add(this.txtDescription);
+            this.splitContainer1.Panel2.Controls.Add(this.label9);
+            this.splitContainer1.Size = new System.Drawing.Size(1024, 627);
+            this.splitContainer1.SplitterDistance = 553;
             this.splitContainer1.TabIndex = 0;
             // 
             // label15
             // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label15.ForeColor = System.Drawing.Color.Red;
@@ -117,8 +106,22 @@
             this.label15.TabIndex = 9;
             this.label15.Text = "*為必填";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancel.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnCancel.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnCancel.Location = new System.Drawing.Point(118, 543);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(138, 56);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // label14
             // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label14.ForeColor = System.Drawing.Color.Red;
@@ -130,6 +133,7 @@
             // 
             // label13
             // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label13.ForeColor = System.Drawing.Color.Red;
@@ -139,8 +143,22 @@
             this.label13.TabIndex = 8;
             this.label13.Text = "*";
             // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnConfirm.BackColor = System.Drawing.Color.Pink;
+            this.btnConfirm.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnConfirm.Location = new System.Drawing.Point(282, 543);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(138, 56);
+            this.btnConfirm.TabIndex = 1;
+            this.btnConfirm.Text = "確定";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
             // label12
             // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label12.ForeColor = System.Drawing.Color.Red;
@@ -173,6 +191,8 @@
             // 
             // cmbProductCate
             // 
+            this.cmbProductCate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProductCate.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmbProductCate.FormattingEnabled = true;
             this.cmbProductCate.Location = new System.Drawing.Point(170, 217);
@@ -182,26 +202,33 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescription.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtDescription.Location = new System.Drawing.Point(470, 74);
+            this.txtDescription.Location = new System.Drawing.Point(49, 72);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(361, 412);
+            this.txtDescription.Size = new System.Drawing.Size(369, 488);
             this.txtDescription.TabIndex = 4;
             // 
             // txtStock
             // 
+            this.txtStock.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStock.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtStock.Location = new System.Drawing.Point(169, 290);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(251, 38);
             this.txtStock.TabIndex = 3;
+            this.txtStock.Text = "0";
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label5.Location = new System.Drawing.Point(53, 220);
@@ -212,10 +239,9 @@
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label9.Location = new System.Drawing.Point(587, 40);
+            this.label9.Location = new System.Drawing.Point(43, 38);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(110, 31);
             this.label9.TabIndex = 2;
@@ -223,6 +249,8 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label8.Location = new System.Drawing.Point(53, 292);
@@ -233,6 +261,8 @@
             // 
             // txtPrice
             // 
+            this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrice.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtPrice.Location = new System.Drawing.Point(169, 141);
@@ -243,6 +273,8 @@
             // 
             // txtProductName
             // 
+            this.txtProductName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProductName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProductName.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtProductName.Location = new System.Drawing.Point(169, 69);
@@ -252,6 +284,8 @@
             // 
             // txtProductPrice
             // 
+            this.txtProductPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProductPrice.AutoSize = true;
             this.txtProductPrice.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtProductPrice.Location = new System.Drawing.Point(53, 143);
@@ -273,6 +307,8 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label4.Location = new System.Drawing.Point(53, 71);
@@ -292,91 +328,15 @@
             this.label3.Text = "商品ID";
             this.label3.Visible = false;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCancel.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnCancel.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnCancel.Location = new System.Drawing.Point(519, 544);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(138, 56);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnConfirm.BackColor = System.Drawing.Color.Pink;
-            this.btnConfirm.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnConfirm.Location = new System.Drawing.Point(683, 544);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(138, 56);
-            this.btnConfirm.TabIndex = 1;
-            this.btnConfirm.Text = "確定";
-            this.btnConfirm.UseVisualStyleBackColor = false;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // picProductBox
-            // 
-            this.picProductBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picProductBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picProductBox.Location = new System.Drawing.Point(35, 52);
-            this.picProductBox.Name = "picProductBox";
-            this.picProductBox.Size = new System.Drawing.Size(426, 355);
-            this.picProductBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picProductBox.TabIndex = 0;
-            this.picProductBox.TabStop = false;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btnUpload
-            // 
-            this.btnUpload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpload.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnUpload.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnUpload.Location = new System.Drawing.Point(187, 430);
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(138, 56);
-            this.btnUpload.TabIndex = 1;
-            this.btnUpload.Text = "上傳照片";
-            this.btnUpload.UseVisualStyleBackColor = false;
-            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrevious.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevious.Image")));
-            this.btnPrevious.Location = new System.Drawing.Point(65, 430);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(79, 56);
-            this.btnPrevious.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnPrevious.TabIndex = 2;
-            this.btnPrevious.TabStop = false;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
-            this.btnNext.Location = new System.Drawing.Point(364, 430);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(79, 56);
-            this.btnNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnNext.TabIndex = 2;
-            this.btnNext.TabStop = false;
             // 
             // FrmProductEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1379, 627);
+            this.ClientSize = new System.Drawing.Size(1024, 627);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmProductEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -385,11 +345,9 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picProductBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrevious)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnNext)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -418,9 +376,5 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.PictureBox picProductBox;
-        private System.Windows.Forms.Button btnUpload;
-        private System.Windows.Forms.PictureBox btnPrevious;
-        private System.Windows.Forms.PictureBox btnNext;
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +12,6 @@ namespace prjGroupB.Models
     {
         public int fProductId { get; set; }
         public int fUserId { get; set; }
-
         public int fProductCategoryId { get; set; }
 
         public string fProductName { get; set; }
@@ -25,7 +26,10 @@ namespace prjGroupB.Models
 
         public string fProductUpdated { get; set; }
 
-        public int fStock { get; set; }        
-    }    
+        public int fStock { get; set; }
+               
+    }
+
+
 }
 
