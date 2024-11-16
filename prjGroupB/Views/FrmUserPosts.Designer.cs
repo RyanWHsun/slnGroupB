@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.btnInsert = new System.Windows.Forms.Button();
+            this.btnInsertCategory = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(380, 289);
+            this.btnInsert.Location = new System.Drawing.Point(459, 203);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 23);
             this.btnInsert.TabIndex = 0;
@@ -41,11 +42,22 @@
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
+            // btnInsertCategory
+            // 
+            this.btnInsertCategory.Location = new System.Drawing.Point(51, 203);
+            this.btnInsertCategory.Name = "btnInsertCategory";
+            this.btnInsertCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnInsertCategory.TabIndex = 1;
+            this.btnInsertCategory.Text = "新增分類";
+            this.btnInsertCategory.UseVisualStyleBackColor = true;
+            this.btnInsertCategory.Click += new System.EventHandler(this.btnInsertCategory_Click);
+            // 
             // FrmUserPosts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 594);
+            this.Controls.Add(this.btnInsertCategory);
             this.Controls.Add(this.btnInsert);
             this.Name = "FrmUserPosts";
             this.Text = "FrmUserPosts";
@@ -57,5 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnInsertCategory;
     }
 }

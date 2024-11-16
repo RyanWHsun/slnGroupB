@@ -61,5 +61,25 @@ namespace prjGroupB.Models
             }
             con.Close();
         }
+        public void insertCategory(string p)
+        {
+            string sql = "INSERT INTO tPostCategories(";
+            sql += "fUserId,";
+            sql += "fName";
+            sql += ")VALUES(";
+            sql += "@K_FUSERID,";
+            sql += "@K_FNAME)";
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = sql;
+            cmd.Parameters.Add(new SqlParameter("K_FUSERID", (object)CUserSession.fUserId));
+            cmd.Parameters.Add(new SqlParameter("K_FNAME", (object)p));
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }

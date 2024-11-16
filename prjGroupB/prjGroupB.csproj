@@ -119,6 +119,12 @@
     <Compile Include="Views\FrmOrders.Designer.cs">
       <DependentUpon>FrmOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmPostCategoryEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmPostCategoryEditor.Designer.cs">
+      <DependentUpon>FrmPostCategoryEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmPostEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmOrders.resx">
       <DependentUpon>FrmOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmPostCategoryEditor.resx">
+      <DependentUpon>FrmPostCategoryEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmPostEditor.resx">
       <DependentUpon>FrmPostEditor.cs</DependentUpon>

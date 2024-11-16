@@ -27,5 +27,15 @@ namespace prjGroupB.Views
                 (new CPostManager()).insert(f.post);
             }
         }
+
+        private void btnInsertCategory_Click(object sender, EventArgs e)
+        {
+            FrmPostCategoryEditor f = new FrmPostCategoryEditor();
+            f.ShowDialog();
+            if (f.isOK == DialogResult.OK)
+            {
+                (new CPostManager()).insertCategory(f.message);
+            }
+        }
     }
 }
