@@ -175,11 +175,82 @@ namespace Attractions {
 
         // 按下"刪除景點"按鈕
         private void tsbDelete_Click(object sender, EventArgs e) {
+            //foreach (DataGridViewRow row in dataGridView1.SelectedRows) {
+            //    dataGridView1.Rows.Remove(row);
+            //}
+
+            //_da.Update(dataGridView1.DataSource as DataTable);
+
+            List<int> deleteIndexes = new List<int>();
+
+            // 取得所有選取到的 row
             foreach (DataGridViewRow row in dataGridView1.SelectedRows) {
-                dataGridView1.Rows.Remove(row);
+                try {
+                    deleteIndexes.Add((int)row.Cells["fAttractionId"].Value);
+                }
+                catch (Exception ex) {
+
+                }
             }
 
-            _da.Update(dataGridView1.DataSource as DataTable);
+            if (deleteIndexes.Count == 0) return;
+
+            // 刪掉 attraction 之前，要先刪相關的 attraction 的 Image  
+            deleteRelatedAttractionsImage(deleteIndexes);
+
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+
+            // 刪除的 SQL
+            string sql = "DELETE FROM tAttractions WHERE fAttractionId IN (";
+            for (int i = 0; i < deleteIndexes.Count; i++) {
+                sql += $"@id{i},";
+            }
+            sql = sql.TrimEnd(',') + ")";
+
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection)) {
+                        // 動態添加參數
+                        for (int i = 0; i < deleteIndexes.Count; i++) {
+                            command.Parameters.AddWithValue($"@id{i}", deleteIndexes[i]);
+                        }
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex) {
+            }
+
+            displayAttractionsBySql("SELECT * FROM tAttractions;", false);
+        }
+
+        private void deleteRelatedAttractionsImage(List<int> indexes) {
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+
+            string sql = "DELETE FROM tAttractionImages WHERE fAttractionId IN (";
+            for (int i = 0; i < indexes.Count; i++) {
+                sql += $"@id{i},";
+            }
+            sql = sql.TrimEnd(',') + ")";
+
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection)) {
+                        // 動態添加參數
+                        for (int i = 0; i < indexes.Count; i++) {
+                            command.Parameters.AddWithValue($"@id{i}", indexes[i]);
+                        }
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex) {
+                //MessageBox.Show("ERROR: Can't Set Related Attractions CategeryId Is Null");
+            }
         }
 
         // 按下"修改景點"按鈕
@@ -280,6 +351,7 @@ namespace Attractions {
             
             f.ShowDialog();
             
+            // 點擊"確定"按鈕後，把資料寫到 DataRow
             if (f.isOk == DialogResult.OK) {
                 row["fAttractionName"] = f.attraction.fAttractionName;
                 row["fDescription"] = f.attraction.fDescription;

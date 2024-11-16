@@ -134,8 +134,56 @@ namespace Attractions.Views {
             }
         }
 
+        // 點擊"修改"按鈕
         private void tsbEdit_Click(object sender, EventArgs e) {
+            showEditView();
+        }
+        
+        // 顯示編輯畫面
+        private void showEditView() {
+            //if (listBox1.SelectedIndex < 0) return;
 
+            //int pk = _listPK[listBox1.SelectedIndex];
+
+            //SqlConnection con = new SqlConnection();
+            //con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbDemo;Integrated Security=True";
+            //con.Open();
+
+            //SqlCommand cmd = new SqlCommand();
+            //cmd.Connection = con;
+            //cmd.CommandText = "SELECT * FROM tCustomer WHERE fId=@K_FID";
+            //cmd.Parameters.Add(new SqlParameter("K_FID", (object)pk));
+
+            //SqlDataReader reader = cmd.ExecuteReader();
+            //CCustomer x = null;
+            //// List<CCustomer> list = new List<CCustomer>();
+            //if (reader.Read()) {
+            //    x = new CCustomer();
+            //    // 把資料庫中讀到的資料存在物件 x (x 就是一整坨資料，要在 FrmCustomerList Form 和 FrmCustomerEditor Form 之間傳來傳去)
+            //    // 為何不直接在 Editor Form 打開資料庫找資料?
+            //    // 因為想要找到的資料需要其中一項資訊才能取得，就是 _listPK[listBox1.SelectedIndex]，只有 FrmCustomerList 有，在 FrmCustomerEditor 中沒有。
+            //    // 所以必須先在 FrmCustomerList 中找到資料，再存進 x 物件中，
+            //    // 再把這個物件傳給 FrmCustomerEditor，FrmCustomerEditor 用 public CCustomer customer {set;} 接收
+            //    x.fId = (int)reader["fId"];
+            //    x.fName = reader["fName"].ToString();
+            //    x.fPhone = reader["fPhone"].ToString();
+            //    x.fEmail = reader["fEmail"].ToString();
+            //    x.fAddress = reader["fAddress"].ToString();
+            //    x.fPassword = reader["fPassword"].ToString();
+            //}
+            //con.Close();
+
+            //if (x == null) {
+            //    return;
+            //}
+            //FrmCustomerEditor f = new FrmCustomerEditor();
+            //f.customer = x; // f.customer 會觸發  public CCustomer customer {set;}
+            //f.ShowDialog();
+
+            //if (f.isOk == DialogResult.OK) {
+            //    (new CCustomerManager()).update(f.customer);
+            //    displayCustomersBySql("SELECT * FROM tCustomer", false);
+            //}
         }
 
         private void tsbSearch_Click(object sender, EventArgs e) {
