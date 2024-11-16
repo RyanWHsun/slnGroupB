@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CAttraction.cs" />
+    <Compile Include="Models\CAttractionCategory.cs" />
+    <Compile Include="Models\CAttractionManager.cs" />
     <Compile Include="Models\CAttrationImage.cs" />
     <Compile Include="Models\CEventCategories.cs" />
     <Compile Include="Models\CEventCategoryMapping.cs" />
@@ -89,17 +91,17 @@
     <Compile Include="Views\FormAttractionMain.Designer.cs">
       <DependentUpon>FormAttractionMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FormCategoryEditor.cs">
+    <Compile Include="Views\FormAttractionCategoryEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FormCategoryEditor.Designer.cs">
-      <DependentUpon>FormCategoryEditor.cs</DependentUpon>
+    <Compile Include="Views\FormAttractionCategoryEditor.Designer.cs">
+      <DependentUpon>FormAttractionCategoryEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FormCategoryList.cs">
+    <Compile Include="Views\FormAttractionCategoryList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FormCategoryList.Designer.cs">
-      <DependentUpon>FormCategoryList.cs</DependentUpon>
+    <Compile Include="Views\FormAttractionCategoryList.Designer.cs">
+      <DependentUpon>FormAttractionCategoryList.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FormCommentEditor.cs">
       <SubType>Form</SubType>
@@ -303,6 +305,9 @@
     <EmbeddedResource Include="Views\fieldBox.resx">
       <DependentUpon>fieldBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAttractionCategoryEditor.resx">
+      <DependentUpon>FormAttractionCategoryEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FormAttractionEditor.resx">
       <DependentUpon>FormAttractionEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -312,8 +317,8 @@
     <EmbeddedResource Include="Views\FormAttractionMain.resx">
       <DependentUpon>FormAttractionMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FormCategoryList.resx">
-      <DependentUpon>FormCategoryList.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FormAttractionCategoryList.resx">
+      <DependentUpon>FormAttractionCategoryList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormCommentList.resx">
       <DependentUpon>FormCommentList.cs</DependentUpon>

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -56,7 +57,7 @@ namespace Attractions {
 
             // 連線
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=TravelJournal;Integrated Security=True;"; ;
+            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;"; ;
             con.Open();
 
             _da = new SqlDataAdapter(sql, con);
@@ -123,16 +124,19 @@ namespace Attractions {
             imagetable.Columns.Add("fImage", typeof(byte[]));
 
             DataRow row = imagetable.NewRow();
+            
             if(f.attraction.fAttractionId>0)
                 row["fAttractionId"] = f.attraction.fAttractionId;
             else row["fAttractionId"] = _lastfAttractionId + 1;
+            
+            if (f.attractionImage.fImage == null || f.attractionImage.fImage.Count==0) return;
             row["fImage"] = f.attractionImage.fImage[f.attractionImage.fImage.Count - 1];
 
             imagetable.Rows.Add(row);
 
             // 連線
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=TravelJournal;Integrated Security=True;"; ;
+            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;"; ;
             con.Open();
 
             string sql = "SELECT fAttractionId, fImage FROM tAttractionImages;";
@@ -174,10 +178,6 @@ namespace Attractions {
             foreach (DataGridViewRow row in dataGridView1.SelectedRows) {
                 dataGridView1.Rows.Remove(row);
             }
-            //if (_position < 0) return;
-            //DataTable dt = dataGridView1.DataSource as DataTable;
-            //DataRow row = dt.Rows[_position];
-            //row.Delete();
 
             _da.Update(dataGridView1.DataSource as DataTable);
         }
@@ -227,10 +227,12 @@ namespace Attractions {
             string sql = "SELECT * FROM tAttractions WHERE fAttractionName = ";
         }
 
+        // 雙擊 dataGridView1 欄位，開啟編輯頁面
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
             showEditView();
         }
 
+        // 顯示編輯頁面
         private void showEditView() {
             if (_position < 0) return;
             
@@ -256,7 +258,12 @@ namespace Attractions {
             x.fLongitude = (string)row["fLongitude"];
             x.fLatitude = (string)row["fLatitude"];
             x.fRegion = (string)row["fRegion"];
-            x.fCategoryId = (int)row["fCategoryId"];
+            try {
+                x.fCategoryId = (int)row["fCategoryId"];
+            }
+            catch {
+
+            }
             x.fCreatedDate = (DateTime)row["fCreatedDate"];
             x.fUpdatedDate = (DateTime)row["fUpdatedDate"];
             x.fStatus = (string)row["fStatus"];
@@ -264,7 +271,13 @@ namespace Attractions {
 
             // 把剛剛傳到 CAttraction 物件 x 上的資料，再傳到 FormAttractionEditor
             f.attraction = x;
-            f.showSavedImage((int)row["fAttractionId"], 0);
+            try {
+                f.showSavedImage((int)row["fAttractionId"], 0);
+            }catch {
+                MessageBox.Show("請先更新剛才修改的資料");
+                return;
+            }
+            
             f.ShowDialog();
             
             if (f.isOk == DialogResult.OK) {

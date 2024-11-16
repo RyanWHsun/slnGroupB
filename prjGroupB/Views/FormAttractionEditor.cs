@@ -153,7 +153,12 @@ namespace Attractions.Views {
             if (_attraction == null) {
                 _attraction = new CAttraction();
             }
+
             if (_attraction.fAttractionId != 0) {
+                if (_attraction.fCategoryId == 0) {
+                    cbCategoryName.Text = "";
+                    return;
+                }
                 getfAttractionCategory(_attraction.fCategoryId);
             }
         }
@@ -167,7 +172,7 @@ namespace Attractions.Views {
             sql += "FROM tAttractionCategories;";
 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=TravelJournal;Integrated Security=True;"; ;
+            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;";
             con.Open();
 
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
@@ -198,7 +203,7 @@ namespace Attractions.Views {
             sql += "WHERE fAttractionCategoryId = @Id;";
 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=TravelJournal;Integrated Security=True;"; ;
+            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;"; ;
             con.Open();
 
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
@@ -245,10 +250,11 @@ namespace Attractions.Views {
             imgStream.Close();
         }
 
+        // 顯示已儲存的圖片
         public void showSavedImage(int id, int index) {
             if(this._attractionImage.fImage!=null) this._attractionImage.fImage.Clear();
             // 連線
-            string connectionString = @"Data Source=" + pipe + "Initial Catalog=TravelJournal;Integrated Security=True;";
+            string connectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;";
 
             // SQL 查詢語句
             string query = "SELECT fImage FROM tAttractionImages WHERE fAttractionId = @id";

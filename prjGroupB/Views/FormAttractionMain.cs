@@ -21,7 +21,7 @@ namespace Attractions.Views {
         }
 
         private void btnCategory_Click(object sender, EventArgs e) {
-            FormCategoryList f = new FormCategoryList();
+            FormAttractionCategoryList f = new FormAttractionCategoryList();
             f.ShowDialog();
         }
 

@@ -1,5 +1,5 @@
 ﻿namespace Attractions.Views {
-    partial class FormCategoryList {
+    partial class FormAttractionCategoryList {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,15 +23,15 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCategoryList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAttractionCategoryList));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbInsert = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.tsbReload = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +61,7 @@
             this.tsbInsert.Name = "tsbInsert";
             this.tsbInsert.Size = new System.Drawing.Size(122, 36);
             this.tsbInsert.Text = "新增分類";
+            this.tsbInsert.Click += new System.EventHandler(this.tsbInsert_Click);
             // 
             // tsbDelete
             // 
@@ -70,6 +71,7 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(122, 36);
             this.tsbDelete.Text = "刪除分類";
+            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
             // tsbEdit
             // 
@@ -79,6 +81,7 @@
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(122, 36);
             this.tsbEdit.Text = "修改分類";
+            this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
             // tsbSearch
             // 
@@ -89,6 +92,7 @@
             this.tsbSearch.Name = "tsbSearch";
             this.tsbSearch.Size = new System.Drawing.Size(122, 36);
             this.tsbSearch.Text = "搜尋分類";
+            this.tsbSearch.Click += new System.EventHandler(this.tsbSearch_Click);
             // 
             // tsbReload
             // 
@@ -98,6 +102,13 @@
             this.tsbReload.Name = "tsbReload";
             this.tsbReload.Size = new System.Drawing.Size(122, 36);
             this.tsbReload.Text = "重新整理";
+            this.tsbReload.Click += new System.EventHandler(this.tsbReload_Click);
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 39);
             // 
             // dataGridView1
             // 
@@ -112,21 +123,18 @@
             this.dataGridView1.Size = new System.Drawing.Size(800, 411);
             this.dataGridView1.TabIndex = 2;
             // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 39);
-            // 
-            // FormCategoryList
+            // FormAttractionCategoryList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "FormCategoryList";
+            this.Name = "FormAttractionCategoryList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCategoryList";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormCategoryList_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
