@@ -226,6 +226,7 @@ namespace Attractions {
             displayAttractionsBySql("SELECT * FROM tAttractions;", false);
         }
 
+        // 刪除相關景點的圖片
         private void deleteRelatedAttractionsImage(List<int> indexes) {
             string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
 
