@@ -106,6 +106,7 @@
             this.Controls.Add(this.fbAttractionCategoryDescription);
             this.Controls.Add(this.fbAttractionCategoryName);
             this.Name = "FormAttractionCategoryEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCategoryEditor";
             this.ResumeLayout(false);
             this.PerformLayout();
