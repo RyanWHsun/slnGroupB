@@ -32,7 +32,6 @@ namespace Attractions.Views {
                 if (_attraction == null) {
                     _attraction = new CAttraction();
                 }
-                //_attraction.fAttractionId = lbId.Text != null ? Convert.ToInt32(lbId.Text) : 0;
                 _attraction.fAttractionName = fbAttractionName.fieldValue != null ? fbAttractionName.fieldValue : "";
                 _attraction.fDescription = tbDescription.Text != null ? tbDescription.Text : "";
                 _attraction.fAddress = fbAddress.fieldValue != null ? fbAddress.fieldValue : "";
@@ -47,8 +46,6 @@ namespace Attractions.Views {
                 // 設定 _attraction.fCategoryId
                 if (int.TryParse(cbCategoryName.SelectedValue.ToString(), out int value)) _attraction.fCategoryId = value;
                 else cbCategoryName.SelectedValue = null;
-                // 設定 _attraction.fCategoryName
-                //_attraction.fCategoryName = cbCategoryName.Text != null ? cbCategoryName.Text : ""; // ComboBox
 
                 if (DateTime.TryParse(lbfCreatedDate.Text, out DateTime createdDate)) _attraction.fCreatedDate = createdDate;
                 else _attraction.fCreatedDate = DateTime.Now;
@@ -70,7 +67,6 @@ namespace Attractions.Views {
                 fbPhoneNumber.fieldValue = _attraction.fPhoneNumber != null ? _attraction.fPhoneNumber : "";
                 dtpOpeningTime.Value = _attraction.fOpeningTime != null ? DateTime.Today + _attraction.fOpeningTime : DateTime.Today + TimeSpan.Zero;
                 dtpClosingTime.Value = _attraction.fClosingTime != null ? DateTime.Today + _attraction.fClosingTime : DateTime.Today + TimeSpan.Zero;
-
                 fbWebsiteURL.fieldValue = _attraction.fWebsiteURL != null ? _attraction.fWebsiteURL : "";
                 fbLongitude.fieldValue = _attraction.fLongitude != null ? _attraction.fLongitude : "";
                 fbLatitude.fieldValue = _attraction.fLatitude != null ? _attraction.fLatitude : "";
@@ -130,15 +126,6 @@ namespace Attractions.Views {
             if (!Regex.IsMatch(fbPhoneNumber.fieldValue, phoneNumberPattern1) && !Regex.IsMatch(fbPhoneNumber.fieldValue, phoneNumberPattern2) && !Regex.IsMatch(fbPhoneNumber.fieldValue, phoneNumberPattern3)) {
                 errorMessage += "電話號碼須符合格式\n";
             }
-
-            //string timePattern = @"^(?:[01]\d|2[0-3]):[0-5]\d$";
-            //if (!Regex.IsMatch(fbOpeningTime.fieldValue, timePattern)) {
-            //    errorMessage += "開放時間須符合格式 00:00~23:59\n";
-            //}
-
-            //if (!Regex.IsMatch(fbClosingTime.fieldValue, timePattern)) {
-            //    errorMessage += "關閉時間須符合格式 00:00~23:59\n";
-            //}
 
             bool isValidUrl = Uri.TryCreate(fbWebsiteURL.fieldValue, UriKind.Absolute, out Uri uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps); ;
             if (!isValidUrl) errorMessage += "網址無效\n";
@@ -273,12 +260,10 @@ namespace Attractions.Views {
                     connection.Open();
 
                     using (SqlDataReader reader = command.ExecuteReader()) {
-                        // List<byte[]> imageData = new List<byte[]>();
                         if (this._attractionImage.fImage == null)
                             this._attractionImage.fImage = new List<byte[]>();
                         while (reader.Read()) {
                             // 取得圖片資料 
-                            
                             this._attractionImage.fImage.Add(reader["fImage"] as byte[]);
                         }
                         if (this._attractionImage.fImage.Count > 0) {
