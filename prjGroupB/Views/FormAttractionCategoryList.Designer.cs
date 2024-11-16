@@ -88,8 +88,8 @@
             this.tsbSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsbSearch.Image")));
             this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSearch.Name = "tsbSearch";
-            this.tsbSearch.Size = new System.Drawing.Size(122, 36);
-            this.tsbSearch.Text = "搜尋分類";
+            this.tsbSearch.Size = new System.Drawing.Size(84, 36);
+            this.tsbSearch.Text = "搜尋";
             this.tsbSearch.Click += new System.EventHandler(this.tsbSearch_Click);
             // 
             // toolStripTextBox1

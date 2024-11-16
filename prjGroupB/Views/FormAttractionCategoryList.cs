@@ -181,10 +181,16 @@ namespace Attractions.Views {
             }
         }
 
+        // 點擊"搜尋"按鈕
         private void tsbSearch_Click(object sender, EventArgs e) {
+            string sql = "SELECT * FROM tAttractionCategories WHERE ";
+            sql += "fAttractionCategoryName LIKE @K_KEYWORD ";
+            sql += "OR fDescription LIKE @K_KEYWORD";
 
+            displayAttractionCategory(sql, true);
         }
 
+        // 雙擊 dataGridView1 欄位，開啟編輯頁面
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
             showEditView();
         }
