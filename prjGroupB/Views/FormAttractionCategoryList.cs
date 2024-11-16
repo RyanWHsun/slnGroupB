@@ -50,7 +50,7 @@ namespace Attractions.Views {
             }
         }
 
-        // 新增
+        // 點擊"新增"按鈕
         private void tsbInsert_Click(object sender, EventArgs e) {
             FormAttractionCategoryEditor f = new FormAttractionCategoryEditor();
             f.ShowDialog();
@@ -60,10 +60,11 @@ namespace Attractions.Views {
             }
         }
 
-        // 刪除
+        // 點擊"刪除"按鈕
         private void tsbDelete_Click(object sender, EventArgs e) {
             List<int> deleteIndexes = new List<int>();
             
+            // 取得所有選取到的 row
             foreach (DataGridViewRow row in dataGridView1.SelectedRows) {
                 try {
                     deleteIndexes.Add((int)row.Cells["fAttractionCategoryId"].Value);
@@ -73,6 +74,8 @@ namespace Attractions.Views {
             }
 
             if (deleteIndexes.Count == 0) return;
+
+            // 刪掉 category 之前，要把相關的 tAttractions 的 fCategoryId 改成 NULL 
             setRelatedAttractionsCategeryIdIsNull(deleteIndexes);
 
             string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
@@ -103,6 +106,7 @@ namespace Attractions.Views {
             displayAttractionCategory("SELECT * FROM tAttractionCategories;", false);
         }
 
+        // 設定相關 attraction 的 categoryId 為 null
         private void setRelatedAttractionsCategeryIdIsNull(List<int> indexes) {
             string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
 
@@ -131,10 +135,6 @@ namespace Attractions.Views {
         }
 
         private void tsbEdit_Click(object sender, EventArgs e) {
-
-        }
-
-        private void tsbReload_Click(object sender, EventArgs e) {
 
         }
 
