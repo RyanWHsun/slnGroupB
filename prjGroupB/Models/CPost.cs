@@ -13,6 +13,7 @@ namespace prjGroupB.Models
         public int fPostId { get; set; }
         public string fTitle { get; set; }
         public string fContent { get; set; }
+        public DateTime fCreatedAt { get; set; }
         public DateTime fUpdatedAt { get; set; }
         public bool fIsPublic { get; set; }
         public string fCategory { get; set; }

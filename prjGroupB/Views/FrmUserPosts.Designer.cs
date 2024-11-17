@@ -31,6 +31,7 @@
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnInsertCategory = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.flpUserPosts = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // btnInsert
@@ -63,17 +64,26 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // flpUserPosts
+            // 
+            this.flpUserPosts.Location = new System.Drawing.Point(160, 102);
+            this.flpUserPosts.Name = "flpUserPosts";
+            this.flpUserPosts.Size = new System.Drawing.Size(550, 469);
+            this.flpUserPosts.TabIndex = 3;
+            // 
             // FrmUserPosts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 594);
+            this.Controls.Add(this.flpUserPosts);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnInsertCategory);
             this.Controls.Add(this.btnInsert);
             this.Name = "FrmUserPosts";
             this.Text = "FrmUserPosts";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmUserPosts_Load);
             this.ResumeLayout(false);
 
         }
@@ -83,5 +93,6 @@
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnInsertCategory;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.FlowLayoutPanel flpUserPosts;
     }
 }

@@ -13,6 +13,8 @@ namespace prjGroupB.Views
 {
     public partial class FrmUserPosts : Form
     {
+        private CPost _selected;
+        private CPostManager _manager = new CPostManager();
         public FrmUserPosts()
         {
             InitializeComponent();
@@ -24,7 +26,8 @@ namespace prjGroupB.Views
             f.ShowDialog();
             if (f.isOK == DialogResult.OK)
             {
-                (new CPostManager()).insert(f.post);
+                _manager.insert(f.post);
+                displayUserPosts();
             }
         }
 
@@ -36,13 +39,37 @@ namespace prjGroupB.Views
             {
                 if (string.IsNullOrEmpty(f.message))
                     return;
-                (new CPostManager()).insertCategory(f.message);
+                _manager.insertCategory(f.message);
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (_selected == null)
+                return;
+            _manager.delete(_selected);
+           _selected = null;
+        }
+        private void selectUserPost(CPost post)
+        {
+            _selected = post;
+        }
 
+        private void FrmUserPosts_Load(object sender, EventArgs e)
+        {
+            displayUserPosts();
+        }
+        private void displayUserPosts()
+        {
+            flpUserPosts.Controls.Clear();
+            List<CPost> userPosts = _manager.getUserPosts();
+            foreach (CPost userPost in userPosts)
+            {
+                PostBox postBox = new PostBox();
+                postBox.post = userPost;
+                postBox.DselectUserPost += this.selectUserPost;
+                flpUserPosts.Controls.Add(postBox);
+            }
         }
     }
 }

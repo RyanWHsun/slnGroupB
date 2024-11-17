@@ -1,15 +1,17 @@
-﻿using System;
+﻿using prjGroupB.Views;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace prjGroupB.Models
 {
     public class CPostManager
     {
-        private string _connectionString= @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
+        private string _connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
         private List<string> _Categories;
         public List<string> Categories
         {
@@ -100,7 +102,7 @@ namespace prjGroupB.Models
             }
             if (p.fTags != null)
             {
-                foreach(string tag in p.fTags)
+                foreach (string tag in p.fTags)
                 {
                     cmd.Parameters.Clear();
                     sql = "INSERT INTO tPostTags(";
@@ -131,8 +133,77 @@ namespace prjGroupB.Models
                     cmd.ExecuteNonQuery();
                 }
             }
-
             con.Close();
+        }
+        public void delete(CPost post)
+        {
+            MessageBox.Show(post.fPostId.ToString());
+        }
+        public List<CPost> getUserPosts()
+        {
+            string sql = "SELECT * FROM tPosts ";
+            sql += "WHERE fUserId = @K_FUSERID ";
+            sql += "ORDER BY fPostId";
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = _connectionString;
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = sql;
+            cmd.Parameters.Add(new SqlParameter("K_FUSERID", (object)CUserSession.fUserId));
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<CPost> userPosts = new List<CPost>();
+            while (reader.Read())
+            {
+                CPost post = new CPost();
+                post.fPostId = Convert.ToInt32(reader["fPostId"]);
+                post.fTitle = reader["fTitle"].ToString();
+                post.fContent = reader["fContent"].ToString();
+                post.fCreatedAt = Convert.ToDateTime(reader["fCreatedAt"]);
+                if (reader["fUpdatedAt"] != DBNull.Value)
+                    post.fUpdatedAt = Convert.ToDateTime(reader["fUpdatedAt"]);
+                post.fIsPublic = Convert.ToBoolean(reader["fIsPublic"]);
+                userPosts.Add(post);
+            }
+            reader.Close();
+            foreach (CPost post in userPosts)
+            {
+                cmd.Parameters.Clear();
+                sql = "SELECT fImage FROM tPosts AS p ";
+                sql += "JOIN tPostImages AS i ";
+                sql += "ON p.fPostId = i.fPostId ";
+                sql += "WHERE fUserId = @K_FUSERID AND p.fPostId = @K_FPOSTID";
+                cmd.CommandText = sql;
+                cmd.Parameters.Add(new SqlParameter("K_FUSERID", (object)CUserSession.fUserId));
+                cmd.Parameters.Add(new SqlParameter("K_FPOSTID", (object)post.fPostId));
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    post.fImages.Add((byte[])reader["fImage"]);
+                }
+                reader.Close();
+            }
+            reader.Close();
+            foreach (CPost post in userPosts)
+            {
+                reader.Close();
+                cmd.Parameters.Clear();
+                sql = "SELECT fName FROM tPosts AS p ";
+                sql += "LEFT JOIN tPostCategories AS c ";
+                sql += "ON p.fCategoryId = c.fCategoryId ";
+                sql += "WHERE fPostId = @K_FPOSTID";
+                cmd.CommandText = sql;
+                cmd.Parameters.Add(new SqlParameter("K_FPOSTID", (object)post.fPostId));
+                reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    if (reader["fName"] == DBNull.Value)
+                        continue;
+                    post.fCategory = reader["fName"].ToString();
+                }
+            }
+            con.Close();
+            return userPosts;
         }
 
         public void insertCategory(string p)

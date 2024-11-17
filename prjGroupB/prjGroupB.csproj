@@ -264,6 +264,9 @@
     <EmbeddedResource Include="Views\FrmUserPosts.resx">
       <DependentUpon>FrmUserPosts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\PostBox.resx">
+      <DependentUpon>PostBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\User\userBox.resx">
       <DependentUpon>userBox.cs</DependentUpon>
     </EmbeddedResource>
