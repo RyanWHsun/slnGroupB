@@ -23,20 +23,18 @@ namespace prjGroupB.Views
         {
             get
             {
-                {
-                    if (_product == null)
-                        _product = new CProduct();
-                    _product.fProductId = Convert.ToInt32(txtProductId.Text);
-                    _product.fUserId = Convert.ToInt32(CUserSession.fUserId);
-                    _product.fProductCategoryId = Convert.ToInt32(cmbProductCate.SelectedValue);
-                    _product.fProductName = txtProductName.Text;
-                    _product.fProductDescription = txtDescription.Text;
-                    _product.fProductPrice = Convert.ToDecimal(txtPrice.Text);
-                    _product.fIsOnSales = chkOnSales.Checked;
-                    _product.fProductDateAdd = DateTime.Now.ToString();
-                    _product.fStock = Convert.ToInt32(txtStock.Text);
-                    return _product;
-                }
+                if (_product == null)
+                    _product = new CProduct();
+                _product.fProductId = Convert.ToInt32(txtProductId.Text);
+                _product.fUserId = Convert.ToInt32(CUserSession.fUserId);
+                _product.fProductCategoryId = Convert.ToInt32(cmbProductCate.SelectedValue);
+                _product.fProductName = txtProductName.Text;
+                _product.fProductDescription = txtDescription.Text;
+                _product.fProductPrice = Convert.ToDecimal(txtPrice.Text);
+                _product.fIsOnSales = chkOnSales.Checked;
+                _product.fProductDateAdd = DateTime.Now.ToString();
+                _product.fStock = Convert.ToInt32(txtStock.Text);
+                return _product;
             }
             set
             {
@@ -96,7 +94,7 @@ namespace prjGroupB.Views
         }
         private void FrmProductEditor_Load(object sender, EventArgs e)
         {
-            DataTable dt= LoadProductCategories();            
+            DataTable dt= loadProductCategories();            
             cmbProductCate.DataSource = dt;
             cmbProductCate.DisplayMember = "fCategoryName"; // 顯示在 ComboBox 中的名稱
             cmbProductCate.ValueMember = "fProductCategoryId"; // 實際選擇的值
@@ -106,7 +104,7 @@ namespace prjGroupB.Views
                 cmbProductCate.SelectedValue = _product.fProductCategoryId;
             }
         }
-        public DataTable LoadProductCategories() // 讀取資料表的選項並返回 DataTable
+        public DataTable loadProductCategories() // 讀取資料表的選項並返回 DataTable
         {
             DataTable dt = new DataTable();
 

@@ -56,7 +56,7 @@
             this.txtQuery});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1310, 42);
+            this.toolStrip1.Size = new System.Drawing.Size(1310, 44);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -66,7 +66,7 @@
             this.btnCreateProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateProduct.Image")));
             this.btnCreateProduct.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCreateProduct.Name = "btnCreateProduct";
-            this.btnCreateProduct.Size = new System.Drawing.Size(90, 36);
+            this.btnCreateProduct.Size = new System.Drawing.Size(90, 38);
             this.btnCreateProduct.Text = "新增";
             this.btnCreateProduct.Click += new System.EventHandler(this.btnCreateProduct_Click);
             // 
@@ -140,11 +140,11 @@
             this.dgvProduct.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProduct.Location = new System.Drawing.Point(0, 42);
+            this.dgvProduct.Location = new System.Drawing.Point(0, 44);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.RowHeadersWidth = 72;
             this.dgvProduct.RowTemplate.Height = 35;
-            this.dgvProduct.Size = new System.Drawing.Size(1310, 655);
+            this.dgvProduct.Size = new System.Drawing.Size(1310, 653);
             this.dgvProduct.TabIndex = 1;
             this.dgvProduct.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_RowEnter);
             // 

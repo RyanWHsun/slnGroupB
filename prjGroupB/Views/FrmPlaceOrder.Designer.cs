@@ -33,8 +33,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripLabel();
             this.txtQuery = new System.Windows.Forms.ToolStripTextBox();
             this.btnQuery = new System.Windows.Forms.ToolStripButton();
-            this.btnCancel = new System.Windows.Forms.ToolStripButton();
-            this.btnBuy = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvProductDisplay = new System.Windows.Forms.DataGridView();
             this.txtAddress = new System.Windows.Forms.TextBox();
@@ -62,9 +60,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
             this.txtQuery,
-            this.btnQuery,
-            this.btnCancel,
-            this.btnBuy});
+            this.btnQuery});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1565, 38);
@@ -74,8 +70,8 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(122, 32);
-            this.toolStripSeparator1.Text = "                      ";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(227, 32);
+            this.toolStripSeparator1.Text = "                  關鍵字搜尋    ";
             // 
             // txtQuery
             // 
@@ -91,25 +87,6 @@
             this.btnQuery.Size = new System.Drawing.Size(86, 32);
             this.btnQuery.Text = "查詢";
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(86, 32);
-            this.btnCancel.Text = "取消";
-            // 
-            // btnBuy
-            // 
-            this.btnBuy.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnBuy.Image = ((System.Drawing.Image)(resources.GetObject("btnBuy.Image")));
-            this.btnBuy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnBuy.Name = "btnBuy";
-            this.btnBuy.Size = new System.Drawing.Size(128, 32);
-            this.btnBuy.Text = "加入購買";
-            this.btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
             // 
             // splitContainer1
             // 
@@ -183,8 +160,9 @@
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(441, 45);
             this.txtQty.TabIndex = 10;
-            this.txtQty.Text = "0";
+            this.txtQty.Text = "1";
             this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQty.Click += new System.EventHandler(this.txtQty_Click);
             this.txtQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
             // 
             // label4
@@ -248,11 +226,14 @@
             this.btnPay.BackColor = System.Drawing.Color.Gold;
             this.btnPay.Font = new System.Drawing.Font("微軟正黑體", 14.14286F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnPay.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.btnPay.Location = new System.Drawing.Point(267, 530);
+            this.btnPay.Image = ((System.Drawing.Image)(resources.GetObject("btnPay.Image")));
+            this.btnPay.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPay.Location = new System.Drawing.Point(216, 482);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(162, 53);
+            this.btnPay.Size = new System.Drawing.Size(213, 84);
             this.btnPay.TabIndex = 4;
-            this.btnPay.Text = "付款";
+            this.btnPay.Text = "訂購";
+            this.btnPay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPay.UseVisualStyleBackColor = false;
             this.btnPay.Click += new System.EventHandler(this.btnBuy_Click);
             // 
@@ -299,8 +280,6 @@
         private System.Windows.Forms.ToolStripTextBox txtQuery;
         private System.Windows.Forms.ToolStripButton btnQuery;
         private System.Windows.Forms.DataGridView dgvProductDisplay;
-        private System.Windows.Forms.ToolStripButton btnCancel;
-        private System.Windows.Forms.ToolStripButton btnBuy;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.TextBox txtProductName;

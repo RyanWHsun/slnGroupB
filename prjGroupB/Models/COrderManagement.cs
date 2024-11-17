@@ -10,7 +10,7 @@ namespace prjGroupB.Models
 {
     public class COrderManagement
     {
-        public void creatOrder(COrder order) 
+        public void creatOrder(Namespace.A.COrder order)
         {
             SqlConnection con = new SqlConnection(@"Data Source=.;Database = dbGroupB; Integrated Security = SSPI");
             con.Open();
@@ -43,13 +43,29 @@ namespace prjGroupB.Models
 
                 // 提交交易
                 transaction.Commit();
-                MessageBox.Show("訂單創建成功！待付款後發貨。");
+                MessageBox.Show("訂單創建成功！付款完成後發貨。");
             }
             catch (Exception ex)
             {
                 // 發生錯誤時回滾交易
                 transaction.Rollback();
                 MessageBox.Show("創建訂單失敗：" + ex.Message);
+            }
+        }
+        public void UpdateOrder(Namespace.B.COrder order)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=.;Database = dbGroupB; Integrated Security = SSPI");
+            string sql = "UPDATE tOrders SET fShipAddress = @ShipAddress, fOrderStatusId = @OrderStatusId WHERE fOrderId = @OrderId";
+
+            using (SqlCommand cmd = new SqlCommand(sql, con))
+            {
+                cmd.Parameters.AddWithValue("@ShipAddress", order.fShipAddress);
+                cmd.Parameters.AddWithValue("@OrderStatusId", order.fOrderStatusId);
+                cmd.Parameters.AddWithValue("@OrderId", order.fOrderId);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
         }
     }

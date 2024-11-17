@@ -1,4 +1,5 @@
 ﻿using prjGroupB.Models;
+using prjGroupB.Models.Namespace.A;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace prjGroupB.Views
         {
             DisplayProductDetails();
         }
-        public List<CProductDisplay> GetProductDetails()
+        private List<CProductDisplay> GetProductDetails()
         {
             List<CProductDisplay> productList = new List<CProductDisplay>();
 
@@ -128,27 +129,45 @@ namespace prjGroupB.Views
                 // 獲取選中的行
                 DataGridViewRow row = dgvProductDisplay.SelectedRows[0];
 
-                // 創建並填充 COrder 物件
-                COrder order = new COrder();
-                order.fUserId = Convert.ToInt32(CUserSession.fUserId);
-                order.fOrderStatusId = 1;
-                order.fOrderDate = DateTime.Now;
-                order.fShipAddress = txtAddress.Text;
-                order.fProductId = Convert.ToInt32(row.Cells["fProductId"].Value);
-                order.fQrderQty = Convert.ToInt32(txtQty.Text);
-                order.fUnitPrice = Convert.ToInt32(row.Cells["fPrice"].Value);
-                order.fProductName = row.Cells["fProductName"].ToString();
-                order.fTotalPrice = order.fQrderQty * order.fUnitPrice;
+                if (int.TryParse(txtQty.Text.Trim(), out int qty))
+                {
+                    if (qty == 0)
+                    {
+                        MessageBox.Show("數量不可為0！！\r\n請問是要訂還不要訂？？");
+                        return;
+                    }
+                }
 
-                // 將 order 物件傳遞給寫入資料庫的方法
-                COrderManagement c = new COrderManagement();
-                c.creatOrder(order);
+                // 確認訂單訊息
+                DialogResult result = MessageBox.Show("確定要下訂嗎？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (result == DialogResult.OK)
+                {
+                    // 創建並填充 COrder 物件
+                    COrder order = new COrder();
+                    order.fUserId = Convert.ToInt32(CUserSession.fUserId);
+                    order.fOrderStatusId = 1;
+                    order.fOrderDate = DateTime.Now;
+                    order.fShipAddress = txtAddress.Text;
+                    order.fProductId = Convert.ToInt32(row.Cells["fProductId"].Value);
+                    order.fQrderQty = Convert.ToInt32(txtQty.Text);
+                    order.fUnitPrice = Convert.ToInt32(row.Cells["fPrice"].Value);
+                    order.fProductName = row.Cells["fProductName"].ToString();
+                    order.fTotalAmount = order.fQrderQty * order.fUnitPrice;
+
+                    // 將 order 物件傳遞給寫入資料庫的方法
+                    COrderManagement c = new COrderManagement();
+                    c.creatOrder(order);
+                }
+                else // 使用者按下「取消」按鈕
+                {                    
+                    return;
+                }                
             }
             else
             {
                 MessageBox.Show("請先選擇一筆資料！");
             }
-
         }
 
         private void txtQty_TextChanged(object sender, EventArgs e)
@@ -204,6 +223,10 @@ namespace prjGroupB.Views
             {
                 MessageBox.Show("請輸入有效的數字格式！");
             }
+        }
+        private void txtQty_Click(object sender, EventArgs e)
+        {
+            txtQty.SelectAll(); //點下去為選取狀態
         }
     }
 }

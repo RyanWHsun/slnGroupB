@@ -154,7 +154,5 @@ namespace prjGroupB.Views
             string sql = "SELECT * FROM tProduct";
             displayProductsBySql(sql);
         }
-
-
     }
 }

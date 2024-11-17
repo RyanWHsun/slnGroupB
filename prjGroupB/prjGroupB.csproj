@@ -52,6 +52,7 @@
     <Compile Include="Models\CEventRegistrationForm.cs" />
     <Compile Include="Models\CEvents.cs" />
     <Compile Include="Models\COrder.cs" />
+    <Compile Include="Models\COrder1.cs" />
     <Compile Include="Models\COrderManagement.cs" />
     <Compile Include="Models\CProduct.cs" />
     <Compile Include="Models\CCategory.cs" />
