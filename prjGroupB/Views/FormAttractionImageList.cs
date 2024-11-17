@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Attractions.Views {
-    public partial class FormImageEditor : Form {
-        public FormImageEditor() {
+    public partial class FormAttractionImageList : Form {
+        public FormAttractionImageList() {
             InitializeComponent();
         }
     }

@@ -1,5 +1,5 @@
 ﻿namespace Attractions.Views {
-    partial class FormRecommendationEditor {
+    partial class FormAttractionRecommendationEditor {
         /// <summary>
         /// Required designer variable.
         /// </summary>

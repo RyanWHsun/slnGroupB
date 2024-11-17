@@ -182,5 +182,81 @@ namespace prjGroupB.Models {
                 MessageBox.Show("景點或被推薦景點並不存在");
             }
         }
+
+
+        public void createAttractionTicket(CAttractionTicket ticket) {
+            string sql = "INSERT tAttractionTickets (";
+            sql += "fAttractionId, ";
+            sql += "fTicketType, ";
+            sql += "fPrice, ";
+            sql += "fDiscountInformation, ";
+            sql += "fCreatedDate";
+            sql += ") VALUES (";
+            sql += "@K_fAttractionId, ";
+            sql += "@K_fTicketType, ";
+            sql += "@K_fPrice, ";
+            sql += "@K_fDiscountInformation, ";
+            sql += "GETDATE())";
+
+            // 防止 SQL Injection
+            SqlParameter fAttractionId = new SqlParameter("K_fAttractionId", (object)ticket.fAttractionId);
+            SqlParameter fTicketType = new SqlParameter("K_fTicketType", (object)ticket.fTicketType);
+            SqlParameter fPrice = new SqlParameter("K_fPrice", (object)ticket.fPrice);
+            SqlParameter fDiscountInformation = new SqlParameter("K_fDiscountInformation", (object)ticket.fDiscountInformation);
+            SqlParameter fCreatedDate = new SqlParameter("K_fCreatedDate", (object)ticket.fCreatedDate);
+
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.Add(fAttractionId);
+                    command.Parameters.Add(fTicketType);
+                    command.Parameters.Add(fPrice);
+                    command.Parameters.Add(fDiscountInformation);
+                    command.Parameters.Add(fCreatedDate);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("景點並不存在");
+            }
+        }
+
+        public void updateAttractionTicket(CAttractionTicket ticket) {
+            string sql = "Update tAttractionTickets SET ";
+            sql += "fAttractionId = @K_fAttractionId, ";
+            sql += "fTicketType = @K_fTicketType, ";
+            sql += "fPrice = @K_fPrice, ";
+            sql += "fDiscountInformation = @K_fDiscountInformation, ";
+            sql += "fCreatedDate = @K_fCreatedDate ";
+            sql += "WHERE fAttractionTicketId = @K_fAttractionTicketId";
+
+            // 防止 SQL Injection
+            SqlParameter fAttractionId = new SqlParameter("K_fAttractionId", (object)ticket.fAttractionId);
+            SqlParameter fTicketType = new SqlParameter("K_fTicketType", (object)ticket.fTicketType);
+            SqlParameter fPrice = new SqlParameter("K_fPrice", (object)ticket.fPrice);
+            SqlParameter fDiscountInformation = new SqlParameter("K_fDiscountInformation", (object)ticket.fDiscountInformation);
+            SqlParameter fCreatedDate = new SqlParameter("K_fCreatedDate", (object)ticket.fCreatedDate);
+            SqlParameter fAttractionTicketId = new SqlParameter("K_fAttractionTicketId", (object)ticket.fAttractionTicketId);
+
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.Add(fAttractionId);
+                    command.Parameters.Add(fTicketType);
+                    command.Parameters.Add(fPrice);
+                    command.Parameters.Add(fDiscountInformation);
+                    command.Parameters.Add(fCreatedDate);
+                    command.Parameters.Add(fAttractionTicketId);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("景點並不存在");
+            }
+        }
     }
 }

@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Attractions.Views {
-    public partial class FormRecommendationEditor : Form {
+    public partial class FormAttractionRecommendationEditor : Form {
         private CAttractionRecommendation _attractionRecommendation;
 
         public DialogResult isOk { get; set; }
-        public FormRecommendationEditor() {
+        public FormAttractionRecommendationEditor() {
             InitializeComponent();
         }
 

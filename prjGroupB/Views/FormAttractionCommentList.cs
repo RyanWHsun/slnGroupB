@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Attractions.Views {
-    public partial class FormCommentEditor : Form {
-        public FormCommentEditor() {
+    public partial class FormAttractionCommentList : Form {
+        public FormAttractionCommentList() {
             InitializeComponent();
         }
     }

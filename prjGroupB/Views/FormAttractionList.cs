@@ -195,6 +195,9 @@ namespace Attractions {
             // 刪掉 attraction 之前，要把相關的 recommendations 刪掉
             deleteRelatedRecommendation(deleteIndexes);
 
+            // 刪掉 attraction 之前，要把相關的 tickets 刪掉
+            deleteRelatedTicket(deleteIndexes);
+
             string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
 
             // 刪除的 SQL
@@ -221,6 +224,33 @@ namespace Attractions {
             }
 
             displayAttractionsBySql("SELECT * FROM tAttractions;", false);
+        }
+
+        // 刪掉相關的 ticket
+        private void deleteRelatedTicket(List<int> deleteIndexes) {
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+
+            string sql = "DELETE FROM tAttractionTickets WHERE fAttractionId IN (";
+            for (int i = 0; i < deleteIndexes.Count; i++) {
+                sql += $"@id{i},";
+            }
+            sql = sql.TrimEnd(',') + ");";
+
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection)) {
+                        // 動態添加參數
+                        for (int i = 0; i < deleteIndexes.Count; i++) {
+                            command.Parameters.AddWithValue($"@id{i}", deleteIndexes[i]);
+                        }
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex) {
+            }
         }
 
         // 刪掉相關的 recommendation

@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Attractions.Views {
-    public partial class FormRecommendationList : Form {
+    public partial class FormAttractionRecommendationList : Form {
         private string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
-        public FormRecommendationList() {
+        public FormAttractionRecommendationList() {
             InitializeComponent();
         }
 
@@ -69,7 +69,7 @@ namespace Attractions.Views {
 
         // 點擊"新增"按鈕
         private void tsbInsert_Click(object sender, EventArgs e) {
-            FormRecommendationEditor f = new FormRecommendationEditor();
+            FormAttractionRecommendationEditor f = new FormAttractionRecommendationEditor();
             f.ShowDialog();
             if (f.isOk == DialogResult.OK) {
                 (new CAttractionManager()).createAttractionRecommendation(f.attractionRecommendation);
@@ -159,7 +159,7 @@ namespace Attractions.Views {
 
             if (x == null) return;
 
-            FormRecommendationEditor f = new FormRecommendationEditor();
+            FormAttractionRecommendationEditor f = new FormAttractionRecommendationEditor();
             f.attractionRecommendation = x;
             f.ShowDialog();
 

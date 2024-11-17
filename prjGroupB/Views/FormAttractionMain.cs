@@ -31,22 +31,22 @@ namespace Attractions.Views {
         }
 
         private void btnRecommendation_Click(object sender, EventArgs e) {
-            FormRecommendationList f = new FormRecommendationList();
+            FormAttractionRecommendationList f = new FormAttractionRecommendationList();
             f.ShowDialog();
         }
 
         private void btnImage_Click(object sender, EventArgs e) {
-            FormImageList f = new FormImageList();
+            FormAttractionImageList f = new FormAttractionImageList();
             f.ShowDialog();
         }
 
         private void btnComment_Click(object sender, EventArgs e) {
-            FormCommentList f = new FormCommentList();
+            FormAttractionCommentList f = new FormAttractionCommentList();
             f.ShowDialog();
         }
 
         private void btnTicket_Click(object sender, EventArgs e) {
-            FormTicketList f = new FormTicketList();
+            FormAttractionTicketList f = new FormAttractionTicketList();
             f.ShowDialog();
         }
 
