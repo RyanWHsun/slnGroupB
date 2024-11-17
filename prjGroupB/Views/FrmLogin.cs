@@ -16,7 +16,7 @@ namespace prjGroupB.Views
     public delegate void D(bool isVisible);
     public partial class FrmLogin : Form
     {
-        public string pipe = " np:\\\\.\\pipe\\LOCALDB#7C99B448\\tsql\\query;";
+        public string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
 
         public event D DshowBackend;
         private bool _isClosed = true;
@@ -41,8 +41,7 @@ namespace prjGroupB.Views
             sql += " AND fUserPassword = @K_FPASSWORD";
 
             SqlConnection con = new SqlConnection();
-            // con.ConnectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
-            con.ConnectionString = @"Data Source = np:\\.\pipe\LOCALDB#7C99B448\tsql\query;Initial Catalog=dbGroupB;Integrated Security=True;";
+            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
             con.Open();
 
             SqlCommand cmd = new SqlCommand();

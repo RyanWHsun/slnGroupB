@@ -19,7 +19,7 @@ namespace Attractions {
     public partial class FormAttractionList : Form {
         private int _lastfAttractionId = 0;
 
-        public string pipe = " np:\\\\.\\pipe\\LOCALDB#7C99B448\\tsql\\query;";
+        public string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
         public SqlDataAdapter _da;
         public SqlCommandBuilder _builder;
         public int _position = -1;

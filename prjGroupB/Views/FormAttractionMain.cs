@@ -26,7 +26,7 @@ namespace Attractions.Views {
         }
 
         private void btnTag_Click(object sender, EventArgs e) {
-            FormTagList f = new FormTagList();
+            FormAttractionTagList f = new FormAttractionTagList();
             f.ShowDialog();
         }
 

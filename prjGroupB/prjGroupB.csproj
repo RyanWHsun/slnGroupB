@@ -49,6 +49,7 @@
     <Compile Include="Models\CAttraction.cs" />
     <Compile Include="Models\CAttractionCategory.cs" />
     <Compile Include="Models\CAttractionManager.cs" />
+    <Compile Include="Models\CAttractionTag.cs" />
     <Compile Include="Models\CAttrationImage.cs" />
     <Compile Include="Models\CEventCategories.cs" />
     <Compile Include="Models\CEventCategoryMapping.cs" />
@@ -139,17 +140,17 @@
     <Compile Include="Views\FormRecommendationList.Designer.cs">
       <DependentUpon>FormRecommendationList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FormTagEditor.cs">
+    <Compile Include="Views\FormAttractionTagEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FormTagEditor.Designer.cs">
-      <DependentUpon>FormTagEditor.cs</DependentUpon>
+    <Compile Include="Views\FormAttractionTagEditor.Designer.cs">
+      <DependentUpon>FormAttractionTagEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FormTagList.cs">
+    <Compile Include="Views\FormAttractionTagList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FormTagList.Designer.cs">
-      <DependentUpon>FormTagList.cs</DependentUpon>
+    <Compile Include="Views\FormAttractionTagList.Designer.cs">
+      <DependentUpon>FormAttractionTagList.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FormTicketEditor.cs">
       <SubType>Form</SubType>
@@ -329,8 +330,11 @@
     <EmbeddedResource Include="Views\FormRecommendationList.resx">
       <DependentUpon>FormRecommendationList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FormTagList.resx">
-      <DependentUpon>FormTagList.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FormAttractionTagEditor.resx">
+      <DependentUpon>FormAttractionTagEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAttractionTagList.resx">
+      <DependentUpon>FormAttractionTagList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormTicketList.resx">
       <DependentUpon>FormTicketList.cs</DependentUpon>

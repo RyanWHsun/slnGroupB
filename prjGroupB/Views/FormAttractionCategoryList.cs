@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Attractions.Views {
     public partial class FormAttractionCategoryList : Form {
-        private string pipe = " np:\\\\.\\pipe\\LOCALDB#7C99B448\\tsql\\query;";
+        private string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
         public FormAttractionCategoryList() {
             InitializeComponent();
         }
