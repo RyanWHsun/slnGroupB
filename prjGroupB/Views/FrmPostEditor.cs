@@ -162,7 +162,7 @@ namespace prjGroupB.Views
         }
         private void getTagByContent(RichTextBox richTextBox, CPost post)
         {
-            string pattern = @"#\S+";
+            string pattern = @"#([^#\s]+)";
             MatchCollection matches = Regex.Matches(richTextBox.Text, pattern);
             foreach (Match match in matches)
             {

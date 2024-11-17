@@ -9,6 +9,7 @@ namespace prjGroupB.Models
 {
     public class CPostManager
     {
+        private string _connectionString= @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
         private List<string> _Categories;
         public List<string> Categories
         {
@@ -22,9 +23,8 @@ namespace prjGroupB.Models
         }
         public void insert(CPost p)
         {
-            string sql;
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
+            con.ConnectionString = _connectionString;
             con.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
@@ -32,7 +32,7 @@ namespace prjGroupB.Models
             SqlDataReader reader;
             int categoryId = 0;
 
-            sql = "INSERT INTO tPosts(";
+            string sql = "INSERT INTO tPosts(";
             sql += "fUserId,";
             sql += "fTitle,";
             sql += "fContent,";
@@ -72,6 +72,7 @@ namespace prjGroupB.Models
             }
 
             sql = "SELECT MAX(fPostId) AS PostId FROM tPosts WHERE fUserId = @K_FUSERID";
+
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
             int postId = 0;
@@ -84,6 +85,7 @@ namespace prjGroupB.Models
             {
                 foreach (byte[] image in p.fImages)
                 {
+                    cmd.Parameters.Clear();
                     sql = "INSERT INTO tPostImages(";
                     sql += "fPostId,";
                     sql += "fImage";
@@ -94,11 +96,45 @@ namespace prjGroupB.Models
                     cmd.Parameters.Add(new SqlParameter("K_FPOSTID", (object)postId));
                     cmd.Parameters.Add(new SqlParameter("K_FIMAGE", (object)image));
                     cmd.ExecuteNonQuery();
-                    cmd.Parameters.Clear();
                 }
             }
+            if (p.fTags != null)
+            {
+                foreach(string tag in p.fTags)
+                {
+                    cmd.Parameters.Clear();
+                    sql = "INSERT INTO tPostTags(";
+                    sql += "fTagName";
+                    sql += ")VALUES(";
+                    sql += "@K_FTAGNAME)";
+                    cmd.CommandText = sql;
+                    cmd.Parameters.Add(new SqlParameter("K_FTAGNAME", (object)tag));
+                    cmd.ExecuteNonQuery();
+                    sql = "SELECT MAX(fTagId) AS TagId FROM tPostTags";
+                    cmd.CommandText = sql;
+                    reader = cmd.ExecuteReader();
+                    int tagId = 0;
+                    if (reader.Read())
+                    {
+                        tagId = (int)reader["TagId"];
+                    }
+                    reader.Close();
+                    sql = "INSERT INTO tPostAndTag(";
+                    sql += "fPostId,";
+                    sql += "fTagId";
+                    sql += ")VALUES(";
+                    sql += "@K_FPOSTID,";
+                    sql += "@K_FTAGID)";
+                    cmd.CommandText = sql;
+                    cmd.Parameters.Add(new SqlParameter("K_FPOSTID", (object)postId));
+                    cmd.Parameters.Add(new SqlParameter("K_FTAGID", (object)tagId));
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
             con.Close();
         }
+
         public void insertCategory(string p)
         {
             string sql = "INSERT INTO tPostCategories(";
@@ -109,7 +145,7 @@ namespace prjGroupB.Models
             sql += "@K_FNAME)";
 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
+            con.ConnectionString = _connectionString;
             con.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
@@ -123,7 +159,7 @@ namespace prjGroupB.Models
         {
             string sql = "SELECT * FROM tPostCategories WHERE fUserId = @K_FUSERID";
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True";
+            con.ConnectionString = _connectionString;
             con.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
