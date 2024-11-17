@@ -49,6 +49,7 @@
     <Compile Include="Models\CAttraction.cs" />
     <Compile Include="Models\CAttractionCategory.cs" />
     <Compile Include="Models\CAttractionManager.cs" />
+    <Compile Include="Models\CAttractionRecommendation.cs" />
     <Compile Include="Models\CAttractionTag.cs" />
     <Compile Include="Models\CAttrationImage.cs" />
     <Compile Include="Models\CEventCategories.cs" />
@@ -326,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormImageList.resx">
       <DependentUpon>FormImageList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormRecommendationEditor.resx">
+      <DependentUpon>FormRecommendationEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormRecommendationList.resx">
       <DependentUpon>FormRecommendationList.cs</DependentUpon>

@@ -43,9 +43,6 @@ namespace Attractions.Views {
 
             if (deleteIndexes.Count == 0) return;
 
-            // 刪掉 category 之前，要把相關的 tAttractions 的 fCategoryId 改成 NULL 
-            // setRelatedAttractionsCategeryIdIsNull(deleteIndexes);
-
             string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
 
             // 刪除的 SQL

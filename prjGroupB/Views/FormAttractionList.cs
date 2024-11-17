@@ -175,12 +175,6 @@ namespace Attractions {
 
         // 按下"刪除景點"按鈕
         private void tsbDelete_Click(object sender, EventArgs e) {
-            //foreach (DataGridViewRow row in dataGridView1.SelectedRows) {
-            //    dataGridView1.Rows.Remove(row);
-            //}
-
-            //_da.Update(dataGridView1.DataSource as DataTable);
-
             List<int> deleteIndexes = new List<int>();
 
             // 取得所有選取到的 row
@@ -197,6 +191,9 @@ namespace Attractions {
 
             // 刪掉 attraction 之前，要先刪相關的 attraction 的 Image  
             deleteRelatedAttractionsImage(deleteIndexes);
+
+            // 刪掉 attraction 之前，要把相關的 recommendations 刪掉
+            deleteRelatedRecommendation(deleteIndexes);
 
             string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
 
@@ -224,6 +221,55 @@ namespace Attractions {
             }
 
             displayAttractionsBySql("SELECT * FROM tAttractions;", false);
+        }
+
+        // 刪掉相關的 recommendation
+        private void deleteRelatedRecommendation(List<int> deleteIndexes) {
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+
+            string sql = "DELETE FROM tAttractionRecommendations WHERE fAttractionId IN (";
+            for (int i = 0; i < deleteIndexes.Count; i++) {
+                sql += $"@id{i},";
+            }
+            sql = sql.TrimEnd(',') + ");";
+
+            string sql2 = "DELETE FROM tAttractionRecommendations WHERE fRecommendationId IN (";
+            for (int i = 0; i < deleteIndexes.Count; i++) {
+                sql2 += $"@id{i},";
+            }
+            sql2 = sql2.TrimEnd(',') + ");";
+
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection)) {
+                        // 動態添加參數
+                        for (int i = 0; i < deleteIndexes.Count; i++) {
+                            command.Parameters.AddWithValue($"@id{i}", deleteIndexes[i]);
+                        }
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex) {
+            }
+
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sql2, connection)) {
+                        // 動態添加參數
+                        for (int i = 0; i < deleteIndexes.Count; i++) {
+                            command.Parameters.AddWithValue($"@id{i}", deleteIndexes[i]);
+                        }
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex) {
+            }
         }
 
         // 刪除相關景點的圖片
