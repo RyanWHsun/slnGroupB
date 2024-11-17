@@ -41,9 +41,9 @@
             this.btnExit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnUserPosts = new System.Windows.Forms.ToolStripButton();
-            this.btnLogin = new System.Windows.Forms.ToolStripButton();
             this.btnCreateOrder = new System.Windows.Forms.ToolStripButton();
             this.btnRegister = new System.Windows.Forms.ToolStripButton();
+            this.btnLogin = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,16 +173,6 @@
             this.btnUserPosts.Text = "個人文章";
             this.btnUserPosts.Click += new System.EventHandler(this.btnUserPosts_Click);
             // 
-            // btnLogin
-            // 
-            this.btnLogin.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
-            this.btnLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(72, 36);
-            this.btnLogin.Text = "登出";
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
             // btnCreateOrder
             // 
             this.btnCreateOrder.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -200,6 +190,17 @@
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(98, 36);
             this.btnRegister.Text = "活動報名";
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
+            this.btnLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(72, 36);
+            this.btnLogin.Text = "登出";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // FrmMain
             // 

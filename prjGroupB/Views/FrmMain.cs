@@ -17,6 +17,7 @@ namespace prjGroupB
         {
             InitializeComponent();
         }
+
         private void FrmMain_Load(object sender, EventArgs e)
         {
             login();
@@ -79,9 +80,10 @@ namespace prjGroupB
             f.MdiParent = this;
             f.Show();
         }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            while(this.ActiveMdiChild != null)
+            while (this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();
             login();
         }
@@ -96,6 +98,7 @@ namespace prjGroupB
         {
             Close();
         }
+
         private void showBackend(bool isVisible)
         {
             btnUsers.Visible = isVisible;
@@ -104,6 +107,12 @@ namespace prjGroupB
             btnEvents.Visible = isVisible;
             btnProducts.Visible = isVisible;
             btnOrders.Visible = isVisible;
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            FrmEventRegistrationForm f = new FrmEventRegistrationForm();
+            f.Show();
         }
     }
 }

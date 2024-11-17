@@ -15,12 +15,11 @@ namespace prjGroupB.Views
         public FrmEvents()
         {
             InitializeComponent();
-           
         }
 
         private void showEventsSystem()
         {
-            FrmEventsList f = new FrmEventsList();           
+            FrmEventsList f = new FrmEventsList();
             f.ShowDialog();
         }
 
@@ -29,6 +28,16 @@ namespace prjGroupB.Views
             showEventsSystem();
         }
 
-        
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            FrmEventCategoriesList f = new FrmEventCategoriesList();
+            f.ShowDialog();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            FrmEventRegistrationinformation f = new FrmEventRegistrationinformation();
+            f.ShowDialog();
+        }
     }
 }

@@ -43,18 +43,20 @@
             this.label11 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtMemberName = new System.Windows.Forms.TextBox();
+            this.txtMemberPhone = new System.Windows.Forms.TextBox();
+            this.txtMemberEmail = new System.Windows.Forms.TextBox();
+            this.txtEventName = new System.Windows.Forms.TextBox();
+            this.txtEventStartDate = new System.Windows.Forms.TextBox();
+            this.txtEventEndDate = new System.Windows.Forms.TextBox();
+            this.txtEventFee = new System.Windows.Forms.TextBox();
+            this.txtRegistrationCount = new System.Windows.Forms.TextBox();
+            this.txtEventContact = new System.Windows.Forms.TextBox();
+            this.txtEventPhone = new System.Windows.Forms.TextBox();
+            this.txttime = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -68,7 +70,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "報名表";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -99,7 +100,6 @@
             this.label4.Size = new System.Drawing.Size(86, 24);
             this.label4.TabIndex = 6;
             this.label4.Text = "活動名稱";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label7
             // 
@@ -140,7 +140,6 @@
             this.label8.Size = new System.Drawing.Size(48, 24);
             this.label8.TabIndex = 8;
             this.label8.Text = "姓名";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label13
             // 
@@ -161,7 +160,6 @@
             this.label5.Size = new System.Drawing.Size(86, 24);
             this.label5.TabIndex = 8;
             this.label5.Text = "報名人數";
-            this.label5.Click += new System.EventHandler(this.label10_Click);
             // 
             // label10
             // 
@@ -184,6 +182,7 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "確定";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label11
             // 
@@ -205,6 +204,7 @@
             this.button2.TabIndex = 18;
             this.button2.Text = "取消";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label12
             // 
@@ -218,115 +218,112 @@
             this.label12.Text = "緊急聯絡人";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox7
+            // txtMemberName
             // 
-            this.textBox7.BackColor = System.Drawing.Color.Silver;
-            this.textBox7.Enabled = false;
-            this.textBox7.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox7.Location = new System.Drawing.Point(151, 51);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(136, 30);
-            this.textBox7.TabIndex = 69;
+            this.txtMemberName.BackColor = System.Drawing.Color.Silver;
+            this.txtMemberName.Enabled = false;
+            this.txtMemberName.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtMemberName.Location = new System.Drawing.Point(151, 51);
+            this.txtMemberName.Name = "txtMemberName";
+            this.txtMemberName.Size = new System.Drawing.Size(136, 30);
+            this.txtMemberName.TabIndex = 69;
             // 
-            // textBox1
+            // txtMemberPhone
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Silver;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(394, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(136, 30);
-            this.textBox1.TabIndex = 70;
+            this.txtMemberPhone.BackColor = System.Drawing.Color.Silver;
+            this.txtMemberPhone.Enabled = false;
+            this.txtMemberPhone.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtMemberPhone.Location = new System.Drawing.Point(394, 51);
+            this.txtMemberPhone.Name = "txtMemberPhone";
+            this.txtMemberPhone.Size = new System.Drawing.Size(136, 30);
+            this.txtMemberPhone.TabIndex = 70;
             // 
-            // textBox2
+            // txtMemberEmail
             // 
-            this.textBox2.BackColor = System.Drawing.Color.Silver;
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox2.Location = new System.Drawing.Point(648, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(136, 30);
-            this.textBox2.TabIndex = 71;
+            this.txtMemberEmail.BackColor = System.Drawing.Color.Silver;
+            this.txtMemberEmail.Enabled = false;
+            this.txtMemberEmail.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtMemberEmail.Location = new System.Drawing.Point(648, 51);
+            this.txtMemberEmail.Name = "txtMemberEmail";
+            this.txtMemberEmail.Size = new System.Drawing.Size(136, 30);
+            this.txtMemberEmail.TabIndex = 71;
             // 
-            // textBox3
+            // txtEventName
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Silver;
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox3.Location = new System.Drawing.Point(151, 106);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(136, 30);
-            this.textBox3.TabIndex = 72;
+            this.txtEventName.BackColor = System.Drawing.Color.White;
+            this.txtEventName.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtEventName.Location = new System.Drawing.Point(151, 106);
+            this.txtEventName.Name = "txtEventName";
+            this.txtEventName.Size = new System.Drawing.Size(136, 30);
+            this.txtEventName.TabIndex = 72;
+            this.txtEventName.TextChanged += new System.EventHandler(this.txtEventName_TextChanged_1);
             // 
-            // textBox4
+            // txtEventStartDate
             // 
-            this.textBox4.BackColor = System.Drawing.Color.Silver;
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox4.Location = new System.Drawing.Point(394, 106);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(136, 30);
-            this.textBox4.TabIndex = 73;
+            this.txtEventStartDate.BackColor = System.Drawing.Color.Silver;
+            this.txtEventStartDate.Enabled = false;
+            this.txtEventStartDate.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtEventStartDate.Location = new System.Drawing.Point(394, 106);
+            this.txtEventStartDate.Name = "txtEventStartDate";
+            this.txtEventStartDate.Size = new System.Drawing.Size(136, 30);
+            this.txtEventStartDate.TabIndex = 73;
             // 
-            // textBox5
+            // txtEventEndDate
             // 
-            this.textBox5.BackColor = System.Drawing.Color.Silver;
-            this.textBox5.Enabled = false;
-            this.textBox5.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox5.Location = new System.Drawing.Point(648, 106);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(136, 30);
-            this.textBox5.TabIndex = 74;
+            this.txtEventEndDate.BackColor = System.Drawing.Color.Silver;
+            this.txtEventEndDate.Enabled = false;
+            this.txtEventEndDate.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtEventEndDate.Location = new System.Drawing.Point(648, 106);
+            this.txtEventEndDate.Name = "txtEventEndDate";
+            this.txtEventEndDate.Size = new System.Drawing.Size(136, 30);
+            this.txtEventEndDate.TabIndex = 74;
             // 
-            // textBox6
+            // txtEventFee
             // 
-            this.textBox6.BackColor = System.Drawing.Color.Silver;
-            this.textBox6.Enabled = false;
-            this.textBox6.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox6.Location = new System.Drawing.Point(151, 156);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(136, 30);
-            this.textBox6.TabIndex = 75;
+            this.txtEventFee.BackColor = System.Drawing.Color.Silver;
+            this.txtEventFee.Enabled = false;
+            this.txtEventFee.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtEventFee.Location = new System.Drawing.Point(151, 156);
+            this.txtEventFee.Name = "txtEventFee";
+            this.txtEventFee.Size = new System.Drawing.Size(136, 30);
+            this.txtEventFee.TabIndex = 75;
             // 
-            // textBox8
+            // txtRegistrationCount
             // 
-            this.textBox8.BackColor = System.Drawing.Color.White;
-            this.textBox8.Enabled = false;
-            this.textBox8.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox8.Location = new System.Drawing.Point(394, 159);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(136, 30);
-            this.textBox8.TabIndex = 76;
+            this.txtRegistrationCount.BackColor = System.Drawing.Color.White;
+            this.txtRegistrationCount.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtRegistrationCount.Location = new System.Drawing.Point(394, 159);
+            this.txtRegistrationCount.Name = "txtRegistrationCount";
+            this.txtRegistrationCount.Size = new System.Drawing.Size(136, 30);
+            this.txtRegistrationCount.TabIndex = 76;
             // 
-            // textBox9
+            // txtEventContact
             // 
-            this.textBox9.BackColor = System.Drawing.Color.White;
-            this.textBox9.Enabled = false;
-            this.textBox9.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox9.Location = new System.Drawing.Point(151, 268);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(136, 30);
-            this.textBox9.TabIndex = 77;
+            this.txtEventContact.BackColor = System.Drawing.Color.White;
+            this.txtEventContact.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtEventContact.Location = new System.Drawing.Point(151, 268);
+            this.txtEventContact.Name = "txtEventContact";
+            this.txtEventContact.Size = new System.Drawing.Size(136, 30);
+            this.txtEventContact.TabIndex = 77;
             // 
-            // textBox10
+            // txtEventPhone
             // 
-            this.textBox10.BackColor = System.Drawing.Color.White;
-            this.textBox10.Enabled = false;
-            this.textBox10.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox10.Location = new System.Drawing.Point(394, 268);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(136, 30);
-            this.textBox10.TabIndex = 78;
+            this.txtEventPhone.BackColor = System.Drawing.Color.White;
+            this.txtEventPhone.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtEventPhone.Location = new System.Drawing.Point(394, 268);
+            this.txtEventPhone.Name = "txtEventPhone";
+            this.txtEventPhone.Size = new System.Drawing.Size(136, 30);
+            this.txtEventPhone.TabIndex = 78;
             // 
-            // textBox11
+            // txttime
             // 
-            this.textBox11.BackColor = System.Drawing.Color.White;
-            this.textBox11.Enabled = false;
-            this.textBox11.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox11.Location = new System.Drawing.Point(648, 159);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(136, 30);
-            this.textBox11.TabIndex = 80;
+            this.txttime.BackColor = System.Drawing.Color.Silver;
+            this.txttime.Enabled = false;
+            this.txttime.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txttime.Location = new System.Drawing.Point(648, 159);
+            this.txttime.Name = "txttime";
+            this.txttime.Size = new System.Drawing.Size(136, 30);
+            this.txttime.TabIndex = 80;
             // 
             // label14
             // 
@@ -338,23 +335,45 @@
             this.label14.TabIndex = 79;
             this.label14.Text = "報名日期";
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.textBox1.Location = new System.Drawing.Point(151, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(136, 30);
+            this.textBox1.TabIndex = 82;
+            this.textBox1.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.White;
+            this.textBox2.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.textBox2.Location = new System.Drawing.Point(394, 9);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(136, 30);
+            this.textBox2.TabIndex = 84;
+            this.textBox2.Visible = false;
+            // 
             // FrmEventRegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 390);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.txttime);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtEventPhone);
+            this.Controls.Add(this.txtEventContact);
+            this.Controls.Add(this.txtRegistrationCount);
+            this.Controls.Add(this.txtEventFee);
+            this.Controls.Add(this.txtEventEndDate);
+            this.Controls.Add(this.txtEventStartDate);
+            this.Controls.Add(this.txtEventName);
+            this.Controls.Add(this.txtMemberEmail);
+            this.Controls.Add(this.txtMemberPhone);
+            this.Controls.Add(this.txtMemberName);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button2);
@@ -396,17 +415,19 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtMemberName;
+        private System.Windows.Forms.TextBox txtMemberPhone;
+        private System.Windows.Forms.TextBox txtMemberEmail;
+        private System.Windows.Forms.TextBox txtEventName;
+        private System.Windows.Forms.TextBox txtEventStartDate;
+        private System.Windows.Forms.TextBox txtEventEndDate;
+        private System.Windows.Forms.TextBox txtEventFee;
+        private System.Windows.Forms.TextBox txtRegistrationCount;
+        private System.Windows.Forms.TextBox txtEventContact;
+        private System.Windows.Forms.TextBox txtEventPhone;
+        private System.Windows.Forms.TextBox txttime;
+        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label14;
     }
 }

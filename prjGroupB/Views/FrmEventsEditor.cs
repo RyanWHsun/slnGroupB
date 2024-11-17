@@ -39,8 +39,8 @@ namespace prjGroupB.Views
                 else
                     MessageBox.Show("請輸入有效的結束日期");
                 _Events.fEventLocation = textBox4.Text;
-                _Events.fEventCreatedDate = DateTime.UtcNow;
-                _Events.fEventUpdatedDate = DateTime.UtcNow;
+                _Events.fEventCreatedDate = DateTime.Now;
+                _Events.fEventUpdatedDate = DateTime.Now;
                 decimal activityFee;
                 if (decimal.TryParse(textBox9.Text, out activityFee))
                     _Events.fEventActivityfee = activityFee;
@@ -56,9 +56,9 @@ namespace prjGroupB.Views
                 textBox1.Text = _Events.fEventId.ToString();
                 textBox2.Text = _Events.fEventName;
                 textBox3.Text = _Events.fEventDescription.ToString();
-                textBox4.Text = _Events.fEventStartDate.ToString();
-                textBox5.Text = _Events.fEventEndDate.ToString();
-                textBox6.Text = _Events.fEventLocation.ToString();
+                textBox5.Text = _Events.fEventStartDate.ToString();
+                textBox6.Text = _Events.fEventEndDate.ToString();
+                textBox4.Text = _Events.fEventLocation.ToString();
                 textBox7.Text = _Events.fEventCreatedDate.ToString();
                 textBox8.Text = _Events.fEventUpdatedDate.ToString();
                 textBox9.Text = _Events.fEventActivityfee.ToString();

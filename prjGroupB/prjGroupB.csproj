@@ -62,6 +62,12 @@
     <Compile Include="Views\FrmAttractions.Designer.cs">
       <DependentUpon>FrmAttractions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmEventCategoriesEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmEventCategoriesEditor.Designer.cs">
+      <DependentUpon>FrmEventCategoriesEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmEventCategoriesList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     <EmbeddedResource Include="Views\FrmAttractions.resx">
       <DependentUpon>FrmAttractions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmEventCategoriesEditor.resx">
+      <DependentUpon>FrmEventCategoriesEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmEventCategoriesList.resx">
       <DependentUpon>FrmEventCategoriesList.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +286,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
