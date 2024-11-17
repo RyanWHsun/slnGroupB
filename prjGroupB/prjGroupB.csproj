@@ -53,7 +53,6 @@
     <Compile Include="Models\CEvents.cs" />
     <Compile Include="Models\CPostPictureManager.cs" />
     <Compile Include="Models\CProduct.cs" />
-    <Compile Include="Models\CCategory.cs" />
     <Compile Include="Models\CPost.cs" />
     <Compile Include="Models\CPostManager.cs" />
     <Compile Include="Models\CUserSession.cs" />
@@ -160,6 +159,12 @@
     </Compile>
     <Compile Include="Views\FrmUserPosts.Designer.cs">
       <DependentUpon>FrmUserPosts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PostBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\PostBox.Designer.cs">
+      <DependentUpon>PostBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\User\CUserManager.cs" />
     <Compile Include="Views\User\FrmChat.cs">

@@ -80,6 +80,7 @@
             // 
             // cmbCategory
             // 
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(51, 72);
             this.cmbCategory.Name = "cmbCategory";
@@ -89,11 +90,12 @@
             // lblUpdatedName
             // 
             this.lblUpdatedName.AutoSize = true;
-            this.lblUpdatedName.Location = new System.Drawing.Point(13, 493);
+            this.lblUpdatedName.Location = new System.Drawing.Point(13, 496);
             this.lblUpdatedName.Name = "lblUpdatedName";
             this.lblUpdatedName.Size = new System.Drawing.Size(77, 12);
             this.lblUpdatedName.TabIndex = 5;
             this.lblUpdatedName.Text = "最後更新時間";
+            this.lblUpdatedName.Visible = false;
             // 
             // lblUpdated
             // 
@@ -103,6 +105,7 @@
             this.lblUpdated.Size = new System.Drawing.Size(33, 12);
             this.lblUpdated.TabIndex = 6;
             this.lblUpdated.Text = "label1";
+            this.lblUpdated.Visible = false;
             // 
             // btnPost
             // 
@@ -153,6 +156,7 @@
             // 
             // cmbIsPublic
             // 
+            this.cmbIsPublic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIsPublic.FormattingEnabled = true;
             this.cmbIsPublic.Location = new System.Drawing.Point(212, 72);
             this.cmbIsPublic.Name = "cmbIsPublic";

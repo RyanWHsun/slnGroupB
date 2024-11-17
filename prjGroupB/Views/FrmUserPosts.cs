@@ -34,8 +34,15 @@ namespace prjGroupB.Views
             f.ShowDialog();
             if (f.isOK == DialogResult.OK)
             {
+                if (string.IsNullOrEmpty(f.message))
+                    return;
                 (new CPostManager()).insertCategory(f.message);
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

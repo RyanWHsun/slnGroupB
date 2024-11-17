@@ -7,8 +7,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace prjGroupB.Views
@@ -16,7 +18,6 @@ namespace prjGroupB.Views
     public partial class FrmPostEditor : Form
     {
         private CPost _post;
-        private List<byte[]> _listImage = new List<byte[]>();
         private CPostPictureManager _pictureManager;
         public DialogResult isOK { get; set; }
         public FrmPostEditor()
@@ -27,6 +28,7 @@ namespace prjGroupB.Views
         {
             setRichTextBoxSize();
             setCmbIsPublic();
+            setCmbCategory();
         }
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -70,9 +72,8 @@ namespace prjGroupB.Views
             FileStream imgStream = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
             BinaryReader reader = new BinaryReader(imgStream);
             byte[] x = reader.ReadBytes((int)imgStream.Length);
-            _listImage.Add(x);
-            this.post.fImages = _listImage;
-            _pictureManager = new CPostPictureManager(_listImage);
+            this.post.fImages.Add(x);
+            _pictureManager = new CPostPictureManager(this.post.fImages);
             _pictureManager.afterImageMoved += this.DisplayPostImage;
             _pictureManager.moveLast();
             reader.Close();
@@ -83,6 +84,15 @@ namespace prjGroupB.Views
             cmbIsPublic.Items.Add("私人");
             cmbIsPublic.Items.Add("公開");
             cmbIsPublic.SelectedIndex = 0;
+        }
+        private void setCmbCategory()
+        {
+            CPostManager manager = new CPostManager();
+            manager.getCategory();
+            foreach (string category in manager.Categories)
+            {
+                cmbCategory.Items.Add(category);
+            }
         }
         public CPost post
         { 
@@ -108,6 +118,7 @@ namespace prjGroupB.Views
 
         private void btnPost_Click(object sender, EventArgs e)
         {
+            getTagByContent(rtbContent, post);
             this.isOK = DialogResult.OK;
             Close();
         }
@@ -143,6 +154,20 @@ namespace prjGroupB.Views
             if (_pictureManager == null)
                 return;
             _pictureManager.moveLast();
+        }
+        private void islblUpdatedVisiable(bool isVisiable)
+        {
+            lblUpdatedName.Visible = isVisiable;
+            lblUpdated.Visible = isVisiable;
+        }
+        private void getTagByContent(RichTextBox richTextBox, CPost post)
+        {
+            string pattern = @"#\S+";
+            MatchCollection matches = Regex.Matches(richTextBox.Text, pattern);
+            foreach (Match match in matches)
+            {
+                post.fTags.Add(match.ToString());
+            }
         }
     }
 }

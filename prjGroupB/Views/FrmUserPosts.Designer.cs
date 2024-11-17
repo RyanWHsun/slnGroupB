@@ -30,11 +30,12 @@
         {
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnInsertCategory = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(459, 203);
+            this.btnInsert.Location = new System.Drawing.Point(188, 49);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 23);
             this.btnInsert.TabIndex = 0;
@@ -44,7 +45,7 @@
             // 
             // btnInsertCategory
             // 
-            this.btnInsertCategory.Location = new System.Drawing.Point(51, 203);
+            this.btnInsertCategory.Location = new System.Drawing.Point(21, 180);
             this.btnInsertCategory.Name = "btnInsertCategory";
             this.btnInsertCategory.Size = new System.Drawing.Size(75, 23);
             this.btnInsertCategory.TabIndex = 1;
@@ -52,11 +53,22 @@
             this.btnInsertCategory.UseVisualStyleBackColor = true;
             this.btnInsertCategory.Click += new System.EventHandler(this.btnInsertCategory_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(269, 49);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "刪除";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // FrmUserPosts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 594);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnInsertCategory);
             this.Controls.Add(this.btnInsert);
             this.Name = "FrmUserPosts";
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnInsertCategory;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
