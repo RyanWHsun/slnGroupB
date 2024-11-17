@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.fbAttracitonId = new Attractions.Views.fieldBox();
+            this.fbAttractionId = new Attractions.Views.fieldBox();
             this.fbUserId = new Attractions.Views.fieldBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbComment = new System.Windows.Forms.TextBox();
@@ -35,14 +35,14 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // fbAttracitonId
+            // fbAttractionId
             // 
-            this.fbAttracitonId.fieldName = "景點ID";
-            this.fbAttracitonId.fieldValue = "";
-            this.fbAttracitonId.Location = new System.Drawing.Point(35, 33);
-            this.fbAttracitonId.Name = "fbAttracitonId";
-            this.fbAttracitonId.Size = new System.Drawing.Size(316, 33);
-            this.fbAttracitonId.TabIndex = 0;
+            this.fbAttractionId.fieldName = "景點ID";
+            this.fbAttractionId.fieldValue = "";
+            this.fbAttractionId.Location = new System.Drawing.Point(35, 33);
+            this.fbAttractionId.Name = "fbAttractionId";
+            this.fbAttractionId.Size = new System.Drawing.Size(316, 33);
+            this.fbAttractionId.TabIndex = 0;
             // 
             // fbUserId
             // 
@@ -153,7 +153,7 @@
             this.Controls.Add(this.tbComment);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.fbUserId);
-            this.Controls.Add(this.fbAttracitonId);
+            this.Controls.Add(this.fbAttractionId);
             this.Name = "FormAttractionCommentEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCommentEditor";
@@ -164,7 +164,7 @@
 
         #endregion
 
-        private fieldBox fbAttracitonId;
+        private fieldBox fbAttractionId;
         private fieldBox fbUserId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbComment;

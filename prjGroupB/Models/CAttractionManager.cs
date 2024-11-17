@@ -203,7 +203,6 @@ namespace prjGroupB.Models {
             SqlParameter fTicketType = new SqlParameter("K_fTicketType", (object)ticket.fTicketType);
             SqlParameter fPrice = new SqlParameter("K_fPrice", (object)ticket.fPrice);
             SqlParameter fDiscountInformation = new SqlParameter("K_fDiscountInformation", (object)ticket.fDiscountInformation);
-            SqlParameter fCreatedDate = new SqlParameter("K_fCreatedDate", (object)ticket.fCreatedDate);
 
             string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
             try {
@@ -214,7 +213,6 @@ namespace prjGroupB.Models {
                     command.Parameters.Add(fTicketType);
                     command.Parameters.Add(fPrice);
                     command.Parameters.Add(fDiscountInformation);
-                    command.Parameters.Add(fCreatedDate);
                     command.ExecuteNonQuery();
                 }
             }
@@ -256,6 +254,79 @@ namespace prjGroupB.Models {
             }
             catch (Exception ex) {
                 MessageBox.Show("景點並不存在");
+            }
+        }
+
+        public void createAttractionComment(CAttractionComment comment) {
+            string sql = "INSERT tAttractionComments (";
+            sql += "fAttractionId, ";
+            sql += "fUserId, ";
+            sql += "fRating, ";
+            sql += "fComment, ";
+            sql += "fCreatedDate";
+            sql += ") VALUES (";
+            sql += "@K_fAttractionId, ";
+            sql += "@K_fUserId, ";
+            sql += "@K_fRating, ";
+            sql += "@K_fComment, ";
+            sql += "GETDATE())";
+
+            // 防止 SQL Injection
+            SqlParameter fAttractionId = new SqlParameter("K_fAttractionId", (object)comment.fAttractionId);
+            SqlParameter fUserId = new SqlParameter("K_fUserId", (object)comment.fUserId);
+            SqlParameter fRating = new SqlParameter("K_fRating", (object)comment.fRating);
+            SqlParameter fComment = new SqlParameter("K_fComment", (object)comment.fComment);
+
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.Add(fAttractionId);
+                    command.Parameters.Add(fUserId);
+                    command.Parameters.Add(fRating);
+                    command.Parameters.Add(fComment);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("景點或使用者並不存在");
+            }
+        }
+
+        public void updateAttractionComment(CAttractionComment comment) {
+            string sql = "Update tAttractionComments SET ";
+            sql += "fAttractionId = @K_fAttractionId, ";
+            sql += "fUserId = @K_fUserId, ";
+            sql += "fRating = @K_fRating, ";
+            sql += "fComment = @K_fComment, ";
+            sql += "fCreatedDate = @K_fCreatedDate ";
+            sql += "WHERE fCommentId = @K_fCommentId";
+
+            // 防止 SQL Injection
+            SqlParameter fAttractionId = new SqlParameter("K_fAttractionId", (object)comment.fAttractionId);
+            SqlParameter fUserId = new SqlParameter("K_fUserId", (object)comment.fUserId);
+            SqlParameter fRating = new SqlParameter("K_fRating", (object)comment.fRating);
+            SqlParameter fComment = new SqlParameter("K_fComment", (object)comment.fComment);
+            SqlParameter fCreatedDate = new SqlParameter("K_fCreatedDate", (object)comment.fCreatedDate);
+            SqlParameter fCommentId = new SqlParameter("K_fCommentId", (object)comment.fCommentId);
+
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.Add(fAttractionId);
+                    command.Parameters.Add(fUserId);
+                    command.Parameters.Add(fRating);
+                    command.Parameters.Add(fComment);
+                    command.Parameters.Add(fCreatedDate);
+                    command.Parameters.Add(fCommentId);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("景點或使用者並不存在");
             }
         }
     }

@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Models\CAttraction.cs" />
     <Compile Include="Models\CAttractionCategory.cs" />
-    <Compile Include="Models\CAttractionComments.cs" />
+    <Compile Include="Models\CAttractionComment.cs" />
     <Compile Include="Models\CAttractionManager.cs" />
     <Compile Include="Models\CAttractionRecommendation.cs" />
     <Compile Include="Models\CAttractionTag.cs" />
