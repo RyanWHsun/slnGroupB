@@ -35,46 +35,32 @@ namespace prjGroupB.Views
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            if (_eventTable == null)
-            {
-                MessageBox.Show("無法新增資料，資料表未正確初始化。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+        {            
 
             FrmEventsEditor f = new FrmEventsEditor();
             f.ShowDialog();
             if (f.IsOk == DialogResult.OK)
             {
-                DataTable dt = dataGridView1.DataSource as DataTable;
-                DataRow row = dt.NewRow();
-                row["fEventName"] = f.Event.fEventName;
-                row["fEventDescription"] = f.Event.fEventDescription;
-                row["fEventStartDate"] = f.Event.fEventStartDate;
-                row["fEventEndDate"] = f.Event.fEventEndDate;
-                row["fEventLocation"] = f.Event.fEventLocation;
-                row["fEventCreatedDate"] = f.Event.fEventCreatedDate;
-                row["fEventUpdatedDate"] = f.Event.fEventUpdatedDate;
-                row["fEventActivityfee"] = f.Event.fEventActivityfee;
-                row["fEventURL"] = f.Event.fEventURL;
-                dt.Rows.Add(row);
-                _da.Update(dt);
+                
+                LoadEvents();
+
+
                 MessageBox.Show("活動已成功儲存");
             }
+            
+            
+
+            
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            if (_position < 0)
-                return;
-            DataRow row = (dataGridView1.DataSource as DataTable).Rows[_position];
-            row.Delete();
-            _da.Update(dataGridView1.DataSource as DataTable);
+            DeleteEvent();
         }
 
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM tEevents WHERE ";
+            string sql = "SELECT * FROM tEvents WHERE ";
             sql += " fEventName LIKE @K_KEYWORD";
             sql += " OR fEventLocation LIKE @K_KEYWORD";
 
@@ -321,5 +307,75 @@ namespace prjGroupB.Views
 
             AdjustColumnWidths();
         }
+        private void DeleteEvent()
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    // 從選中的資料列獲取活動 ID
+                    int eventId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["fEventId"].Value);
+
+                    // 提示用戶確認刪除
+                    DialogResult result = MessageBox.Show("確定要刪除此活動及其相關圖片嗎？", "刪除確認", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.No)
+                        return;
+
+                    // 定義刪除的 SQL 語句
+                    string deleteImageQuery = "DELETE FROM tEventImage WHERE fEventId = @fEventId";
+                    string deleteEventQuery = "DELETE FROM tEvents WHERE fEventId = @fEventId";
+
+                    string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
+
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+
+                        // 開啟交易
+                        using (SqlTransaction transaction = conn.BeginTransaction())
+                        {
+                            try
+                            {
+                                // 刪除關聯的圖片資料
+                                using (SqlCommand cmd = new SqlCommand(deleteImageQuery, conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@fEventId", eventId);
+                                    cmd.ExecuteNonQuery();
+                                }
+
+                                // 刪除活動資料
+                                using (SqlCommand cmd = new SqlCommand(deleteEventQuery, conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@fEventId", eventId);
+                                    cmd.ExecuteNonQuery();
+                                }
+
+                                // 提交交易
+                                transaction.Commit();
+                                MessageBox.Show("活動及關聯資料已成功刪除！");
+                            }
+                            catch (Exception ex)
+                            {
+                                // 回滾交易
+                                transaction.Rollback();
+                                MessageBox.Show($"刪除活動時發生錯誤：{ex.Message}");
+                            }
+                        }
+                    }
+
+                    // 刷新資料
+                    LoadEvents();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"刪除活動時發生錯誤：{ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("請選擇要刪除的活動！");
+            }
+        }
     }
+
 }

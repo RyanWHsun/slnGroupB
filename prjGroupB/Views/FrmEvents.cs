@@ -39,5 +39,11 @@ namespace prjGroupB.Views
             FrmEventRegistrationinformation f = new FrmEventRegistrationinformation();
             f.ShowDialog();
         }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            FrmEventImage f = new FrmEventImage();
+            f.ShowDialog();
+        }
     }
 }

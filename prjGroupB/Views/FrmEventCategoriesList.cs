@@ -119,19 +119,13 @@ namespace prjGroupB.Views
 
         private void resetGridStyle()
         {
-            dataGridView1.Columns[0].Width = 100;
-            dataGridView1.Columns[1].Width = 100;
-            dataGridView1.Columns[2].Width = 150;
-            dataGridView1.Columns[3].Width = dataGridView1.Width - 100 * 2 - 150 - dataGridView1.RowHeadersWidth;
-            bool isColorChanged = false;
-            foreach (DataGridViewRow r in dataGridView1.Rows)
-            {
-                isColorChanged = !isColorChanged;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoResizeColumns();
 
-                r.DefaultCellStyle.Font = new Font("微軟正黑體", 14);
-                r.DefaultCellStyle.BackColor = Color.WhiteSmoke;
-                if (isColorChanged)
-                    r.DefaultCellStyle.BackColor = Color.FromArgb(238, 238, 242);
+            // 對特定欄位設置自動調整
+            if (dataGridView1.Columns.Count > 10)
+            {
+                dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 

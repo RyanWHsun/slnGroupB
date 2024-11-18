@@ -8,6 +8,7 @@ namespace prjGroupB.Models
 {
     public class CEventRegistrationForm
     {
+        public int fEventIdfEventRegistrationFormId { get; set; }
         public int fEventId { get; set; }
 
         // 會員ID

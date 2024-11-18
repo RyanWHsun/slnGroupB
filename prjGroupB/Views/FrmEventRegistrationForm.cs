@@ -65,7 +65,7 @@ namespace prjGroupB.Views
         private void LoadEventDetails(string partialEventName)
         {
             string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
-            string query = "SELECT TOP 1 fEventId,fEventStartDate, fEventEndDate, fEventActivityFee FROM tEvents WHERE fEventName LIKE @fEventName";
+            string query = "SELECT TOP 1 fEventId, fEventStartDate, fEventEndDate, fEventActivityFee FROM tEvents WHERE fEventName LIKE @fEventName";
 
             try
             {
@@ -74,17 +74,16 @@ namespace prjGroupB.Views
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // 使用模糊搜尋匹配活動名稱
                         cmd.Parameters.AddWithValue("@fEventName", "%" + partialEventName + "%");
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                textBox1.Text = reader.GetInt32(0).ToString();
-                                txtEventStartDate.Text = reader.GetDateTime(1).ToString("yyyy-MM-dd"); // 開始日期
-                                txtEventEndDate.Text = reader.GetDateTime(2).ToString("yyyy-MM-dd");   // 結束日期
-                                txtEventFee.Text = reader.GetDecimal(3).ToString();                  // 活動費用
+                                textBox1.Text = reader["fEventId"].ToString();
+                                txtEventStartDate.Text = reader["fEventStartDate"]?.ToString(); // 直接讀取字串
+                                txtEventEndDate.Text = reader["fEventEndDate"]?.ToString();   // 直接讀取字串
+                                txtEventFee.Text = reader["fEventActivityFee"]?.ToString();
                             }
                             else
                             {
@@ -149,12 +148,16 @@ namespace prjGroupB.Views
             string eventContact = txtEventContact.Text;
             string eventPhone = txtEventPhone.Text;
             int eventRegistrationCount = int.Parse(txtRegistrationCount.Text);
-            DateTime registrationDate = DateTime.Now; // 報名日期設定為當前時間
+            string registrationDate = DateTime.Now.ToString("yyyy-MM-dd"); // 當前日期轉為字串
 
-            // 2. 建立 SQL 連線字串
+            // 檢查日期格式
+            //if (!IsValidDate(txtEventStartDate.Text) || !IsValidDate(txtEventEndDate.Text))
+            //{
+            //    MessageBox.Show("請輸入有效的日期格式（yyyy-MM-dd）！");
+            //    return;
+            //}
+
             string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
-
-            // 3. SQL Insert 指令
             string query = "INSERT INTO tEventRegistrationForm (fEventId,fUserId, fEventRegistrationCount, fEventContact, fEventContactPhone, fEregistrationDate) " +
                            "VALUES (@EventId,@UserId,@Count, @Contact, @Phone, @Date)";
 
@@ -165,7 +168,6 @@ namespace prjGroupB.Views
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // 設定參數
                         cmd.Parameters.AddWithValue("@EventId", eventId);
                         cmd.Parameters.AddWithValue("@userId", userId);
                         cmd.Parameters.AddWithValue("@Count", eventRegistrationCount);
@@ -173,7 +175,6 @@ namespace prjGroupB.Views
                         cmd.Parameters.AddWithValue("@Phone", eventPhone);
                         cmd.Parameters.AddWithValue("@Date", registrationDate);
 
-                        // 執行指令
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -186,46 +187,8 @@ namespace prjGroupB.Views
             }
         }
 
-        private CEvents GetEventInfo(int eventId)
-        {
-            CEvents eventInfo = null;
-            string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
-            string query = "SELECT fEventId, fEventName, fEventStartDate, fEventEndDate, fEventActivityFee FROM tEvents WHERE fEventId = @EventId";
-
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@EventId", eventId);
-
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                // 建立 CEvents 物件並填入資料
-                                eventInfo = new CEvents
-                                {
-                                    fEventId = reader.GetInt32(0), // 活動 ID
-                                    fEventName = reader.GetString(1), // 活動名稱
-                                    fEventStartDate = reader.GetDateTime(2).ToString("yyyy-MM-dd"), // 開始日期
-                                    fEventEndDate = reader.GetDateTime(3).ToString("yyyy-MM-dd"), // 結束日期
-                                    fEventActivityfee = reader.GetDecimal(4) // 活動費用
-                                };
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("無法載入活動資訊：" + ex.Message);
-            }
-
-            return eventInfo;
-        }
+        
+        
 
         private void txtEventName_TextChanged_1(object sender, EventArgs e)
         {
@@ -247,6 +210,11 @@ namespace prjGroupB.Views
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private bool IsValidDate(string dateValue)
+        {
+            if (string.IsNullOrEmpty(dateValue)) return false;
+            return DateTime.TryParseExact(dateValue, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _);
         }
     }
 }

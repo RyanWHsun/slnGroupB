@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -82,6 +83,7 @@ namespace prjGroupB.Views
                 message += "\r\n費用不可空白";
             if (string.IsNullOrEmpty(textBox10.Text))
                 message += "\r\n網址不可空白";
+
             decimal fee;
             if (!decimal.TryParse(textBox9.Text, out fee))
                 message += "\r\n費用必須為數字";
@@ -91,6 +93,13 @@ namespace prjGroupB.Views
                 MessageBox.Show(message);
                 return;
             }
+
+            // 將資料從表單中取出
+            CEvents eventData = Event;
+            CEventImage imageData = Image;
+
+            // 儲存活動與圖片
+            SaveEventWithImage(eventData, imageData);
 
             this.IsOk = DialogResult.OK;
             Close();
@@ -117,20 +126,20 @@ namespace prjGroupB.Views
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
             pictureBox1.Image = Bitmap.FromFile(openFileDialog1.FileName);
-            //FileStream imgStram = new FileStream(openFileDialog1.FileName,
-            //    FileMode.Open, FileAccess.Read);
-            //BinaryReader reader = new BinaryReader(imgStram);
-            //this.Image.fEventImage = reader.ReadBytes((int)imgStram.Length);
-            //reader.Close();
-            //imgStram.Close();
+            FileStream imgStram = new FileStream(openFileDialog1.FileName,
+                FileMode.Open, FileAccess.Read);
+            BinaryReader reader = new BinaryReader(imgStram);
+            this.Image.fEventImage = reader.ReadBytes((int)imgStram.Length);
+            reader.Close();
+            imgStram.Close();
 
-            using (FileStream imgStream = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read))
-            {
-                using (BinaryReader reader = new BinaryReader(imgStream))
-                {
-                    this.Image.fEventImage = reader.ReadBytes((int)imgStream.Length);
-                }
-            }
+            //using (FileStream imgStream = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read))
+            //{
+            //    using (BinaryReader reader = new BinaryReader(imgStream))
+            //    {
+            //        this.Image.fEventImage = reader.ReadBytes((int)imgStream.Length);
+            //    }
+            //}
         }
 
         public CEventImage Image
@@ -139,11 +148,15 @@ namespace prjGroupB.Views
             {
                 if (_EventImage == null)
                     _EventImage = new CEventImage();
+                _EventImage.fEventImageId = string.IsNullOrEmpty(textBox11.Text) ? 0 : Convert.ToInt32(textBox11.Text);
+                _EventImage.fEventId = string.IsNullOrEmpty(textBox1.Text) ? 0 : Convert.ToInt32(textBox1.Text);
                 return _EventImage;
             }
             set
             {
                 _EventImage = value;
+                textBox11.Text = _EventImage.fEventImageId.ToString();
+                textBox1.Text = _EventImage.fEventId.ToString();
                 if (_EventImage.fEventImage != null)
                 {
                     try
@@ -160,9 +173,72 @@ namespace prjGroupB.Views
                 }
             }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void SaveEventWithImage(CEvents eventData, CEventImage imageData)
         {
+            string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlTransaction transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // Step 1: 插入活動資訊到 tEvents
+                        string insertEventQuery = @"
+                        INSERT INTO tEvents 
+                            (fEventName, fEventDescription, fEventStartDate, fEventEndDate, 
+                             fEventLocation, fEventCreatedDate, fEventUpdatedDate, fEventActivityfee, fEventURL)
+                        VALUES 
+                            (@fEventName, @fEventDescription, @fEventStartDate, @fEventEndDate, 
+                             @fEventLocation, @fEventCreatedDate, @fEventUpdatedDate, @fEventActivityfee, @fEventURL);
+                        SELECT CAST(SCOPE_IDENTITY() AS INT);";
+
+                        using (SqlCommand cmd = new SqlCommand(insertEventQuery, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@fEventName", eventData.fEventName);
+                            cmd.Parameters.AddWithValue("@fEventDescription", eventData.fEventDescription);
+                            cmd.Parameters.AddWithValue("@fEventStartDate", eventData.fEventStartDate);
+                            cmd.Parameters.AddWithValue("@fEventEndDate", eventData.fEventEndDate);
+                            cmd.Parameters.AddWithValue("@fEventLocation", eventData.fEventLocation);
+                            cmd.Parameters.AddWithValue("@fEventCreatedDate", eventData.fEventCreatedDate);
+                            cmd.Parameters.AddWithValue("@fEventUpdatedDate", eventData.fEventUpdatedDate);
+                            cmd.Parameters.AddWithValue("@fEventActivityfee", eventData.fEventActivityfee);
+                            cmd.Parameters.AddWithValue("@fEventURL", eventData.fEventURL);
+
+                            // 執行插入並取得 fEventId
+                            int eventId = (int)cmd.ExecuteScalar();
+                            imageData.fEventId = eventId; // 將取得的 fEventId 賦值給圖片資料
+                        }
+
+                        // Step 2: 插入圖片資訊到 tEventImage
+                        string insertImageQuery = @"
+                        INSERT INTO tEventImage (fEventId, fEventImage) 
+                        VALUES (@fEventId, @fEventImage);";
+
+                        using (SqlCommand cmd = new SqlCommand(insertImageQuery, conn, transaction))
+                        {
+                            
+                            cmd.Parameters.AddWithValue("@fEventId", imageData.fEventId);
+                            cmd.Parameters.AddWithValue("@fEventImage", imageData.fEventImage);
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // 提交交易
+                        transaction.Commit();
+                        MessageBox.Show("活動和圖片資料已成功儲存！");
+                    }
+                    catch (Exception ex)
+                    {
+                        // 回滾交易
+                        transaction.Rollback();
+                        MessageBox.Show($"儲存過程中發生錯誤：{ex.Message}");
+                    }
+                }
+            }
         }
+
     }
+
 }

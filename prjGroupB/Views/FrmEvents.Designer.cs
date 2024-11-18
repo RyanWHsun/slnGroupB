@@ -91,6 +91,7 @@
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(94, 25);
             this.toolStripButton5.Text = "圖片管理";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // panel1
             // 

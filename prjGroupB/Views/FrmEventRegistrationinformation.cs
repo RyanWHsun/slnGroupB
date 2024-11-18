@@ -71,10 +71,11 @@ namespace prjGroupB.Views
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                int registrationId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["fEventRegistrationFormId"].Value);
+                // 確認資料行名稱是否正確
+                int registrationId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
                 string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
-                string query = "DELETE FROM tEventRegistrationForm WHERE fEventRegistrationFormId = @RegistrationId";
+                string query = "DELETE FROM tEventRegistrationForm WHERE fEventRegistrationFormId = @fEventRegistrationFormId";
 
                 try
                 {
@@ -83,7 +84,8 @@ namespace prjGroupB.Views
                         conn.Open();
                         using (SqlCommand cmd = new SqlCommand(query, conn))
                         {
-                            cmd.Parameters.AddWithValue("@RegistrationId", registrationId);
+                            // 修正參數名稱
+                            cmd.Parameters.AddWithValue("@fEventRegistrationFormId", registrationId);
                             cmd.ExecuteNonQuery();
                         }
                     }

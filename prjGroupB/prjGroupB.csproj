@@ -56,6 +56,12 @@
     <Compile Include="Models\CPost.cs" />
     <Compile Include="Models\CPostManager.cs" />
     <Compile Include="Models\CUserSession.cs" />
+    <Compile Include="Views\EventImageBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\EventImageBox.Designer.cs">
+      <DependentUpon>EventImageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmAttractions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,12 @@
     </Compile>
     <Compile Include="Views\FrmEvents.Designer.cs">
       <DependentUpon>FrmEvents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmEventImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmEventImage.Designer.cs">
+      <DependentUpon>FrmEventImage.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -198,6 +210,9 @@
     <Compile Include="Views\LoginBox.Designer.cs">
       <DependentUpon>LoginBox.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\EventImageBox.resx">
+      <DependentUpon>EventImageBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmAttractions.resx">
       <DependentUpon>FrmAttractions.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmEvents.resx">
       <DependentUpon>FrmEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmEventImage.resx">
+      <DependentUpon>FrmEventImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
