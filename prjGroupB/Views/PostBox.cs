@@ -35,6 +35,8 @@ namespace prjGroupB.Views
                     pbFirstImage.Image = Bitmap.FromStream(s);
                 }
                 txtCreatedAt.Text = _post.fCreatedAt.ToString();
+                if (_post.fCreatedAt < _post.fUpdatedAt)
+                    txtCreatedAt.Text = _post.fUpdatedAt.ToString();
                 txtTag.Text = "";
                 string pattern = @"#([^#\s]+)";
                 MatchCollection matches = Regex.Matches(_post.fContent, pattern);
@@ -46,6 +48,18 @@ namespace prjGroupB.Views
         }
 
         private void pbFirstImage_Click(object sender, EventArgs e)
+        {
+            if (DselectUserPost != null)
+                DselectUserPost(post);
+        }
+
+        private void txtTag_Click(object sender, EventArgs e)
+        {
+            if (DselectUserPost != null)
+                DselectUserPost(post);
+        }
+
+        private void txtCreatedAt_Click(object sender, EventArgs e)
         {
             if (DselectUserPost != null)
                 DselectUserPost(post);

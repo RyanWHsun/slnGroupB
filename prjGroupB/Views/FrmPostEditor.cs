@@ -23,12 +23,12 @@ namespace prjGroupB.Views
         public FrmPostEditor()
         {
             InitializeComponent();
+            setCmbIsPublic();
+            setCmbCategory();
         }
         private void FrmPostEditor_Load(object sender, EventArgs e)
         {
             setRichTextBoxSize();
-            setCmbIsPublic();
-            setCmbCategory();
         }
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -113,6 +113,24 @@ namespace prjGroupB.Views
             set
             {
                 _post = value;
+                txtTitle.Text = _post.fTitle;
+                cmbCategory.SelectedItem = _post.fCategory;
+                if (_post.fIsPublic)
+                    cmbIsPublic.SelectedItem = "公開";
+                else
+                    cmbIsPublic.SelectedItem = "私人";
+                rtbContent.Text = _post.fContent;
+                lblUpdatedName.Visible = true;
+                lblUpdated.Visible = true;
+                lblUpdated.Text = _post.fCreatedAt.ToString();
+                if (_post.fUpdatedAt > _post.fCreatedAt)
+                    lblUpdated.Text = _post.fUpdatedAt.ToString();
+                if (_post.fImages.Count > 0) 
+                {
+                    _pictureManager = new CPostPictureManager(_post.fImages);
+                    _pictureManager.afterImageMoved += this.DisplayPostImage;
+                    _pictureManager.moveLast();
+                }
             }
         }
 

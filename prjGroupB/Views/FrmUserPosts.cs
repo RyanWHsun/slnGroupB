@@ -72,5 +72,18 @@ namespace prjGroupB.Views
                 flpUserPosts.Controls.Add(postBox);
             }
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            FrmPostEditor f = new FrmPostEditor();
+            f.post = _selected;
+            f.ShowDialog();
+            if (f.isOK == DialogResult.OK)
+            {
+                _manager.update(f.post);
+                displayUserPosts();
+            }
+            _selected = null;
+        }
     }
 }

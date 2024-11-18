@@ -56,22 +56,22 @@
             // txtTag
             // 
             this.txtTag.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTag.Enabled = false;
             this.txtTag.Location = new System.Drawing.Point(3, 143);
             this.txtTag.Name = "txtTag";
             this.txtTag.ReadOnly = true;
             this.txtTag.Size = new System.Drawing.Size(134, 22);
             this.txtTag.TabIndex = 0;
+            this.txtTag.Click += new System.EventHandler(this.txtTag_Click);
             // 
             // txtCreatedAt
             // 
             this.txtCreatedAt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCreatedAt.Enabled = false;
             this.txtCreatedAt.Location = new System.Drawing.Point(3, 173);
             this.txtCreatedAt.Name = "txtCreatedAt";
             this.txtCreatedAt.ReadOnly = true;
             this.txtCreatedAt.Size = new System.Drawing.Size(134, 22);
             this.txtCreatedAt.TabIndex = 1;
+            this.txtCreatedAt.Click += new System.EventHandler(this.txtCreatedAt_Click);
             // 
             // pbFirstImage
             // 

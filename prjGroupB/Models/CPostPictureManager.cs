@@ -20,7 +20,10 @@ namespace prjGroupB.Models
         }
         public byte[] current
         {
-            get { return _listImages[_position]; }
+            get 
+            {
+                return _listImages[_position]; 
+            }
         }
         public void moveFirst()
         {
