@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Attractions.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -387,6 +389,60 @@ namespace prjGroupB.Models {
             }
             catch (Exception ex) {
                 MessageBox.Show("景點或使用者並不存在");
+            }
+        }
+
+        public void createAttractionImage(CAttractionImage image) {
+            string sql = "INSERT tAttractionImages (";
+            sql += "fAttractionId, ";
+            sql += "fImage";
+            sql += ") VALUES (";
+            sql += "@K_fAttractionId, ";
+            sql += "@K_fImage)";
+
+            // 防止 SQL Injection
+            SqlParameter fAttractionId = new SqlParameter("K_fAttractionId", (object)image.fAttractionId);
+            SqlParameter fImage = new SqlParameter("K_fImage", (object)image.fImage[0]);
+
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.Add(fAttractionId);
+                    command.Parameters.Add(fImage);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("景點不存在");
+            }
+        }
+
+        public void updateAttractionImage(CAttractionImage image) {
+            string sql = "Update tAttractionImages SET ";
+            sql += "fAttractionId = @K_fAttractionId, ";
+            sql += "fImage = @K_fImage ";
+            sql += "WHERE fAttractionImageId = @K_fAttractionImageId";
+
+            // 防止 SQL Injection
+            SqlParameter fAttractionId = new SqlParameter("K_fAttractionId", (object)image.fAttractionId);
+            SqlParameter fImage = new SqlParameter("K_fImage", (object)image.fImage[image.fImage.Count-1]);
+            SqlParameter fAttractionImageId = new SqlParameter("K_fAttractionImageId", (object)image.fAttractionImageId);
+
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.Add(fAttractionId);
+                    command.Parameters.Add(fImage);
+                    command.Parameters.Add(fAttractionImageId);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("景點不存在");
             }
         }
     }

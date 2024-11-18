@@ -19,10 +19,10 @@ namespace Attractions.Views {
     public partial class FormAttractionEditor : Form {
         private string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
         private CAttraction _attraction;
-        
+
         // 圖片
         private int _imageIndex = 0;
-        private CAttrationImage _attractionImage=new CAttrationImage();
+        private CAttractionImage _attractionImage = new CAttractionImage();
         //private 
 
         public DialogResult isOk { get; set; }
@@ -78,7 +78,7 @@ namespace Attractions.Views {
             }
         }
 
-        public CAttrationImage attractionImage {
+        public CAttractionImage attractionImage {
             get {
                 return _attractionImage;
             }
@@ -223,15 +223,17 @@ namespace Attractions.Views {
         // 前一張圖片
         private void btnPreviousImage_Click(object sender, EventArgs e) {
             this._imageIndex--;
-            if(this._imageIndex<0)this._imageIndex = 0;
+            if (this._attractionImage == null || this._attractionImage.fImage == null) return;
+            if (this._imageIndex < 0) this._imageIndex = 0;
             showSavedImage(this._attraction.fAttractionId, this._imageIndex);
         }
 
         // 下一張圖片
         private void btnNextImage_Click(object sender, EventArgs e) {
             this._imageIndex++;
+            if (this._attractionImage == null || this._attractionImage.fImage == null) return;
             if (this._imageIndex >= this._attractionImage.fImage.Count) this._imageIndex -= 1;
-            showSavedImage(this._attraction.fAttractionId, this._imageIndex); 
+            showSavedImage(this._attraction.fAttractionId, this._imageIndex);
         }
 
         // 雙擊加入圖片
@@ -252,7 +254,7 @@ namespace Attractions.Views {
 
         // 顯示已儲存的圖片
         public void showSavedImage(int id, int index) {
-            if(this._attractionImage.fImage!=null) this._attractionImage.fImage.Clear();
+            if (this._attractionImage.fImage != null) this._attractionImage.fImage.Clear();
             // 連線
             string connectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;";
 
@@ -274,6 +276,7 @@ namespace Attractions.Views {
                         }
                         if (this._attractionImage.fImage.Count > 0) {
                             // 將二進制資料轉換成圖片
+                            if (index < 0) return;
                             using (MemoryStream ms = new MemoryStream(this._attractionImage.fImage[index])) {
                                 pictureBox1.Image = Image.FromStream(ms);
                             }

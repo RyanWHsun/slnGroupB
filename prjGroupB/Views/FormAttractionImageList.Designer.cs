@@ -38,14 +38,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.pcbImage = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbattractionId = new System.Windows.Forms.Label();
+            this.lbAttractionId = new System.Windows.Forms.Label();
             this.lbAttractionName = new System.Windows.Forms.Label();
             this.lbAttractionDescription = new System.Windows.Forms.Label();
-            this.pcbImage = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -58,8 +58,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbImage)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -190,14 +190,15 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(978, 265);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.93959F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.06041F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.77273F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.22727F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -212,13 +213,13 @@
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.splitContainer2, 0, 1);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(172, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(133, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 339F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(596, 485);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(744, 485);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // splitContainer2
@@ -234,19 +235,30 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.splitContainer2.Size = new System.Drawing.Size(590, 333);
-            this.splitContainer2.SplitterDistance = 321;
+            this.splitContainer2.Size = new System.Drawing.Size(738, 333);
+            this.splitContainer2.SplitterDistance = 401;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // pcbImage
+            // 
+            this.pcbImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pcbImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pcbImage.Location = new System.Drawing.Point(0, 0);
+            this.pcbImage.Name = "pcbImage";
+            this.pcbImage.Size = new System.Drawing.Size(401, 333);
+            this.pcbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbImage.TabIndex = 0;
+            this.pcbImage.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.lbattractionId, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lbAttractionId, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.lbAttractionName, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.lbAttractionDescription, 1, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -258,7 +270,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(265, 333);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(333, 333);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // label1
@@ -291,20 +303,20 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "描述";
             // 
-            // lbattractionId
+            // lbAttractionId
             // 
-            this.lbattractionId.AutoSize = true;
-            this.lbattractionId.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbattractionId.Location = new System.Drawing.Point(153, 49);
-            this.lbattractionId.Name = "lbattractionId";
-            this.lbattractionId.Size = new System.Drawing.Size(0, 24);
-            this.lbattractionId.TabIndex = 3;
+            this.lbAttractionId.AutoSize = true;
+            this.lbAttractionId.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbAttractionId.Location = new System.Drawing.Point(99, 49);
+            this.lbAttractionId.Name = "lbAttractionId";
+            this.lbAttractionId.Size = new System.Drawing.Size(0, 24);
+            this.lbAttractionId.TabIndex = 3;
             // 
             // lbAttractionName
             // 
             this.lbAttractionName.AutoSize = true;
             this.lbAttractionName.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbAttractionName.Location = new System.Drawing.Point(153, 84);
+            this.lbAttractionName.Location = new System.Drawing.Point(99, 84);
             this.lbAttractionName.Name = "lbAttractionName";
             this.lbAttractionName.Size = new System.Drawing.Size(0, 24);
             this.lbAttractionName.TabIndex = 4;
@@ -313,20 +325,10 @@
             // 
             this.lbAttractionDescription.AutoSize = true;
             this.lbAttractionDescription.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbAttractionDescription.Location = new System.Drawing.Point(153, 123);
+            this.lbAttractionDescription.Location = new System.Drawing.Point(99, 123);
             this.lbAttractionDescription.Name = "lbAttractionDescription";
             this.lbAttractionDescription.Size = new System.Drawing.Size(0, 24);
             this.lbAttractionDescription.TabIndex = 5;
-            // 
-            // pcbImage
-            // 
-            this.pcbImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pcbImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pcbImage.Location = new System.Drawing.Point(0, 0);
-            this.pcbImage.Name = "pcbImage";
-            this.pcbImage.Size = new System.Drawing.Size(321, 333);
-            this.pcbImage.TabIndex = 0;
-            this.pcbImage.TabStop = false;
             // 
             // FormAttractionImageList
             // 
@@ -354,9 +356,9 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcbImage)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,7 +385,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lbattractionId;
+        private System.Windows.Forms.Label lbAttractionId;
         private System.Windows.Forms.Label lbAttractionName;
         private System.Windows.Forms.Label lbAttractionDescription;
     }
