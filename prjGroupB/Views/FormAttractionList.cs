@@ -201,6 +201,9 @@ namespace Attractions {
             // 刪掉 attraction 之前，要把相關的 comments 刪掉
             deleteRelatedComment(deleteIndexes);
 
+            // 刪掉 attraction 之前，要把相關的 favorites 刪掉
+            deleteRelatedFavorite(deleteIndexes);
+
             string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
 
             // 刪除的 SQL
@@ -228,6 +231,34 @@ namespace Attractions {
 
             displayAttractionsBySql("SELECT * FROM tAttractions;", false);
         }
+
+        // 刪掉相關的 favorite
+        private void deleteRelatedFavorite(List<int> deleteIndexes) {
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+
+            string sql = "DELETE FROM tAttractionUserFavorites WHERE fAttractionId IN (";
+            for (int i = 0; i < deleteIndexes.Count; i++) {
+                sql += $"@id{i},";
+            }
+            sql = sql.TrimEnd(',') + ");";
+
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection)) {
+                        // 動態添加參數
+                        for (int i = 0; i < deleteIndexes.Count; i++) {
+                            command.Parameters.AddWithValue($"@id{i}", deleteIndexes[i]);
+                        }
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex) {
+            }
+        }
+
         // 刪掉相關的 comment
         private void deleteRelatedComment(List<int> deleteIndexes) {
             string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
