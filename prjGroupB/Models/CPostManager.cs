@@ -294,93 +294,94 @@ namespace prjGroupB.Models
             }
             con.Close();
         }
-    public List<CPost> getUserPosts()
-    {
-        string sql = "SELECT * FROM tPosts AS p ";
-        sql += "LEFT JOIN tPostCategories AS c ";
-        sql += "ON p.fCategoryId = c.fCategoryId ";
-        sql += "WHERE p.fUserId = @K_FUSERID ";
-        sql += "ORDER BY fPostId";
-        SqlConnection con = new SqlConnection();
-        con.ConnectionString = _connectionString;
-        con.Open();
-        SqlCommand cmd = new SqlCommand();
-        cmd.Connection = con;
-        cmd.CommandText = sql;
-        cmd.Parameters.Add(new SqlParameter("K_FUSERID", (object)CUserSession.fUserId));
-        SqlDataReader reader = cmd.ExecuteReader();
-        List<CPost> userPosts = new List<CPost>();
-        while (reader.Read())
+        public List<CPost> getUserPosts()
         {
-            CPost post = new CPost();
-            post.fPostId = Convert.ToInt32(reader["fPostId"]);
-            post.fTitle = reader["fTitle"].ToString();
-            post.fContent = reader["fContent"].ToString();
-            post.fCreatedAt = Convert.ToDateTime(reader["fCreatedAt"]);
-            if (reader["fUpdatedAt"] != DBNull.Value)
-                post.fUpdatedAt = Convert.ToDateTime(reader["fUpdatedAt"]);
-            post.fIsPublic = Convert.ToBoolean(reader["fIsPublic"]);
-            if (reader["fName"] != DBNull.Value)
-                post.fCategory = reader["fName"].ToString();
-            userPosts.Add(post);
-        }
-        reader.Close();
-        sql = "SELECT i.fPostId, fImage FROM tPosts AS p ";
-        sql += "JOIN tPostImages AS i ";
-        sql += "ON p.fPostId = i.fPostId ";
-        sql += "WHERE fUserId = @K_FUSERID";
-        cmd.CommandText = sql;
-        reader = cmd.ExecuteReader();
-        while (reader.Read())
-        {
-            foreach (CPost post in userPosts)
+            string sql = "SELECT * FROM tPosts AS p ";
+            sql += "LEFT JOIN tPostCategories AS c ";
+            sql += "ON p.fCategoryId = c.fCategoryId ";
+            sql += "WHERE p.fUserId = @K_FUSERID ";
+            sql += "ORDER BY fPostId";
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = _connectionString;
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = sql;
+            cmd.Parameters.Add(new SqlParameter("K_FUSERID", (object)CUserSession.fUserId));
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<CPost> userPosts = new List<CPost>();
+            while (reader.Read())
             {
-                if (Convert.ToInt32(reader["fPostId"]) == post.fPostId)
+                CPost post = new CPost();
+                post.fPostId = Convert.ToInt32(reader["fPostId"]);
+                post.fTitle = reader["fTitle"].ToString();
+                post.fContent = reader["fContent"].ToString();
+                post.fCreatedAt = Convert.ToDateTime(reader["fCreatedAt"]);
+                if (reader["fUpdatedAt"] != DBNull.Value)
+                    post.fUpdatedAt = Convert.ToDateTime(reader["fUpdatedAt"]);
+                post.fIsPublic = Convert.ToBoolean(reader["fIsPublic"]);
+                if (reader["fName"] != DBNull.Value)
+                    post.fCategory = reader["fName"].ToString();
+                userPosts.Add(post);
+            }
+            reader.Close();
+            sql = "SELECT i.fPostId, fImage FROM tPosts AS p ";
+            sql += "JOIN tPostImages AS i ";
+            sql += "ON p.fPostId = i.fPostId ";
+            sql += "WHERE fUserId = @K_FUSERID";
+            cmd.CommandText = sql;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                foreach (CPost post in userPosts)
                 {
-                    post.fImages.Add((byte[])reader["fImage"]);
+                    if (Convert.ToInt32(reader["fPostId"]) == post.fPostId)
+                    {
+                        post.fImages.Add((byte[])reader["fImage"]);
+                    }
                 }
             }
+            con.Close();
+            return userPosts;
         }
-        con.Close();
-        return userPosts;
-    }
 
-    public void insertCategory(string p)
-    {
-        string sql = "INSERT INTO tPostCategories(";
-        sql += "fUserId,";
-        sql += "fName";
-        sql += ")VALUES(";
-        sql += "@K_FUSERID,";
-        sql += "@K_FNAME)";
-
-        SqlConnection con = new SqlConnection();
-        con.ConnectionString = _connectionString;
-        con.Open();
-        SqlCommand cmd = new SqlCommand();
-        cmd.Connection = con;
-        cmd.CommandText = sql;
-        cmd.Parameters.Add(new SqlParameter("K_FUSERID", (object)CUserSession.fUserId));
-        cmd.Parameters.Add(new SqlParameter("K_FNAME", (object)p));
-        cmd.ExecuteNonQuery();
-        con.Close();
-    }
-    public void getCategory()
-    {
-        string sql = "SELECT * FROM tPostCategories WHERE fUserId = @K_FUSERID";
-        SqlConnection con = new SqlConnection();
-        con.ConnectionString = _connectionString;
-        con.Open();
-        SqlCommand cmd = new SqlCommand();
-        cmd.Connection = con;
-        cmd.CommandText = sql;
-        cmd.Parameters.Add(new SqlParameter("K_FUSERID", (object)CUserSession.fUserId));
-        SqlDataReader reader = cmd.ExecuteReader();
-        while (reader.Read())
+        public void insertCategory(string p)
         {
-            this.Categories.Add(reader["fName"].ToString());
+            string sql = "INSERT INTO tPostCategories(";
+            sql += "fUserId,";
+            sql += "fName";
+            sql += ")VALUES(";
+            sql += "@K_FUSERID,";
+            sql += "@K_FNAME)";
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = _connectionString;
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = sql;
+            cmd.Parameters.Add(new SqlParameter("K_FUSERID", (object)CUserSession.fUserId));
+            cmd.Parameters.Add(new SqlParameter("K_FNAME", (object)p));
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
-        con.Close();
+        public List<string> getCategory()
+        {
+            string sql = "SELECT * FROM tPostCategories WHERE fUserId = @K_FUSERID";
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = _connectionString;
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = sql;
+            cmd.Parameters.Add(new SqlParameter("K_FUSERID", (object)CUserSession.fUserId));
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                this.Categories.Add(reader["fName"].ToString());
+            }
+            con.Close();
+            return this.Categories;
+        }
     }
-}
 }

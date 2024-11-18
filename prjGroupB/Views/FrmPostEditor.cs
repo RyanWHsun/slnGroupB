@@ -88,8 +88,7 @@ namespace prjGroupB.Views
         private void setCmbCategory()
         {
             CPostManager manager = new CPostManager();
-            manager.getCategory();
-            foreach (string category in manager.Categories)
+            foreach (string category in manager.getCategory())
             {
                 cmbCategory.Items.Add(category);
             }

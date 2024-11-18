@@ -40,6 +40,7 @@ namespace prjGroupB.Views
                 if (string.IsNullOrEmpty(f.message))
                     return;
                 _manager.insertCategory(f.message);
+                setBtnCategory();
             }
         }
 
@@ -59,6 +60,7 @@ namespace prjGroupB.Views
         private void FrmUserPosts_Load(object sender, EventArgs e)
         {
             displayUserPosts();
+            setBtnCategory();
         }
         private void displayUserPosts()
         {
@@ -84,6 +86,16 @@ namespace prjGroupB.Views
                 displayUserPosts();
             }
             _selected = null;
+        }
+        private void setBtnCategory()
+        {
+            flpBtnCategory.Controls.Clear();
+            foreach (string category in (new CPostManager()).getCategory())
+            {
+                Button btn = new Button();
+                btn.Text = category;
+                flpBtnCategory.Controls.Add(btn);
+            }
         }
     }
 }
