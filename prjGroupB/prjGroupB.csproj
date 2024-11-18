@@ -331,6 +331,9 @@
     <EmbeddedResource Include="Views\FormAttractionEditor.resx">
       <DependentUpon>FormAttractionEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAttractionImageEditor.resx">
+      <DependentUpon>FormAttractionImageEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FormAttractionList.resx">
       <DependentUpon>FormAttractionList.cs</DependentUpon>
     </EmbeddedResource>

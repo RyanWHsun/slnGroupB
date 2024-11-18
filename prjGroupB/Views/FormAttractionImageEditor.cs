@@ -13,5 +13,21 @@ namespace Attractions.Views {
         public FormAttractionImageEditor() {
             InitializeComponent();
         }
+
+        private void pbImage_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnPreviousImage_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnNextImage_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e) {
+
+        }
     }
 }
