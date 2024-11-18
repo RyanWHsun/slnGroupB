@@ -97,5 +97,10 @@ namespace prjGroupB.Views
                 flpBtnCategory.Controls.Add(btn);
             }
         }
+
+        private void btnDeleteCategory_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

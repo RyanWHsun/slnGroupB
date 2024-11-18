@@ -33,8 +33,9 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.flpUserPosts = new System.Windows.Forms.FlowLayoutPanel();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnSelectAll = new System.Windows.Forms.Button();
+            this.btnSelectCategory = new System.Windows.Forms.Button();
             this.flpBtnCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnDeleteCategory = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnInsert
@@ -85,14 +86,14 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // btnSelectAll
+            // btnSelectCategory
             // 
-            this.btnSelectAll.Location = new System.Drawing.Point(32, 78);
-            this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
-            this.btnSelectAll.TabIndex = 5;
-            this.btnSelectAll.Text = "所有文章";
-            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectCategory.Location = new System.Drawing.Point(32, 78);
+            this.btnSelectCategory.Name = "btnSelectCategory";
+            this.btnSelectCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectCategory.TabIndex = 5;
+            this.btnSelectCategory.Text = "所有文章";
+            this.btnSelectCategory.UseVisualStyleBackColor = true;
             // 
             // flpBtnCategory
             // 
@@ -101,13 +102,24 @@
             this.flpBtnCategory.Size = new System.Drawing.Size(86, 464);
             this.flpBtnCategory.TabIndex = 6;
             // 
+            // btnDeleteCategory
+            // 
+            this.btnDeleteCategory.Location = new System.Drawing.Point(32, 20);
+            this.btnDeleteCategory.Name = "btnDeleteCategory";
+            this.btnDeleteCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteCategory.TabIndex = 7;
+            this.btnDeleteCategory.Text = "刪除分類";
+            this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
+            // 
             // FrmUserPosts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 594);
+            this.Controls.Add(this.btnDeleteCategory);
             this.Controls.Add(this.flpBtnCategory);
-            this.Controls.Add(this.btnSelectAll);
+            this.Controls.Add(this.btnSelectCategory);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.flpUserPosts);
             this.Controls.Add(this.btnDelete);
@@ -128,7 +140,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.FlowLayoutPanel flpUserPosts;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnSelectAll;
+        private System.Windows.Forms.Button btnSelectCategory;
         private System.Windows.Forms.FlowLayoutPanel flpBtnCategory;
+        private System.Windows.Forms.Button btnDeleteCategory;
     }
 }
