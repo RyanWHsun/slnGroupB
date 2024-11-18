@@ -137,7 +137,41 @@ namespace prjGroupB.Models
         }
         public void delete(CPost post)
         {
-            MessageBox.Show(post.fPostId.ToString());
+            string sql = "SELECT fTagId FROM tPostAndTag WHERE fPostId = @K_FPOSTID";
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = _connectionString;
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = sql;
+            cmd.Parameters.Add(new SqlParameter("K_FPOSTID", (object)post.fPostId));
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<int> tagIds = new List<int>();
+            while (reader.Read())
+            {
+                tagIds.Add(Convert.ToInt32(reader["fTagId"]));
+            }
+            reader.Close();
+            sql = "DELETE FROM tPostAndTag WHERE fPostId = @K_FPOSTID";
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+            foreach (int tagId in tagIds)
+            {
+                cmd.Parameters.Clear();
+                sql = "DELETE FROM tPostTags WHERE fTagId = @K_FTAGID";
+                cmd.Parameters.Add(new SqlParameter("K_FTAGID", (object)tagId));
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+            }
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(new SqlParameter("K_FPOSTID", (object)post.fPostId));
+            sql = "DELETE FROM tPostImages WHERE fPostId = @K_FPOSTID";
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+            sql = "DELETE FROM tPosts WHERE fPostId = @K_FPOSTID";
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
         public List<CPost> getUserPosts()
         {

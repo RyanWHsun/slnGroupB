@@ -48,7 +48,8 @@ namespace prjGroupB.Views
             if (_selected == null)
                 return;
             _manager.delete(_selected);
-           _selected = null;
+            _selected = null;
+            displayUserPosts();
         }
         private void selectUserPost(CPost post)
         {
