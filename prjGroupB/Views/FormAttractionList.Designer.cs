@@ -27,25 +27,25 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox3 = new System.Windows.Forms.ToolStripTextBox();
+            this.tstbAttractionName = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
+            this.tstbDescription = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox5 = new System.Windows.Forms.ToolStripTextBox();
+            this.tstbAddress = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox6 = new System.Windows.Forms.ToolStripTextBox();
+            this.tstbPhone = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox4 = new System.Windows.Forms.ToolStripTextBox();
+            this.tstbURL = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.dtpOpeningTime = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpClosingTime = new System.Windows.Forms.DateTimePicker();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox7 = new System.Windows.Forms.ToolStripTextBox();
+            this.tstbRegion = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
             this.cbStatus = new System.Windows.Forms.ComboBox();
@@ -65,6 +65,7 @@
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.tsbReload = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbReset = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.toolStrip2.SuspendLayout();
             this.toolStrip3.SuspendLayout();
@@ -91,19 +92,19 @@
             this.toolStrip2.AutoSize = false;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel2,
-            this.toolStripTextBox3,
+            this.tstbAttractionName,
             this.toolStripSeparator2,
             this.toolStripLabel1,
-            this.toolStripTextBox2,
+            this.tstbDescription,
             this.toolStripSeparator3,
             this.toolStripLabel4,
-            this.toolStripTextBox5,
+            this.tstbAddress,
             this.toolStripSeparator1,
             this.toolStripLabel5,
-            this.toolStripTextBox6,
+            this.tstbPhone,
             this.toolStripSeparator5,
             this.toolStripLabel3,
-            this.toolStripTextBox4,
+            this.tstbURL,
             this.toolStripSeparator4});
             this.toolStrip2.Location = new System.Drawing.Point(0, 39);
             this.toolStrip2.Name = "toolStrip2";
@@ -118,12 +119,12 @@
             this.toolStripLabel2.Size = new System.Drawing.Size(48, 39);
             this.toolStripLabel2.Text = "名稱";
             // 
-            // toolStripTextBox3
+            // tstbAttractionName
             // 
-            this.toolStripTextBox3.AutoSize = false;
-            this.toolStripTextBox3.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.toolStripTextBox3.Name = "toolStripTextBox3";
-            this.toolStripTextBox3.Size = new System.Drawing.Size(100, 33);
+            this.tstbAttractionName.AutoSize = false;
+            this.tstbAttractionName.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tstbAttractionName.Name = "tstbAttractionName";
+            this.tstbAttractionName.Size = new System.Drawing.Size(100, 33);
             // 
             // toolStripSeparator2
             // 
@@ -137,12 +138,12 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(48, 39);
             this.toolStripLabel1.Text = "描述";
             // 
-            // toolStripTextBox2
+            // tstbDescription
             // 
-            this.toolStripTextBox2.AutoSize = false;
-            this.toolStripTextBox2.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 33);
+            this.tstbDescription.AutoSize = false;
+            this.tstbDescription.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tstbDescription.Name = "tstbDescription";
+            this.tstbDescription.Size = new System.Drawing.Size(100, 33);
             // 
             // toolStripSeparator3
             // 
@@ -156,12 +157,12 @@
             this.toolStripLabel4.Size = new System.Drawing.Size(48, 39);
             this.toolStripLabel4.Text = "地址";
             // 
-            // toolStripTextBox5
+            // tstbAddress
             // 
-            this.toolStripTextBox5.AutoSize = false;
-            this.toolStripTextBox5.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.toolStripTextBox5.Name = "toolStripTextBox5";
-            this.toolStripTextBox5.Size = new System.Drawing.Size(100, 33);
+            this.tstbAddress.AutoSize = false;
+            this.tstbAddress.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tstbAddress.Name = "tstbAddress";
+            this.tstbAddress.Size = new System.Drawing.Size(100, 33);
             // 
             // toolStripSeparator1
             // 
@@ -175,12 +176,12 @@
             this.toolStripLabel5.Size = new System.Drawing.Size(48, 39);
             this.toolStripLabel5.Text = "電話";
             // 
-            // toolStripTextBox6
+            // tstbPhone
             // 
-            this.toolStripTextBox6.AutoSize = false;
-            this.toolStripTextBox6.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.toolStripTextBox6.Name = "toolStripTextBox6";
-            this.toolStripTextBox6.Size = new System.Drawing.Size(100, 33);
+            this.tstbPhone.AutoSize = false;
+            this.tstbPhone.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tstbPhone.Name = "tstbPhone";
+            this.tstbPhone.Size = new System.Drawing.Size(100, 33);
             // 
             // toolStripSeparator5
             // 
@@ -194,12 +195,12 @@
             this.toolStripLabel3.Size = new System.Drawing.Size(48, 39);
             this.toolStripLabel3.Text = "網址";
             // 
-            // toolStripTextBox4
+            // tstbURL
             // 
-            this.toolStripTextBox4.AutoSize = false;
-            this.toolStripTextBox4.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.toolStripTextBox4.Name = "toolStripTextBox4";
-            this.toolStripTextBox4.Size = new System.Drawing.Size(100, 33);
+            this.tstbURL.AutoSize = false;
+            this.tstbURL.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tstbURL.Name = "tstbURL";
+            this.tstbURL.Size = new System.Drawing.Size(100, 33);
             // 
             // toolStripSeparator4
             // 
@@ -217,23 +218,23 @@
             this.dtpOpeningTime.Size = new System.Drawing.Size(75, 33);
             this.dtpOpeningTime.TabIndex = 38;
             // 
-            // dateTimePicker1
+            // dtpClosingTime
             // 
-            this.dateTimePicker1.CustomFormat = "HH:mm";
-            this.dateTimePicker1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(992, 87);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(75, 33);
-            this.dateTimePicker1.TabIndex = 39;
+            this.dtpClosingTime.CustomFormat = "HH:mm";
+            this.dtpClosingTime.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.dtpClosingTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpClosingTime.Location = new System.Drawing.Point(992, 87);
+            this.dtpClosingTime.Name = "dtpClosingTime";
+            this.dtpClosingTime.ShowUpDown = true;
+            this.dtpClosingTime.Size = new System.Drawing.Size(75, 33);
+            this.dtpClosingTime.TabIndex = 39;
             // 
             // toolStrip3
             // 
             this.toolStrip3.AutoSize = false;
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel6,
-            this.toolStripTextBox7,
+            this.tstbRegion,
             this.toolStripSeparator7,
             this.toolStripLabel7});
             this.toolStrip3.Location = new System.Drawing.Point(0, 81);
@@ -249,12 +250,12 @@
             this.toolStripLabel6.Size = new System.Drawing.Size(48, 43);
             this.toolStripLabel6.Text = "地區";
             // 
-            // toolStripTextBox7
+            // tstbRegion
             // 
-            this.toolStripTextBox7.AutoSize = false;
-            this.toolStripTextBox7.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.toolStripTextBox7.Name = "toolStripTextBox7";
-            this.toolStripTextBox7.Size = new System.Drawing.Size(100, 33);
+            this.tstbRegion.AutoSize = false;
+            this.tstbRegion.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tstbRegion.Name = "tstbRegion";
+            this.tstbRegion.Size = new System.Drawing.Size(100, 33);
             // 
             // toolStripSeparator7
             // 
@@ -440,13 +441,25 @@
             this.tsbDelete,
             this.tsbEdit,
             this.tsbSearch,
-            this.tsbReload});
+            this.tsbReload,
+            this.tsbReset});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStrip1.Size = new System.Drawing.Size(1224, 39);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbReset
+            // 
+            this.tsbReset.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbReset.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tsbReset.Image = ((System.Drawing.Image)(resources.GetObject("tsbReset.Image")));
+            this.tsbReset.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbReset.Name = "tsbReset";
+            this.tsbReset.Size = new System.Drawing.Size(141, 36);
+            this.tsbReset.Text = "重設搜尋欄";
+            this.tsbReset.Click += new System.EventHandler(this.tsbReset_Click);
             // 
             // FormAttractionList
             // 
@@ -459,7 +472,7 @@
             this.Controls.Add(this.lbSplit2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpClosingTime);
             this.Controls.Add(this.dtpOpeningTime);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -491,26 +504,26 @@
         #endregion
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
+        private System.Windows.Forms.ToolStripTextBox tstbDescription;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox3;
+        private System.Windows.Forms.ToolStripTextBox tstbAttractionName;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox5;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox4;
+        private System.Windows.Forms.ToolStripTextBox tstbAddress;
+        private System.Windows.Forms.ToolStripTextBox tstbURL;
         private System.Windows.Forms.ToolStripLabel toolStripLabel5;
         private System.Windows.Forms.DateTimePicker dtpOpeningTime;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox6;
+        private System.Windows.Forms.ToolStripTextBox tstbPhone;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpClosingTime;
         private System.Windows.Forms.ToolStrip toolStrip3;
         private System.Windows.Forms.ToolStripLabel toolStripLabel6;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox7;
+        private System.Windows.Forms.ToolStripTextBox tstbRegion;
         private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripLabel toolStripLabel7;
@@ -530,6 +543,7 @@
         private System.Windows.Forms.ToolStripButton tsbSearch;
         private System.Windows.Forms.ToolStripButton tsbReload;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsbReset;
     }
 }
 
