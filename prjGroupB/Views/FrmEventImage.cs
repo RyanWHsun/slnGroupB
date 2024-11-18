@@ -28,7 +28,7 @@ namespace prjGroupB.Views
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string sql = @"
-    SELECT 
+    SELECT TOP 10
         e.fEventId, 
         e.fEventName, 
         e.fEventLocation, 
@@ -68,45 +68,23 @@ namespace prjGroupB.Views
 
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        // 初始化 CEvents 物件
-                        CEvents events = new CEvents
-                        {
-                            fEventId = Convert.ToInt32(row["fEventId"]),
-                            fEventName = row["fEventName"]?.ToString(),
-                            fEventLocation = row["fEventLocation"]?.ToString(),
-                            fEventStartDate = row["fEventStartDate"]?.ToString(),
-                            fEventEndDate = row["fEventEndDate"]?.ToString(),
-                            fEventDescription = row["fEventDescription"]?.ToString(),
-                            fUserId = row["fUserId"] != DBNull.Value ? Convert.ToInt32(row["fUserId"]) : 0,
-                            fEventCreatedDate = row["fEventCreatedDate"] != DBNull.Value ? (DateTime)row["fEventCreatedDate"] : DateTime.MinValue,
-                            fEventUpdatedDate = row["fEventUpdatedDate"] != DBNull.Value ? (DateTime)row["fEventUpdatedDate"] : DateTime.MinValue,
-                            fEventActivityfee = row["fEventActivityfee"] != DBNull.Value ? Convert.ToDecimal(row["fEventActivityfee"]) : 0,
-                            fEventURL = row["fEventURL"]?.ToString()
-                        };
-
-                        // 初始化 CEventImage 物件
-                        CEventImage image = new CEventImage
-                        {
-                            fEventImageId = Convert.ToInt32(row["fEventImageId"]),
-                            fEventId = Convert.ToInt32(row["fEventId"]),
-                            fEventImage = row["fEventImage"] != DBNull.Value ? (byte[])row["fEventImage"] : null
-                        };
-
-                        // 添加圖片到 EventImageBox
                         EventImageBox imageBox = new EventImageBox
                         {
-                            Image = image
+                            Image = new CEventImage
+                            {
+                                fEventImageId = Convert.ToInt32(row["fEventImageId"]),
+                                fEventId = Convert.ToInt32(row["fEventId"]),
+                                fEventImage = row["fEventImage"] != DBNull.Value ? (byte[])row["fEventImage"] : null
+                            },
+                            Event = new CEvents
+                            {
+                                fEventId = Convert.ToInt32(row["fEventId"]),
+                                fEventName = row["fEventName"]?.ToString() ?? "無名稱",
+                                fEventLocation = row["fEventLocation"]?.ToString() ?? "無地點"
+                            }
                         };
-                        imageBox.orderImage += this.orderImage;
-                        flowLayoutPanel1.Controls.Add(imageBox);
 
-                        // 添加活動描述到 EventImageBox
-                        EventImageBox eventBox = new EventImageBox
-                        {
-                            Image = image
-                        };
-                        eventBox.orderevent += this.orderEvent;
-                        flowLayoutPanel1.Controls.Add(eventBox);
+                        flowLayoutPanel1.Controls.Add(imageBox);
                     }
                 }
             }
