@@ -22,18 +22,19 @@ namespace prjGroupB.Views
         {
             InitializeComponent();
         }
-
         private void FrmProducts_Load(object sender, EventArgs e)
         {
-            displayProductsBySql("SELECT * FROM tProduct");
+            displayProductsBySql("SELECT * FROM tProduct",false);
         }
 
-        private void displayProductsBySql(string sql)
+        private void displayProductsBySql(string sql, bool isKeyword)
         {
             SqlConnection con = new SqlConnection();
             con.ConnectionString = @"Data Source=.;Database = dbGroupB; " + "Integrated Security = SSPI";
             con.Open();
             _da = new SqlDataAdapter(sql, con);
+            if (isKeyword)
+                _da.SelectCommand.Parameters.Add(new SqlParameter("@keyword","%" + (object)txtQuery.Text + "%"));
             _builder = new SqlCommandBuilder();
             _builder.DataAdapter = _da;
 
@@ -41,9 +42,56 @@ namespace prjGroupB.Views
             _da.Fill(ds);
             con.Close();
 
-            dgvProduct.DataSource = ds.Tables[0];
+            dgvProduct.DataSource = ds.Tables[0];            
+            resetGridStyle();            
         }
+        private void resetGridStyle()
+        {
+            dgvProduct.Columns[0].Width = 80;
+            dgvProduct.Columns[1].Width = 80;
+            dgvProduct.Columns[2].Width = 80;
+            dgvProduct.Columns[3].Width = 150;
+            dgvProduct.Columns[4].Width = 300;
+            dgvProduct.Columns[5].Width = 100;
+            dgvProduct.Columns[6].Width = 80;
+            dgvProduct.Columns[7].Width = 180;
+            dgvProduct.Columns[8].Width = 180;
 
+            dgvProduct.Columns["fProductId"].HeaderText = "產品ID";
+            dgvProduct.Columns["fProductId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProduct.Columns["fUserId"].HeaderText = "賣家ID";
+            dgvProduct.Columns["fUserId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProduct.Columns["fProductCategoryId"].HeaderText = "類別ID";
+            dgvProduct.Columns["fProductCategoryId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProduct.Columns["fProductName"].HeaderText = "產品名稱";
+            dgvProduct.Columns["fProductName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProduct.Columns["fProductDescription"].HeaderText = "產品描述";
+            dgvProduct.Columns["fProductPrice"].HeaderText = "產品價格";
+            dgvProduct.Columns["fProductPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProduct.Columns["fIsOnSales"].HeaderText = "上架狀態";
+            dgvProduct.Columns["fProductDateAdd"].HeaderText = "創建日期";
+            dgvProduct.Columns["fProductUpdated"].HeaderText = "更新日期";
+            dgvProduct.Columns["fStock"].HeaderText = "庫存";
+            dgvProduct.Columns["fStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            bool isColorChanged = false;
+
+            foreach (DataGridViewRow r in dgvProduct.Rows)
+            {
+                isColorChanged = !isColorChanged;
+
+                r.DefaultCellStyle.Font = new Font("微軟正黑體", 12);
+                r.DefaultCellStyle.BackColor = Color.White;
+                if (isColorChanged)
+                    r.DefaultCellStyle.BackColor = Color.FromArgb(145, 189, 237);
+            }
+        }
+        private void FrmProducts_Paint(object sender, PaintEventArgs e)
+        {
+           
+            resetGridStyle();
+            
+        }
         private void btnCreateProduct_Click(object sender, EventArgs e)
         {
             FrmProductEditor f = new FrmProductEditor();
@@ -64,7 +112,7 @@ namespace prjGroupB.Views
                 dt.Rows.Add(row);
 
                 _da.Update(dgvProduct.DataSource as DataTable);
-                displayProductsBySql("SELECT * FROM tProduct");
+                displayProductsBySql("SELECT * FROM tProduct", false);
             }
         }
 
@@ -79,13 +127,63 @@ namespace prjGroupB.Views
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (_position < 0)
+            if (dgvProduct.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("請選擇要刪除的產品。");
                 return;
-            DataTable dt = dgvProduct.DataSource as DataTable;
-            DataRow row = dt.Rows[_position];
-            row.Delete();
-            
-            _da.Update(dgvProduct.DataSource as DataTable);
+            }
+
+            SqlConnection con = new SqlConnection(@"Data Source=.;Database = dbGroupB; Integrated Security = SSPI");
+            con.Open();
+            SqlTransaction transaction = con.BeginTransaction();
+            try
+            {
+                // 獲取選定行的 fProductId 值
+                DataGridViewRow selectedRow = dgvProduct.SelectedRows[0];
+                int productId = Convert.ToInt32(selectedRow.Cells["fProductId"].Value);
+
+                // 刪除圖片
+                string imageSql = "DELETE FROM tProductImage WHERE fProductId = @ProductId";
+                SqlCommand imageCmd = new SqlCommand(imageSql, con, transaction);
+                imageCmd.Parameters.AddWithValue("@ProductId", productId);
+                imageCmd.ExecuteNonQuery();
+
+                // 刪除產品
+                string productSql = "DELETE FROM tProduct WHERE fProductId = @ProductId";
+                SqlCommand productCmd = new SqlCommand(productSql, con, transaction);
+                productCmd.Parameters.AddWithValue("@ProductId", productId);
+                productCmd.ExecuteNonQuery();
+
+                transaction.Commit();
+                MessageBox.Show("產品和相關圖片已成功刪除。");
+            }
+            catch (SqlException ex)
+            {
+                // 檢查是否為外鍵約束錯誤
+                if (ex.Number == 547) // 547 是 SQL Server 中的外鍵約束錯誤代碼
+                {
+                    MessageBox.Show("已有訂單不可刪除。");
+                }
+                else
+                {
+                    MessageBox.Show("SQL 錯誤：" + ex.Message);
+                }
+                // 回滾交易
+                transaction.Rollback();
+            }
+            catch (Exception ex)
+            {
+                // 處理其他非 SQL 錯誤
+                MessageBox.Show("刪除過程中發生錯誤：" + ex.Message);
+
+                // 回滾交易
+                transaction.Rollback();
+            }
+            finally
+            {
+                con.Close();
+            }
+            displayProductsBySql("SELECT * FROM tProduct", false);
         }
 
         private void btnEditProduct_Click(object sender, EventArgs e)
@@ -126,7 +224,7 @@ namespace prjGroupB.Views
             DataTable dt = dgvProduct.DataSource as DataTable;
             DataRow row = dt.Rows[_position];
             FrmProductImageManagement f = new FrmProductImageManagement();
-            CProduct x = new CProduct();            
+            CProduct x = new CProduct();
             x.fProductId = (int)row["fProductId"];
             x.fProductName = row["fProductName"].ToString();
             f.product = x;
@@ -135,16 +233,13 @@ namespace prjGroupB.Views
         private void btnQuery_Click(object sender, EventArgs e)
         {
             string keyword = txtQuery.Text.Trim();
-            string sql = "SELECT * FROM tProduct WHERE ";
-            sql += "fProductName LIKE '%" + keyword + "%' ";
-            sql += "OR fProductDescription LIKE '%" + keyword + "%'";
-            displayProductsBySql(sql);
+            string sql = "SELECT * FROM tProduct WHERE fProductName LIKE @keyword OR fProductDescription LIKE @keyword";
+            displayProductsBySql(sql,true);
         }
         private void txtQuery_Click(object sender, EventArgs e)
         {
             txtQuery.Text = string.Empty;
         }
-
         private void btnReset_Click(object sender, EventArgs e)
         {
             // 清除搜尋條件
@@ -152,7 +247,7 @@ namespace prjGroupB.Views
 
             // 重新載入所有資料
             string sql = "SELECT * FROM tProduct";
-            displayProductsBySql(sql);
+            displayProductsBySql(sql,false);
         }
     }
 }

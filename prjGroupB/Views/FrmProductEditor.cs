@@ -101,7 +101,7 @@ namespace prjGroupB.Views
                                                                
             if (_product != null)                    // 設置 ComboBox 的選中值
             {
-                cmbProductCate.SelectedValue = _product.fProductCategoryId;
+                cmbProductCate.SelectedValue = _product.fProductCategoryId; 
             }
         }
         public DataTable loadProductCategories() // 讀取資料表的選項並返回 DataTable

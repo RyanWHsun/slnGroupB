@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace prjGroupB.Views
 {
-    
-    
+
+
     public partial class FrmProductImageManagement : Form
-    {        
+    {
         private CProductImage _image = new CProductImage();
         private CProduct _product;
 
@@ -26,7 +26,7 @@ namespace prjGroupB.Views
         public FrmProductImageManagement()
         {
             InitializeComponent();
-        }        
+        }
         public CProduct product
         {
             get { return _product; }
@@ -45,7 +45,7 @@ namespace prjGroupB.Views
                 //_productImage.fImage = this._productImage.fImage;
                 return _image;
             }
-            set 
+            set
             {
                 if (_image.fImage != null)
                 {
@@ -57,7 +57,7 @@ namespace prjGroupB.Views
                     catch { }
                 }
             }
-        }    
+        }
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
@@ -85,7 +85,26 @@ namespace prjGroupB.Views
 
         private void FrmProductImageManagement_Load(object sender, EventArgs e)
         {
-            displayProductsBySql("SELECT * FROM tProductImage WHERE fProductId ="+ txtProductId.Text);
+            displayProductsBySql("SELECT * FROM tProductImage WHERE fProductId =" + txtProductId.Text);
+            resetGridStyle();
+        }
+        private void resetGridStyle()
+        {
+
+            dgvProductPic.Columns["fProductImageId"].Visible = false;
+            dgvProductPic.Columns["fProductId"].Visible = false;
+            dgvProductPic.Columns["fImage"].HeaderText = "照片";
+
+            // 將所有行的高度設置為
+            foreach (DataGridViewRow row in dgvProductPic.Rows)
+            {
+                row.Height = 140;
+            }
+            // 設置圖片列的 ImageLayout 為 Zoom
+            if (dgvProductPic.Columns.Count > 1 && dgvProductPic.Columns[2] is DataGridViewImageColumn imageColumn)
+            {                
+                imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            }
         }
 
         private void displayProductsBySql(string sql)
@@ -130,9 +149,5 @@ namespace prjGroupB.Views
             _position = e.RowIndex;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }

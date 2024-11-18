@@ -71,6 +71,11 @@ namespace prjGroupB.Views
             List<CProductDisplay> productList = GetProductDetails();
             dgvProductDisplay.DataSource = productList;
 
+            restGridView();
+        }
+
+        private void restGridView()
+        {
             // 設置 DataGridView 列的屬性            
             dgvProductDisplay.Columns["fSellerId"].HeaderText = "賣家ID";
             dgvProductDisplay.Columns["fCategoryName"].HeaderText = "類別名稱";
@@ -79,24 +84,38 @@ namespace prjGroupB.Views
             dgvProductDisplay.Columns["fPrice"].HeaderText = "產品價格";
             dgvProductDisplay.Columns["fStock"].HeaderText = "庫存數量";
             dgvProductDisplay.Columns["fProductId"].Visible = false;
-            dgvProductDisplay.Columns["fProductImage1"].Visible = false;
-            dgvProductDisplay.Columns["fProductImage2"].Visible = false;
-            dgvProductDisplay.Columns["fProductImage3"].Visible = false;
+            dgvProductDisplay.Columns["fProductImage1"].HeaderText = "照片1";
+            dgvProductDisplay.Columns["fProductImage2"].HeaderText = "照片2";
+            dgvProductDisplay.Columns["fProductImage3"].HeaderText = "照片3";
 
-            //添加圖片列
-            AddImageColumn("fProductImage1", "圖片1");
-            AddImageColumn("fProductImage2", "圖片2");
-            AddImageColumn("fProductImage3", "圖片3");
+            dgvProductDisplay.Columns[0].Width = 15;
+            dgvProductDisplay.Columns[1].Width = 0;
+            dgvProductDisplay.Columns[2].Width = 40;
+            dgvProductDisplay.Columns[3].Width = 50;
+            dgvProductDisplay.Columns[4].Width = 80;
+            dgvProductDisplay.Columns[5].Width = 50;
+            dgvProductDisplay.Columns[6].Width = 50;
+            dgvProductDisplay.Columns[7].Width = 100;
+            dgvProductDisplay.Columns[8].Width = 100;
+            dgvProductDisplay.Columns[9].Width = 100;
 
-        }
+            dgvProductDisplay.Columns["fSellerId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProductDisplay.Columns["fCategoryName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProductDisplay.Columns["fProductDescription"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProductDisplay.Columns["fProductName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProductDisplay.Columns["fPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProductDisplay.Columns["fStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-        private void AddImageColumn(string dataPropertyName, string headerText)
-        {
-            DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
-            imgCol.HeaderText = headerText;
-            imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            imgCol.DataPropertyName = dataPropertyName;
-            dgvProductDisplay.Columns.Add(imgCol);
+            int[] imageColumnIndexes = { 7, 8, 9 };
+            foreach (int index in imageColumnIndexes)
+            {
+                if (dgvProductDisplay.Columns[index] is DataGridViewImageColumn imageColumn)
+                {
+                    // 設置圖片列的 ImageLayout 為 Zoom
+                    imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                }
+            }
+            dgvProductDisplay.Refresh();            
         }
         private void btnQuery_Click(object sender, EventArgs e)
         {
@@ -137,7 +156,6 @@ namespace prjGroupB.Views
                         return;
                     }
                 }
-
                 // 確認訂單訊息
                 DialogResult result = MessageBox.Show("確定要下訂嗎？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 

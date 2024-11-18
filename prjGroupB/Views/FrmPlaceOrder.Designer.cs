@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPlaceOrder));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripLabel();
             this.txtQuery = new System.Windows.Forms.ToolStripTextBox();
@@ -118,13 +119,27 @@
             // 
             // dgvProductDisplay
             // 
+            this.dgvProductDisplay.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductDisplay.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvProductDisplay.BackgroundColor = System.Drawing.Color.LemonChiffon;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProductDisplay.Location = new System.Drawing.Point(0, 0);
+            this.dgvProductDisplay.MultiSelect = false;
             this.dgvProductDisplay.Name = "dgvProductDisplay";
+            this.dgvProductDisplay.ReadOnly = true;
+            this.dgvProductDisplay.RowHeadersVisible = false;
             this.dgvProductDisplay.RowHeadersWidth = 72;
             this.dgvProductDisplay.RowTemplate.Height = 35;
+            this.dgvProductDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductDisplay.Size = new System.Drawing.Size(1120, 805);
             this.dgvProductDisplay.TabIndex = 0;
             this.dgvProductDisplay.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDisplay_RowEnter);
@@ -252,6 +267,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1565, 843);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);

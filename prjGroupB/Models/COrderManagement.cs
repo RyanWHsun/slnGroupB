@@ -51,6 +51,10 @@ namespace prjGroupB.Models
                 transaction.Rollback();
                 MessageBox.Show("創建訂單失敗：" + ex.Message);
             }
+            finally
+            {
+                con.Close();
+            }
         }
         public void UpdateOrder(Namespace.B.COrder order)
         {
