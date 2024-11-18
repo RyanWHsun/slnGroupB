@@ -29,7 +29,7 @@ namespace prjGroupB.Views
             set 
             {
                 _post = value;
-                if (_post.fImages != null)
+                if (_post.fImages.Count > 0)
                 {
                     Stream s = new MemoryStream(_post.fImages[0]);
                     pbFirstImage.Image = Bitmap.FromStream(s);
