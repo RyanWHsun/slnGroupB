@@ -87,6 +87,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(51, 24);
             this.toolStripButton1.Text = "刪除";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // flowLayoutPanel1
             // 

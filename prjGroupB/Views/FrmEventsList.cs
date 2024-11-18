@@ -35,22 +35,15 @@ namespace prjGroupB.Views
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
-        {            
-
+        {
             FrmEventsEditor f = new FrmEventsEditor();
             f.ShowDialog();
             if (f.IsOk == DialogResult.OK)
             {
-                
                 LoadEvents();
-
 
                 MessageBox.Show("活動已成功儲存");
             }
-            
-            
-
-            
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -307,6 +300,7 @@ namespace prjGroupB.Views
 
             AdjustColumnWidths();
         }
+
         private void DeleteEvent()
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -316,14 +310,11 @@ namespace prjGroupB.Views
                     // 從選中的資料列獲取活動 ID
                     int eventId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["fEventId"].Value);
 
-                    // 提示用戶確認刪除
-                    DialogResult result = MessageBox.Show("確定要刪除此活動及其相關圖片嗎？", "刪除確認", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (result == DialogResult.No)
-                        return;
+                    MessageBox.Show($"選中的活動 ID 為：{eventId}");
 
                     // 定義刪除的 SQL 語句
-                    string deleteImageQuery = "DELETE FROM tEventImage WHERE fEventId = @fEventId";
-                    string deleteEventQuery = "DELETE FROM tEvents WHERE fEventId = @fEventId";
+                    string deleteImageQuery = "DELETE FROM tEventImage WHERE fEventId = @fEventId"; // 刪除所有關聯的圖片
+                    string deleteEventQuery = "DELETE FROM tEvents WHERE fEventId = @fEventId";    // 刪除活動
 
                     string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
 
@@ -336,23 +327,29 @@ namespace prjGroupB.Views
                         {
                             try
                             {
-                                // 刪除關聯的圖片資料
+                                // Step 1: 刪除關聯的圖片資料
                                 using (SqlCommand cmd = new SqlCommand(deleteImageQuery, conn, transaction))
                                 {
                                     cmd.Parameters.AddWithValue("@fEventId", eventId);
-                                    cmd.ExecuteNonQuery();
+
+                                    // 執行刪除圖片的操作
+                                    int imageRowsAffected = cmd.ExecuteNonQuery();
+                                    Console.WriteLine($"刪除了 {imageRowsAffected} 行圖片資料");
                                 }
 
-                                // 刪除活動資料
+                                // Step 2: 刪除活動資料
                                 using (SqlCommand cmd = new SqlCommand(deleteEventQuery, conn, transaction))
                                 {
                                     cmd.Parameters.AddWithValue("@fEventId", eventId);
-                                    cmd.ExecuteNonQuery();
+
+                                    // 執行刪除活動的操作
+                                    int eventRowsAffected = cmd.ExecuteNonQuery();
+                                    Console.WriteLine($"刪除了 {eventRowsAffected} 行活動資料");
                                 }
 
                                 // 提交交易
                                 transaction.Commit();
-                                MessageBox.Show("活動及關聯資料已成功刪除！");
+                                MessageBox.Show("活動及所有相關圖片已成功刪除！");
                             }
                             catch (Exception ex)
                             {
@@ -377,5 +374,4 @@ namespace prjGroupB.Views
             }
         }
     }
-
 }

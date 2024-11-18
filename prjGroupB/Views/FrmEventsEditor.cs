@@ -94,9 +94,15 @@ namespace prjGroupB.Views
                 return;
             }
 
-            // 將資料從表單中取出
+            // 從表單中取出資料
             CEvents eventData = Event;
             CEventImage imageData = Image;
+
+            // 如果沒有選擇圖片，設置 imageData.fEventImage 為 null
+            if (pictureBox1.Image == null)
+            {
+                imageData.fEventImage = null;
+            }
 
             // 儲存活動與圖片
             SaveEventWithImage(eventData, imageData);
@@ -173,6 +179,7 @@ namespace prjGroupB.Views
                 }
             }
         }
+
         private void SaveEventWithImage(CEvents eventData, CEventImage imageData)
         {
             string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
@@ -186,13 +193,13 @@ namespace prjGroupB.Views
                     {
                         // Step 1: 插入活動資訊到 tEvents
                         string insertEventQuery = @"
-                        INSERT INTO tEvents 
-                            (fEventName, fEventDescription, fEventStartDate, fEventEndDate, 
-                             fEventLocation, fEventCreatedDate, fEventUpdatedDate, fEventActivityfee, fEventURL)
-                        VALUES 
-                            (@fEventName, @fEventDescription, @fEventStartDate, @fEventEndDate, 
-                             @fEventLocation, @fEventCreatedDate, @fEventUpdatedDate, @fEventActivityfee, @fEventURL);
-                        SELECT CAST(SCOPE_IDENTITY() AS INT);";
+                INSERT INTO tEvents
+                    (fEventName, fEventDescription, fEventStartDate, fEventEndDate,
+                     fEventLocation, fEventCreatedDate, fEventUpdatedDate, fEventActivityfee, fEventURL)
+                VALUES
+                    (@fEventName, @fEventDescription, @fEventStartDate, @fEventEndDate,
+                     @fEventLocation, @fEventCreatedDate, @fEventUpdatedDate, @fEventActivityfee, @fEventURL);
+                SELECT CAST(SCOPE_IDENTITY() AS INT);";
 
                         using (SqlCommand cmd = new SqlCommand(insertEventQuery, conn, transaction))
                         {
@@ -211,23 +218,25 @@ namespace prjGroupB.Views
                             imageData.fEventId = eventId; // 將取得的 fEventId 賦值給圖片資料
                         }
 
-                        // Step 2: 插入圖片資訊到 tEventImage
-                        string insertImageQuery = @"
-                        INSERT INTO tEventImage (fEventId, fEventImage) 
-                        VALUES (@fEventId, @fEventImage);";
-
-                        using (SqlCommand cmd = new SqlCommand(insertImageQuery, conn, transaction))
+                        // Step 2: 插入圖片資訊到 tEventImage（如果圖片存在）
+                        if (imageData.fEventImage != null)
                         {
-                            
-                            cmd.Parameters.AddWithValue("@fEventId", imageData.fEventId);
-                            cmd.Parameters.AddWithValue("@fEventImage", imageData.fEventImage);
+                            string insertImageQuery = @"
+                    INSERT INTO tEventImage (fEventId, fEventImage)
+                    VALUES (@fEventId, @fEventImage);";
 
-                            cmd.ExecuteNonQuery();
+                            using (SqlCommand cmd = new SqlCommand(insertImageQuery, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@fEventId", imageData.fEventId);
+                                cmd.Parameters.AddWithValue("@fEventImage", imageData.fEventImage);
+
+                                cmd.ExecuteNonQuery();
+                            }
                         }
 
                         // 提交交易
                         transaction.Commit();
-                        MessageBox.Show("活動和圖片資料已成功儲存！");
+                        MessageBox.Show("活動資料已成功儲存！");
                     }
                     catch (Exception ex)
                     {
@@ -238,7 +247,5 @@ namespace prjGroupB.Views
                 }
             }
         }
-
     }
-
 }

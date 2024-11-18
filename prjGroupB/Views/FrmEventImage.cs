@@ -18,8 +18,6 @@ namespace prjGroupB.Views
         private CEvents cEvents;
         private CEventImage _selected;
 
-        
-
         public FrmEventImage()
         {
             InitializeComponent();
@@ -29,11 +27,11 @@ namespace prjGroupB.Views
         {
             string sql = @"
     SELECT TOP 10
-        e.fEventId, 
-        e.fEventName, 
-        e.fEventLocation, 
-        e.fEventStartDate, 
-        e.fEventEndDate, 
+        e.fEventId,
+        e.fEventName,
+        e.fEventLocation,
+        e.fEventStartDate,
+        e.fEventEndDate,
         e.fEventDescription,
         e.fUserId,
         e.fEventCreatedDate,
@@ -44,7 +42,7 @@ namespace prjGroupB.Views
         ei.fEventImage
     FROM tEventImage ei
     LEFT JOIN tEvents e ON ei.fEventId = e.fEventId
-    WHERE 
+    WHERE
         CAST(ei.fEventImageId AS NVARCHAR) LIKE @K_KEYWORD OR
         e.fEventLocation LIKE @K_KEYWORD OR
         e.fEventName LIKE @K_KEYWORD";
@@ -83,6 +81,14 @@ namespace prjGroupB.Views
                                 fEventLocation = row["fEventLocation"]?.ToString() ?? "無地點"
                             }
                         };
+                        imageBox.orderImage += img =>
+                        {
+                            _selected = img;
+                        };
+
+                        imageBox.orderevent += evt =>
+                        {
+                        };
 
                         flowLayoutPanel1.Controls.Add(imageBox);
                     }
@@ -93,19 +99,42 @@ namespace prjGroupB.Views
                 MessageBox.Show($"查詢過程中發生錯誤：{ex.Message}");
             }
         }
+
         public void orderImage(CEventImage p)
         {
             MessageBox.Show($"圖片 ID: {p.fEventImageId}");
         }
+
         public void orderEvent(CEvents p)
         {
             MessageBox.Show($"活動名稱: {p.fEventName}, 活動地點: {p.fEventLocation}");
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            if (_selected == null)
+            {
+                MessageBox.Show("請先選擇要刪除的圖片");
+                return;
+            }
 
+            try
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;"))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM tEventImage WHERE fEventImageId = @fEventImageId", con);
+                    cmd.Parameters.AddWithValue("@fEventImageId", _selected.fEventImageId);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("圖片已成功刪除！");
+                    btnSearch_Click(null, null); // 重新載入
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"刪除過程中發生錯誤：{ex.Message}");
+            }
         }
     }
-    
 }

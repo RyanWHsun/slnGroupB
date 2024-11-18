@@ -81,8 +81,13 @@ namespace prjGroupB.Views
                             if (reader.Read())
                             {
                                 textBox1.Text = reader["fEventId"].ToString();
-                                txtEventStartDate.Text = reader["fEventStartDate"]?.ToString(); // 直接讀取字串
-                                txtEventEndDate.Text = reader["fEventEndDate"]?.ToString();   // 直接讀取字串
+                                txtEventStartDate.Text = reader["fEventStartDate"] != DBNull.Value
+                                    ? Convert.ToDateTime(reader["fEventStartDate"]).ToString("yyyy-MM-dd")
+                                    : string.Empty;
+
+                                txtEventEndDate.Text = reader["fEventEndDate"] != DBNull.Value
+                                    ? Convert.ToDateTime(reader["fEventEndDate"]).ToString("yyyy-MM-dd")
+                                    : string.Empty;
                                 txtEventFee.Text = reader["fEventActivityFee"]?.ToString();
                             }
                             else
@@ -187,9 +192,6 @@ namespace prjGroupB.Views
             }
         }
 
-        
-        
-
         private void txtEventName_TextChanged_1(object sender, EventArgs e)
         {
             string enteredEventName = txtEventName.Text;
@@ -211,6 +213,7 @@ namespace prjGroupB.Views
         {
             Close();
         }
+
         private bool IsValidDate(string dateValue)
         {
             if (string.IsNullOrEmpty(dateValue)) return false;
