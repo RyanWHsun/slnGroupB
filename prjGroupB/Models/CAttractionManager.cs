@@ -7,6 +7,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace prjGroupB.Models {
@@ -322,6 +323,65 @@ namespace prjGroupB.Models {
                     command.Parameters.Add(fComment);
                     command.Parameters.Add(fCreatedDate);
                     command.Parameters.Add(fCommentId);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("景點或使用者並不存在");
+            }
+        }
+
+        public void createAttractionUserFavorite(CAttractionUserFavorite favorite) {
+            string sql = "INSERT tAttractionUserFavorites (";
+            sql += "fUserId, ";
+            sql += "fAttractionId, ";
+            sql += "fCreatedDate";
+            sql += ") VALUES (";
+            sql += "@K_fUserId, ";
+            sql += "@K_fAttractionId, ";
+            sql += "GETDATE())";
+
+            // 防止 SQL Injection
+            SqlParameter fUserId = new SqlParameter("K_fUserId", (object)favorite.fUserId);
+            SqlParameter fAttractionId = new SqlParameter("K_fAttractionId", (object)favorite.fAttractionId);
+
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.Add(fAttractionId);
+                    command.Parameters.Add(fUserId);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("景點或使用者並不存在");
+            }
+        }
+
+        public void updateAttractionUserFavorite(CAttractionUserFavorite favorite) {
+            string sql = "Update tAttractionUserFavorites SET ";
+            sql += "fUserId = @K_fUserId, ";
+            sql += "fAttractionId = @K_fAttractionId, ";
+            sql += "fCreatedDate = @K_fCreatedDate ";
+            sql += "WHERE fFavoriteId = @K_fFavoriteId";
+
+            // 防止 SQL Injection
+            SqlParameter fUserId = new SqlParameter("K_fUserId", (object)favorite.fUserId);
+            SqlParameter fAttractionId = new SqlParameter("K_fAttractionId", (object)favorite.fAttractionId);
+            SqlParameter fCreatedDate = new SqlParameter("K_fCreatedDate", (object)favorite.fCreatedDate);
+            SqlParameter fFavoriteId = new SqlParameter("K_fFavoriteId", (object)favorite.fFavoriteId);
+
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.Add(fUserId);
+                    command.Parameters.Add(fAttractionId);
+                    command.Parameters.Add(fCreatedDate);
+                    command.Parameters.Add(fFavoriteId);
                     command.ExecuteNonQuery();
                 }
             }

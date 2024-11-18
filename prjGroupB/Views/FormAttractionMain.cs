@@ -1,4 +1,5 @@
 ﻿using prjGroupB;
+using prjGroupB.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,7 +50,10 @@ namespace Attractions.Views {
             FormAttractionTicketList f = new FormAttractionTicketList();
             f.ShowDialog();
         }
-
+        private void btnFavorite_Click(object sender, EventArgs e) {
+            FormAttractionUserFavoriteList f = new FormAttractionUserFavoriteList();
+            f.ShowDialog();
+        }
         private void btnAttraction_MouseHover(object sender, EventArgs e) {
             btnAttraction.BackColor = Color.Black;
             btnAttraction.ForeColor = Color.White;
@@ -118,6 +122,16 @@ namespace Attractions.Views {
         private void btnTicket_MouseLeave(object sender, EventArgs e) {
             btnTicket.BackColor = Color.White;
             btnTicket.ForeColor = Color.Black;
+        }
+
+        private void btnFavorite_MouseHover(object sender, EventArgs e) {
+            btnFavorite.BackColor = Color.Black;
+            btnFavorite.ForeColor = Color.White;
+        }
+
+        private void btnFavorite_MouseLeave(object sender, EventArgs e) {
+            btnFavorite.BackColor = Color.White;
+            btnFavorite.ForeColor = Color.Black;
         }
     }
 }

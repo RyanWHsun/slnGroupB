@@ -37,12 +37,18 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnFavorite = new System.Windows.Forms.Button();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -56,13 +62,14 @@
             this.tableLayoutPanel1.Controls.Add(this.btnComment, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnAttraction, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnRecommendation, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.splitContainer2, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(432, 386);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -171,9 +178,9 @@
             // 
             this.btnRecommendation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRecommendation.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnRecommendation.Location = new System.Drawing.Point(3, 131);
+            this.btnRecommendation.Location = new System.Drawing.Point(0, 0);
             this.btnRecommendation.Name = "btnRecommendation";
-            this.btnRecommendation.Size = new System.Drawing.Size(210, 122);
+            this.btnRecommendation.Size = new System.Drawing.Size(103, 122);
             this.btnRecommendation.TabIndex = 2;
             this.btnRecommendation.Text = "推薦管理";
             this.btnRecommendation.UseVisualStyleBackColor = true;
@@ -222,6 +229,37 @@
             this.panel5.Size = new System.Drawing.Size(432, 386);
             this.panel5.TabIndex = 6;
             // 
+            // btnFavorite
+            // 
+            this.btnFavorite.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFavorite.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnFavorite.Location = new System.Drawing.Point(0, 0);
+            this.btnFavorite.Name = "btnFavorite";
+            this.btnFavorite.Size = new System.Drawing.Size(103, 122);
+            this.btnFavorite.TabIndex = 3;
+            this.btnFavorite.Text = "收藏";
+            this.btnFavorite.UseVisualStyleBackColor = true;
+            this.btnFavorite.Click += new System.EventHandler(this.btnFavorite_Click);
+            this.btnFavorite.MouseLeave += new System.EventHandler(this.btnFavorite_MouseLeave);
+            this.btnFavorite.MouseHover += new System.EventHandler(this.btnFavorite_MouseHover);
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 131);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.btnFavorite);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.btnRecommendation);
+            this.splitContainer2.Size = new System.Drawing.Size(210, 122);
+            this.splitContainer2.SplitterDistance = 103;
+            this.splitContainer2.TabIndex = 8;
+            // 
             // FormAttractionMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -241,6 +279,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -261,5 +303,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnImage;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Button btnFavorite;
+        private System.Windows.Forms.SplitContainer splitContainer2;
     }
 }
