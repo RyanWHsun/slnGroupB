@@ -42,6 +42,7 @@ namespace prjGroupB.Views
                 MatchCollection matches = Regex.Matches(_post.fContent, pattern);
                 foreach (Match match in matches)
                 {
+                    _post.fTags.Add(match.ToString());
                     txtTag.Text += match.ToString() + " ";
                 }
             }

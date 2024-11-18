@@ -14,6 +14,7 @@ namespace prjGroupB.Views
     public partial class FrmUserPosts : Form
     {
         private CPost _selected;
+        private Button _selectedBtn;
         private CPostManager _manager = new CPostManager();
         public FrmUserPosts()
         {
@@ -62,6 +63,26 @@ namespace prjGroupB.Views
             displayUserPosts();
             setBtnCategory();
         }
+        private void displayUserPosts(string s)
+        {
+            flpUserPosts.Controls.Clear();
+            List<CPost> userPosts = _manager.getUserPosts();
+            List<CPost> userCategoryPosts = new List<CPost>();
+            foreach (CPost post in userPosts)
+            {
+                if (post.fCategory == s)
+                {
+                    userCategoryPosts.Add(post);
+                }
+            }
+            foreach (CPost userPost in userCategoryPosts)
+            {
+                PostBox postBox = new PostBox();
+                postBox.post = userPost;
+                postBox.DselectUserPost += this.selectUserPost;
+                flpUserPosts.Controls.Add(postBox);
+            }
+        }
         private void displayUserPosts()
         {
             flpUserPosts.Controls.Clear();
@@ -77,6 +98,8 @@ namespace prjGroupB.Views
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (_selected == null)
+                return;
             FrmPostEditor f = new FrmPostEditor();
             f.post = _selected;
             f.ShowDialog();
@@ -94,13 +117,74 @@ namespace prjGroupB.Views
             {
                 Button btn = new Button();
                 btn.Text = category;
+                btn.Click += this.btnCategory_click;
+                btn.MouseDown += this.btnCategory_MouseDown;
                 flpBtnCategory.Controls.Add(btn);
+            }
+            Button btnInsertCategory = new Button();
+            btnInsertCategory.Text = "+";
+            btnInsertCategory.Click += this.btnInsertCategory_Click;
+            flpBtnCategory.Controls.Add(btnInsertCategory);
+        }
+        private void btnCategory_click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            displayUserPosts(clickedButton.Text);
+        }
+
+        private void btnSelectCategory_Click(object sender, EventArgs e)
+        {
+            displayUserPosts();
+        }
+        private void btnCategory_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _selectedBtn = sender as Button;
+                contextMenuStrip1.Show(Cursor.Position);
             }
         }
 
-        private void btnDeleteCategory_Click(object sender, EventArgs e)
+        private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (_selectedBtn == null)
+                return;
+            FrmPostCategoryEditor f = new FrmPostCategoryEditor();
+            f.ShowDialog();
+            if (f.isOK == DialogResult.OK)
+            {
+                _manager.updateCategory(_selectedBtn.Text, f.message);
+                setBtnCategory();
+                displayUserPosts(f.message);
+            }
+        }
 
+        private void 刪除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_selectedBtn == null)
+                return;
+            _manager.deleteCategory(_selectedBtn.Text);
+            setBtnCategory();
+            flpUserPosts.Controls.Clear();
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            flpUserPosts.Controls.Clear();
+            List<CPost> userPosts = _manager.getUserPosts();
+            foreach (CPost userPost in userPosts)
+            {
+                PostBox postBox = new PostBox();
+                postBox.post = userPost;
+                postBox.DselectUserPost += this.selectUserPost;
+                foreach (string tag in postBox.post.fTags)
+                {
+                    if (tag.Contains(txtFind.Text) || userPost.fTitle.Contains(txtFind.Text))
+                    {
+                        flpUserPosts.Controls.Add(postBox);
+                    }
+                }
+            }
         }
     }
 }
