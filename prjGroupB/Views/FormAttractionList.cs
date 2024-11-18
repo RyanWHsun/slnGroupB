@@ -9,9 +9,13 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.NetworkInformation;
+using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
@@ -30,6 +34,8 @@ namespace Attractions {
         }
 
         private void FormAttractionList_Load(object sender, EventArgs e) {
+            getfAttractionCategory();
+
             string sql = "";
             sql += "SELECT ";
             sql += "fAttractionId,";
@@ -50,6 +56,56 @@ namespace Attractions {
             sql += "fTransformInformation ";
             sql += "FROM tAttractions;";
             displayAttractionsBySql(sql, false);
+        }
+
+        private void getfAttractionCategory() {
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;";
+
+            string sql = "";
+            sql += "SELECT ";
+            sql += "fAttractionCategoryId,";
+            sql += "fAttractionCategoryName ";
+            sql += "FROM tAttractionCategories;";
+
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read()) {
+
+                        cbCategoryName.Items.Add(new {
+                            fAttractionCategoryId = reader["fAttractionCategoryId"],
+                            fAttractionCategoryName = reader["fAttractionCategoryName"].ToString()
+                        });
+                    }
+
+                    reader.Close();
+
+                    // 設定 ComboBox 的顯示屬性
+                    cbCategoryName.DisplayMember = "fAttractionCategoryName"; // 顯示的名稱
+                    cbCategoryName.ValueMember = "fAttractionCategoryId";     // 儲存的值
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("ERROR");
+            }
+
+            //SqlConnection con = new SqlConnection();
+
+            //con.Open();
+
+            //SqlDataAdapter da = new SqlDataAdapter(sql, con);
+
+            //SqlCommandBuilder builder = new SqlCommandBuilder();
+            //builder.DataAdapter = da;
+
+            //DataSet ds = new DataSet();
+            //da.Fill(ds);
+
+            //con.Close();
+
+
         }
 
         // 顯示所有欄位
@@ -124,12 +180,12 @@ namespace Attractions {
             imagetable.Columns.Add("fImage", typeof(byte[]));
 
             DataRow row = imagetable.NewRow();
-            
-            if(f.attraction.fAttractionId>0)
+
+            if (f.attraction.fAttractionId > 0)
                 row["fAttractionId"] = f.attraction.fAttractionId;
             else row["fAttractionId"] = _lastfAttractionId + 1;
-            
-            if (f.attractionImage.fImage == null || f.attractionImage.fImage.Count==0) return;
+
+            if (f.attractionImage.fImage == null || f.attractionImage.fImage.Count == 0) return;
             row["fImage"] = f.attractionImage.fImage[f.attractionImage.fImage.Count - 1];
 
             imagetable.Rows.Add(row);
@@ -431,8 +487,112 @@ namespace Attractions {
             _position = e.RowIndex; // 在 GridView 中點到的位置
         }
 
+        //
         private void tsbSearch_Click(object sender, EventArgs e) {
-            string sql = "SELECT * FROM tAttractions WHERE fAttractionName = ";
+            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+
+            string sql = "SELECT ";
+            sql += "fAttractionId, ";
+            sql += "fAttractionName, ";
+            sql += "a.fDescription, ";
+            sql += "fAddress, ";
+            sql += "fPhoneNumber, ";
+            sql += "fOpeningTime, ";
+            sql += "fClosingTime, ";
+            sql += "fWebsiteURL, ";
+            sql += "fLongitude, ";
+            sql += "fLatitude, ";
+            sql += "fRegion, ";
+            sql += "a.fCategoryId, ";
+            sql += "c.fAttractionCategoryName, ";
+            sql += "fCreatedDate, ";
+            sql += "fUpdatedDate, ";
+            sql += "fStatus, ";
+            sql += "fTransformInformation ";
+            sql += "FROM tAttractions as a ";
+            sql += "JOIN tAttractionCategories as c ";
+            sql += "ON a.fCategoryId = c.fAttractionCategoryId ";
+            sql += "WHERE 1=@number ";
+
+            if (tstbAttractionName.Text != "") sql += "OR fAttractionName LIKE @fAttractionName ";
+            if (tstbDescription.Text != "") sql += "OR a.fDescription LIKE @fDescription ";
+            if (tstbAddress.Text != "") sql += "OR fAddress LIKE @fAddress ";
+            if (tstbPhone.Text != "") sql += "OR fPhoneNumber LIKE @fPhoneNumber ";
+            if (tstbURL.Text != "") sql += "OR fWebsiteURL LIKE @fWebsiteURL ";
+            if (tstbRegion.Text != "") sql += "OR fRegion LIKE @fRegion ";
+            if (cbCategoryName.Text != "") sql += "OR fAttractionCategoryName LIKE @fAttractionCategoryName ";
+            if (cbStatus.Text != "") sql += "OR fStatus = @fStatus ";
+
+            if (cbBeforeAndAfterOpeningTime.SelectedItem != null) {
+                switch (cbBeforeAndAfterOpeningTime.SelectedItem.ToString()) {
+                    case "前":
+                        sql += "OR fOpeningTime < @fOpeningTime ";
+                        break;
+                    case "後":
+                        sql += "OR fOpeningTime > @fOpeningTime ";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (cbBeforeAndAfterClosingTime.SelectedItem != null) {
+                switch (cbBeforeAndAfterClosingTime.SelectedItem.ToString()) {
+                    case "前":
+                        sql += "OR fClosingTime < @fClosingTime ";
+                        break;
+                    case "後":
+                        sql += "OR fClosingTime > @fClosingTime ";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            // 防止 SQL Injection
+            int num = 1;
+            if (tstbAttractionName.Text != "" || tstbDescription.Text != "" || tstbAddress.Text != "" || tstbPhone.Text != "" || tstbURL.Text != ""
+                || tstbRegion.Text != "" || cbCategoryName.Text != "" || cbStatus.Text != "" || cbBeforeAndAfterOpeningTime.SelectedItem != null
+                || cbBeforeAndAfterClosingTime.SelectedItem != null) num = 0;
+
+            SqlParameter number = new SqlParameter("number", num); 
+            SqlParameter fAttractionName = new SqlParameter("fAttractionName", "%" + (object)tstbAttractionName.Text + "%");
+            SqlParameter fDescription = new SqlParameter("fDescription", "%" + (object)tstbDescription.Text + "%");
+            SqlParameter fAddress = new SqlParameter("fAddress", "%" + (object)tstbAddress.Text + "%");
+            SqlParameter fPhoneNumber = new SqlParameter("fPhoneNumber", "%" + (object)tstbPhone.Text + "%");
+            SqlParameter fWebsiteURL = new SqlParameter("fWebsiteURL", "%" + (object)tstbURL.Text + "%");
+            SqlParameter fRegion = new SqlParameter("fRegion", "%" + (object)tstbRegion.Text + "%");
+            SqlParameter fAttractionCategoryName = new SqlParameter("fAttractionCategoryName", cbCategoryName.Text);
+            SqlParameter fStatus = new SqlParameter("fStatus", cbStatus.Text);
+            SqlParameter fOpeningTime = new SqlParameter("fOpeningTime", dtpOpeningTime.Text);
+            SqlParameter fClosingTime = new SqlParameter("fClosingTime", dtpClosingTime.Text);
+
+            try {
+                using (SqlConnection connection = new SqlConnection(connectString)) {
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.Add(number);
+                    command.Parameters.Add(fAttractionName);
+                    command.Parameters.Add(fDescription);
+                    command.Parameters.Add(fAddress);
+                    command.Parameters.Add(fPhoneNumber);
+                    command.Parameters.Add(fWebsiteURL);
+                    command.Parameters.Add(fRegion);
+                    command.Parameters.Add(fAttractionCategoryName);
+                    command.Parameters.Add(fStatus);
+                    command.Parameters.Add(fOpeningTime);
+                    command.Parameters.Add(fClosingTime);
+                    command.Connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(reader);
+
+                    // 將資料綁定到 DataGridView
+                    dataGridView1.DataSource = dataTable;
+                }
+            }
+             catch (Exception ex) {
+                MessageBox.Show("ERROR");
+            }
         }
 
         // 雙擊 dataGridView1 欄位，開啟編輯頁面
@@ -443,10 +603,10 @@ namespace Attractions {
         // 顯示編輯頁面
         private void showEditView() {
             if (_position < 0) return;
-            
+
             // 選取指定的 row
             DataRow row = (dataGridView1.DataSource as DataTable).Rows[_position];
-            
+
             FormAttractionEditor f = new FormAttractionEditor();
             CAttraction x = new CAttraction();
 
@@ -481,13 +641,14 @@ namespace Attractions {
             f.attraction = x;
             try {
                 f.showSavedImage((int)row["fAttractionId"], 0);
-            }catch {
+            }
+            catch {
                 MessageBox.Show("請先更新剛才修改的資料");
                 return;
             }
-            
+
             f.ShowDialog();
-            
+
             // 點擊"確定"按鈕後，把資料寫到 DataRow
             if (f.isOk == DialogResult.OK) {
                 row["fAttractionName"] = f.attraction.fAttractionName;
@@ -506,7 +667,22 @@ namespace Attractions {
                 row["fStatus"] = f.attraction.fStatus;
                 row["fTransformInformation"] = f.attraction.fTransformInformation;
                 saveImageFromCAttrationImageToDataTable(f);
-            }  
-        } 
+            }
+        }
+
+        private void tsbReset_Click(object sender, EventArgs e) {
+            tstbAttractionName.Text = "";
+            tstbDescription.Text = "";
+            tstbAddress.Text = "";
+            tstbPhone.Text = "";
+            tstbURL.Text = "";
+            tstbRegion.Text = "";
+            cbCategoryName.SelectedItem = null;
+            cbStatus.SelectedItem = null;
+            dtpOpeningTime.Value = DateTime.Now;
+            dtpClosingTime.Value = DateTime.Now;
+            cbBeforeAndAfterOpeningTime.SelectedItem = null;
+            cbBeforeAndAfterClosingTime.SelectedItem = null;
+        }
     }
 }
