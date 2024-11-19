@@ -465,8 +465,18 @@ namespace prjGroupB.Models
             sql += "@K_fImage)";
 
             // 防止 SQL Injection
+            if (image.fAttractionId == 0)
+            {
+                MessageBox.Show("景點ID不可為空或非數字");
+                return;
+            }
             SqlParameter fAttractionId = new SqlParameter("K_fAttractionId", (object)image.fAttractionId);
-            SqlParameter fImage = new SqlParameter("K_fImage", (object)image.fImage[0]);
+            if(image.fImage==null)
+            {
+                MessageBox.Show("圖片不可為空");
+                return;
+            }
+                SqlParameter fImage = new SqlParameter("K_fImage", (object)image.fImage[0]);
 
             //string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
             string connectString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";

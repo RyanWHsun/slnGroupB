@@ -131,6 +131,7 @@ namespace Attractions
             con.Close();
 
             dataGridView1.DataSource = _ds.Tables[0];
+            resetGridStyle();
         }
 
         // 按下"新增景點"按鈕
@@ -669,6 +670,8 @@ namespace Attractions
             {
                 MessageBox.Show("ERROR");
             }
+
+            resetGridStyle();
         }
 
         // 雙擊 dataGridView1 欄位，開啟編輯頁面
@@ -769,6 +772,79 @@ namespace Attractions
             dtpClosingTime.Value = DateTime.Now;
             cbBeforeAndAfterOpeningTime.SelectedItem = null;
             cbBeforeAndAfterClosingTime.SelectedItem = null;
+        }
+
+        private void resetGridStyle()
+        {
+            dataGridView1.Columns["fAttractionId"].HeaderText = "景點ID";
+            dataGridView1.Columns["fAttractionId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fAttractionName"].HeaderText = "景點名稱";
+            dataGridView1.Columns["fAttractionName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fDescription"].HeaderText = "描述";
+            dataGridView1.Columns["fDescription"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridView1.Columns["fAddress"].HeaderText = "地址";
+            dataGridView1.Columns["fAddress"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridView1.Columns["fPhoneNumber"].HeaderText = "電話";
+            dataGridView1.Columns["fPhoneNumber"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fOpeningTime"].HeaderText = "開放時間";
+            dataGridView1.Columns["fOpeningTime"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fClosingTime"].HeaderText = "關閉時間";
+            dataGridView1.Columns["fClosingTime"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fWebsiteURL"].HeaderText = "網址";
+            dataGridView1.Columns["fWebsiteURL"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridView1.Columns["fLongitude"].HeaderText = "經度";
+            dataGridView1.Columns["fLongitude"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fLatitude"].HeaderText = "緯度";
+            dataGridView1.Columns["fLatitude"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fRegion"].HeaderText = "地區";
+            dataGridView1.Columns["fRegion"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fCategoryId"].HeaderText = "分類ID";
+            dataGridView1.Columns["fCategoryId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fCreatedDate"].HeaderText = "建立時間";
+            dataGridView1.Columns["fCreatedDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fUpdatedDate"].HeaderText = "更新時間";
+            dataGridView1.Columns["fUpdatedDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fStatus"].HeaderText = "狀態";
+            dataGridView1.Columns["fStatus"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fTransformInformation"].HeaderText = "交通資訊";
+            dataGridView1.Columns["fTransformInformation"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            if (dataGridView1.Columns["fAttractionCategoryName"] != null)
+            {
+                dataGridView1.Columns["fAttractionCategoryName"].HeaderText = "分類名稱";
+                dataGridView1.Columns["fAttractionCategoryName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            dataGridView1.Columns[0].Width = 80;
+            dataGridView1.Columns[1].Width = 100;
+            dataGridView1.Columns[2].Width = 300;
+            dataGridView1.Columns[3].Width = 300;
+            dataGridView1.Columns[4].Width = 100;
+            dataGridView1.Columns[5].Width = 100;
+            dataGridView1.Columns[6].Width = 100;
+            dataGridView1.Columns[7].Width = 250;
+            dataGridView1.Columns[8].Width = 170;
+            dataGridView1.Columns[9].Width = 170;
+            dataGridView1.Columns[10].Width = 100;
+            dataGridView1.Columns[11].Width = 70;
+            dataGridView1.Columns[12].Width = 200;
+            dataGridView1.Columns[13].Width = 200;
+            dataGridView1.Columns[14].Width = 170;
+            dataGridView1.Columns[15].Width = 250;
+
+            bool isColorChanged = false;
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                isColorChanged = !isColorChanged;
+
+                r.DefaultCellStyle.Font = new Font("微軟正黑體", 12);
+                r.DefaultCellStyle.BackColor = Color.White;
+                r.DefaultCellStyle.SelectionBackColor = Color.MediumSeaGreen;
+
+                if (isColorChanged)
+                {
+                    r.DefaultCellStyle.BackColor = Color.Khaki;
+                }
+            }
         }
     }
 }
