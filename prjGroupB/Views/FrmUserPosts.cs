@@ -49,13 +49,28 @@ namespace prjGroupB.Views
         {
             if (_selected == null)
                 return;
-            _manager.delete(_selected);
-            _selected = null;
-            displayUserPosts();
+            FrmPostDelete f = new FrmPostDelete();
+            f.ShowDialog();
+            if (f.isOK == DialogResult.OK)
+            {
+                _manager.delete(_selected);
+                _selected = null;
+                displayUserPosts();
+            }
         }
         private void selectUserPost(CPost post)
         {
             _selected = post;
+        }
+        private void doubleClickUserPost(CPost post)
+        {
+            if (_selected == null)
+                return;
+            FrmPostEditor f = new FrmPostEditor();
+            f.post = _selected;
+            f.readOnly();
+            f.ShowDialog();
+            _selected = null;
         }
 
         private void FrmUserPosts_Load(object sender, EventArgs e)
@@ -66,6 +81,7 @@ namespace prjGroupB.Views
         private void displayUserPosts(string s)
         {
             flpUserPosts.Controls.Clear();
+            flpUserPosts.SuspendLayout();
             List<CPost> userPosts = _manager.getUserPosts();
             List<CPost> userCategoryPosts = new List<CPost>();
             foreach (CPost post in userPosts)
@@ -80,20 +96,25 @@ namespace prjGroupB.Views
                 PostBox postBox = new PostBox();
                 postBox.post = userPost;
                 postBox.DselectUserPost += this.selectUserPost;
+                postBox.DdoubliClickPost += this.doubleClickUserPost;
                 flpUserPosts.Controls.Add(postBox);
             }
+            flpUserPosts.ResumeLayout();
         }
         private void displayUserPosts()
         {
             flpUserPosts.Controls.Clear();
+            flpUserPosts.SuspendLayout();
             List<CPost> userPosts = _manager.getUserPosts();
             foreach (CPost userPost in userPosts)
             {
                 PostBox postBox = new PostBox();
                 postBox.post = userPost;
                 postBox.DselectUserPost += this.selectUserPost;
+                postBox.DdoubliClickPost += this.doubleClickUserPost;
                 flpUserPosts.Controls.Add(postBox);
             }
+            flpUserPosts.ResumeLayout();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -119,10 +140,22 @@ namespace prjGroupB.Views
                 btn.Text = category;
                 btn.Click += this.btnCategory_click;
                 btn.MouseDown += this.btnCategory_MouseDown;
+
+                btn.Width = flpBtnCategory.Width - 2;
+                btn.Height = flpBtnCategory.Height / 10;
+                btn.Font = new Font("微軟正黑體", btn.Height / 3, FontStyle.Bold);
+                btn.TextAlign = ContentAlignment.MiddleLeft;
+                btn.ForeColor = Color.Black;
+                btn.BackColor = Color.FromArgb(250, 243, 224);
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
                 flpBtnCategory.Controls.Add(btn);
             }
             Button btnInsertCategory = new Button();
             btnInsertCategory.Text = "+";
+            btnInsertCategory.Width = flpBtnCategory.Width - 2;
+            btnInsertCategory.Height = (int)(flpBtnCategory.Height / 10 / 1.5);
+            btnInsertCategory.Font = new Font("微軟正黑體", btnInsertCategory.Height/2, FontStyle.Bold);
             btnInsertCategory.Click += this.btnInsertCategory_Click;
             flpBtnCategory.Controls.Add(btnInsertCategory);
         }
@@ -132,10 +165,6 @@ namespace prjGroupB.Views
             displayUserPosts(clickedButton.Text);
         }
 
-        private void btnSelectCategory_Click(object sender, EventArgs e)
-        {
-            displayUserPosts();
-        }
         private void btnCategory_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -150,6 +179,7 @@ namespace prjGroupB.Views
             if (_selectedBtn == null)
                 return;
             FrmPostCategoryEditor f = new FrmPostCategoryEditor();
+            f.message = _selectedBtn.Text;
             f.ShowDialog();
             if (f.isOK == DialogResult.OK)
             {
@@ -185,6 +215,10 @@ namespace prjGroupB.Views
                     }
                 }
             }
+        }
+        private void pcbUserPosts_Click(object sender, EventArgs e)
+        {
+            displayUserPosts();
         }
     }
 }

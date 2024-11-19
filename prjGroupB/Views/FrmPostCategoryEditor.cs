@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjGroupB.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,8 +26,13 @@ namespace prjGroupB.Views
         }
         private void btnOk_Click(object sender, EventArgs e)
         {
+            if (message.Length > 10)
+            {
+                MessageBox.Show("請輸入十個字以內");
+                return;
+            }
             this.isOK = DialogResult.OK;
             Close();
-        }   
+        }
     }
 }

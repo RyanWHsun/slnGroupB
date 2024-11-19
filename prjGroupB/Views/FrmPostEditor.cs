@@ -28,6 +28,11 @@ namespace prjGroupB.Views
         }
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
+            setRtb();
+        }
+
+        private void setRtb()
+        {
             int lineCount = rtbContent.GetLineFromCharIndex(rtbContent.TextLength) + 1;
             int maxLines = 7;
             int lineHeight = rtbContent.Font.Height;
@@ -48,12 +53,12 @@ namespace prjGroupB.Views
             btnNext.Top = picPost.Bottom + 10;
             btnLast.Top = picPost.Bottom + 10;
         }
+
         private void btnIsPicture_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "房間照片|*.png|房間照片|*.jpg";
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
-            //picPost.Image = Bitmap.FromFile(openFileDialog1.FileName);
 
             FileStream imgStream = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
             BinaryReader reader = new BinaryReader(imgStream);
@@ -80,8 +85,8 @@ namespace prjGroupB.Views
             }
         }
         public CPost post
-        { 
-            get 
+        {
+            get
             {
                 if (_post == null)
                     _post = new CPost();
@@ -110,13 +115,24 @@ namespace prjGroupB.Views
                 lblUpdated.Text = _post.fCreatedAt.ToString();
                 if (_post.fUpdatedAt > _post.fCreatedAt)
                     lblUpdated.Text = _post.fUpdatedAt.ToString();
-                if (_post.fImages.Count > 0) 
+                if (_post.fImages.Count > 0)
                 {
                     _pictureManager = new CPostPictureManager(_post.fImages);
                     _pictureManager.afterImageMoved += this.DisplayPostImage;
-                    _pictureManager.moveLast();
+                    _pictureManager.moveFirst();
                 }
             }
+        }
+        public void readOnly()
+        {
+            txtTitle.ReadOnly = true;
+            btnIsPicture.Enabled = false;
+            cmbCategory.Enabled = false;
+            cmbIsPublic.Enabled = false;
+            rtbContent.ReadOnly = true;
+            picPost.Enabled = false;
+            btnPost.Enabled = false;
+            setRtb();
         }
 
         private void btnPost_Click(object sender, EventArgs e)

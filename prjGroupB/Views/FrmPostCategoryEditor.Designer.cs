@@ -57,6 +57,7 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtCategory);
             this.Name = "FrmPostCategoryEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmPostCategoryEditor";
             this.ResumeLayout(false);
             this.PerformLayout();

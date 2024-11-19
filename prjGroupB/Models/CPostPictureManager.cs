@@ -18,6 +18,7 @@ namespace prjGroupB.Models
         {
             _listImages = listImages;
         }
+        public int position {  get { return _position; } }
         public byte[] current
         {
             get 

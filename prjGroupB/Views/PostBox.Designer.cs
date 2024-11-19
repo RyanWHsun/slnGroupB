@@ -83,6 +83,7 @@
             this.pbFirstImage.TabIndex = 2;
             this.pbFirstImage.TabStop = false;
             this.pbFirstImage.Click += new System.EventHandler(this.pbFirstImage_Click);
+            this.pbFirstImage.DoubleClick += new System.EventHandler(this.pbFirstImage_DoubleClick);
             // 
             // PostBox
             // 

@@ -18,7 +18,7 @@ namespace prjGroupB.Views
     {
         private CPost _post;
         public event DselectPost DselectUserPost;
-        
+        public event DselectPost DdoubliClickPost;
         public PostBox()
         {
             InitializeComponent();
@@ -64,6 +64,12 @@ namespace prjGroupB.Views
         {
             if (DselectUserPost != null)
                 DselectUserPost(post);
+        }
+
+        private void pbFirstImage_DoubleClick(object sender, EventArgs e)
+        {
+            if(DdoubliClickPost != null)
+                DdoubliClickPost(post);
         }
     }
 }
