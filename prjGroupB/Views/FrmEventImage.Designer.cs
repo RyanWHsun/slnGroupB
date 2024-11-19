@@ -107,6 +107,7 @@
             this.Controls.Add(this.label2);
             this.Name = "FrmEventImage";
             this.Text = "FrmImage";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);

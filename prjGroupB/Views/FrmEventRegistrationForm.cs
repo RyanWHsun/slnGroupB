@@ -20,47 +20,34 @@ namespace prjGroupB.Views
         public FrmEventRegistrationForm()
         {
             InitializeComponent();
-            //MessageBox.Show($"收到的 UserId: {userId}");
-            //_currentUserId = userId;
         }
-
-        //public FrmEventRegistrationForm()
-        //{
-        //    InitializeComponent();
-        //    _currentUserId = -1; // 設置預設值，例如 -1 表示未登入
-        //}
 
         private void FrmEventRegistrationFormList_Load(object sender, EventArgs e)
         {
-            int userId = 8;
-            //int event
-            // 從資料庫取得活動資訊
+            int userId = CUserSession.fUserId;
 
-            try
+            if (userId > 0)
             {
-                // 從資料庫取得會員資訊
                 CUser currentUser = GetMemberInfo(userId);
 
-                // 驗證使用者資訊是否存在
                 if (currentUser != null)
                 {
-                    textBox2.Text = currentUser.fUserId.ToString();
-                    txtMemberName.Text = currentUser.fUserName;       // 姓名
+                    textBox2.Text = currentUser.fUserId.ToString();       // 會員 ID
+                    txtMemberName.Text = currentUser.fUserName;           // 姓名
                     txtMemberPhone.Text = currentUser.fUserPhone.ToString(); // 電話
-                    txtMemberEmail.Text = currentUser.fUserEmail;       // Email
+                    txtMemberEmail.Text = currentUser.fUserEmail;         // Email
                 }
                 else
                 {
-                    MessageBox.Show("無法載入會員資料，請確認會員是否存在！");
+                    MessageBox.Show("無法載入會員資訊！");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("載入會員資料時發生錯誤：" + ex.Message);
+                MessageBox.Show("尚未登入會員！");
+                this.Close();
             }
-
-            txtEventName.TextChanged += txtEventName_TextChanged_1;
-        }// 綁定 TextChanged 事件
+        }
 
         private void LoadEventDetails(string partialEventName)
         {
@@ -110,7 +97,7 @@ namespace prjGroupB.Views
         {
             CUser user = null;
             string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
-            string query = "SELECT fUserId, fUserName,fUserPhone,fUserEmail FROM tUser WHERE fUserId = @UserId";
+            string query = "SELECT fUserId, fUserName, fUserPhone, fUserEmail FROM tUser WHERE fUserId = @UserId";
 
             try
             {
@@ -125,12 +112,11 @@ namespace prjGroupB.Views
                         {
                             if (reader.Read())
                             {
-                                // 將讀取的資料填充到 CUser 物件中
                                 user = new CUser
                                 {
                                     fUserId = reader.GetInt32(0),
                                     fUserName = reader.GetString(1),
-                                    fUserPhone = reader.IsDBNull(2) ? 0 : reader.GetInt32(2), // 處理 NULL
+                                    fUserPhone = reader.IsDBNull(2) ? 0 : reader.GetInt32(2),
                                     fUserEmail = reader.IsDBNull(3) ? string.Empty : reader.GetString(3)
                                 };
                             }
@@ -154,13 +140,6 @@ namespace prjGroupB.Views
             string eventPhone = txtEventPhone.Text;
             int eventRegistrationCount = int.Parse(txtRegistrationCount.Text);
             string registrationDate = DateTime.Now.ToString("yyyy-MM-dd"); // 當前日期轉為字串
-
-            // 檢查日期格式
-            //if (!IsValidDate(txtEventStartDate.Text) || !IsValidDate(txtEventEndDate.Text))
-            //{
-            //    MessageBox.Show("請輸入有效的日期格式（yyyy-MM-dd）！");
-            //    return;
-            //}
 
             string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
             string query = "INSERT INTO tEventRegistrationForm (fEventId,fUserId, fEventRegistrationCount, fEventContact, fEventContactPhone, fEregistrationDate) " +

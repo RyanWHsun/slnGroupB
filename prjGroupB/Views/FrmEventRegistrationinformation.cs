@@ -154,10 +154,5 @@ namespace prjGroupB.Views
                 MessageBox.Show("搜尋時發生錯誤：" + ex.Message);
             }
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

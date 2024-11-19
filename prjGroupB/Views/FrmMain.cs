@@ -111,8 +111,8 @@ namespace prjGroupB
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            FrmEventRegistrationForm f = new FrmEventRegistrationForm();
-            f.Show();
+            FrmEventRegistrationForm registrationForm = new FrmEventRegistrationForm();
+            registrationForm.ShowDialog();
         }
     }
 }

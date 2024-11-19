@@ -112,6 +112,7 @@
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.toolStripTextBox1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 27);
@@ -153,6 +154,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "FrmEventsList";
             this.Text = "FrmtEventsList";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmEventsList_FormClosed);
             this.Load += new System.EventHandler(this.FrmEventsList_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmEventsList_Paint);

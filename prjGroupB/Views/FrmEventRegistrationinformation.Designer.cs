@@ -115,7 +115,6 @@
             this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "關鍵字：";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // FrmEventRegistrationinformation
             // 
@@ -128,6 +127,7 @@
             this.Controls.Add(this.label2);
             this.Name = "FrmEventRegistrationinformation";
             this.Text = "FrmEventRegistrationinformation";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmEventRegistrationinformation_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

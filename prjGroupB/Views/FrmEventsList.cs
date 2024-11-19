@@ -58,11 +58,13 @@ namespace prjGroupB.Views
             sql += " OR fEventLocation LIKE @K_KEYWORD";
 
             displayEventsBySql(sql, true);
+            LoadEvents();
         }
 
         private void FrmEventsList_Load(object sender, EventArgs e)
 
         {
+            LoadEvents();
             displayEventsBySql("SELECT * FROM tEvents ", false);
             DataTable dt = _ds.Tables[0];
             if (dt != null)
@@ -94,17 +96,26 @@ namespace prjGroupB.Views
 
         private void LoadEvents()
         {
+            string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
             string query = "SELECT * FROM tEvents";
-            using (var conn = new SqlConnection(@"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;"))
+
+            using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 _da = new SqlDataAdapter(query, conn);
-                SqlCommandBuilder builder = new SqlCommandBuilder(_da); // 確保支持 Insert/Update/Delete 操作
+                SqlCommandBuilder builder = new SqlCommandBuilder(_da);
+                _da.UpdateCommand = builder.GetUpdateCommand();
+
+                // 確保自動生成的 UpdateCommand 是正確的
+                _da.UpdateCommand = builder.GetUpdateCommand();
+                _da.InsertCommand = builder.GetInsertCommand();
+                _da.DeleteCommand = builder.GetDeleteCommand();
 
                 _ds = new DataSet();
                 _da.Fill(_ds, "tEvents");
                 _eventTable = _ds.Tables["tEvents"];
-                dataGridView1.DataSource = _eventTable;// 綁定 DataTable 到 DataGridView
+                _eventTable.PrimaryKey = new DataColumn[] { _eventTable.Columns["fEventId"] };
+                dataGridView1.DataSource = _eventTable; // 綁定 DataTable 到 DataGridView
             }
         }
 
@@ -126,7 +137,14 @@ namespace prjGroupB.Views
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            _position = e.RowIndex;
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {
+                _position = e.RowIndex; // 更新當前選中的行索引
+            }
+            else
+            {
+                _position = -1; // 重設為無效值
+            }
         }
 
         private void FrmEventsList_Paint(object sender, PaintEventArgs e)
@@ -136,13 +154,13 @@ namespace prjGroupB.Views
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            if (_position < 0)
+            if (_position < 0 || _position >= _eventTable.Rows.Count)
             {
-                MessageBox.Show("請選擇要修改的類別項目");
+                MessageBox.Show("請選擇要修改的項目！");
                 return;
             }
 
-            DataRow row = (dataGridView1.DataSource as DataTable).Rows[_position];
+            DataRow row = _eventTable.Rows[_position];
             FrmEventsEditor f = new FrmEventsEditor
             {
                 Event = new CEvents
@@ -150,18 +168,18 @@ namespace prjGroupB.Views
                     fEventId = Convert.ToInt32(row["fEventId"]),
                     fEventName = row["fEventName"].ToString(),
                     fEventDescription = row["fEventDescription"].ToString(),
-                    fEventStartDate = row["fEventStartDate"] == DBNull.Value ? null : row["fEventStartDate"].ToString(),
-                    fEventEndDate = row["fEventEndDate"] == DBNull.Value ? null : row["fEventEndDate"].ToString(),
+                    fEventStartDate = row["fEventStartDate"].ToString(),
+                    fEventEndDate = row["fEventEndDate"].ToString(),
                     fEventLocation = row["fEventLocation"].ToString(),
                     fEventActivityfee = Convert.ToDecimal(row["fEventActivityfee"]),
                     fEventURL = row["fEventURL"].ToString(),
-                    fEventCreatedDate = DateTime.Parse(row["fEventCreatedDate"].ToString()),
-                    fEventUpdatedDate = DateTime.Parse(row["fEventUpdatedDate"].ToString())
+                    fEventCreatedDate = Convert.ToDateTime(row["fEventCreatedDate"]),
+                    fEventUpdatedDate = Convert.ToDateTime(row["fEventUpdatedDate"])
                 }
             };
 
             f.ShowDialog();
-            if (f.IsOk == DialogResult.OK)
+            if (f.IsOk == DialogResult.OK && f.Event != null)
             {
                 row["fEventName"] = f.Event.fEventName;
                 row["fEventDescription"] = f.Event.fEventDescription;
@@ -171,8 +189,23 @@ namespace prjGroupB.Views
                 row["fEventActivityfee"] = f.Event.fEventActivityfee;
                 row["fEventURL"] = f.Event.fEventURL;
                 row["fEventUpdatedDate"] = DateTime.Now;
-                _da.Update(dataGridView1.DataSource as DataTable);
-                MessageBox.Show("活動已成功更新");
+
+                if (row.RowState == DataRowState.Unchanged)
+                {
+                    row.SetModified(); // 確保狀態為修改
+                }
+
+                try
+                {
+                    _da.Update(_eventTable); // 更新資料庫
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"更新資料時發生錯誤：{ex.Message}");
+                }
+
+                LoadEvents(); // 重新載入資料
+                MessageBox.Show("修改成功！");
             }
         }
 
@@ -187,66 +220,67 @@ namespace prjGroupB.Views
                 DataView dv = dt.DefaultView;
                 dv.Sort = "fEventUpdatedDate ASC"; // 或 DESC，如果需要降序
                 dataGridView1.DataSource = dv.ToTable(); // 更新排序後的 DataTable 到 DataGridView
+                LoadEvents();
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_eventTable == null)
-            {
-                MessageBox.Show("資料表未正確初始化，無法執行篩選操作。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (_eventTable == null)
+            //{
+            //    MessageBox.Show("資料表未正確初始化，無法執行篩選操作。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            if (comboBox1.SelectedItem is ComboBoxItem selectedCategory)
-            {
-                SearchEvents(selectedCategory.Id, toolStripTextBox1.Text.Trim());
-            }
-            else
-            {
-                SearchEvents(null, ""); // 清空篩選
-            }
+            //if (comboBox1.SelectedItem is ComboBoxItem selectedCategory)
+            //{
+            //    SearchEvents(selectedCategory.Id, toolStripTextBox1.Text.Trim());
+            //}
+            //else
+            //{
+            //    SearchEvents(null, ""); // 清空篩選
+            //}
         }
 
-        private void SearchEvents(int? categoryId, string keyword)
-        {
-            string query = @"
-        SELECT
-            e.fEventId AS [活動編號],
-            e.fEventName AS [活動名稱],
-            e.fEventDescription AS [活動描述],
-            e.fEventStartDate AS [開始日期],
-            e.fEventEndDate AS [結束日期],
-            e.fEventLocation AS [活動地點],
-            e.fEventCreatedDate AS [創建日期],
-            e.fEventUpdatedDate AS [更新日期],
-            e.fEventActivityFee AS [活動費用],
-            e.fEventURL AS [活動網址],
-            m.fEventCategoryId -- 確保加入此欄位
-        FROM
-            tEvents e
-        LEFT JOIN
-            tEventCategoryMapping m ON e.fEventId = m.fEventId
-        WHERE
-            (@CategoryId IS NULL OR m.fEventCategoryId = @CategoryId)
-            AND (e.fEventName LIKE @Keyword
-                 OR e.fEventDescription LIKE @Keyword
-                 OR e.fEventLocation LIKE @Keyword)";
+        //private void SearchEvents(int? categoryId, string keyword)
+        //{
+        //    string query = @"
+        //SELECT
+        //    e.fEventId AS [活動編號],
+        //    e.fEventName AS [活動名稱],
+        //    e.fEventDescription AS [活動描述],
+        //    e.fEventStartDate AS [開始日期],
+        //    e.fEventEndDate AS [結束日期],
+        //    e.fEventLocation AS [活動地點],
+        //    e.fEventCreatedDate AS [創建日期],
+        //    e.fEventUpdatedDate AS [更新日期],
+        //    e.fEventActivityFee AS [活動費用],
+        //    e.fEventURL AS [活動網址],
+        //    m.fEventCategoryId -- 確保加入此欄位
+        //FROM
+        //    tEvents e
+        //LEFT JOIN
+        //    tEventCategoryMapping m ON e.fEventId = m.fEventId
+        //WHERE
+        //    (@CategoryId IS NULL OR m.fEventCategoryId = @CategoryId)
+        //    AND (e.fEventName LIKE @Keyword
+        //         OR e.fEventDescription LIKE @Keyword
+        //         OR e.fEventLocation LIKE @Keyword)";
 
-            using (var conn = new SqlConnection(@"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;"))
-            using (var cmd = new SqlCommand(query, conn))
-            {
-                conn.Open();
-                cmd.Parameters.AddWithValue("@CategoryId", categoryId.HasValue ? (object)categoryId.Value : DBNull.Value);
-                cmd.Parameters.AddWithValue("@Keyword", $"%{keyword}%");
+        //    using (var conn = new SqlConnection(@"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;"))
+        //    using (var cmd = new SqlCommand(query, conn))
+        //    {
+        //        conn.Open();
+        //        cmd.Parameters.AddWithValue("@CategoryId", categoryId.HasValue ? (object)categoryId.Value : DBNull.Value);
+        //        cmd.Parameters.AddWithValue("@Keyword", $"%{keyword}%");
 
-                var adapter = new SqlDataAdapter(cmd);
-                var table = new DataTable();
-                adapter.Fill(table);
-                _eventTable = table; // 將結果存入 _eventTable
-                dataGridView1.DataSource = _eventTable; // 綁定到 DataGridView
-            }
-        }
+        //        var adapter = new SqlDataAdapter(cmd);
+        //        var table = new DataTable();
+        //        adapter.Fill(table);
+        //        _eventTable = table; // 將結果存入 _eventTable
+        //        dataGridView1.DataSource = _eventTable; // 綁定到 DataGridView
+        //    }
+        //}
 
         private void AdjustColumnWidths()
         {
@@ -260,26 +294,26 @@ namespace prjGroupB.Views
             }
         }
 
-        private void InitializeDataAdapter()
-        {
-            string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
-            string selectQuery = "SELECT * FROM tEvents";
+        //private void InitializeDataAdapter()
+        //{
+        //    string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
+        //    string selectQuery = "SELECT * FROM tEvents";
 
-            SqlConnection connection = new SqlConnection(connectionString);
+        //    SqlConnection connection = new SqlConnection(connectionString);
 
-            // 初始化 SqlDataAdapter
-            _da = new SqlDataAdapter(selectQuery, connection);
+        //    // 初始化 SqlDataAdapter
+        //    _da = new SqlDataAdapter(selectQuery, connection);
 
-            // 自動產生 InsertCommand、UpdateCommand 和 DeleteCommand
-            SqlCommandBuilder commandBuilder = new SqlCommandBuilder(_da);
+        //    // 自動產生 InsertCommand、UpdateCommand 和 DeleteCommand
+        //    SqlCommandBuilder commandBuilder = new SqlCommandBuilder(_da);
 
-            _ds = new DataSet();
-            _da.Fill(_ds, "tEvents");
-            _eventTable = _ds.Tables["tEvents"];
+        //    _ds = new DataSet();
+        //    _da.Fill(_ds, "tEvents");
+        //    _eventTable = _ds.Tables["tEvents"];
 
-            // 設置主鍵（假設 fEventId 是主鍵）
-            _eventTable.PrimaryKey = new DataColumn[] { _eventTable.Columns["fEventId"] };
-        }
+        //    // 設置主鍵（假設 fEventId 是主鍵）
+        //    _eventTable.PrimaryKey = new DataColumn[] { _eventTable.Columns["fEventId"] };
+        //}
 
         private void displayEventsBySql(string sql, bool isKeyword)
         {
@@ -309,8 +343,7 @@ namespace prjGroupB.Views
                 {
                     // 從選中的資料列獲取活動 ID
                     int eventId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["fEventId"].Value);
-
-                    MessageBox.Show($"選中的活動 ID 為：{eventId}");
+                    LoadEvents();
 
                     // 定義刪除的 SQL 語句
                     string deleteImageQuery = "DELETE FROM tEventImage WHERE fEventId = @fEventId"; // 刪除所有關聯的圖片

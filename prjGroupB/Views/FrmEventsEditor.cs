@@ -26,29 +26,43 @@ namespace prjGroupB.Views
             {
                 if (_Events == null)
                     _Events = new CEvents();
+
                 _Events.fEventId = string.IsNullOrEmpty(textBox1.Text) ? 0 : Convert.ToInt32(textBox1.Text);
                 _Events.fEventName = textBox2.Text;
-                _Events.fEventDescription = textBox3.Text;
-                DateTime startDate, endDate;
-                if (DateTime.TryParse(textBox5.Text, out startDate))
-                    _Events.fEventStartDate = startDate.ToString();
-                else
-                    MessageBox.Show("請輸入有效的開始日期");
 
-                if (DateTime.TryParse(textBox6.Text, out endDate))
-                    _Events.fEventEndDate = endDate.ToString();
-                else
+                if (string.IsNullOrWhiteSpace(_Events.fEventName))
+                {
+                    MessageBox.Show("活動名稱不能為空！");
+                    return null; // 阻止提交
+                }
+
+                if (!DateTime.TryParse(textBox5.Text, out DateTime startDate))
+                {
+                    MessageBox.Show("請輸入有效的開始日期");
+                    return null; // 阻止提交
+                }
+                _Events.fEventStartDate = startDate.ToString();
+
+                if (!DateTime.TryParse(textBox6.Text, out DateTime endDate))
+                {
                     MessageBox.Show("請輸入有效的結束日期");
+                    return null; // 阻止提交
+                }
+                _Events.fEventEndDate = endDate.ToString();
+
+                if (!decimal.TryParse(textBox9.Text, out decimal activityFee))
+                {
+                    MessageBox.Show("活動費用必須為數字");
+                    return null; // 阻止提交
+                }
+                _Events.fEventActivityfee = activityFee;
+
+                _Events.fEventDescription = textBox3.Text;
                 _Events.fEventLocation = textBox4.Text;
                 _Events.fEventCreatedDate = DateTime.Now;
                 _Events.fEventUpdatedDate = DateTime.Now;
-                decimal activityFee;
-                if (decimal.TryParse(textBox9.Text, out activityFee))
-                    _Events.fEventActivityfee = activityFee;
-                else
-                    MessageBox.Show("活動費用必須為數字");
-
                 _Events.fEventURL = textBox10.Text;
+
                 return _Events;
             }
             set

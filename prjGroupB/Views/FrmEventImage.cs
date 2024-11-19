@@ -15,7 +15,6 @@ namespace prjGroupB.Views
 {
     public partial class FrmEventImage : Form
     {
-        private CEvents cEvents;
         private CEventImage _selected;
 
         public FrmEventImage()

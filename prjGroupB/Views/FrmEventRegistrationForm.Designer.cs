@@ -85,7 +85,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(302, 57);
+            this.label3.Location = new System.Drawing.Point(364, 57);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 24);
             this.label3.TabIndex = 4;
@@ -105,7 +105,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.Location = new System.Drawing.Point(546, 57);
+            this.label7.Location = new System.Drawing.Point(636, 57);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 24);
             this.label7.TabIndex = 12;
@@ -115,7 +115,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(302, 110);
+            this.label6.Location = new System.Drawing.Point(364, 110);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 24);
             this.label6.TabIndex = 10;
@@ -125,7 +125,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label9.Location = new System.Drawing.Point(556, 110);
+            this.label9.Location = new System.Drawing.Point(646, 110);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(86, 24);
             this.label9.TabIndex = 8;
@@ -145,7 +145,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label13.Location = new System.Drawing.Point(340, 274);
+            this.label13.Location = new System.Drawing.Point(402, 274);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 24);
             this.label13.TabIndex = 8;
@@ -155,7 +155,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(302, 162);
+            this.label5.Location = new System.Drawing.Point(364, 162);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 24);
             this.label5.TabIndex = 8;
@@ -168,7 +168,7 @@
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label10.Location = new System.Drawing.Point(-3, 212);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(801, 2);
+            this.label10.Size = new System.Drawing.Size(954, 2);
             this.label10.TabIndex = 17;
             this.label10.Text = "label10";
             // 
@@ -176,7 +176,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(687, 339);
+            this.button1.Location = new System.Drawing.Point(840, 339);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 39);
             this.button1.TabIndex = 18;
@@ -198,7 +198,7 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(563, 339);
+            this.button2.Location = new System.Drawing.Point(716, 339);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 39);
             this.button2.TabIndex = 18;
@@ -225,7 +225,7 @@
             this.txtMemberName.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtMemberName.Location = new System.Drawing.Point(151, 51);
             this.txtMemberName.Name = "txtMemberName";
-            this.txtMemberName.Size = new System.Drawing.Size(136, 30);
+            this.txtMemberName.Size = new System.Drawing.Size(181, 30);
             this.txtMemberName.TabIndex = 69;
             // 
             // txtMemberPhone
@@ -233,9 +233,9 @@
             this.txtMemberPhone.BackColor = System.Drawing.Color.Silver;
             this.txtMemberPhone.Enabled = false;
             this.txtMemberPhone.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMemberPhone.Location = new System.Drawing.Point(394, 51);
+            this.txtMemberPhone.Location = new System.Drawing.Point(456, 51);
             this.txtMemberPhone.Name = "txtMemberPhone";
-            this.txtMemberPhone.Size = new System.Drawing.Size(136, 30);
+            this.txtMemberPhone.Size = new System.Drawing.Size(174, 30);
             this.txtMemberPhone.TabIndex = 70;
             // 
             // txtMemberEmail
@@ -243,9 +243,9 @@
             this.txtMemberEmail.BackColor = System.Drawing.Color.Silver;
             this.txtMemberEmail.Enabled = false;
             this.txtMemberEmail.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMemberEmail.Location = new System.Drawing.Point(648, 51);
+            this.txtMemberEmail.Location = new System.Drawing.Point(738, 51);
             this.txtMemberEmail.Name = "txtMemberEmail";
-            this.txtMemberEmail.Size = new System.Drawing.Size(136, 30);
+            this.txtMemberEmail.Size = new System.Drawing.Size(183, 30);
             this.txtMemberEmail.TabIndex = 71;
             // 
             // txtEventName
@@ -254,7 +254,7 @@
             this.txtEventName.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtEventName.Location = new System.Drawing.Point(151, 106);
             this.txtEventName.Name = "txtEventName";
-            this.txtEventName.Size = new System.Drawing.Size(136, 30);
+            this.txtEventName.Size = new System.Drawing.Size(181, 30);
             this.txtEventName.TabIndex = 72;
             this.txtEventName.TextChanged += new System.EventHandler(this.txtEventName_TextChanged_1);
             // 
@@ -263,9 +263,9 @@
             this.txtEventStartDate.BackColor = System.Drawing.Color.Silver;
             this.txtEventStartDate.Enabled = false;
             this.txtEventStartDate.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtEventStartDate.Location = new System.Drawing.Point(394, 106);
+            this.txtEventStartDate.Location = new System.Drawing.Point(456, 106);
             this.txtEventStartDate.Name = "txtEventStartDate";
-            this.txtEventStartDate.Size = new System.Drawing.Size(136, 30);
+            this.txtEventStartDate.Size = new System.Drawing.Size(174, 30);
             this.txtEventStartDate.TabIndex = 73;
             // 
             // txtEventEndDate
@@ -273,9 +273,9 @@
             this.txtEventEndDate.BackColor = System.Drawing.Color.Silver;
             this.txtEventEndDate.Enabled = false;
             this.txtEventEndDate.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtEventEndDate.Location = new System.Drawing.Point(648, 106);
+            this.txtEventEndDate.Location = new System.Drawing.Point(738, 106);
             this.txtEventEndDate.Name = "txtEventEndDate";
-            this.txtEventEndDate.Size = new System.Drawing.Size(136, 30);
+            this.txtEventEndDate.Size = new System.Drawing.Size(183, 30);
             this.txtEventEndDate.TabIndex = 74;
             // 
             // txtEventFee
@@ -285,16 +285,16 @@
             this.txtEventFee.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtEventFee.Location = new System.Drawing.Point(151, 156);
             this.txtEventFee.Name = "txtEventFee";
-            this.txtEventFee.Size = new System.Drawing.Size(136, 30);
+            this.txtEventFee.Size = new System.Drawing.Size(181, 30);
             this.txtEventFee.TabIndex = 75;
             // 
             // txtRegistrationCount
             // 
             this.txtRegistrationCount.BackColor = System.Drawing.Color.White;
             this.txtRegistrationCount.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtRegistrationCount.Location = new System.Drawing.Point(394, 159);
+            this.txtRegistrationCount.Location = new System.Drawing.Point(456, 159);
             this.txtRegistrationCount.Name = "txtRegistrationCount";
-            this.txtRegistrationCount.Size = new System.Drawing.Size(136, 30);
+            this.txtRegistrationCount.Size = new System.Drawing.Size(174, 30);
             this.txtRegistrationCount.TabIndex = 76;
             // 
             // txtEventContact
@@ -303,16 +303,16 @@
             this.txtEventContact.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtEventContact.Location = new System.Drawing.Point(151, 268);
             this.txtEventContact.Name = "txtEventContact";
-            this.txtEventContact.Size = new System.Drawing.Size(136, 30);
+            this.txtEventContact.Size = new System.Drawing.Size(181, 30);
             this.txtEventContact.TabIndex = 77;
             // 
             // txtEventPhone
             // 
             this.txtEventPhone.BackColor = System.Drawing.Color.White;
             this.txtEventPhone.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtEventPhone.Location = new System.Drawing.Point(394, 268);
+            this.txtEventPhone.Location = new System.Drawing.Point(456, 268);
             this.txtEventPhone.Name = "txtEventPhone";
-            this.txtEventPhone.Size = new System.Drawing.Size(136, 30);
+            this.txtEventPhone.Size = new System.Drawing.Size(174, 30);
             this.txtEventPhone.TabIndex = 78;
             // 
             // txttime
@@ -320,16 +320,16 @@
             this.txttime.BackColor = System.Drawing.Color.Silver;
             this.txttime.Enabled = false;
             this.txttime.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txttime.Location = new System.Drawing.Point(648, 159);
+            this.txttime.Location = new System.Drawing.Point(738, 159);
             this.txttime.Name = "txttime";
-            this.txttime.Size = new System.Drawing.Size(136, 30);
+            this.txttime.Size = new System.Drawing.Size(183, 30);
             this.txttime.TabIndex = 80;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label14.Location = new System.Drawing.Point(556, 162);
+            this.label14.Location = new System.Drawing.Point(646, 162);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(86, 24);
             this.label14.TabIndex = 79;
@@ -359,7 +359,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 390);
+            this.ClientSize = new System.Drawing.Size(953, 390);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txttime);
@@ -390,8 +390,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmEventRegistrationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEventRegistrationFormList";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmEventRegistrationFormList_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
