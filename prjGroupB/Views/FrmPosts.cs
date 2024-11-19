@@ -25,7 +25,7 @@ namespace prjGroupB.Views
         }
         private void FrmPosts_Load(object sender, EventArgs e)
         {
-            displayRoomBySql("SELECT * FROM tPosts", false);
+            displayRoomBySql("SELECT fPostId, fUserId, fTitle, fContent, fCreatedAt, fUpdatedAt, fIsPublic FROM tPosts", false);
         }
         private void displayRoomBySql(string sql, bool isKeyword)
         {
@@ -133,6 +133,65 @@ namespace prjGroupB.Views
             sql += "fTitle LIKE @K_KEYWORD";
             sql += " OR fContent LIKE @K_KEYWORD";
             displayRoomBySql(sql, true);
+        }
+        private void resetGridStyle()
+        {
+            double totalWidth = dataGridView1.Width - dataGridView1.RowHeadersWidth;
+            dataGridView1.Columns[0].Width = (int)(totalWidth * 0.05);
+            dataGridView1.Columns[1].Width = (int)(totalWidth * 0.05);
+            dataGridView1.Columns[2].Width = (int)(totalWidth * 0.2);
+            dataGridView1.Columns[3].Width = (int)(totalWidth * 0.35);
+            dataGridView1.Columns[4].Width = (int)(totalWidth * 0.15);
+            dataGridView1.Columns[5].Width = (int)(totalWidth * 0.15);
+            dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("微軟正黑體", 14);
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 234, 241);
+
+            dataGridView1.Columns[0].HeaderText = "文章編號";
+            dataGridView1.Columns[1].HeaderText = "作者編號";
+            dataGridView1.Columns[2].HeaderText = "標題";
+            dataGridView1.Columns[3].HeaderText = "內文";
+            dataGridView1.Columns[4].HeaderText = "創建時間";
+            dataGridView1.Columns[5].HeaderText = "修改時間";
+            dataGridView1.Columns[6].HeaderText = "公開";
+            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            int rowCount = dataGridView1.RowCount;
+            if (rowCount == 0)
+                rowCount = 1;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.Height = dataGridView1.Height / rowCount;
+                if (row.Height < 10)
+                    row.Height = 10;
+            }
+            bool isColorChanged = false;
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                isColorChanged = !isColorChanged;
+                r.DefaultCellStyle.Font = new Font("微軟正黑體", 14);
+                r.DefaultCellStyle.BackColor = Color.FromArgb(255, 234, 241);
+                if (isColorChanged)
+                {
+                    r.DefaultCellStyle.BackColor = Color.FromArgb(252, 244, 231);
+                }
+            }        }
+
+        private void FrmPosts_Paint(object sender, PaintEventArgs e)
+        {
+            resetGridStyle();
+        }
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+            {
+                dataGridView1.Rows[e.RowIndex].HeaderCell.Style.BackColor = Color.FromArgb(252, 244, 231);
+            }
+            else
+            {
+                dataGridView1.Rows[e.RowIndex].HeaderCell.Style.BackColor = Color.FromArgb(255, 234, 241);
+            }
         }
     }
 }
