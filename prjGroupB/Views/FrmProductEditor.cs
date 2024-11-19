@@ -52,6 +52,7 @@ namespace prjGroupB.Views
         {
             InitializeComponent();
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
@@ -80,6 +81,7 @@ namespace prjGroupB.Views
             this.isOK = DialogResult.OK;
             Close();
         }
+
         private bool isNumber(string p)
         {
             try
@@ -92,6 +94,7 @@ namespace prjGroupB.Views
                 return false;
             }
         }
+
         private void FrmProductEditor_Load(object sender, EventArgs e)
         {
             DataTable dt= loadProductCategories();            

@@ -8,8 +8,8 @@ namespace prjGroupB.Models
 {
     public class CEventCategoryMapping
     {
+        public int fEventCategoryMappingId { get; set; }
         public int fEventCategoryId { get; set; }
-        // 活動ID
         public int fEventId { get; set; }
     }
 }

@@ -195,6 +195,8 @@
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(141, 35);
             this.btnRegister.Text = "活動報名";
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+
             // 
             // btnLogin
             // 
