@@ -77,7 +77,7 @@ namespace prjGroupB.Views
         private void restGridView()
         {
             // 設置 DataGridView 列的屬性            
-            dgvProductDisplay.Columns["fSellerId"].HeaderText = "賣家ID";
+            dgvProductDisplay.Columns["fSellerId"].HeaderText = "賣家";
             dgvProductDisplay.Columns["fCategoryName"].HeaderText = "類別名稱";
             dgvProductDisplay.Columns["fProductName"].HeaderText = "產品名稱";
             dgvProductDisplay.Columns["fProductDescription"].HeaderText = "產品描述";
@@ -114,8 +114,7 @@ namespace prjGroupB.Views
                     // 設置圖片列的 ImageLayout 為 Zoom
                     imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 }
-            }
-            dgvProductDisplay.Refresh();            
+            }                  
         }
         private void btnQuery_Click(object sender, EventArgs e)
         {
@@ -147,9 +146,17 @@ namespace prjGroupB.Views
             {
                 // 獲取選中的行
                 DataGridViewRow row = dgvProductDisplay.SelectedRows[0];
+                // 獲取 fStock 值
+                int stock = Convert.ToInt32(row.Cells["fStock"].Value);
 
                 if (int.TryParse(txtQty.Text.Trim(), out int qty))
                 {
+                    if (qty > stock)
+                    {
+                        MessageBox.Show($"數量不能超過庫存：{stock}");
+                        txtQty.Text = "1";
+                        return;
+                    }
                     if (qty == 0)
                     {
                         MessageBox.Show("數量不可為0！！\r\n請問是要訂還不要訂？？");
@@ -189,35 +196,7 @@ namespace prjGroupB.Views
         }
 
         private void txtQty_TextChanged(object sender, EventArgs e)
-        {
-            if (dgvProductDisplay.SelectedRows.Count > 0)
-            {
-                // 獲取選中的行
-                DataGridViewRow row = dgvProductDisplay.SelectedRows[0];
-                // 獲取 fStock 值
-                int stock = Convert.ToInt32(row.Cells["fStock"].Value);
-                int qty;
-                // 檢查 txtQty 的值是否有效且不超過 fStock
-                if (int.TryParse(txtQty.Text.Trim(), out qty))
-                {
-                    if (qty > stock)
-                    {
-                        MessageBox.Show($"數量不能超過庫存：{stock}");
-                        txtQty.Text = "1";
-                        return;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("請輸入有效的數量！");
-                    txtQty.Text = "1"; // 默認為 1
-                }
-            }
-            else
-            {
-                MessageBox.Show("請先選擇一行資料！");
-                txtQty.Text = "1"; // 默認為 1
-            }
+        {        
             CalculatePay();
         }
         private void CalculatePay()
@@ -230,10 +209,7 @@ namespace prjGroupB.Views
 
             if (decimal.TryParse(unitPriceText, out unitPrice) && int.TryParse(qtyText, out qty))
             {
-                // 使用 Math.Floor 方法來移除小數點部分，並轉換為整數
-                int unitPriceInt = (int)Math.Floor(unitPrice);
-                int pay = unitPriceInt * qty;
-
+                decimal pay = unitPrice * qty;
                 // 顯示計算結果或進一步處理
                 lblPrice.Text = pay.ToString();
             }

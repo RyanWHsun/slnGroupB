@@ -87,10 +87,8 @@ namespace prjGroupB.Views
             }
         }
         private void FrmProducts_Paint(object sender, PaintEventArgs e)
-        {
-           
-            resetGridStyle();
-            
+        {           
+            resetGridStyle();            
         }
         private void btnCreateProduct_Click(object sender, EventArgs e)
         {
@@ -248,6 +246,11 @@ namespace prjGroupB.Views
             // 重新載入所有資料
             string sql = "SELECT * FROM tProduct";
             displayProductsBySql(sql,false);
+        }
+
+        private void dgvProduct_Sorted(object sender, EventArgs e)
+        {
+            resetGridStyle();
         }
     }
 }

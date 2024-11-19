@@ -198,6 +198,7 @@
             this.txtUnitPrice.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtUnitPrice.Location = new System.Drawing.Point(0, 117);
             this.txtUnitPrice.Name = "txtUnitPrice";
+            this.txtUnitPrice.ReadOnly = true;
             this.txtUnitPrice.Size = new System.Drawing.Size(441, 45);
             this.txtUnitPrice.TabIndex = 8;
             this.txtUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -220,6 +221,7 @@
             this.txtProductName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtProductName.Location = new System.Drawing.Point(0, 36);
             this.txtProductName.Name = "txtProductName";
+            this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(441, 45);
             this.txtProductName.TabIndex = 6;
             this.txtProductName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

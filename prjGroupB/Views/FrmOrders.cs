@@ -40,6 +40,10 @@ namespace prjGroupB.Views
 
             DisplayOrders();
         }
+        private void FrmOrders_Paint(object sender, PaintEventArgs e)
+        {
+            restGridStyle();
+        }
         public DataTable loadOrderStatus() // 讀取資料表的選項並返回 DataTable
         {
             DataTable dt = new DataTable();
@@ -119,16 +123,47 @@ namespace prjGroupB.Views
         }
         private void DisplayOrders(string keyword = "" , int fOrderStatusId = -1) //若是沒有要搜尋就用空字串帶入
         {
-            List<COrder> orderList = GetOrders(keyword , fOrderStatusId);
+            List<COrder> orderList = GetOrders(keyword, fOrderStatusId);
             dgvOrders.DataSource = orderList;
+            restGridStyle();
+        }
 
+        private void restGridStyle()
+        {
             dgvOrders.Columns["fOrderId"].HeaderText = "訂單ID";
+            dgvOrders.Columns["fOrderId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvOrders.Columns["fUserName"].HeaderText = "買家姓名";
+            dgvOrders.Columns["fUserName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvOrders.Columns["fOrderDate"].HeaderText = "訂購日期";
+            dgvOrders.Columns["fOrderDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvOrders.Columns["fShipAddress"].HeaderText = "寄送地址";
-            dgvOrders.Columns["fStatusName"].HeaderText = "訂單狀態";
             dgvOrders.Columns["fOrderStatusId"].HeaderText = "狀態ID";
+            dgvOrders.Columns["fOrderStatusId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvOrders.Columns["fStatusName"].HeaderText = "訂單狀態";
+            dgvOrders.Columns["fStatusName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvOrders.Columns["fTotalAmount"].HeaderText = "訂單金額";
+            dgvOrders.Columns["fTotalAmount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgvOrders.Columns[0].Width = 50;
+            dgvOrders.Columns[1].Width = 100;
+            dgvOrders.Columns[2].Width = 120;
+            dgvOrders.Columns[3].Width = 300;
+            dgvOrders.Columns[4].Width = 400;
+            dgvOrders.Columns[5].Width = 100;
+            dgvOrders.Columns[6].Width = 120;
+
+            bool isColorChanged = false;
+
+            foreach (DataGridViewRow r in dgvOrders.Rows)
+            {
+                isColorChanged = !isColorChanged;
+
+                r.DefaultCellStyle.Font = new Font("微軟正黑體", 12);
+                r.DefaultCellStyle.BackColor = Color.White;
+                r.DefaultCellStyle.SelectionBackColor = Color.OrangeRed;
+                if (isColorChanged)
+                    r.DefaultCellStyle.BackColor = Color.FromArgb(255, 225, 201);
+            }
         }
 
         private void dgvOrders_CurrentCellChanged(object sender, EventArgs e)
@@ -208,7 +243,6 @@ namespace prjGroupB.Views
         {            
             int fOrderStatusId = cmbOrderStatus.ComboBox.SelectedValue != null ? Convert.ToInt32(cmbOrderStatus.ComboBox.SelectedValue) : -1;
             DisplayOrders("", fOrderStatusId);
-
         }
     }
 }

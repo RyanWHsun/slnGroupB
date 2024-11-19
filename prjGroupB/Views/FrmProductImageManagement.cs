@@ -42,7 +42,6 @@ namespace prjGroupB.Views
             get
             {
                 _image.fProductId = Convert.ToInt32(txtProductId.Text);
-                //_productImage.fImage = this._productImage.fImage;
                 return _image;
             }
             set
@@ -124,6 +123,11 @@ namespace prjGroupB.Views
         }
         private void btnSaveImage_Click(object sender, EventArgs e)
         {
+            if (_image.fImage == null) 
+            { 
+                return; 
+            }
+
             DataTable dt = dgvProductPic.DataSource as DataTable;
             DataRow row = dt.NewRow();
             row["fProductId"] = Convert.ToInt32(txtProductId.Text);
@@ -149,5 +153,9 @@ namespace prjGroupB.Views
             _position = e.RowIndex;
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
