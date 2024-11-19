@@ -132,7 +132,7 @@ namespace prjGroupB.Views
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM tPosts WHERE ";
+            string sql = "SELECT fPostId, fUserId, fTitle, fContent, fCreatedAt, fUpdatedAt, fIsPublic FROM tPosts WHERE ";
             sql += "fTitle LIKE @K_KEYWORD";
             sql += " OR fContent LIKE @K_KEYWORD";
             displayRoomBySql(sql, true);
