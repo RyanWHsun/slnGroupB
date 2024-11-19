@@ -15,9 +15,11 @@ using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Image = System.Drawing.Image;
 
-namespace Attractions.Views {
-    public partial class FormAttractionEditor : Form {
-        private string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
+namespace Attractions.Views
+{
+    public partial class FormAttractionEditor : Form
+    {
+        //private string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
         private CAttraction _attraction;
 
         // 圖片
@@ -26,10 +28,13 @@ namespace Attractions.Views {
         //private 
 
         public DialogResult isOk { get; set; }
-        public CAttraction attraction {
+        public CAttraction attraction
+        {
             // 表格上資料填進這個物件
-            get {
-                if (_attraction == null) {
+            get
+            {
+                if (_attraction == null)
+                {
                     _attraction = new CAttraction();
                 }
                 _attraction.fAttractionName = fbAttractionName.fieldValue != null ? fbAttractionName.fieldValue : "";
@@ -58,7 +63,8 @@ namespace Attractions.Views {
                 return _attraction;
             }
             // 物件上資料填進這個表格
-            set {
+            set
+            {
                 _attraction = value;
                 lbId.Text = _attraction.fAttractionId.ToString() != null ? _attraction.fAttractionId.ToString() : "0".ToString();
                 fbAttractionName.fieldValue = _attraction.fAttractionName != null ? _attraction.fAttractionName : "";
@@ -78,14 +84,19 @@ namespace Attractions.Views {
             }
         }
 
-        public CAttractionImage attractionImage {
-            get {
+        public CAttractionImage attractionImage
+        {
+            get
+            {
                 return _attractionImage;
             }
-            set {
+            set
+            {
                 _attractionImage = value;
-                if (_attractionImage.fImage != null) {
-                    try {
+                if (_attractionImage.fImage != null)
+                {
+                    try
+                    {
                         Stream streamImage = new MemoryStream(_attractionImage.fImage[0]);
                         pictureBox1.Image = Bitmap.FromStream(streamImage);
                     }
@@ -94,23 +105,28 @@ namespace Attractions.Views {
             }
         }
 
-        public FormAttractionEditor() {
+        public FormAttractionEditor()
+        {
             InitializeComponent();
         }
 
         // 點擊 Edit 按鈕
-        private void btnEdit_Click(object sender, EventArgs e) {
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
 
-            if (isCorrectInput()) {
+            if (isCorrectInput())
+            {
                 this.isOk = DialogResult.OK;
                 Close();
             }
         }
 
-        private bool isCorrectInput() {
+        private bool isCorrectInput()
+        {
             string errorMessage = "";
 
-            if (string.IsNullOrEmpty(fbAttractionName.fieldValue)) {
+            if (string.IsNullOrEmpty(fbAttractionName.fieldValue))
+            {
                 errorMessage += "景點名稱不可為空\n";
             }
 
@@ -123,7 +139,8 @@ namespace Attractions.Views {
 
             // 09XX-XXX-XXX or 09XXXXXXXX
             string phoneNumberPattern3 = @"^09\d{2}-\d{3}-\d{3}$|^09\d{8}$";
-            if (!Regex.IsMatch(fbPhoneNumber.fieldValue, phoneNumberPattern1) && !Regex.IsMatch(fbPhoneNumber.fieldValue, phoneNumberPattern2) && !Regex.IsMatch(fbPhoneNumber.fieldValue, phoneNumberPattern3)) {
+            if (!Regex.IsMatch(fbPhoneNumber.fieldValue, phoneNumberPattern1) && !Regex.IsMatch(fbPhoneNumber.fieldValue, phoneNumberPattern2) && !Regex.IsMatch(fbPhoneNumber.fieldValue, phoneNumberPattern3))
+            {
                 errorMessage += "電話號碼須符合格式\n";
             }
 
@@ -137,25 +154,31 @@ namespace Attractions.Views {
             if (!isValidLatitude) errorMessage += "緯度輸入錯誤\n";
 
             if (errorMessage == "") return true;
-            else {
+            else
+            {
                 MessageBox.Show(errorMessage);
                 return false;
             }
         }
 
         // 按下"取消"按鈕
-        private void btnCancel_Click(object sender, EventArgs e) {
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
             Close();
         }
 
-        private void FormAttractionEditor_Load(object sender, EventArgs e) {
+        private void FormAttractionEditor_Load(object sender, EventArgs e)
+        {
             getfAttractionCategory();
-            if (_attraction == null) {
+            if (_attraction == null)
+            {
                 _attraction = new CAttraction();
             }
 
-            if (_attraction.fAttractionId != 0) {
-                if (_attraction.fCategoryId == 0) {
+            if (_attraction.fAttractionId != 0)
+            {
+                if (_attraction.fCategoryId == 0)
+                {
                     cbCategoryName.Text = "";
                     return;
                 }
@@ -164,7 +187,8 @@ namespace Attractions.Views {
         }
 
         // 取得最初的 Category ComboBox
-        private void getfAttractionCategory() {
+        private void getfAttractionCategory()
+        {
             string sql = "";
             sql += "SELECT ";
             sql += "fAttractionCategoryId,";
@@ -172,7 +196,9 @@ namespace Attractions.Views {
             sql += "FROM tAttractionCategories;";
 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;";
+            //con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;";
+            con.ConnectionString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
+
             con.Open();
 
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
@@ -195,7 +221,8 @@ namespace Attractions.Views {
         }
 
         // 根據 id 取得 Category
-        private void getfAttractionCategory(int id) {
+        private void getfAttractionCategory(int id)
+        {
             string sql = "";
             sql += "SELECT ";
             sql += "fAttractionCategoryName ";
@@ -203,7 +230,8 @@ namespace Attractions.Views {
             sql += "WHERE fAttractionCategoryId = @Id;";
 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;"; ;
+            //con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;"; ;
+            con.ConnectionString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
             con.Open();
 
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
@@ -221,7 +249,8 @@ namespace Attractions.Views {
         }
 
         // 前一張圖片
-        private void btnPreviousImage_Click(object sender, EventArgs e) {
+        private void btnPreviousImage_Click(object sender, EventArgs e)
+        {
             this._imageIndex--;
             if (this._attractionImage == null || this._attractionImage.fImage == null) return;
             if (this._imageIndex < 0) this._imageIndex = 0;
@@ -229,7 +258,8 @@ namespace Attractions.Views {
         }
 
         // 下一張圖片
-        private void btnNextImage_Click(object sender, EventArgs e) {
+        private void btnNextImage_Click(object sender, EventArgs e)
+        {
             this._imageIndex++;
             if (this._attractionImage == null || this._attractionImage.fImage == null) return;
             if (this._imageIndex >= this._attractionImage.fImage.Count) this._imageIndex -= 1;
@@ -237,7 +267,8 @@ namespace Attractions.Views {
         }
 
         // 雙擊加入圖片
-        private void pictureBox1_DoubleClick(object sender, EventArgs e) {
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
             // 只有 *.png 或 *.jpg 的檔案可以被使用者看到並選取
             openFileDialog1.Filter = "景點照片(*.png)|*.png|景點照片(*.jpg)|*.jpg";
             if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
@@ -253,31 +284,39 @@ namespace Attractions.Views {
         }
 
         // 顯示已儲存的圖片
-        public void showSavedImage(int id, int index) {
+        public void showSavedImage(int id, int index)
+        {
             if (this._attractionImage.fImage != null) this._attractionImage.fImage.Clear();
             // 連線
-            string connectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;";
+            // string connectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;";
+            string connectionString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
 
             // SQL 查詢語句
             string query = "SELECT fImage FROM tAttractionImages WHERE fAttractionId = @id";
 
-            using (SqlConnection connection = new SqlConnection(connectionString)) {
-                using (SqlCommand command = new SqlCommand(query, connection)) {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
                     command.Parameters.AddWithValue("@id", id);
 
                     connection.Open();
 
-                    using (SqlDataReader reader = command.ExecuteReader()) {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
                         if (this._attractionImage.fImage == null)
                             this._attractionImage.fImage = new List<byte[]>();
-                        while (reader.Read()) {
+                        while (reader.Read())
+                        {
                             // 取得圖片資料 
                             this._attractionImage.fImage.Add(reader["fImage"] as byte[]);
                         }
-                        if (this._attractionImage.fImage.Count > 0) {
+                        if (this._attractionImage.fImage.Count > 0)
+                        {
                             // 將二進制資料轉換成圖片
                             if (index < 0) return;
-                            using (MemoryStream ms = new MemoryStream(this._attractionImage.fImage[index])) {
+                            using (MemoryStream ms = new MemoryStream(this._attractionImage.fImage[index]))
+                            {
                                 pictureBox1.Image = Image.FromStream(ms);
                             }
                         }

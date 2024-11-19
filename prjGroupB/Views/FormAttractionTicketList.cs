@@ -10,15 +10,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Attractions.Views {
-    public partial class FormAttractionTicketList : Form {
-        private string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
-        public FormAttractionTicketList() {
+namespace Attractions.Views
+{
+    public partial class FormAttractionTicketList : Form
+    {
+        //private string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
+        public FormAttractionTicketList()
+        {
             InitializeComponent();
         }
 
         // 取得票價資料的 SQL
-        private string getSqlOfAllTicket() {
+        private string getSqlOfAllTicket()
+        {
             string sql = "SELECT ";
             sql += "fAttractionTicketId, ";
             sql += "t.fAttractionId, ";
@@ -33,21 +37,28 @@ namespace Attractions.Views {
             return sql;
         }
 
-        private void FormAttractionTicketList_Load(object sender, EventArgs e) {
+        private void FormAttractionTicketList_Load(object sender, EventArgs e)
+        {
             displayAttractionTicket(getSqlOfAllTicket(), false);
         }
 
-        private void displayAttractionTicket(string sql, bool isKeyWord) {
-            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
-            using (SqlConnection connection = new SqlConnection(connectString)) {
+        private void displayAttractionTicket(string sql, bool isKeyWord)
+        {
+            //string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            string connectString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
+
+            using (SqlConnection connection = new SqlConnection(connectString))
+            {
                 SqlCommand command = new SqlCommand(sql, connection);
 
                 // 防止 SQL Injection
-                if (isKeyWord) {
+                if (isKeyWord)
+                {
                     command.Parameters.Add(new SqlParameter("K_KEYWORD", "%" + (object)toolStripTextBox1.Text.Trim() + "%"));
                 }
 
-                try {
+                try
+                {
                     command.Connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -58,86 +69,107 @@ namespace Attractions.Views {
                     // 將資料綁定到 DataGridView
                     dataGridView1.DataSource = dataTable;
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
 
                 }
             }
         }
 
-        private void tsbInsert_Click(object sender, EventArgs e) {
+        private void tsbInsert_Click(object sender, EventArgs e)
+        {
             FormAttractionTicketEditor f = new FormAttractionTicketEditor();
             f.ShowDialog();
-            if (f.isOk == DialogResult.OK) {
+            if (f.isOk == DialogResult.OK)
+            {
                 (new CAttractionManager()).createAttractionTicket(f.attractionTicket);
                 displayAttractionTicket(getSqlOfAllTicket(), false);
             }
         }
 
-        private void tsbDelete_Click(object sender, EventArgs e) {
+        private void tsbDelete_Click(object sender, EventArgs e)
+        {
             List<int> deleteIndexes = new List<int>();
 
             // 取得所有選取到的 row
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows) {
-                try {
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                try
+                {
                     deleteIndexes.Add((int)row.Cells["fAttractionTicketId"].Value);
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
 
                 }
             }
 
             if (deleteIndexes.Count == 0) return;
 
-            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            //string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            string connectString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
 
             // 刪除的 SQL
             string sql = "DELETE FROM tAttractionTickets WHERE fAttractionTicketId IN (";
-            for (int i = 0; i < deleteIndexes.Count; i++) {
+            for (int i = 0; i < deleteIndexes.Count; i++)
+            {
                 sql += $"@id{i},";
             }
             sql = sql.TrimEnd(',') + ")";
 
-            try {
-                using (SqlConnection connection = new SqlConnection(connectString)) {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectString))
+                {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand(sql, connection)) {
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
                         // 動態添加參數
-                        for (int i = 0; i < deleteIndexes.Count; i++) {
+                        for (int i = 0; i < deleteIndexes.Count; i++)
+                        {
                             command.Parameters.AddWithValue($"@id{i}", deleteIndexes[i]);
                         }
                         command.ExecuteNonQuery();
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
             }
 
             displayAttractionTicket(getSqlOfAllTicket(), false);
         }
 
-        private void tsbEdit_Click(object sender, EventArgs e) {
+        private void tsbEdit_Click(object sender, EventArgs e)
+        {
             showEditView();
         }
 
-        private void showEditView() {
+        private void showEditView()
+        {
             if (dataGridView1.CurrentCell.RowIndex < 0) return;
 
-            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            //string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            string connectString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
+
             string sql = "SELECT * FROM tAttractionTickets WHERE fAttractionTicketId=@K_fAttractionTicketId";
             // 防止 SQL Injection
             SqlParameter fAttractionTicketId = new SqlParameter("K_fAttractionTicketId", dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["fAttractionTicketId"].Value);
 
             CAttractionTicket x = null;
-            try {
-                using (SqlConnection connection = new SqlConnection(connectString)) {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectString))
+                {
                     connection.Open();
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.Add(fAttractionTicketId);
                     command.ExecuteNonQuery();
                     SqlDataReader reader = command.ExecuteReader();
 
-                    if (reader.Read()) {
+                    if (reader.Read())
+                    {
                         x = new CAttractionTicket();
                         x.fAttractionTicketId = (int)reader["fAttractionTicketId"];
                         x.fAttractionId = (int)reader["fAttractionId"];
@@ -148,7 +180,8 @@ namespace Attractions.Views {
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
             }
 
             if (x == null) return;
@@ -157,13 +190,15 @@ namespace Attractions.Views {
             f.attractionTicket = x;
             f.ShowDialog();
 
-            if (f.isOk == DialogResult.OK) {
+            if (f.isOk == DialogResult.OK)
+            {
                 (new CAttractionManager()).updateAttractionTicket(f.attractionTicket);
                 displayAttractionTicket(getSqlOfAllTicket(), false);
             }
         }
 
-        private void tsbSearch_Click(object sender, EventArgs e) {
+        private void tsbSearch_Click(object sender, EventArgs e)
+        {
             string sql = getSqlOfAllTicket();
             sql += " WHERE a.fAttractionName LIKE @K_KEYWORD ";
             sql += "OR fTicketType LIKE @K_KEYWORD ";
@@ -173,7 +208,8 @@ namespace Attractions.Views {
             displayAttractionTicket(sql, true);
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
             showEditView();
         }
     }

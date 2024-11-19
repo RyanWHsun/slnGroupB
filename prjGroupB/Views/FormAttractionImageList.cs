@@ -14,11 +14,14 @@ using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using Image = System.Drawing.Image;
 
-namespace Attractions.Views {
-    public partial class FormAttractionImageList : Form {
-        private string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
+namespace Attractions.Views
+{
+    public partial class FormAttractionImageList : Form
+    {
+        //private string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
         private int _imageIndex = 0;
-        private class CImageData {
+        private class CImageData
+        {
             public int fAttractionImageId { get; set; }
             public int fAttractionId { get; set; }
             public string fAttractionName { get; set; }
@@ -26,10 +29,12 @@ namespace Attractions.Views {
             public byte[] fImage { get; set; }
         }
         private List<CImageData> _imageDataList;
-        public FormAttractionImageList() {
+        public FormAttractionImageList()
+        {
             InitializeComponent();
         }
-        private string getSqlOfAllImage() {
+        private string getSqlOfAllImage()
+        {
             string sql = "SELECT ";
             sql += "fAttractionImageId, ";
             sql += "i.fAttractionId, ";
@@ -41,21 +46,28 @@ namespace Attractions.Views {
             sql += "ON i.fAttractionId = a.fAttractionId";
             return sql;
         }
-        private void FormAttractionImageList_Load(object sender, EventArgs e) {
+        private void FormAttractionImageList_Load(object sender, EventArgs e)
+        {
             displayAttractionImage(getSqlOfAllImage(), false);
         }
 
-        private void displayAttractionImage(string sql, bool isKeyWord) {
-            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
-            using (SqlConnection connection = new SqlConnection(connectString)) {
+        private void displayAttractionImage(string sql, bool isKeyWord)
+        {
+            //string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            string connectString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
+
+            using (SqlConnection connection = new SqlConnection(connectString))
+            {
                 SqlCommand command = new SqlCommand(sql, connection);
 
                 // 防止 SQL Injection
-                if (isKeyWord) {
+                if (isKeyWord)
+                {
                     command.Parameters.Add(new SqlParameter("K_KEYWORD", "%" + (object)toolStripTextBox1.Text.Trim() + "%"));
                 }
 
-                try {
+                try
+                {
                     command.Connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -66,21 +78,27 @@ namespace Attractions.Views {
                     // 將資料綁定到 DataGridView
                     dataGridView1.DataSource = dataTable;
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
 
                 }
             }
         }
 
-        private void displayAttractionImage(string sql, int id) {
-            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
-            using (SqlConnection connection = new SqlConnection(connectString)) {
+        private void displayAttractionImage(string sql, int id)
+        {
+            //string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            string connectString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
+
+            using (SqlConnection connection = new SqlConnection(connectString))
+            {
                 SqlCommand command = new SqlCommand(sql, connection);
 
                 // 防止 SQL Injection
                 command.Parameters.Add(new SqlParameter("K_KEYWORD", (object)toolStripTextBox1.Text.Trim()));
 
-                try {
+                try
+                {
                     command.Connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -91,135 +109,166 @@ namespace Attractions.Views {
                     // 將資料綁定到 DataGridView
                     dataGridView1.DataSource = dataTable;
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
 
                 }
             }
         }
 
-        private void tsbInsert_Click(object sender, EventArgs e) {
+        private void tsbInsert_Click(object sender, EventArgs e)
+        {
             FormAttractionImageEditor f = new FormAttractionImageEditor();
             f.ShowDialog();
-            if (f.isOk == DialogResult.OK) {
+            if (f.isOk == DialogResult.OK)
+            {
                 (new CAttractionManager()).createAttractionImage(f.attractionImage);
                 displayAttractionImage(getSqlOfAllImage(), false);
             }
         }
 
-        private void tsbDelete_Click(object sender, EventArgs e) {
+        private void tsbDelete_Click(object sender, EventArgs e)
+        {
             List<int> deleteIndexes = new List<int>();
 
             // 取得所有選取到的 row
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows) {
-                try {
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                try
+                {
                     deleteIndexes.Add((int)row.Cells["fAttractionImageId"].Value);
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
 
                 }
             }
 
             if (deleteIndexes.Count == 0) return;
 
-            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            //string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            string connectString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
 
             // 刪除的 SQL
             string sql = "DELETE FROM tAttractionImages WHERE fAttractionImageId IN (";
-            for (int i = 0; i < deleteIndexes.Count; i++) {
+            for (int i = 0; i < deleteIndexes.Count; i++)
+            {
                 sql += $"@id{i},";
             }
             sql = sql.TrimEnd(',') + ")";
 
-            try {
-                using (SqlConnection connection = new SqlConnection(connectString)) {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectString))
+                {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand(sql, connection)) {
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
                         // 動態添加參數
-                        for (int i = 0; i < deleteIndexes.Count; i++) {
+                        for (int i = 0; i < deleteIndexes.Count; i++)
+                        {
                             command.Parameters.AddWithValue($"@id{i}", deleteIndexes[i]);
                         }
                         command.ExecuteNonQuery();
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
             }
 
             displayAttractionImage(getSqlOfAllImage(), false);
         }
 
-        private void tsbEdit_Click(object sender, EventArgs e) {
+        private void tsbEdit_Click(object sender, EventArgs e)
+        {
             showEditView();
         }
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
             showEditView();
         }
-        private void showEditView() {
+        private void showEditView()
+        {
             if (dataGridView1.CurrentCell.RowIndex < 0) return;
 
-            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            //string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            string connectString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
+
             string sql = "SELECT * FROM tAttractionImages WHERE fAttractionImageId=@K_fAttractionImageId";
             // 防止 SQL Injection
             SqlParameter fAttractionTicketId = new SqlParameter("K_fAttractionImageId", dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["fAttractionImageId"].Value);
 
             CAttractionImage x = null;
             FormAttractionImageEditor f = new FormAttractionImageEditor();
-            try {
-                using (SqlConnection connection = new SqlConnection(connectString)) {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectString))
+                {
                     connection.Open();
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.Add(fAttractionTicketId);
                     command.ExecuteNonQuery();
                     SqlDataReader reader = command.ExecuteReader();
 
-                    if (reader.Read()) {
+                    if (reader.Read())
+                    {
                         x = new CAttractionImage();
                         x.fAttractionImageId = (int)reader["fAttractionImageId"];
                         x.fAttractionId = (int)reader["fAttractionId"];
                         f.attractionImage = x;
-                        try {
+                        try
+                        {
                             f.showSavedImage((int)reader["fAttractionImageId"], 0);
                         }
-                        catch {
+                        catch
+                        {
                         }
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
             }
 
             if (x == null) return;
 
             f.ShowDialog();
 
-            if (f.isOk == DialogResult.OK) {
+            if (f.isOk == DialogResult.OK)
+            {
                 (new CAttractionManager()).updateAttractionImage(f.attractionImage);
                 displayAttractionImage(getSqlOfAllImage(), false);
             }
         }
 
-        private void btnPreviousImage_Click(object sender, EventArgs e) {
+        private void btnPreviousImage_Click(object sender, EventArgs e)
+        {
             this._imageIndex--;
             if (_imageDataList == null) return;
             if (this._imageIndex < 0) this._imageIndex = 0;
             if (_imageDataList.Count > 0) showLargeImage(_imageDataList, this._imageIndex);
         }
 
-        private void btnNextImage_Click(object sender, EventArgs e) {
+        private void btnNextImage_Click(object sender, EventArgs e)
+        {
             this._imageIndex++;
             if (_imageDataList == null) return;
             if (this._imageIndex >= this._imageDataList.Count) this._imageIndex -= 1;
             if (_imageDataList.Count > 0) showLargeImage(_imageDataList, this._imageIndex);
         }
 
-        private void tsbSearch_Click(object sender, EventArgs e) {
+        private void tsbSearch_Click(object sender, EventArgs e)
+        {
             string sql = getSqlOfAllImage();
             if (toolStripComboBox1.SelectedItem == null) return;
 
-            switch (toolStripComboBox1.SelectedItem.ToString()) {
+            switch (toolStripComboBox1.SelectedItem.ToString())
+            {
                 case "景點ID":
-                    if (int.TryParse(toolStripTextBox1.Text.Trim(), out int result)) {
+                    if (int.TryParse(toolStripTextBox1.Text.Trim(), out int result))
+                    {
                         sql += " WHERE i.fAttractionId = @K_KEYWORD";
                         displayAttractionImage(sql, result);
                         return;
@@ -238,31 +287,39 @@ namespace Attractions.Views {
             displayAttractionImage(sql, true);
         }
         // 顯示已儲存的圖片
-        public void showSavedImage(int id, int index) {
+        public void showSavedImage(int id, int index)
+        {
             CAttractionImage attractionImage = new CAttractionImage();
             if (attractionImage.fImage != null) attractionImage.fImage.Clear();
             // 連線
-            string connectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;";
+            //string connectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;";
+            string connectionString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
 
             // SQL 查詢語句
             string query = "SELECT fImage FROM tAttractionImages WHERE fAttractionId = @id";
 
-            using (SqlConnection connection = new SqlConnection(connectionString)) {
-                using (SqlCommand command = new SqlCommand(query, connection)) {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
                     command.Parameters.AddWithValue("@id", id);
                     connection.Open();
 
-                    using (SqlDataReader reader = command.ExecuteReader()) {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
                         if (attractionImage.fImage == null)
                             attractionImage.fImage = new List<byte[]>();
-                        while (reader.Read()) {
+                        while (reader.Read())
+                        {
                             // 取得圖片資料 
                             attractionImage.fImage.Add(reader["fImage"] as byte[]);
                         }
-                        if (attractionImage.fImage.Count > 0) {
+                        if (attractionImage.fImage.Count > 0)
+                        {
 
                             // 將二進制資料轉換成圖片
-                            using (MemoryStream ms = new MemoryStream(attractionImage.fImage[index])) {
+                            using (MemoryStream ms = new MemoryStream(attractionImage.fImage[index]))
+                            {
                                 pcbImage.Image = Image.FromStream(ms);
                             }
                         }
@@ -270,10 +327,13 @@ namespace Attractions.Views {
                 }
             }
         }
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
             if (dataGridView1.CurrentCell.RowIndex < 0) return;
 
-            string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            //string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
+            string connectionString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
+
             string sql = getSqlOfAllImage() + " WHERE i.fAttractionId = @K_fAttractionId";
             // 防止 SQL Injection
             SqlParameter fAttractionId = new SqlParameter("K_fAttractionId", dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells["fAttractionId"].Value);
@@ -281,8 +341,10 @@ namespace Attractions.Views {
             //_imageDataList = null;
             _imageDataList = new List<CImageData>();
             FormAttractionImageEditor f = new FormAttractionImageEditor();
-            try {
-                using (SqlConnection connection = new SqlConnection(connectString)) {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
                     connection.Open();
 
                     SqlCommand command = new SqlCommand(sql, connection);
@@ -290,7 +352,8 @@ namespace Attractions.Views {
                     command.ExecuteNonQuery();
                     SqlDataReader reader = command.ExecuteReader();
 
-                    while (reader.Read()) {
+                    while (reader.Read())
+                    {
                         CImageData _imageData = new CImageData();
 
                         _imageData.fAttractionImageId = (int)reader["fAttractionImageId"];
@@ -303,18 +366,21 @@ namespace Attractions.Views {
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
             }
 
             if (_imageDataList.Count > 0) showLargeImage(_imageDataList, 0);
         }
 
-        private void showLargeImage(List<CImageData> imageDataList, int index) {
+        private void showLargeImage(List<CImageData> imageDataList, int index)
+        {
             lbAttractionId.Text = imageDataList[index].fAttractionId.ToString();
             lbAttractionName.Text = imageDataList[index].fAttractionName;
             lbAttractionDescription.Text = imageDataList[index].fDescription;
             // 將二進制資料轉換成圖片
-            using (MemoryStream ms = new MemoryStream(imageDataList[index].fImage)) {
+            using (MemoryStream ms = new MemoryStream(imageDataList[index].fImage))
+            {
                 pcbImage.Image = Image.FromStream(ms);
             }
         }
