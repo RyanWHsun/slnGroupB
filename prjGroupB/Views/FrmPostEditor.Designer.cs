@@ -43,6 +43,10 @@
             this.cmbIsPublic = new System.Windows.Forms.ComboBox();
             this.lblPublic = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnFirst = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnLast = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picPost)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +80,7 @@
             // 
             // cmbCategory
             // 
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(51, 72);
             this.cmbCategory.Name = "cmbCategory";
@@ -85,11 +90,12 @@
             // lblUpdatedName
             // 
             this.lblUpdatedName.AutoSize = true;
-            this.lblUpdatedName.Location = new System.Drawing.Point(13, 493);
+            this.lblUpdatedName.Location = new System.Drawing.Point(13, 496);
             this.lblUpdatedName.Name = "lblUpdatedName";
             this.lblUpdatedName.Size = new System.Drawing.Size(77, 12);
             this.lblUpdatedName.TabIndex = 5;
             this.lblUpdatedName.Text = "最後更新時間";
+            this.lblUpdatedName.Visible = false;
             // 
             // lblUpdated
             // 
@@ -99,6 +105,7 @@
             this.lblUpdated.Size = new System.Drawing.Size(33, 12);
             this.lblUpdated.TabIndex = 6;
             this.lblUpdated.Text = "label1";
+            this.lblUpdated.Visible = false;
             // 
             // btnPost
             // 
@@ -149,6 +156,7 @@
             // 
             // cmbIsPublic
             // 
+            this.cmbIsPublic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIsPublic.FormattingEnabled = true;
             this.cmbIsPublic.Location = new System.Drawing.Point(212, 72);
             this.cmbIsPublic.Name = "cmbIsPublic";
@@ -168,11 +176,55 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // btnFirst
+            // 
+            this.btnFirst.Location = new System.Drawing.Point(51, 260);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(39, 23);
+            this.btnFirst.TabIndex = 14;
+            this.btnFirst.Text = "<<";
+            this.btnFirst.UseVisualStyleBackColor = true;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Location = new System.Drawing.Point(96, 260);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(39, 23);
+            this.btnPrevious.TabIndex = 15;
+            this.btnPrevious.Text = "<";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
+            // btnLast
+            // 
+            this.btnLast.Location = new System.Drawing.Point(232, 260);
+            this.btnLast.Name = "btnLast";
+            this.btnLast.Size = new System.Drawing.Size(39, 23);
+            this.btnLast.TabIndex = 16;
+            this.btnLast.Text = ">>";
+            this.btnLast.UseVisualStyleBackColor = true;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(187, 260);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(39, 23);
+            this.btnNext.TabIndex = 17;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
             // FrmPostEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(324, 517);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnLast);
+            this.Controls.Add(this.btnPrevious);
+            this.Controls.Add(this.btnFirst);
             this.Controls.Add(this.lblPublic);
             this.Controls.Add(this.cmbIsPublic);
             this.Controls.Add(this.btnIsPicture);
@@ -210,5 +262,9 @@
         private System.Windows.Forms.ComboBox cmbIsPublic;
         private System.Windows.Forms.Label lblPublic;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnFirst;
+        private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Button btnLast;
+        private System.Windows.Forms.Button btnNext;
     }
 }

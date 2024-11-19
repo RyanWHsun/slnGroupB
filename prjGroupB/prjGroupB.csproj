@@ -51,11 +51,11 @@
     <Compile Include="Models\CEventImage.cs" />
     <Compile Include="Models\CEventRegistrationForm.cs" />
     <Compile Include="Models\CEvents.cs" />
+    <Compile Include="Models\CPostPictureManager.cs" />
     <Compile Include="Models\COrder.cs" />
     <Compile Include="Models\COrder1.cs" />
     <Compile Include="Models\COrderManagement.cs" />
     <Compile Include="Models\CProduct.cs" />
-    <Compile Include="Models\CCategory.cs" />
     <Compile Include="Models\CPost.cs" />
     <Compile Include="Models\CPostManager.cs" />
     <Compile Include="Models\CProductDisplay.cs" />
@@ -141,6 +141,12 @@
     <Compile Include="Views\FrmOrders.Designer.cs">
       <DependentUpon>FrmOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmPostCategoryEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmPostCategoryEditor.Designer.cs">
+      <DependentUpon>FrmPostCategoryEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmPlaceOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,12 @@
     </Compile>
     <Compile Include="Views\FrmUserPosts.Designer.cs">
       <DependentUpon>FrmUserPosts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PostBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\PostBox.Designer.cs">
+      <DependentUpon>PostBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\User\CUserManager.cs" />
     <Compile Include="Views\User\FrmChat.cs">
@@ -275,6 +287,9 @@
     <EmbeddedResource Include="Views\FrmOrders.resx">
       <DependentUpon>FrmOrders.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmPostCategoryEditor.resx">
+      <DependentUpon>FrmPostCategoryEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmPlaceOrder.resx">
       <DependentUpon>FrmPlaceOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmUserPosts.resx">
       <DependentUpon>FrmUserPosts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PostBox.resx">
+      <DependentUpon>PostBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\User\userBox.resx">
       <DependentUpon>userBox.cs</DependentUpon>
