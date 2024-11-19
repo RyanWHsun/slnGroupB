@@ -126,5 +126,13 @@ namespace prjGroupB.Views
         {
             _position = e.RowIndex;
         }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            string sql = "SELECT * FROM tPosts WHERE ";
+            sql += "fTitle LIKE @K_KEYWORD";
+            sql += " OR fContent LIKE @K_KEYWORD";
+            displayRoomBySql(sql, true);
+        }
     }
 }

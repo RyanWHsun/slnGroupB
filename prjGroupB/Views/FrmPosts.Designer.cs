@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPosts));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnFind = new System.Windows.Forms.ToolStripButton();
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.btnFind = new System.Windows.Forms.ToolStripButton();
             this.txtKeyword = new System.Windows.Forms.ToolStripTextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStrip1.SuspendLayout();
@@ -52,14 +52,14 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnFind
+            // btnUpdate
             // 
-            this.btnFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnFind.Image = ((System.Drawing.Image)(resources.GetObject("btnFind.Image")));
-            this.btnFind.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(51, 22);
-            this.btnFind.Text = "查詢";
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(51, 22);
+            this.btnUpdate.Text = "修改";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -71,14 +71,15 @@
             this.btnDelete.ToolTipText = "刪除";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnUpdate
+            // btnFind
             // 
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(51, 22);
-            this.btnUpdate.Text = "修改";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnFind.Image = ((System.Drawing.Image)(resources.GetObject("btnFind.Image")));
+            this.btnFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(51, 22);
+            this.btnFind.Text = "查詢";
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // txtKeyword
             // 
