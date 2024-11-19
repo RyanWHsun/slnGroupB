@@ -52,10 +52,10 @@
             // 
             // rtbContent
             // 
-            this.rtbContent.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.rtbContent.Location = new System.Drawing.Point(51, 98);
+            this.rtbContent.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rtbContent.Location = new System.Drawing.Point(72, 109);
             this.rtbContent.Name = "rtbContent";
-            this.rtbContent.Size = new System.Drawing.Size(220, 28);
+            this.rtbContent.Size = new System.Drawing.Size(348, 28);
             this.rtbContent.TabIndex = 1;
             this.rtbContent.Text = "";
             this.rtbContent.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -63,34 +63,35 @@
             // picPost
             // 
             this.picPost.BackColor = System.Drawing.SystemColors.Control;
-            this.picPost.Location = new System.Drawing.Point(51, 132);
+            this.picPost.Location = new System.Drawing.Point(72, 143);
             this.picPost.Name = "picPost";
-            this.picPost.Size = new System.Drawing.Size(220, 122);
+            this.picPost.Size = new System.Drawing.Size(348, 234);
             this.picPost.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picPost.TabIndex = 2;
             this.picPost.TabStop = false;
             // 
             // txtTitle
             // 
-            this.txtTitle.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtTitle.Location = new System.Drawing.Point(51, 39);
+            this.txtTitle.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtTitle.Location = new System.Drawing.Point(72, 39);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(220, 27);
+            this.txtTitle.Size = new System.Drawing.Size(348, 29);
             this.txtTitle.TabIndex = 3;
             // 
             // cmbCategory
             // 
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategory.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(51, 72);
+            this.cmbCategory.Location = new System.Drawing.Point(72, 75);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(121, 20);
+            this.cmbCategory.Size = new System.Drawing.Size(220, 28);
             this.cmbCategory.TabIndex = 4;
             // 
             // lblUpdatedName
             // 
             this.lblUpdatedName.AutoSize = true;
-            this.lblUpdatedName.Location = new System.Drawing.Point(13, 496);
+            this.lblUpdatedName.Location = new System.Drawing.Point(15, 634);
             this.lblUpdatedName.Name = "lblUpdatedName";
             this.lblUpdatedName.Size = new System.Drawing.Size(77, 12);
             this.lblUpdatedName.TabIndex = 5;
@@ -100,7 +101,7 @@
             // lblUpdated
             // 
             this.lblUpdated.AutoSize = true;
-            this.lblUpdated.Location = new System.Drawing.Point(91, 493);
+            this.lblUpdated.Location = new System.Drawing.Point(98, 634);
             this.lblUpdated.Name = "lblUpdated";
             this.lblUpdated.Size = new System.Drawing.Size(33, 12);
             this.lblUpdated.TabIndex = 6;
@@ -109,9 +110,10 @@
             // 
             // btnPost
             // 
-            this.btnPost.Location = new System.Drawing.Point(237, 488);
+            this.btnPost.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnPost.Location = new System.Drawing.Point(403, 612);
             this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(75, 23);
+            this.btnPost.Size = new System.Drawing.Size(58, 31);
             this.btnPost.TabIndex = 7;
             this.btnPost.Text = "發送";
             this.btnPost.UseVisualStyleBackColor = true;
@@ -120,36 +122,39 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(12, 45);
+            this.lblTitle.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblTitle.Location = new System.Drawing.Point(12, 40);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(29, 12);
+            this.lblTitle.Size = new System.Drawing.Size(54, 26);
             this.lblTitle.TabIndex = 8;
             this.lblTitle.Text = "標題";
             // 
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(12, 75);
+            this.lblCategory.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblCategory.Location = new System.Drawing.Point(12, 77);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(29, 12);
+            this.lblCategory.Size = new System.Drawing.Size(54, 26);
             this.lblCategory.TabIndex = 9;
             this.lblCategory.Text = "分類";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 104);
+            this.label1.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(12, 109);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(54, 26);
             this.label1.TabIndex = 10;
             this.label1.Text = "內文";
             // 
             // btnIsPicture
             // 
             this.btnIsPicture.Image = ((System.Drawing.Image)(resources.GetObject("btnIsPicture.Image")));
-            this.btnIsPicture.Location = new System.Drawing.Point(277, 39);
+            this.btnIsPicture.Location = new System.Drawing.Point(426, 39);
             this.btnIsPicture.Name = "btnIsPicture";
-            this.btnIsPicture.Size = new System.Drawing.Size(35, 27);
+            this.btnIsPicture.Size = new System.Drawing.Size(35, 35);
             this.btnIsPicture.TabIndex = 11;
             this.btnIsPicture.UseVisualStyleBackColor = true;
             this.btnIsPicture.Click += new System.EventHandler(this.btnIsPicture_Click);
@@ -157,18 +162,20 @@
             // cmbIsPublic
             // 
             this.cmbIsPublic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIsPublic.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmbIsPublic.FormattingEnabled = true;
-            this.cmbIsPublic.Location = new System.Drawing.Point(212, 72);
+            this.cmbIsPublic.Location = new System.Drawing.Point(361, 75);
             this.cmbIsPublic.Name = "cmbIsPublic";
-            this.cmbIsPublic.Size = new System.Drawing.Size(59, 20);
+            this.cmbIsPublic.Size = new System.Drawing.Size(59, 28);
             this.cmbIsPublic.TabIndex = 12;
             // 
             // lblPublic
             // 
             this.lblPublic.AutoSize = true;
-            this.lblPublic.Location = new System.Drawing.Point(177, 75);
+            this.lblPublic.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblPublic.Location = new System.Drawing.Point(301, 77);
             this.lblPublic.Name = "lblPublic";
-            this.lblPublic.Size = new System.Drawing.Size(29, 12);
+            this.lblPublic.Size = new System.Drawing.Size(54, 26);
             this.lblPublic.TabIndex = 13;
             this.lblPublic.Text = "分享";
             // 
@@ -178,7 +185,7 @@
             // 
             // btnFirst
             // 
-            this.btnFirst.Location = new System.Drawing.Point(51, 260);
+            this.btnFirst.Location = new System.Drawing.Point(82, 383);
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(39, 23);
             this.btnFirst.TabIndex = 14;
@@ -188,7 +195,7 @@
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(96, 260);
+            this.btnPrevious.Location = new System.Drawing.Point(127, 383);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(39, 23);
             this.btnPrevious.TabIndex = 15;
@@ -198,7 +205,7 @@
             // 
             // btnLast
             // 
-            this.btnLast.Location = new System.Drawing.Point(232, 260);
+            this.btnLast.Location = new System.Drawing.Point(371, 383);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(39, 23);
             this.btnLast.TabIndex = 16;
@@ -208,7 +215,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(187, 260);
+            this.btnNext.Location = new System.Drawing.Point(326, 383);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(39, 23);
             this.btnNext.TabIndex = 17;
@@ -220,7 +227,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 517);
+            this.ClientSize = new System.Drawing.Size(473, 655);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnLast);
             this.Controls.Add(this.btnPrevious);
@@ -239,8 +246,8 @@
             this.Controls.Add(this.picPost);
             this.Controls.Add(this.rtbContent);
             this.Name = "FrmPostEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmPostEditor";
-            this.Load += new System.EventHandler(this.FrmPostEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picPost)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

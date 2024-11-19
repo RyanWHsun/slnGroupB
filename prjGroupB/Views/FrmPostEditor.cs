@@ -26,14 +26,10 @@ namespace prjGroupB.Views
             setCmbIsPublic();
             setCmbCategory();
         }
-        private void FrmPostEditor_Load(object sender, EventArgs e)
-        {
-            setRichTextBoxSize();
-        }
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             int lineCount = rtbContent.GetLineFromCharIndex(rtbContent.TextLength) + 1;
-            int maxLines = 5;
+            int maxLines = 7;
             int lineHeight = rtbContent.Font.Height;
             int maxHeight = maxLines * lineHeight + rtbContent.Margin.Top + rtbContent.Margin.Bottom;
             if (lineCount * lineHeight > maxHeight)
@@ -51,16 +47,6 @@ namespace prjGroupB.Views
             btnPrevious.Top = picPost.Bottom + 10;
             btnNext.Top = picPost.Bottom + 10;
             btnLast.Top = picPost.Bottom + 10;
-        }
-        private void setRichTextBoxSize()
-        {
-            Font font = new Font("新細明體", 12);
-            rtbContent.Font = font;
-            string sampleText = "This is a sample text in RichTextBox.";
-            int textWidth = TextRenderer.MeasureText(sampleText, font).Width;
-            rtbContent.Width = textWidth + rtbContent.Margin.Left + rtbContent.Margin.Right;
-            int lineHeight = font.Height;
-            rtbContent.Height = lineHeight + rtbContent.Margin.Top + rtbContent.Margin.Bottom;
         }
         private void btnIsPicture_Click(object sender, EventArgs e)
         {
