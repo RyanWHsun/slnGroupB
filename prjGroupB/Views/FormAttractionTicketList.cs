@@ -212,5 +212,47 @@ namespace Attractions.Views
         {
             showEditView();
         }
+
+        private void resetGridStyle()
+        {
+            dataGridView1.Columns["fAttractionTicketId"].HeaderText = "景點門票ID";
+            dataGridView1.Columns["fAttractionTicketId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fAttractionId"].HeaderText = "景點ID";
+            dataGridView1.Columns["fAttractionId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fAttractionName"].HeaderText = "景點名稱";
+            dataGridView1.Columns["fAttractionName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fTicketType"].HeaderText = "票種";
+            dataGridView1.Columns["fTicketType"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fPrice"].HeaderText = "門票費用";
+            dataGridView1.Columns["fPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fDiscountInformation"].HeaderText = "折扣資訊";
+            dataGridView1.Columns["fDiscountInformation"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fCreatedDate"].HeaderText = "建立時間";
+            dataGridView1.Columns["fCreatedDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            bool isColorChanged = false;
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                isColorChanged = !isColorChanged;
+
+                r.DefaultCellStyle.Font = new Font("微軟正黑體", 12);
+                r.DefaultCellStyle.BackColor = Color.White;
+                r.DefaultCellStyle.SelectionBackColor = Color.MediumSeaGreen;
+
+                if (isColorChanged)
+                {
+                    r.DefaultCellStyle.BackColor = Color.MediumAquamarine;
+                }
+            }
+        }
+
+        private void FormAttractionTicketList_Paint(object sender, PaintEventArgs e)
+        {
+            resetGridStyle();
+        }
+
+        private void dataGridView1_Sorted(object sender, EventArgs e)
+        {
+            resetGridStyle();
+        }
     }
 }

@@ -207,5 +207,45 @@ namespace prjGroupB.Views
         {
             showEditView();
         }
+
+        private void resetGridStyle()
+        {
+            dataGridView1.Columns["fFavoriteId"].HeaderText = "收藏ID";
+            dataGridView1.Columns["fFavoriteId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fUserId"].HeaderText = "使用者ID";
+            dataGridView1.Columns["fUserId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fUserName"].HeaderText = "使用者名稱";
+            dataGridView1.Columns["fUserName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fAttractionId"].HeaderText = "景點ID";
+            dataGridView1.Columns["fAttractionId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fAttractionName"].HeaderText = "景點名稱";
+            dataGridView1.Columns["fAttractionName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fCreatedDate"].HeaderText = "建立時間";
+            dataGridView1.Columns["fCreatedDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            bool isColorChanged = false;
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                isColorChanged = !isColorChanged;
+
+                r.DefaultCellStyle.Font = new Font("微軟正黑體", 12);
+                r.DefaultCellStyle.BackColor = Color.White;
+                r.DefaultCellStyle.SelectionBackColor = Color.MediumSeaGreen;
+
+                if (isColorChanged)
+                {
+                    r.DefaultCellStyle.BackColor = Color.MediumAquamarine;
+                }
+            }
+        }
+
+        private void FormAttractionUserFavoriteList_Paint(object sender, PaintEventArgs e)
+        {
+            resetGridStyle();
+        }
+
+        private void dataGridView1_Sorted(object sender, EventArgs e)
+        {
+            resetGridStyle();
+        }
     }
 }

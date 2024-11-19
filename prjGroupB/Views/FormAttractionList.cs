@@ -131,7 +131,7 @@ namespace Attractions
             con.Close();
 
             dataGridView1.DataSource = _ds.Tables[0];
-            resetGridStyle();
+            //resetGridStyle();
         }
 
         // 按下"新增景點"按鈕
@@ -671,7 +671,7 @@ namespace Attractions
                 MessageBox.Show("ERROR");
             }
 
-            resetGridStyle();
+            //resetGridStyle();
         }
 
         // 雙擊 dataGridView1 欄位，開啟編輯頁面
@@ -814,23 +814,6 @@ namespace Attractions
                 dataGridView1.Columns["fAttractionCategoryName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
-            dataGridView1.Columns[0].Width = 80;
-            dataGridView1.Columns[1].Width = 100;
-            dataGridView1.Columns[2].Width = 300;
-            dataGridView1.Columns[3].Width = 300;
-            dataGridView1.Columns[4].Width = 100;
-            dataGridView1.Columns[5].Width = 100;
-            dataGridView1.Columns[6].Width = 100;
-            dataGridView1.Columns[7].Width = 250;
-            dataGridView1.Columns[8].Width = 170;
-            dataGridView1.Columns[9].Width = 170;
-            dataGridView1.Columns[10].Width = 100;
-            dataGridView1.Columns[11].Width = 70;
-            dataGridView1.Columns[12].Width = 200;
-            dataGridView1.Columns[13].Width = 200;
-            dataGridView1.Columns[14].Width = 170;
-            dataGridView1.Columns[15].Width = 250;
-
             bool isColorChanged = false;
             foreach (DataGridViewRow r in dataGridView1.Rows)
             {
@@ -842,9 +825,19 @@ namespace Attractions
 
                 if (isColorChanged)
                 {
-                    r.DefaultCellStyle.BackColor = Color.Khaki;
+                    r.DefaultCellStyle.BackColor = Color.MediumAquamarine;
                 }
             }
+        }
+
+        private void FormAttractionList_Paint(object sender, PaintEventArgs e)
+        {
+            resetGridStyle();
+        }
+
+        private void dataGridView1_Sorted(object sender, EventArgs e)
+        {
+            resetGridStyle();
         }
     }
 }

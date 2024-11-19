@@ -217,5 +217,47 @@ namespace Attractions.Views
         {
             showEditView();
         }
+
+        private void resetGridStyle()
+        {
+            dataGridView1.Columns["fAttractionRecommendationId"].HeaderText = "推薦ID";
+            dataGridView1.Columns["fAttractionRecommendationId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fAttractionId"].HeaderText = "景點ID";
+            dataGridView1.Columns["fAttractionId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fAttractionName"].HeaderText = "景點名稱";
+            dataGridView1.Columns["fAttractionName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fRecommendationId"].HeaderText = "推薦景點ID";
+            dataGridView1.Columns["fRecommendationId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fRecommendationName"].HeaderText = "推薦景點名稱";
+            dataGridView1.Columns["fRecommendationName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fReason"].HeaderText = "推薦原因";
+            dataGridView1.Columns["fReason"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fCreatedDate"].HeaderText = "建立時間";
+            dataGridView1.Columns["fCreatedDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            bool isColorChanged = false;
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                isColorChanged = !isColorChanged;
+
+                r.DefaultCellStyle.Font = new Font("微軟正黑體", 12);
+                r.DefaultCellStyle.BackColor = Color.White;
+                r.DefaultCellStyle.SelectionBackColor = Color.MediumSeaGreen;
+
+                if (isColorChanged)
+                {
+                    r.DefaultCellStyle.BackColor = Color.MediumAquamarine;
+                }
+            }
+        }
+
+        private void FormAttractionRecommendationList_Paint(object sender, PaintEventArgs e)
+        {
+            resetGridStyle();
+        }
+
+        private void dataGridView1_Sorted(object sender, EventArgs e)
+        {
+            resetGridStyle();
+        }
     }
 }

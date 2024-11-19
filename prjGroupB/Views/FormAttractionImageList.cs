@@ -375,6 +375,7 @@ namespace Attractions.Views
 
         private void showLargeImage(List<CImageData> imageDataList, int index)
         {
+            if (index < 0) return;
             lbAttractionId.Text = imageDataList[index].fAttractionId.ToString();
             lbAttractionName.Text = imageDataList[index].fAttractionName;
             lbAttractionDescription.Text = imageDataList[index].fDescription;
@@ -383,6 +384,44 @@ namespace Attractions.Views
             {
                 pcbImage.Image = Image.FromStream(ms);
             }
+        }
+
+        private void resetGridStyle()
+        {
+            dataGridView1.Columns["fAttractionImageId"].HeaderText = "景點圖片ID";
+            dataGridView1.Columns["fAttractionImageId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fAttractionId"].HeaderText = "景點ID";
+            dataGridView1.Columns["fAttractionId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fAttractionName"].HeaderText = "景點名稱";
+            dataGridView1.Columns["fAttractionName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fDescription"].HeaderText = "描述";
+            dataGridView1.Columns["fDescription"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fImage"].HeaderText = "圖片";
+            dataGridView1.Columns["fImage"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            bool isColorChanged = false;
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                isColorChanged = !isColorChanged;
+
+                r.DefaultCellStyle.Font = new Font("微軟正黑體", 12);
+                r.DefaultCellStyle.BackColor = Color.White;
+                r.DefaultCellStyle.SelectionBackColor = Color.MediumSeaGreen;
+
+                if (isColorChanged)
+                {
+                    r.DefaultCellStyle.BackColor = Color.MediumAquamarine;
+                }
+            }
+        }
+
+        private void FormAttractionImageList_Paint(object sender, PaintEventArgs e)
+        {
+            resetGridStyle();
+        }
+
+        private void dataGridView1_Sorted(object sender, EventArgs e)
+        {
+            resetGridStyle();
         }
     }
 }

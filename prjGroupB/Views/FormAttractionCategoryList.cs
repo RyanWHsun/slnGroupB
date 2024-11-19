@@ -237,5 +237,47 @@ namespace Attractions.Views
         {
             showEditView();
         }
+
+        private void resetGridStyle()
+        {
+            dataGridView1.Columns["fAttractionCategoryId"].HeaderText = "分類ID";
+            dataGridView1.Columns["fAttractionCategoryId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fAttractionCategoryName"].HeaderText = "分類名稱";
+            dataGridView1.Columns["fAttractionCategoryName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["fDescription"].HeaderText = "描述";
+            dataGridView1.Columns["fDescription"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridView1.Columns["fCreateDate"].HeaderText = "建立時間";
+            dataGridView1.Columns["fCreateDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            dataGridView1.Columns[0].Width = 80;
+            dataGridView1.Columns[1].Width = 100;
+            dataGridView1.Columns[2].Width = 300;
+            dataGridView1.Columns[3].Width = 200;
+
+            bool isColorChanged = false;
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                isColorChanged = !isColorChanged;
+
+                r.DefaultCellStyle.Font = new Font("微軟正黑體", 12);
+                r.DefaultCellStyle.BackColor = Color.White;
+                r.DefaultCellStyle.SelectionBackColor = Color.MediumSeaGreen;
+
+                if (isColorChanged)
+                {
+                    r.DefaultCellStyle.BackColor = Color.MediumAquamarine;
+                }
+            }
+        }
+
+        private void FormAttractionCategoryList_Paint(object sender, PaintEventArgs e)
+        {
+            resetGridStyle();
+        }
+
+        private void dataGridView1_Sorted(object sender, EventArgs e)
+        {
+            resetGridStyle();
+        }
     }
 }
