@@ -32,6 +32,7 @@ namespace prjGroupB.Views
         public FrmEventsList()
         {
             InitializeComponent();
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -53,17 +54,29 @@ namespace prjGroupB.Views
 
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM tEvents WHERE ";
-            sql += " fEventName LIKE @K_KEYWORD";
-            sql += " OR fEventLocation LIKE @K_KEYWORD";
+            string keyword = toolStripTextBox1.Text.Trim();
 
-            displayEventsBySql(sql, true);
-            LoadEvents();
+            if (string.IsNullOrEmpty(keyword))
+            {
+                // 如果關鍵字為空，重新載入全部資料
+                displayEventsBySql("SELECT * FROM tEvents", false);
+            }
+            else
+            {
+                // 根據關鍵字搜尋
+                string sql = @"
+            SELECT * FROM tEvents
+            WHERE fEventName LIKE @K_KEYWORD
+            OR fEventLocation LIKE @K_KEYWORD";
+
+                displayEventsBySql(sql, true);
+            }
         }
 
         private void FrmEventsList_Load(object sender, EventArgs e)
 
         {
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             LoadEvents();
             displayEventsBySql("SELECT * FROM tEvents ", false);
             DataTable dt = _ds.Tables[0];
@@ -105,7 +118,7 @@ namespace prjGroupB.Views
                 _da = new SqlDataAdapter(query, conn);
                 SqlCommandBuilder builder = new SqlCommandBuilder(_da);
                 _da.UpdateCommand = new SqlCommand();
-    
+
 
                 // 確保自動生成的 UpdateCommand 是正確的
                 _da.UpdateCommand = builder.GetInsertCommand();
@@ -155,7 +168,7 @@ namespace prjGroupB.Views
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            if (_position < 0 || _position >= _eventTable.Rows.Count)
+            if (_position < 0 )
             {
                 MessageBox.Show("請選擇要修改的項目！");
                 return;
@@ -180,7 +193,7 @@ namespace prjGroupB.Views
             };
 
             f.ShowDialog();
-            if (f.IsOk == DialogResult.OK && f.Event != null)
+            if (f.IsOk == DialogResult.OK )
             {
                 row["fEventName"] = f.Event.fEventName;
                 row["fEventDescription"] = f.Event.fEventDescription;
@@ -191,22 +204,22 @@ namespace prjGroupB.Views
                 row["fEventURL"] = f.Event.fEventURL;
                 row["fEventUpdatedDate"] = DateTime.Now;
 
-                if (row.RowState == DataRowState.Unchanged)
-                {
-                    row.SetModified(); // 確保狀態為修改
-                }
+                //if (row.RowState == DataRowState.Unchanged)
+                //{
+                //    row.SetModified(); // 確保狀態為修改
+                //}
 
-                try
-                {
-                    _da.Update(_eventTable);// 更新資料庫
-                    _eventTable.AcceptChanges();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"更新資料時發生錯誤：{ex.Message}");
-                }
+                //try
+                //{
+                //    _da.Update(_eventTable);// 更新資料庫
+                //    _eventTable.AcceptChanges();
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show($"更新資料時發生錯誤：{ex.Message}");
+                //}
 
-                //LoadEvents(); // 重新載入資料
+                LoadEvents(); // 重新載入資料
                 MessageBox.Show("修改成功！");
             }
         }
@@ -218,11 +231,12 @@ namespace prjGroupB.Views
 
                 if (dt == null) return;
 
-                // 建立 DataView 並按建立時間排序
-                DataView dv = dt.DefaultView;
-                dv.Sort = "fEventUpdatedDate ASC"; // 或 DESC，如果需要降序
-                dataGridView1.DataSource = dv.ToTable(); // 更新排序後的 DataTable 到 DataGridView
-                LoadEvents();
+                // 建立 DataView 並按更新日期排序
+                DataView dv = new DataView(dt);
+                dv.Sort = "fEventStartDate ASC"; // 如果需要降序，改為 DESC
+
+                // 更新排序後的結果到 DataGridView
+                dataGridView1.DataSource = dv.ToTable();
             }
         }
 
@@ -319,22 +333,27 @@ namespace prjGroupB.Views
 
         private void displayEventsBySql(string sql, bool isKeyword)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
-            con.Open();
-            _da = new SqlDataAdapter(sql, con);
-            if (isKeyword)
-                _da.SelectCommand.Parameters.Add(new SqlParameter("K_KEYWORD",
-                    "%" + (object)toolStripTextBox1.Text + "%"));
-            _builder = new SqlCommandBuilder();
-            _builder.DataAdapter = _da;
+            using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;"))
+            {
+                con.Open();
+                _da = new SqlDataAdapter(sql, con);
 
-            _ds = new DataSet();
-            _da.Fill(_ds);
-            con.Close();
-            dataGridView1.DataSource = _ds.Tables[0];
+                if (isKeyword)
+                {
+                    // 使用參數化查詢避免 SQL Injection
+                    _da.SelectCommand.Parameters.Add(new SqlParameter("@K_KEYWORD", "%" + toolStripTextBox1.Text.Trim() + "%"));
+                }
 
-            AdjustColumnWidths();
+                _builder = new SqlCommandBuilder(_da);
+                _builder.DataAdapter = _da;
+
+                _ds = new DataSet();
+                _da.Fill(_ds);
+
+                // 更新 DataGridView 的資料來源
+                dataGridView1.DataSource = _ds.Tables[0];
+                AdjustColumnWidths();
+            }
         }
 
         private void DeleteEvent()
@@ -345,11 +364,10 @@ namespace prjGroupB.Views
                 {
                     // 從選中的資料列獲取活動 ID
                     int eventId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["fEventId"].Value);
-                    LoadEvents();
 
                     // 定義刪除的 SQL 語句
-                    string deleteImageQuery = "DELETE FROM tEventImage WHERE fEventId = @fEventId"; // 刪除所有關聯的圖片
-                    string deleteEventQuery = "DELETE FROM tEvents WHERE fEventId = @fEventId";    // 刪除活動
+                    string deleteImageQuery = "DELETE FROM tEventImage WHERE fEventId = @fEventId"; // 刪除圖片
+                    string deleteEventQuery = "DELETE FROM tEvents WHERE fEventId = @fEventId"; // 刪除活動
 
                     string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
 
@@ -366,8 +384,6 @@ namespace prjGroupB.Views
                                 using (SqlCommand cmd = new SqlCommand(deleteImageQuery, conn, transaction))
                                 {
                                     cmd.Parameters.AddWithValue("@fEventId", eventId);
-
-                                    // 執行刪除圖片的操作
                                     int imageRowsAffected = cmd.ExecuteNonQuery();
                                     Console.WriteLine($"刪除了 {imageRowsAffected} 行圖片資料");
                                 }
@@ -376,15 +392,13 @@ namespace prjGroupB.Views
                                 using (SqlCommand cmd = new SqlCommand(deleteEventQuery, conn, transaction))
                                 {
                                     cmd.Parameters.AddWithValue("@fEventId", eventId);
-
-                                    // 執行刪除活動的操作
                                     int eventRowsAffected = cmd.ExecuteNonQuery();
                                     Console.WriteLine($"刪除了 {eventRowsAffected} 行活動資料");
                                 }
 
                                 // 提交交易
                                 transaction.Commit();
-                                MessageBox.Show("活動已成功刪除！");
+                                MessageBox.Show("活動及相關圖片已成功刪除！");
                             }
                             catch (Exception ex)
                             {
@@ -408,5 +422,20 @@ namespace prjGroupB.Views
                 MessageBox.Show("請選擇要刪除的活動！");
             }
         }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "fEventStartDate" ||
+                dataGridView1.Columns[e.ColumnIndex].Name == "fEventEndDate")
+            {
+                if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime dateValue))
+                {
+                    // 格式化日期為 "yyyy-MM-dd"
+                    e.Value = dateValue.ToString("yyyy-MM-dd");
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }
+        

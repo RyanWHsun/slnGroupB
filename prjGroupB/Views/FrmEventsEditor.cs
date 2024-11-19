@@ -98,42 +98,33 @@ namespace prjGroupB.Views
             if (string.IsNullOrEmpty(textBox10.Text))
                 message += "\r\n網址不可空白";
 
-            decimal fee;
-            if (!decimal.TryParse(textBox9.Text, out fee))
+            if (!decimal.TryParse(textBox9.Text, out decimal fee))
                 message += "\r\n費用必須為數字";
 
             if (!string.IsNullOrEmpty(message))
             {
-                MessageBox.Show(message);
+                MessageBox.Show(message, "輸入錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 從表單中取出資料
+            // 更新 Event 和 Image 資料
             CEvents eventData = Event;
             CEventImage imageData = Image;
 
-            // 如果沒有選擇圖片，設置 imageData.fEventImage 為 null
-            if (pictureBox1.Image == null)
+            try
             {
-                imageData.fEventImage = null;
+                // 儲存資料
+                SaveEventWithImage(eventData, imageData);
+
+                // 更新成功
+                this.IsOk = DialogResult.OK;
+                Close();
             }
-
-            // 儲存活動與圖片
-            SaveEventWithImage(eventData, imageData);
-
-            this.IsOk = DialogResult.OK;
-            Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"儲存時發生錯誤：{ex.Message}", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-        //private bool IsNumber(string p)
-        //{
-        //    try
-        //    {
-        //        double d = Convert.ToDouble(p);
-        //        return  true;
-        //    }
-        //    catch { return false; }
-        //}
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -205,41 +196,86 @@ namespace prjGroupB.Views
                 {
                     try
                     {
-                        // Step 1: 插入活動資訊到 tEvents
-                        string insertEventQuery = @"
-                INSERT INTO tEvents
-                    (fEventName, fEventDescription, fEventStartDate, fEventEndDate,
-                     fEventLocation, fEventCreatedDate, fEventUpdatedDate, fEventActivityfee, fEventURL)
-                VALUES
-                    (@fEventName, @fEventDescription, @fEventStartDate, @fEventEndDate,
-                     @fEventLocation, @fEventCreatedDate, @fEventUpdatedDate, @fEventActivityfee, @fEventURL);
-                SELECT CAST(SCOPE_IDENTITY() AS INT);";
-
-                        using (SqlCommand cmd = new SqlCommand(insertEventQuery, conn, transaction))
+                        if (eventData.fEventId > 0) // 判斷是否有 fEventId，若有則進行更新
                         {
-                            cmd.Parameters.AddWithValue("@fEventName", eventData.fEventName);
-                            cmd.Parameters.AddWithValue("@fEventDescription", eventData.fEventDescription);
-                            cmd.Parameters.AddWithValue("@fEventStartDate", eventData.fEventStartDate);
-                            cmd.Parameters.AddWithValue("@fEventEndDate", eventData.fEventEndDate);
-                            cmd.Parameters.AddWithValue("@fEventLocation", eventData.fEventLocation);
-                            cmd.Parameters.AddWithValue("@fEventCreatedDate", eventData.fEventCreatedDate);
-                            cmd.Parameters.AddWithValue("@fEventUpdatedDate", eventData.fEventUpdatedDate);
-                            cmd.Parameters.AddWithValue("@fEventActivityfee", eventData.fEventActivityfee);
-                            cmd.Parameters.AddWithValue("@fEventURL", eventData.fEventURL);
+                            // Step 1: 更新活動資訊到 tEvents
+                            string updateEventQuery = @"
+                        UPDATE tEvents
+                        SET 
+                            fEventName = @fEventName,
+                            fEventDescription = @fEventDescription,
+                            fEventStartDate = @fEventStartDate,
+                            fEventEndDate = @fEventEndDate,
+                            fEventLocation = @fEventLocation,
+                            fEventCreatedDate = @fEventCreatedDate,
+                            fEventUpdatedDate = @fEventUpdatedDate,
+                            fEventActivityfee = @fEventActivityfee,
+                            fEventURL = @fEventURL
+                        WHERE 
+                            fEventId = @fEventId;";
 
-                            // 執行插入並取得 fEventId
-                            int eventId = (int)cmd.ExecuteScalar();
-                            imageData.fEventId = eventId; // 將取得的 fEventId 賦值給圖片資料
+                            using (SqlCommand cmd = new SqlCommand(updateEventQuery, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@fEventId", eventData.fEventId);
+                                cmd.Parameters.AddWithValue("@fEventName", eventData.fEventName);
+                                cmd.Parameters.AddWithValue("@fEventDescription", eventData.fEventDescription ?? (object)DBNull.Value);
+                                cmd.Parameters.AddWithValue("@fEventStartDate", eventData.fEventStartDate ?? (object)DBNull.Value);
+                                cmd.Parameters.AddWithValue("@fEventEndDate", eventData.fEventEndDate ?? (object)DBNull.Value);
+                                cmd.Parameters.AddWithValue("@fEventLocation", eventData.fEventLocation);
+                                cmd.Parameters.AddWithValue("@fEventCreatedDate", eventData.fEventCreatedDate);
+                                cmd.Parameters.AddWithValue("@fEventUpdatedDate", eventData.fEventUpdatedDate);
+                                cmd.Parameters.AddWithValue("@fEventActivityfee", eventData.fEventActivityfee);
+                                cmd.Parameters.AddWithValue("@fEventURL", eventData.fEventURL ?? (object)DBNull.Value);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else
+                        {
+                            // Step 2: 新增活動資訊到 tEvents
+                            string insertEventQuery = @"
+                        INSERT INTO tEvents
+                            (fEventName, fEventDescription, fEventStartDate, fEventEndDate,
+                             fEventLocation, fEventCreatedDate, fEventUpdatedDate, fEventActivityfee, fEventURL)
+                        VALUES
+                            (@fEventName, @fEventDescription, @fEventStartDate, @fEventEndDate,
+                             @fEventLocation, @fEventCreatedDate, @fEventUpdatedDate, @fEventActivityfee, @fEventURL);
+                        SELECT CAST(SCOPE_IDENTITY() AS INT);";
+
+                            using (SqlCommand cmd = new SqlCommand(insertEventQuery, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@fEventName", eventData.fEventName);
+                                cmd.Parameters.AddWithValue("@fEventDescription", eventData.fEventDescription ?? (object)DBNull.Value);
+                                cmd.Parameters.AddWithValue("@fEventStartDate", eventData.fEventStartDate ?? (object)DBNull.Value);
+                                cmd.Parameters.AddWithValue("@fEventEndDate", eventData.fEventEndDate ?? (object)DBNull.Value);
+                                cmd.Parameters.AddWithValue("@fEventLocation", eventData.fEventLocation);
+                                cmd.Parameters.AddWithValue("@fEventCreatedDate", eventData.fEventCreatedDate);
+                                cmd.Parameters.AddWithValue("@fEventUpdatedDate", eventData.fEventUpdatedDate);
+                                cmd.Parameters.AddWithValue("@fEventActivityfee", eventData.fEventActivityfee);
+                                cmd.Parameters.AddWithValue("@fEventURL", eventData.fEventURL ?? (object)DBNull.Value);
+
+                                int eventId = (int)cmd.ExecuteScalar();
+                                imageData.fEventId = eventId;
+                            }
                         }
 
-                        // Step 2: 插入圖片資訊到 tEventImage（如果圖片存在）
+                        // Step 3: 插入或更新圖片資訊到 tEventImage（如果圖片存在）
                         if (imageData.fEventImage != null)
                         {
-                            string insertImageQuery = @"
-                    INSERT INTO tEventImage (fEventId, fEventImage)
-                    VALUES (@fEventId, @fEventImage);";
+                            string upsertImageQuery = @"
+                        IF EXISTS (SELECT 1 FROM tEventImage WHERE fEventId = @fEventId)
+                        BEGIN
+                            UPDATE tEventImage
+                            SET fEventImage = @fEventImage
+                            WHERE fEventId = @fEventId;
+                        END
+                        ELSE
+                        BEGIN
+                            INSERT INTO tEventImage (fEventId, fEventImage)
+                            VALUES (@fEventId, @fEventImage);
+                        END";
 
-                            using (SqlCommand cmd = new SqlCommand(insertImageQuery, conn, transaction))
+                            using (SqlCommand cmd = new SqlCommand(upsertImageQuery, conn, transaction))
                             {
                                 cmd.Parameters.AddWithValue("@fEventId", imageData.fEventId);
                                 cmd.Parameters.AddWithValue("@fEventImage", imageData.fEventImage);
