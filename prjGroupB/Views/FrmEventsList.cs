@@ -17,7 +17,7 @@ namespace prjGroupB.Views
     {
         private SqlDataAdapter _da;
         private DataSet _ds = null;
-        private DataTable _eventTable = null;
+        private DataTable _eventTable;
         private SqlCommandBuilder _builder;
         private int _position = -1;
 
@@ -104,10 +104,11 @@ namespace prjGroupB.Views
                 conn.Open();
                 _da = new SqlDataAdapter(query, conn);
                 SqlCommandBuilder builder = new SqlCommandBuilder(_da);
-                _da.UpdateCommand = builder.GetUpdateCommand();
+                _da.UpdateCommand = new SqlCommand();
+    
 
                 // 確保自動生成的 UpdateCommand 是正確的
-                _da.UpdateCommand = builder.GetUpdateCommand();
+                _da.UpdateCommand = builder.GetInsertCommand();
                 _da.InsertCommand = builder.GetInsertCommand();
                 _da.DeleteCommand = builder.GetDeleteCommand();
 
@@ -197,14 +198,15 @@ namespace prjGroupB.Views
 
                 try
                 {
-                    _da.Update(_eventTable); // 更新資料庫
+                    _da.Update(_eventTable);// 更新資料庫
+                    _eventTable.AcceptChanges();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"更新資料時發生錯誤：{ex.Message}");
                 }
 
-                LoadEvents(); // 重新載入資料
+                //LoadEvents(); // 重新載入資料
                 MessageBox.Show("修改成功！");
             }
         }
@@ -382,7 +384,7 @@ namespace prjGroupB.Views
 
                                 // 提交交易
                                 transaction.Commit();
-                                MessageBox.Show("活動及所有相關圖片已成功刪除！");
+                                MessageBox.Show("活動已成功刪除！");
                             }
                             catch (Exception ex)
                             {
