@@ -21,6 +21,8 @@ namespace prjGroupB.Views
         private void FrmEventRegistrationinformation_Load(object sender, EventArgs e)
         {
             LoadRegistrationData();
+            CustomizeDataGridView();
+            CustomizeDataGridViewRowColors();
         }
 
         private void LoadRegistrationData()
@@ -153,6 +155,38 @@ namespace prjGroupB.Views
             {
                 MessageBox.Show("搜尋時發生錯誤：" + ex.Message);
             }
+        }
+
+        private void CustomizeDataGridView()
+        {
+            // 字體設置
+            dataGridView1.Font = new Font("微軟正黑體", 12);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("微軟正黑體", 14, FontStyle.Bold);
+
+            // 自動調整列寬
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dataGridView1.Columns["聯絡人電話"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void CustomizeDataGridViewRowColors()
+        {
+            // 偶數行顏色
+            dataGridView1.RowsDefaultCellStyle.BackColor = Color.FromArgb(255, 234, 241);
+            // 奇數行顏色
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(252, 244, 231);
+
+            // 選中行顏色
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DarkBlue;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+        }
+
+        private void FrmEventRegistrationinformation_Scroll(object sender, ScrollEventArgs e)
+        {
+            CustomizeDataGridView();
+            CustomizeDataGridViewRowColors();
         }
     }
 }
