@@ -29,7 +29,7 @@ namespace prjGroupB.Views.User
                 _user.fUserRankId = Convert.ToInt32(CboxRank.SelectedItem);//下拉式選單(但沒問題
                 _user.fUserName = txtUserName.Text;
                 _user.fUserNickName = txtNickName.Text;
-                _user.fUserSex = CboxUserSex.SelectedItem.ToString();//下拉式選單
+                 _user.fUserSex = (String)CboxUserSex.SelectedItem;//下拉式選單
                 _user.fUserBirthday = DateTime.Parse(dateTimeUserBirthday.Text);//日期選單
                 _user.fUserPhone = Convert.ToInt32(txtUserPhone.Text);
                 _user.fUserEmail = txtUserEmail.Text;

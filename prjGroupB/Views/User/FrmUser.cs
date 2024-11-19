@@ -152,7 +152,7 @@ namespace prjGroupB.Views
             FrmUserEditor f = new FrmUserEditor();
             CUser x = new CUser();
             x.fUserId = Convert.ToInt32(row["fUserId"]);
-            x.fUserRankId = Convert.ToInt32(row["fUserRankId"]);//下拉式選單(但沒問題
+            x.fUserRankId = Convert.ToInt32(row["fUserRankId"]);
             x.fUserName = (string)row["fUserName"];
             if (row["fUserNickName"] != DBNull.Value)
             {
