@@ -168,7 +168,7 @@ namespace prjGroupB.Views
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            if (_position < 0 )
+            if (_position < 0)
             {
                 MessageBox.Show("請選擇要修改的項目！");
                 return;
@@ -193,7 +193,7 @@ namespace prjGroupB.Views
             };
 
             f.ShowDialog();
-            if (f.IsOk == DialogResult.OK )
+            if (f.IsOk == DialogResult.OK)
             {
                 row["fEventName"] = f.Event.fEventName;
                 row["fEventDescription"] = f.Event.fEventDescription;
@@ -425,14 +425,18 @@ namespace prjGroupB.Views
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "fEventStartDate" ||
-                dataGridView1.Columns[e.ColumnIndex].Name == "fEventEndDate")
+            if (e.ColumnIndex >= 0 && e.ColumnIndex < dataGridView1.Columns.Count)
             {
-                if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime dateValue))
+                // 確保欄位名稱匹配
+                if (dataGridView1.Columns[e.ColumnIndex].Name == "fEventStartDate" ||
+                    dataGridView1.Columns[e.ColumnIndex].Name == "fEventEndDate")
                 {
-                    // 格式化日期為 "yyyy-MM-dd"
-                    e.Value = dateValue.ToString("yyyy-MM-dd");
-                    e.FormattingApplied = true;
+                    if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime dateValue))
+                    {
+                        // 格式化日期為 "yyyy-MM-dd"
+                        e.Value = dateValue.ToString("yyyy-MM-dd");
+                        e.FormattingApplied = true;
+                    }
                 }
             }
         }
