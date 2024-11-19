@@ -130,7 +130,8 @@ namespace prjGroupB.Views.User
 
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {//更改圖片
-            openFileDialog1.Filter = "頭像|*.jpg|頭像|*.png";
+            //openFileDialog1.Filter = "頭像| *.jpg|頭像|  *.png";
+            openFileDialog1.Filter = "頭像| *.jpg; *.jpeg; *.png; *.bmp";
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
             { return; }
             pictureBox1.Image = Bitmap.FromFile(openFileDialog1.FileName);

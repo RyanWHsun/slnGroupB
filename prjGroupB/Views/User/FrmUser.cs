@@ -56,6 +56,10 @@ namespace prjGroupB.Views
         }
         private void dataGridView1_Paint(object sender, PaintEventArgs e)
         {
+            
+        }
+        private void FrmUser_Paint(object sender, PaintEventArgs e)
+        {
             resetGridStyle();
         }
         private void resetGridStyle()
@@ -201,6 +205,6 @@ namespace prjGroupB.Views
             displayUsersbySql(sql, true);
         }
 
-        
+       
     }
 }
