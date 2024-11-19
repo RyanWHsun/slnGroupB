@@ -20,8 +20,6 @@ namespace prjGroupB.Views.User
         public string fUserAddress {  get; set; }
         public DateTime fUserComeDate {  get; set; }
         public string fUserPassword {  get; set; }
-
-
         public bool fUserNotify { get; set; }
         public bool fUserOnLine {  get; set; }
 

@@ -33,7 +33,7 @@ namespace prjGroupB
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            FrmHomePage f = new FrmHomePage();
+            FrmUser f = new FrmUser();
             f.MdiParent = this;
             f.Show();
         }
