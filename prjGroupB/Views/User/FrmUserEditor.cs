@@ -141,7 +141,7 @@ namespace prjGroupB.Views.User
             this.user.fUserImage = reader.ReadBytes((int)imgStram.Length);
 
             reader.Close();
-            imgStram.Close();
+            imgStram.Close(); 
 
 
         }

@@ -150,7 +150,10 @@ namespace prjGroupB.Views
             x.fUserId = Convert.ToInt32(row["fUserId"]);
             x.fUserRankId = Convert.ToInt32(row["fUserRankId"]);//下拉式選單(但沒問題
             x.fUserName = (string)row["fUserName"];
-           // x.fUserNickName = (string)row["fUserNickName"];
+            if (row["fUserNickName"] != DBNull.Value)
+            {
+                x.fUserNickName = (string)row["fUserNickName"];
+            }
             x.fUserSex = (string)row["fUserSex"];//下拉式選單
             x.fUserBirthday = Convert.ToDateTime(row["fUserBirthday"]);//日期選單
             x.fUserPhone = Convert.ToInt32(row["fUserPhone"]);
@@ -170,6 +173,7 @@ namespace prjGroupB.Views
                 row["fUserId"] = f.user.fUserId;
                 row["fUserRankId"] = f.user.fUserRankId;
                 row["fUserName"] = f.user.fUserName;
+                row["fUserNickName"] = f.user.fUserNickName;
                 row["fUserSex"] = f.user.fUserSex;
                 row["fUserBirthday"] = f.user.fUserBirthday;
                 row["fUserPhone"] = f.user.fUserPhone;
@@ -188,6 +192,7 @@ namespace prjGroupB.Views
         {
             string sql = "select * from tUser Where ";
             sql += "fUserName Like @K_Keyword";
+            sql += " or fUserNickName Like @K_Keyword";
             sql += " or fUserRankId Like @K_Keyword";
             sql += " or fUserPhone Like @K_Keyword";
             sql += " or fUserEmail Like @K_Keyword";
