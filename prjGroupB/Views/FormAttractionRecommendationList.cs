@@ -103,7 +103,7 @@ namespace Attractions.Views
                 {
                     deleteIndexes.Add((int)row.Cells["fAttractionRecommendationId"].Value);
                 }
-                catch (Exception ex)
+                catch 
                 {
 
                 }
@@ -139,7 +139,7 @@ namespace Attractions.Views
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
 
@@ -186,7 +186,7 @@ namespace Attractions.Views
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
 

@@ -98,8 +98,8 @@ namespace prjGroupB.Views
                 {
                     deleteIndexes.Add((int)row.Cells["fFavoriteId"].Value);
                 }
-                catch (Exception ex)
-                {
+                catch 
+                { 
 
                 }
             }
@@ -134,7 +134,7 @@ namespace prjGroupB.Views
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
 
@@ -178,7 +178,7 @@ namespace prjGroupB.Views
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
 

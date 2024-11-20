@@ -233,7 +233,7 @@ namespace Attractions
             {
                 return (int)lastRow.Cells[0].Value;
             }
-            catch (Exception e) { return 0; }
+            catch { return 0; }
         }
 
         // 按下"刪除景點"按鈕
@@ -248,7 +248,7 @@ namespace Attractions
                 {
                     deleteIndexes.Add((int)row.Cells["fAttractionId"].Value);
                 }
-                catch (Exception ex)
+                catch 
                 {
 
                 }
@@ -299,7 +299,7 @@ namespace Attractions
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
 
@@ -336,7 +336,7 @@ namespace Attractions
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -371,7 +371,7 @@ namespace Attractions
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -406,7 +406,7 @@ namespace Attractions
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -448,7 +448,7 @@ namespace Attractions
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
 
@@ -469,7 +469,7 @@ namespace Attractions
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -504,7 +504,7 @@ namespace Attractions
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 //MessageBox.Show("ERROR: Can't Set Related Attractions CategeryId Is Null");
             }
@@ -666,7 +666,7 @@ namespace Attractions
                     dataGridView1.DataSource = dataTable;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("ERROR");
             }

@@ -84,7 +84,7 @@ namespace Attractions.Views
                 {
                     deleteIndexes.Add((int)row.Cells["fAttractionCategoryId"].Value);
                 }
-                catch (Exception ex)
+                catch
                 {
 
                 }
@@ -123,7 +123,7 @@ namespace Attractions.Views
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
             }
 
@@ -160,7 +160,7 @@ namespace Attractions.Views
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 //MessageBox.Show("ERROR: Can't Set Related Attractions CategeryId Is Null");
             }
@@ -205,7 +205,7 @@ namespace Attractions.Views
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
 
