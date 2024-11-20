@@ -77,6 +77,7 @@ namespace Attractions.Views
 
                 }
             }
+            resetGridStyle();
         }
 
         private void displayAttractionComment(string sql, int rating)
@@ -108,6 +109,7 @@ namespace Attractions.Views
 
                 }
             }
+            resetGridStyle();
         }
 
         private void tsbInsert_Click(object sender, EventArgs e)

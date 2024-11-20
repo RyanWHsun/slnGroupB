@@ -140,6 +140,7 @@ namespace Attractions.Views
 
                 }
             }
+            resetGridStyle();
         }
 
         // 顯示編輯畫面

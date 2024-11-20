@@ -131,7 +131,7 @@ namespace Attractions
             con.Close();
 
             dataGridView1.DataSource = _ds.Tables[0];
-            //resetGridStyle();
+            resetGridStyle();
         }
 
         // 按下"新增景點"按鈕
@@ -601,7 +601,7 @@ namespace Attractions
                         sql += "OR fOpeningTime < @fOpeningTime ";
                         break;
                     case "後":
-                        sql += "OR fOpeningTime > @fOpeningTime ";
+                        sql += "OR fOpeningTime >= @fOpeningTime ";
                         break;
                     default:
                         break;
@@ -616,7 +616,7 @@ namespace Attractions
                         sql += "OR fClosingTime < @fClosingTime ";
                         break;
                     case "後":
-                        sql += "OR fClosingTime > @fClosingTime ";
+                        sql += "OR fClosingTime >= @fClosingTime ";
                         break;
                     default:
                         break;
@@ -670,7 +670,6 @@ namespace Attractions
             {
                 MessageBox.Show("ERROR");
             }
-
             resetGridStyle();
         }
 

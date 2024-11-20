@@ -74,6 +74,7 @@ namespace Attractions.Views
 
                 }
             }
+            resetGridStyle();
         }
 
         private void tsbInsert_Click(object sender, EventArgs e)

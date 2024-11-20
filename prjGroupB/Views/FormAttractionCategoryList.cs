@@ -58,6 +58,7 @@ namespace Attractions.Views
 
                 }
             }
+            resetGridStyle();
         }
 
         // 點擊"新增"按鈕

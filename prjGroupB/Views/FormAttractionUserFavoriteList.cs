@@ -74,6 +74,7 @@ namespace prjGroupB.Views
 
                 }
             }
+            resetGridStyle();
         }
 
         private void tsbInsert_Click(object sender, EventArgs e)

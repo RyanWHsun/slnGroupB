@@ -83,6 +83,7 @@ namespace Attractions.Views
 
                 }
             }
+            resetGridStyle();
         }
 
         private void displayAttractionImage(string sql, int id)
@@ -114,6 +115,7 @@ namespace Attractions.Views
 
                 }
             }
+            resetGridStyle();
         }
 
         private void tsbInsert_Click(object sender, EventArgs e)
