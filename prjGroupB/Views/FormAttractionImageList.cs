@@ -329,6 +329,11 @@ namespace Attractions.Views
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            pcbImage.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+
             if (dataGridView1.CurrentCell.RowIndex < 0) return;
 
             //string connectString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True";
@@ -398,6 +403,21 @@ namespace Attractions.Views
             dataGridView1.Columns["fDescription"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns["fImage"].HeaderText = "圖片";
             dataGridView1.Columns["fImage"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // 設定 ToolStrip 的背景色
+            toolStrip1.BackColor = Color.FromArgb(240, 255, 240);
+            // 設定 DataGridView 的背景色（整體背景）
+            dataGridView1.BackgroundColor = Color.FromArgb(240, 255, 240);
+
+            // 設定 dataGridVIew 標頭不採用預設樣式
+            dataGridView1.EnableHeadersVisualStyles = false;
+
+            // 設定 dataGridVIew 標頭樣式
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("微軟正黑體", 14, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             bool isColorChanged = false;
             foreach (DataGridViewRow r in dataGridView1.Rows)
             {
@@ -412,6 +432,8 @@ namespace Attractions.Views
                     r.DefaultCellStyle.BackColor = Color.MediumAquamarine;
                 }
             }
+
+            tableLayoutPanel1.BackColor = Color.FromArgb(240, 255, 240);
         }
 
         private void FormAttractionImageList_Paint(object sender, PaintEventArgs e)
