@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace prjGroupB.Models
 {
@@ -23,8 +24,23 @@ namespace prjGroupB.Models
         {
             get 
             {
-                return _listImages[_position]; 
+                if (_listImages.Count == 0)
+                    return null;
+                else
+                    return _listImages[_position]; 
             }
+        }
+        public void removeImage()
+        {
+            if (_listImages.Count <= 0)
+                return;
+            int originPosition = _position;
+            _listImages.RemoveAt(_position);
+            MessageBox.Show("照片已刪除");
+            _position = originPosition -1;
+            if (_position < 0)
+                _position = 0;
+            afterImageMoved();
         }
         public void moveFirst()
         {

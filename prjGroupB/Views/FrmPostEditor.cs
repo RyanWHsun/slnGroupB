@@ -71,6 +71,12 @@ namespace prjGroupB.Views
             reader.Close();
             imgStream.Close();
         }
+        private void picPost_DoubleClick(object sender, EventArgs e)
+        {
+            if(_pictureManager == null)
+                return;
+            _pictureManager.removeImage();
+        }
         private void setCmbIsPublic()
         {
             cmbIsPublic.Items.Add("私人");
@@ -144,6 +150,11 @@ namespace prjGroupB.Views
         }
         private void DisplayPostImage()
         {
+            if (_pictureManager.current == null)
+            {
+                picPost.Image = null;
+                return;
+            }
             Stream s = new MemoryStream(_pictureManager.current);
             picPost.Image = Bitmap.FromStream(s);
         }

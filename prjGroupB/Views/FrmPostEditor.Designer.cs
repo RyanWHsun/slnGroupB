@@ -69,6 +69,7 @@
             this.picPost.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picPost.TabIndex = 2;
             this.picPost.TabStop = false;
+            this.picPost.DoubleClick += new System.EventHandler(this.picPost_DoubleClick);
             // 
             // txtTitle
             // 
