@@ -60,7 +60,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.CboxRank = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -339,7 +339,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.pictureBox1.Location = new System.Drawing.Point(48, 120);
+            this.pictureBox1.Location = new System.Drawing.Point(48, 142);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(284, 260);
@@ -399,6 +399,7 @@
             this.label15.TabIndex = 17;
             this.label15.Text = "Rank";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label15.Visible = false;
             // 
             // label14
             // 
@@ -440,6 +441,7 @@
             this.CboxRank.Name = "CboxRank";
             this.CboxRank.Size = new System.Drawing.Size(581, 41);
             this.CboxRank.TabIndex = 18;
+            this.CboxRank.Visible = false;
             // 
             // label13
             // 
@@ -454,31 +456,30 @@
             this.label13.Text = "*";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label17
+            // label18
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label17.ForeColor = System.Drawing.Color.IndianRed;
-            this.label17.Location = new System.Drawing.Point(365, 25);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(27, 34);
-            this.label17.TabIndex = 20;
-            this.label17.Text = "*";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label18.ForeColor = System.Drawing.Color.IndianRed;
+            this.label18.Location = new System.Drawing.Point(316, 91);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(27, 34);
+            this.label18.TabIndex = 21;
+            this.label18.Text = "*";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmUserEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 844);
-            this.Controls.Add(this.label17);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.CboxRank);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.chkOnLine);
             this.Controls.Add(this.chkNotify);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dateTimeUserBirthday);
             this.Controls.Add(this.CboxUserSex);
             this.Controls.Add(this.label12);
@@ -504,6 +505,7 @@
             this.Controls.Add(this.txtNickName);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.label18);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmUserEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -549,6 +551,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox CboxRank;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }

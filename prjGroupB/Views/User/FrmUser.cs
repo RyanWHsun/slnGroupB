@@ -29,7 +29,7 @@ namespace prjGroupB.Views
         {
             displayUsersbySql("select * from tUser",false);
         }
-        private void displayUsersbySql(string sql,bool isKeyWord)//顯示所有tUser的資料
+        private void displayUsersbySql(string sql,bool isKeyWord)//顯示tUser的資料
         {
             //連到tUser資料夾
             SqlConnection con = new SqlConnection();
@@ -69,12 +69,12 @@ namespace prjGroupB.Views
             dataGridView1.Columns[2].Width = 100;
             dataGridView1.Columns[3].Width = 50;
             dataGridView1.Columns[4].Width = 100;
-            dataGridView1.Columns[5].Width = 50;
-            dataGridView1.Columns[6].Width = 100;
-            dataGridView1.Columns[7].Width = 100;
-            dataGridView1.Columns[8].Width = dataGridView1.Width - 50*6 -100 * 7 - dataGridView1.RowHeadersWidth;
+            dataGridView1.Columns[5].Width = 100;
+            dataGridView1.Columns[6].Width = 120;
+            dataGridView1.Columns[7].Width = 110;
+            dataGridView1.Columns[8].Width = dataGridView1.Width - 50*5 -100 * 5-110-120-130 - dataGridView1.RowHeadersWidth;
             dataGridView1.Columns[9].Width = 100;
-            dataGridView1.Columns[10].Width = 100;
+            dataGridView1.Columns[10].Width = 130;
             dataGridView1.Columns[11].Width = 100;
             dataGridView1.Columns[12].Width = 50;
             dataGridView1.Columns[13].Width = 50;
@@ -105,7 +105,8 @@ namespace prjGroupB.Views
                 DataRow row = dt.NewRow();
 
                 row["fUserId"] = f.user.fUserId;
-                row["fUserRankId"] = f.user.fUserRankId;
+                //row["fUserRankId"] = f.user.fUserRankId;
+                row["fUserRankId"] = 1;
                 row["fUserName"] = f.user.fUserName;
                 row["fUserNickName"] = f.user.fUserNickName;
                 row["fUserSex"] = f.user.fUserSex;
@@ -133,15 +134,16 @@ namespace prjGroupB.Views
             _position = e.RowIndex;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (_position < 0)
-            { return; }
-            DataTable dt = dataGridView1.DataSource as DataTable;
-            DataRow row = dt.Rows[_position];
-            row.Delete();
-            _da.Update(dataGridView1.DataSource as DataTable);
-        }
+        //曾經的刪除用戶
+        //private void btnDelete_Click(object sender, EventArgs e)
+        //{
+        //    if (_position < 0)
+        //    { return; }
+        //    DataTable dt = dataGridView1.DataSource as DataTable;
+        //    DataRow row = dt.Rows[_position];
+        //    row.Delete();
+        //    _da.Update(dataGridView1.DataSource as DataTable);
+        //}
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -152,7 +154,7 @@ namespace prjGroupB.Views
             FrmUserEditor f = new FrmUserEditor();
             CUser x = new CUser();
             x.fUserId = Convert.ToInt32(row["fUserId"]);
-            x.fUserRankId = Convert.ToInt32(row["fUserRankId"]);//下拉式選單(但沒問題
+            //x.fUserRankId = Convert.ToInt32(row["fUserRankId"]);
             x.fUserName = (string)row["fUserName"];
             if (row["fUserNickName"] != DBNull.Value)
             {
@@ -160,7 +162,7 @@ namespace prjGroupB.Views
             }
             x.fUserSex = (string)row["fUserSex"];//下拉式選單
             x.fUserBirthday = Convert.ToDateTime(row["fUserBirthday"]);//日期選單
-            x.fUserPhone = Convert.ToInt32(row["fUserPhone"]);
+            x.fUserPhone = (string)row["fUserPhone"];
             x.fUserEmail = (string)row["fUserEmail"];
             x.fUserAddress = (string)row["fUserAddress"];
             x.fUserPassword = (string)row["fUserPassword"];
@@ -175,7 +177,7 @@ namespace prjGroupB.Views
             if (f._isok == DialogResult.OK)
             {
                 row["fUserId"] = f.user.fUserId;
-                row["fUserRankId"] = f.user.fUserRankId;
+                //row["fUserRankId"] = f.user.fUserRankId;
                 row["fUserName"] = f.user.fUserName;
                 row["fUserNickName"] = f.user.fUserNickName;
                 row["fUserSex"] = f.user.fUserSex;
@@ -205,6 +207,28 @@ namespace prjGroupB.Views
             displayUsersbySql(sql, true);
         }
 
-       
+        private void SetRank1_Click(object sender, EventArgs e)
+        {
+            SetTheRank(1);
+        }
+
+        private void SetRank2_Click(object sender, EventArgs e)
+        {
+            SetTheRank(2);
+        }
+
+        private void SetRank99_Click(object sender, EventArgs e)
+        {
+            SetTheRank(99);
+        }
+
+        private void SetTheRank(int rk)
+        {
+            if (_position < 0)
+            { return; }
+            DataTable dt = dataGridView1.DataSource as DataTable;
+            DataRow row = dt.Rows[_position];
+            row["fUserRankId"] = rk;
+        }
     }
 }
