@@ -671,7 +671,7 @@ namespace Attractions
                 MessageBox.Show("ERROR");
             }
 
-            //resetGridStyle();
+            resetGridStyle();
         }
 
         // 雙擊 dataGridView1 欄位，開啟編輯頁面
