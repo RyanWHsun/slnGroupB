@@ -230,5 +230,11 @@ namespace prjGroupB.Views
             DataRow row = dt.Rows[_position];
             row["fUserRankId"] = rk;
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            _da.Update(dataGridView1.DataSource as DataTable);
+            displayUsersbySql("select * from tUser", false);
+        }
     }
 }
