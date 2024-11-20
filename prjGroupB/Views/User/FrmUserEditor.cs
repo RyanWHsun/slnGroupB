@@ -83,8 +83,10 @@ namespace prjGroupB.Views.User
         private void OKToCreate_Click(object sender, EventArgs e)
         {
             string message = "";
-            if (string.IsNullOrEmpty(CboxRank.Text))
-                message += "\n請選擇該用戶的rank，1:一般用戶 99: 管理員";
+            //if (string.IsNullOrEmpty(CboxRank.Text))
+            //    message += "\n請選擇該用戶的rank，1:一般用戶 99: 管理員";
+            if (string.IsNullOrEmpty(txtUserName.Text))
+                message += "\n真實姓名不可為空";
             if (string.IsNullOrEmpty(CboxUserSex.Text))
                 message += "\n性別不可為空";
             if (string.IsNullOrEmpty(txtUserPhone.Text))
