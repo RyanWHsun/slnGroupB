@@ -176,6 +176,8 @@ namespace prjGroupB.Views
             // 選中行顏色
             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DarkBlue;
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; // 設置文字顏色
+            dataGridView1.EnableHeadersVisualStyles = false; // 確保顏色生效
         }
 
         private void FrmEventCategoriesList_Scroll(object sender, ScrollEventArgs e)

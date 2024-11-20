@@ -139,6 +139,7 @@ namespace prjGroupB.Views
             string eventContact = txtEventContact.Text;
             string eventPhone = txtEventPhone.Text;
             int eventRegistrationCount = int.Parse(txtRegistrationCount.Text);
+            decimal eventFee = decimal.Parse(txtEventFee.Text);
             string registrationDate = DateTime.Now.ToString("yyyy-MM-dd"); // 當前日期轉為字串
 
             string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
@@ -162,7 +163,7 @@ namespace prjGroupB.Views
                         cmd.ExecuteNonQuery();
                     }
                 }
-                MessageBox.Show("報名成功！");
+                MessageBox.Show($"報名成功！總費用為：{eventFee * eventRegistrationCount:C}");
                 this.Close();
             }
             catch (Exception ex)
@@ -193,10 +194,6 @@ namespace prjGroupB.Views
             Close();
         }
 
-        private bool IsValidDate(string dateValue)
-        {
-            if (string.IsNullOrEmpty(dateValue)) return false;
-            return DateTime.TryParseExact(dateValue, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _);
-        }
+        
     }
 }

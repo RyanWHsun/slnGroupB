@@ -70,6 +70,7 @@
     <Compile Include="Models\CProductDisplay.cs" />
     <Compile Include="Models\CProductImage.cs" />
     <Compile Include="Models\CUserSession.cs" />
+    <Compile Include="Views\EventComboboxItem.cs" />
     <Compile Include="Views\EventImageBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -476,9 +477,9 @@
     <EmbeddedResource Include="Views\FrmUserPosts.resx">
       <DependentUpon>FrmUserPosts.cs</DependentUpon>
     </EmbeddedResource>
-	  <EmbeddedResource Include="Views\PostBox.resx">
-		  <DependentUpon>PostBox.cs</DependentUpon>
-	  </EmbeddedResource>
+    <EmbeddedResource Include="Views\PostBox.resx">
+      <DependentUpon>PostBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\User\FrmUserEditor.resx">
       <DependentUpon>FrmUserEditor.cs</DependentUpon>
     </EmbeddedResource>

@@ -78,7 +78,7 @@ namespace Attractions.Views
                     // 將資料綁定到 DataGridView
                     dataGridView1.DataSource = dataTable;
                 }
-                catch (Exception ex)
+                catch
                 {
 
                 }

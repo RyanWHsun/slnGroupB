@@ -44,7 +44,7 @@ namespace Attractions.Views
                 {
                     deleteIndexes.Add((int)row.Cells["fTagId"].Value);
                 }
-                catch (Exception ex)
+                catch 
                 {
 
                 }

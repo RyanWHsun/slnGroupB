@@ -97,7 +97,7 @@ namespace Attractions
                     cbCategoryName.ValueMember = "fAttractionCategoryId";     // 儲存的值
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("ERROR");
             }

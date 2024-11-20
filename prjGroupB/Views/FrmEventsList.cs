@@ -21,13 +21,6 @@ namespace prjGroupB.Views
         private SqlCommandBuilder _builder;
         private int _position = -1;
 
-        public class ComboBoxItem
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-
-            public override string ToString() => Name;
-        }
 
         public FrmEventsList()
         {
@@ -99,12 +92,12 @@ namespace prjGroupB.Views
                 using (var reader = cmd.ExecuteReader())
                 {
                     // 將第一個 ComboBox 項目設置為 "全部"
-                    ComboBoxItem allItem = new ComboBoxItem { Id = -1, Name = "全部" };
+                    EventComboboxItem allItem = new EventComboboxItem { Id = -1, Name = "全部" };
                     comboBox1.Items.Add(allItem);
 
                     while (reader.Read())
                     {
-                        ComboBoxItem item = new ComboBoxItem
+                        EventComboboxItem item = new EventComboboxItem
                         {
                             Id = reader.GetInt32(0),
                             Name = reader.GetString(1)
@@ -199,7 +192,8 @@ namespace prjGroupB.Views
                     fEventActivityfee = Convert.ToDecimal(row["fEventActivityfee"]),
                     fEventURL = row["fEventURL"].ToString(),
                     fEventCreatedDate = Convert.ToDateTime(row["fEventCreatedDate"]),
-                    fEventUpdatedDate = Convert.ToDateTime(row["fEventUpdatedDate"])
+                    fEventUpdatedDate = Convert.ToDateTime(row["fEventUpdatedDate"]),
+
                 }
             };
 
@@ -215,20 +209,7 @@ namespace prjGroupB.Views
                 row["fEventURL"] = f.Event.fEventURL;
                 row["fEventUpdatedDate"] = DateTime.Now;
 
-                //if (row.RowState == DataRowState.Unchanged)
-                //{
-                //    row.SetModified(); // 確保狀態為修改
-                //}
-
-                //try
-                //{
-                //    _da.Update(_eventTable);// 更新資料庫
-                //    _eventTable.AcceptChanges();
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show($"更新資料時發生錯誤：{ex.Message}");
-                //}
+                
 
                 LoadEvents(); // 重新載入資料
                 MessageBox.Show("修改成功！");
@@ -253,7 +234,7 @@ namespace prjGroupB.Views
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem is ComboBoxItem selectedCategory)
+            if (comboBox1.SelectedItem is EventComboboxItem selectedCategory)
             {
                 int categoryId = selectedCategory.Id;
 
@@ -291,26 +272,7 @@ namespace prjGroupB.Views
             }
         }
 
-        //private void InitializeDataAdapter()
-        //{
-        //    string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
-        //    string selectQuery = "SELECT * FROM tEvents";
-
-        //    SqlConnection connection = new SqlConnection(connectionString);
-
-        //    // 初始化 SqlDataAdapter
-        //    _da = new SqlDataAdapter(selectQuery, connection);
-
-        //    // 自動產生 InsertCommand、UpdateCommand 和 DeleteCommand
-        //    SqlCommandBuilder commandBuilder = new SqlCommandBuilder(_da);
-
-        //    _ds = new DataSet();
-        //    _da.Fill(_ds, "tEvents");
-        //    _eventTable = _ds.Tables["tEvents"];
-
-        //    // 設置主鍵（假設 fEventId 是主鍵）
-        //    _eventTable.PrimaryKey = new DataColumn[] { _eventTable.Columns["fEventId"] };
-        //}
+        
 
         private void displayEventsBySql(string sql, bool isKeyword)
         {
@@ -348,6 +310,7 @@ namespace prjGroupB.Views
                     int eventId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["fEventId"].Value);
 
                     // 定義刪除的 SQL 語句
+                    string deleteMappingQuery = "DELETE FROM tEventCategoryMapping WHERE fEventId = @fEventId"; // 刪除類別映射
                     string deleteImageQuery = "DELETE FROM tEventImage WHERE fEventId = @fEventId"; // 刪除圖片
                     string deleteEventQuery = "DELETE FROM tEvents WHERE fEventId = @fEventId"; // 刪除活動
 
@@ -362,7 +325,15 @@ namespace prjGroupB.Views
                         {
                             try
                             {
-                                // Step 1: 刪除關聯的圖片資料
+                                // Step 1: 刪除關聯的類別映射資料
+                                using (SqlCommand cmd = new SqlCommand(deleteMappingQuery, conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@fEventId", eventId);
+                                    int mappingRowsAffected = cmd.ExecuteNonQuery();
+                                    Console.WriteLine($"刪除了 {mappingRowsAffected} 行類別映射資料");
+                                }
+
+                                // Step 2: 刪除關聯的圖片資料
                                 using (SqlCommand cmd = new SqlCommand(deleteImageQuery, conn, transaction))
                                 {
                                     cmd.Parameters.AddWithValue("@fEventId", eventId);
@@ -370,7 +341,7 @@ namespace prjGroupB.Views
                                     Console.WriteLine($"刪除了 {imageRowsAffected} 行圖片資料");
                                 }
 
-                                // Step 2: 刪除活動資料
+                                // Step 3: 刪除活動資料
                                 using (SqlCommand cmd = new SqlCommand(deleteEventQuery, conn, transaction))
                                 {
                                     cmd.Parameters.AddWithValue("@fEventId", eventId);
@@ -460,6 +431,9 @@ namespace prjGroupB.Views
             // 選中行顏色
             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DarkBlue;
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+            //dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Beige; // 設置背景色
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; // 設置文字顏色
+            dataGridView1.EnableHeadersVisualStyles = false; // 確保顏色生效
         }
 
         private void FrmEventsList_Scroll(object sender, ScrollEventArgs e)

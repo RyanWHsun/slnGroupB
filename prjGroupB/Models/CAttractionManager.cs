@@ -48,7 +48,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -80,7 +80,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -110,7 +110,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -139,7 +139,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
