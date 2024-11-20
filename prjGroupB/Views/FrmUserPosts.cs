@@ -155,7 +155,7 @@ namespace prjGroupB.Views
             btnInsertCategory.Text = "+";
             btnInsertCategory.Width = flpBtnCategory.Width - 2;
             btnInsertCategory.Height = (int)(flpBtnCategory.Height / 10 / 1.5);
-            btnInsertCategory.Font = new Font("微軟正黑體", btnInsertCategory.Height/2, FontStyle.Bold);
+            btnInsertCategory.Font = new Font("微軟正黑體", btnInsertCategory.Height / 2, FontStyle.Bold);
             btnInsertCategory.Click += this.btnInsertCategory_Click;
             flpBtnCategory.Controls.Add(btnInsertCategory);
         }
@@ -207,6 +207,12 @@ namespace prjGroupB.Views
                 PostBox postBox = new PostBox();
                 postBox.post = userPost;
                 postBox.DselectUserPost += this.selectUserPost;
+                postBox.DdoubliClickPost += this.doubleClickUserPost;
+                if (userPost.fTags.Count == 0 && userPost.fTitle.Contains(txtFind.Text))
+                {
+                    flpUserPosts.Controls.Add(postBox);
+                    continue;
+                }
                 foreach (string tag in postBox.post.fTags)
                 {
                     if (tag.Contains(txtFind.Text) || userPost.fTitle.Contains(txtFind.Text))
