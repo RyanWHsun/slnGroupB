@@ -64,6 +64,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.textBox11 = new System.Windows.Forms.TextBox();
+            this.cmbEventCategory = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -422,17 +424,40 @@
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(441, 420);
+            this.textBox11.Location = new System.Drawing.Point(482, 12);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(100, 22);
             this.textBox11.TabIndex = 26;
             this.textBox11.Visible = false;
             // 
+            // cmbEventCategory
+            // 
+            this.cmbEventCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEventCategory.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEventCategory.FormattingEnabled = true;
+            this.cmbEventCategory.Location = new System.Drawing.Point(407, 420);
+            this.cmbEventCategory.Name = "cmbEventCategory";
+            this.cmbEventCategory.Size = new System.Drawing.Size(143, 30);
+            this.cmbEventCategory.TabIndex = 27;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label20.Location = new System.Drawing.Point(403, 393);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(86, 24);
+            this.label20.TabIndex = 28;
+            this.label20.Text = "類別選擇";
+            // 
             // FrmEventsEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Beige;
             this.ClientSize = new System.Drawing.Size(609, 599);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.cmbEventCategory);
             this.Controls.Add(this.textBox11);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.textBox9);
@@ -471,6 +496,7 @@
             this.Name = "FrmEventsEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEventsEditor";
+            this.Load += new System.EventHandler(this.FrmEventsEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -515,5 +541,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.ComboBox cmbEventCategory;
+        private System.Windows.Forms.Label label20;
     }
 }

@@ -48,7 +48,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -80,7 +80,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -110,7 +110,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -139,7 +139,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
             }
         }
@@ -177,7 +177,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("景點或被推薦景點並不存在");
             }
@@ -213,7 +213,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("景點或被推薦景點並不存在");
             }
@@ -256,7 +256,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("景點並不存在");
             }
@@ -297,7 +297,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("景點並不存在");
             }
@@ -339,7 +339,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("景點或使用者並不存在");
             }
@@ -380,7 +380,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("景點或使用者並不存在");
             }
@@ -414,7 +414,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("景點或使用者並不存在");
             }
@@ -449,7 +449,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("景點或使用者並不存在");
             }
@@ -491,7 +491,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("景點不存在");
             }
@@ -523,7 +523,7 @@ namespace prjGroupB.Models
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("景點不存在");
             }

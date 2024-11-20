@@ -14,12 +14,15 @@ using System.Windows.Forms;
 namespace prjGroupB.Views
 {
     public delegate void D(bool isVisible);
+
     public partial class FrmLogin : Form
     {
         //public string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
 
         public event D DshowBackend;
+
         private bool _isClosed = true;
+
         public FrmLogin()
         {
             InitializeComponent();
@@ -29,6 +32,7 @@ namespace prjGroupB.Views
         {
             loginBox1.passwordMask = '*';
         }
+
         private void FrmLogin_Shown(object sender, EventArgs e)
         {
             btnOk.Focus();
@@ -56,7 +60,7 @@ namespace prjGroupB.Views
                 CUserSession.fUserId = Convert.ToInt32(reader["fUserId"]);
                 CUserSession.fRankId = Convert.ToInt32(reader["fUserRankId"]);
                 _isClosed = false;
-                if (CUserSession.fRankId == 99)
+                if (CUserSession.fRankId == 5)
                     DshowBackend(true);
                 Close();
             }

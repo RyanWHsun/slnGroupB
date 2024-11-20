@@ -13,7 +13,7 @@ namespace prjGroupB.Views
 {
     public partial class FrmPostCategoryEditor : Form
     {
-        private string _message;
+        
         public FrmPostCategoryEditor()
         {
             InitializeComponent();

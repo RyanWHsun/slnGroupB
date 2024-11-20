@@ -114,19 +114,8 @@ namespace prjGroupB.Views
             con.Close();
             dataGridView1.DataSource = _ds.Tables[0];
 
-            resetGridStyle();
-        }
-
-        private void resetGridStyle()
-        {
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.AutoResizeColumns();
-
-            // 對特定欄位設置自動調整
-            if (dataGridView1.Columns.Count > 10)
-            {
-                dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
+            CustomizeDataGridView();
+            CustomizeDataGridViewRowColors();
         }
 
         private void FrmEventCategories_Load(object sender, EventArgs e)
@@ -142,7 +131,8 @@ namespace prjGroupB.Views
         private void FrmEventCategories_FormClosed(object sender, FormClosedEventArgs e)
         {
             _da.Update(dataGridView1.DataSource as DataTable);
-            resetGridStyle();
+            CustomizeDataGridView();
+            CustomizeDataGridViewRowColors();
         }
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -152,7 +142,48 @@ namespace prjGroupB.Views
 
         private void FrmEventCategories_Paint(object sender, PaintEventArgs e)
         {
-            resetGridStyle();
+            CustomizeDataGridView();
+            CustomizeDataGridViewRowColors();
+        }
+
+        private void CustomizeDataGridView()
+        {
+            // 字體設置
+            dataGridView1.Font = new Font("微軟正黑體", 12);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("微軟正黑體", 14, FontStyle.Bold);
+
+            // 中文標題
+            dataGridView1.Columns["fEventCategoryId"].HeaderText = "類別編號";
+            dataGridView1.Columns["fEventCategoryName"].HeaderText = "類別名稱";
+            dataGridView1.Columns["fCategoryDescription"].HeaderText = "類別描述";
+            dataGridView1.Columns["fEventCreatedDate"].HeaderText = "建立日期";
+
+            // 自動調整列寬
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dataGridView1.Columns["fEventCreatedDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void CustomizeDataGridViewRowColors()
+        {
+            // 偶數行顏色
+            dataGridView1.RowsDefaultCellStyle.BackColor = Color.FromArgb(255, 234, 241);
+            // 奇數行顏色
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(252, 244, 231);
+
+            // 選中行顏色
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DarkBlue;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; // 設置文字顏色
+            dataGridView1.EnableHeadersVisualStyles = false; // 確保顏色生效
+        }
+
+        private void FrmEventCategoriesList_Scroll(object sender, ScrollEventArgs e)
+        {
+            CustomizeDataGridView();
+            CustomizeDataGridViewRowColors();
         }
     }
 }

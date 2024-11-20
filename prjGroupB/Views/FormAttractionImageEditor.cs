@@ -22,7 +22,7 @@ namespace Attractions.Views
         //private string pipe = "np:\\\\.\\pipe\\LOCALDB#B5FE6A17\\tsql\\query;";
 
         // 圖片
-        private int _imageIndex = 0;
+        
         private CAttractionImage _attractionImage;
         public DialogResult isOk { get; set; }
         public FormAttractionImageEditor()

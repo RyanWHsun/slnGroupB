@@ -21,31 +21,33 @@ namespace prjGroupB.Views
         private void FrmEventRegistrationinformation_Load(object sender, EventArgs e)
         {
             LoadRegistrationData();
+            CustomizeDataGridView();
+            CustomizeDataGridViewRowColors();
         }
 
         private void LoadRegistrationData()
         {
             string connectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
             string query = @"
-        SELECT
-            r.fEventRegistrationFormId AS [報名編號],
-            m.fUserName AS [會員姓名],
-            m.fUserPhone AS [會員電話],
-            m.fUserEmail AS [會員Email],
-            e.fEventName AS [活動名稱],
-            e.fEventStartDate AS [開始日期],
-            e.fEventEndDate AS [結束日期],
-            e.fEventActivityFee AS [活動費用],
-            r.fEventRegistrationCount AS [報名人數],
-            r.fEregistrationDate AS [報名日期],
-            r.fEventContact AS [聯絡人姓名],
-            r.fEventContactPhone AS [聯絡人電話]
-        FROM
-            tEventRegistrationForm r
-        LEFT JOIN
-            tUser m ON r.fUserId = m.fUserId
-        LEFT JOIN
-            tEvents e ON r.fEventId = e.fEventId";
+    SELECT
+        r.fEventRegistrationFormId AS [報名編號],
+        m.fUserName AS [會員姓名],
+        m.fUserPhone AS [會員電話],
+        m.fUserEmail AS [會員Email],
+        e.fEventName AS [活動名稱],
+        e.fEventStartDate AS [開始日期],
+        e.fEventEndDate AS [結束日期],
+        e.fEventActivityFee AS [活動費用],
+        r.fEventRegistrationCount AS [報名人數],
+        r.fEregistrationDate AS [報名日期],
+        r.fEventContact AS [聯絡人姓名],
+        r.fEventContactPhone AS [聯絡人電話]
+    FROM
+        tEventRegistrationForm r
+    LEFT JOIN
+        tUser m ON r.fUserId = m.fUserId
+    LEFT JOIN
+        tEvents e ON r.fEventId = e.fEventId";
 
             try
             {
@@ -57,6 +59,11 @@ namespace prjGroupB.Views
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
+
+                        // 動態新增一個計算欄位
+                        dataTable.Columns.Add("總費用", typeof(decimal), "[活動費用] * [報名人數]");
+
+                        // 將資料綁定到 DataGridView
                         dataGridView1.DataSource = dataTable;
                     }
                 }
@@ -145,6 +152,7 @@ namespace prjGroupB.Views
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
 
+                        dataTable.Columns.Add("總費用", typeof(decimal), "[活動費用] * [報名人數]");
                         dataGridView1.DataSource = dataTable;
                     }
                 }
@@ -153,6 +161,40 @@ namespace prjGroupB.Views
             {
                 MessageBox.Show("搜尋時發生錯誤：" + ex.Message);
             }
+        }
+
+        private void CustomizeDataGridView()
+        {
+            // 字體設置
+            dataGridView1.Font = new Font("微軟正黑體", 12);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("微軟正黑體", 14, FontStyle.Bold);
+
+            // 自動調整列寬
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dataGridView1.Columns["總費用"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void CustomizeDataGridViewRowColors()
+        {
+            // 偶數行顏色
+            dataGridView1.RowsDefaultCellStyle.BackColor = Color.FromArgb(255, 234, 241);
+            // 奇數行顏色
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(252, 244, 231);
+
+            // 選中行顏色
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DarkBlue;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; // 設置文字顏色
+            dataGridView1.EnableHeadersVisualStyles = false; // 確保顏色生效
+        }
+
+        private void FrmEventRegistrationinformation_Scroll(object sender, ScrollEventArgs e)
+        {
+            CustomizeDataGridView();
+            CustomizeDataGridViewRowColors();
         }
     }
 }
