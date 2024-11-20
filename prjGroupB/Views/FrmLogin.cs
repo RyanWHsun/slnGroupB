@@ -1,4 +1,5 @@
 ﻿using prjGroupB.Models;
+using prjGroupB.Views.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,6 +78,54 @@ namespace prjGroupB.Views
         {
             _isClosed = false;
             Application.Exit();
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            string sql = "select * from tUser";
+            SqlDataAdapter _da;
+            SqlCommandBuilder _builder;
+            //連到tUser資料夾
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Data Source=.;Initial Catalog=dbGroupB;Integrated Security=True;";
+            con.Open();
+
+            _da = new SqlDataAdapter(sql, con);
+
+            _builder = new SqlCommandBuilder();
+            _builder.DataAdapter = _da;
+
+            DataSet ds = new DataSet();
+            _da.Fill(ds);
+            con.Close();
+            DataTable dt = ds.Tables[0];
+
+            FrmUserEditor f = new FrmUserEditor();
+            f.TopMost = true;
+            f.ShowDialog();
+            if (f._isok == DialogResult.OK)
+            {
+                DataRow row = dt.NewRow();
+
+                row["fUserId"] = f.user.fUserId;
+                //row["fUserRankId"] = f.user.fUserRankId;
+                row["fUserRankId"] = 1;
+                row["fUserName"] = f.user.fUserName;
+                row["fUserNickName"] = f.user.fUserNickName;
+                row["fUserSex"] = f.user.fUserSex;
+                row["fUserBirthday"] = f.user.fUserBirthday;
+                row["fUserPhone"] = f.user.fUserPhone;
+                row["fUserEmail"] = f.user.fUserEmail;
+                row["fUserAddress"] = f.user.fUserAddress;
+                row["fUserComeDate"] = f.user.fUserComeDate;
+                row["fUserPassword"] = f.user.fUserPassword;
+                row["fUserNotify"] = f.user.fUserNotify;
+                row["fUserOnLine"] = f.user.fUserOnLine;
+                row["fUserImage"] = f.user.fUserImage;
+
+                dt.Rows.Add(row);
+                _da.Update(dt);
+            }
         }
     }
 }

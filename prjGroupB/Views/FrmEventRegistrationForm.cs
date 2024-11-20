@@ -116,7 +116,7 @@ namespace prjGroupB.Views
                                 {
                                     fUserId = reader.GetInt32(0),
                                     fUserName = reader.GetString(1),
-                                    fUserPhone = reader.IsDBNull(2) ? 0 : reader.GetInt32(2),
+                                    fUserPhone = reader.IsDBNull(2) ? 0.ToString() : reader.GetInt32(2).ToString(),
                                     fUserEmail = reader.IsDBNull(3) ? string.Empty : reader.GetString(3)
                                 };
                             }
