@@ -40,7 +40,7 @@ namespace prjGroupB.Views
 
                 DataRow row = dt.NewRow();
                 row["fEventCategoryName"] = f.Categories.fEventCategoryName;
-                row["fCategoryDescription"] = f.Categories.fCategoryDescription;
+                row["fEventDescriptionn"] = f.Categories.fCategoryDescription;
                 row["fEventCreatedDate"] = f.Categories.fEventCreatedDate;
                 dt.Rows.Add(row);
                 _da.Update(dt);
@@ -72,7 +72,7 @@ namespace prjGroupB.Views
             {
                 fEventCategoryId = Convert.ToInt32(row["fEventCategoryId"]),
                 fEventCategoryName = row["fEventCategoryName"].ToString(),
-                fCategoryDescription = row["fCategoryDescription"].ToString(),
+                fCategoryDescription = row["fEventDescriptionn"].ToString(),
                 fEventCreatedDate = DateTime.Parse(row["fEventCreatedDate"].ToString())
             };
 
@@ -81,7 +81,7 @@ namespace prjGroupB.Views
             if (f.IsOk == DialogResult.OK)
             {
                 row["fEventCategoryName"] = f.Categories.fEventCategoryName;
-                row["fCategoryDescription"] = f.Categories.fCategoryDescription;
+                row["fEventDescriptionn"] = f.Categories.fCategoryDescription;
 
                 _da.Update(dataGridView1.DataSource as DataTable);
                 MessageBox.Show("類別已成功更新");
@@ -92,7 +92,7 @@ namespace prjGroupB.Views
         {
             string sql = "SELECT * FROM tEventCategories WHERE ";
             sql += " fEventCategoryName LIKE @K_KEYWORD";
-            sql += " OR fCategoryDescription LIKE @K_KEYWORD";
+            sql += " OR fEventDescriptionn LIKE @K_KEYWORD";
 
             displayEventsBySql(sql, true);
         }
@@ -120,12 +120,13 @@ namespace prjGroupB.Views
 
         private void FrmEventCategories_Load(object sender, EventArgs e)
         {
+            //displayEventsBySql("SELECT * FROM tEventCategories ", false);
+            //DataTable dt = _ds.Tables[0];
+            //if (dt != null)
+            //{
+            //    dataGridView1.DataSource = dt;
+            //}
             displayEventsBySql("SELECT * FROM tEventCategories ", false);
-            DataTable dt = _ds.Tables[0];
-            if (dt != null)
-            {
-                dataGridView1.DataSource = dt;
-            }
         }
 
         private void FrmEventCategories_FormClosed(object sender, FormClosedEventArgs e)
@@ -155,7 +156,7 @@ namespace prjGroupB.Views
             // 中文標題
             dataGridView1.Columns["fEventCategoryId"].HeaderText = "類別編號";
             dataGridView1.Columns["fEventCategoryName"].HeaderText = "類別名稱";
-            dataGridView1.Columns["fCategoryDescription"].HeaderText = "類別描述";
+            dataGridView1.Columns["fEventDescriptionn"].HeaderText = "類別描述";
             dataGridView1.Columns["fEventCreatedDate"].HeaderText = "建立日期";
 
             // 自動調整列寬
@@ -185,5 +186,6 @@ namespace prjGroupB.Views
             CustomizeDataGridView();
             CustomizeDataGridViewRowColors();
         }
+
     }
 }

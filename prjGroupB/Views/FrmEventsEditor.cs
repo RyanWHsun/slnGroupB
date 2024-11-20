@@ -156,7 +156,7 @@ namespace prjGroupB.Views
                 }
                 else
                 {
-                    MessageBox.Show("請選擇有效的活動類別！", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("必須選擇類別！", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 

@@ -137,8 +137,8 @@ namespace prjGroupB.Views
                 LEFT JOIN
                     tEvents e ON r.fEventId = e.fEventId
                 WHERE
-                    r.fEventRegistrationCount LIKE @Keyword ";
-
+                    m.fUserName LIKE @Keyword "; 
+                    
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))

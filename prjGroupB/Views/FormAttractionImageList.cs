@@ -383,14 +383,18 @@ namespace Attractions.Views
         private void showLargeImage(List<CImageData> imageDataList, int index)
         {
             if (index < 0) return;
-            lbAttractionId.Text = imageDataList[index].fAttractionId.ToString();
-            lbAttractionName.Text = imageDataList[index].fAttractionName;
-            lbAttractionDescription.Text = imageDataList[index].fDescription;
-            // 將二進制資料轉換成圖片
-            using (MemoryStream ms = new MemoryStream(imageDataList[index].fImage))
+            try
             {
-                pcbImage.Image = Image.FromStream(ms);
+                lbAttractionId.Text = imageDataList[index].fAttractionId.ToString();
+                lbAttractionName.Text = imageDataList[index].fAttractionName;
+                lbAttractionDescription.Text = imageDataList[index].fDescription;
+                // 將二進制資料轉換成圖片
+                using (MemoryStream ms = new MemoryStream(imageDataList[index].fImage))
+                {
+                    pcbImage.Image = Image.FromStream(ms);
+                }
             }
+            catch { }
         }
 
         private void resetGridStyle()

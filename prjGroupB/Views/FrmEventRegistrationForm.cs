@@ -112,14 +112,15 @@ namespace prjGroupB.Views
                         {
                             if (reader.Read())
                             {
-                                user = new CUser
-                                {
-                                    fUserId = reader.GetInt32(0),
-                                    fUserName = reader.GetString(1),
-                                    fUserPhone = reader.IsDBNull(2) ? 0.ToString() : reader.GetInt32(2).ToString(),
-                                    fUserEmail = reader.IsDBNull(3) ? string.Empty : reader.GetString(3)
-                                };
+                                user = new CUser();
+
+                                user.fUserId = (int)reader["fUserId"];
+                                user.fUserName = reader["fUserName"].ToString();
+                                user.fUserPhone = reader["fUserPhone"].ToString();
+                                user.fUserEmail = reader["fUserEmail"].ToString() ;
+                                
                             }
+                            return user;
                         }
                     }
                 }
@@ -127,9 +128,10 @@ namespace prjGroupB.Views
             catch (Exception ex)
             {
                 MessageBox.Show("無法取得會員資料：" + ex.Message);
+                return user;
             }
 
-            return user;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

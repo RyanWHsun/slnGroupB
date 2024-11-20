@@ -27,6 +27,7 @@ namespace prjGroupB.Views
             InitializeComponent();
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
         }
+        
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {

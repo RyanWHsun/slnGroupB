@@ -228,7 +228,10 @@ namespace Attractions
             // 檢查最後一列是否是新的輸入列（如果允許新增列）
             if (dataGridView1.Rows[lastIndex].IsNewRow) lastIndex--;
 
-            DataGridViewRow lastRow = dataGridView1.Rows[lastIndex];
+            DataGridViewRow lastRow = new DataGridViewRow();
+            if (lastIndex < 0) lastIndex = 0;
+            else { lastRow = dataGridView1.Rows[lastIndex]; }
+            
             try
             {
                 return (int)lastRow.Cells[0].Value;
