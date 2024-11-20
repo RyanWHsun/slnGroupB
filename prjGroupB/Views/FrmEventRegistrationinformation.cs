@@ -152,6 +152,7 @@ namespace prjGroupB.Views
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
 
+                        dataTable.Columns.Add("總費用", typeof(decimal), "[活動費用] * [報名人數]");
                         dataGridView1.DataSource = dataTable;
                     }
                 }
