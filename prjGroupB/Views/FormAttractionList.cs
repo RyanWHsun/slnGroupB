@@ -174,48 +174,55 @@ namespace Attractions
         // 把 CAttrationImage 的照片存到 DataTable
         private void saveImageFromCAttrationImageToDataTable(FormAttractionEditor f)
         {
-            _da.Update(dataGridView1.DataSource as DataTable);
-            // 新建一個 image 的 table
-            DataTable imagetable = new DataTable();
+            try
+            {
+                _da.Update(dataGridView1.DataSource as DataTable);
+                // 新建一個 image 的 table
+                DataTable imagetable = new DataTable();
 
-            // 定義 imagetable 的資料欄位
-            imagetable.Columns.Add("fAttractionId", typeof(int));
-            imagetable.Columns.Add("fImage", typeof(byte[]));
+                // 定義 imagetable 的資料欄位
+                imagetable.Columns.Add("fAttractionId", typeof(int));
+                imagetable.Columns.Add("fImage", typeof(byte[]));
 
-            DataRow row = imagetable.NewRow();
+                DataRow row = imagetable.NewRow();
 
-            if (f.attraction.fAttractionId > 0)
-                row["fAttractionId"] = f.attraction.fAttractionId;
-            else row["fAttractionId"] = _lastfAttractionId + 1;
+                if (f.attraction.fAttractionId > 0)
+                    row["fAttractionId"] = f.attraction.fAttractionId;
+                else row["fAttractionId"] = _lastfAttractionId + 1;
 
-            if (f.attractionImage.fImage == null || f.attractionImage.fImage.Count == 0) return;
-            row["fImage"] = f.attractionImage.fImage[f.attractionImage.fImage.Count - 1];
+                if (f.attractionImage.fImage == null || f.attractionImage.fImage.Count == 0) return;
+                row["fImage"] = f.attractionImage.fImage[f.attractionImage.fImage.Count - 1];
 
-            imagetable.Rows.Add(row);
+                imagetable.Rows.Add(row);
 
-            // 連線
-            SqlConnection con = new SqlConnection();
-            // con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;"; ;
-            con.ConnectionString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
+                // 連線
+                SqlConnection con = new SqlConnection();
+                // con.ConnectionString = @"Data Source=" + pipe + "Initial Catalog=dbGroupB;Integrated Security=True;"; ;
+                con.ConnectionString = @"Data Source = .; Initial Catalog = dbGroupB; Integrated Security = True;";
 
-            con.Open();
+                con.Open();
 
-            string sql = "SELECT fAttractionId, fImage FROM tAttractionImages;";
-            SqlDataAdapter imageDataAdapter = new SqlDataAdapter(sql, con);
+                string sql = "SELECT fAttractionId, fImage FROM tAttractionImages;";
+                SqlDataAdapter imageDataAdapter = new SqlDataAdapter(sql, con);
 
-            imageDataAdapter.InsertCommand = new SqlCommand(
-                "INSERT INTO tAttractionImages (fAttractionId, fImage) VALUES (@fAttractionId, @fImage)",
-                con
-                );
+                imageDataAdapter.InsertCommand = new SqlCommand(
+                    "INSERT INTO tAttractionImages (fAttractionId, fImage) VALUES (@fAttractionId, @fImage)",
+                    con
+                    );
 
-            // 定義參數
-            imageDataAdapter.InsertCommand.Parameters.Add("@fAttractionId", SqlDbType.Int, 0, "fAttractionId");
-            imageDataAdapter.InsertCommand.Parameters.Add("@fImage", SqlDbType.VarBinary, -1, "fImage");
+                // 定義參數
+                imageDataAdapter.InsertCommand.Parameters.Add("@fAttractionId", SqlDbType.Int, 0, "fAttractionId");
+                imageDataAdapter.InsertCommand.Parameters.Add("@fImage", SqlDbType.VarBinary, -1, "fImage");
 
-            // 將 DataTable 的變更應用到資料庫
-            imageDataAdapter.Update(imagetable);
+                // 將 DataTable 的變更應用到資料庫
+                imageDataAdapter.Update(imagetable);
 
-            con.Close();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         // 從 dataGridView1 取得最後一個 AttractionId

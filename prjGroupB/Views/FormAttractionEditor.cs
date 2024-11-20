@@ -294,34 +294,41 @@ namespace Attractions.Views
             // SQL 查詢語句
             string query = "SELECT fImage FROM tAttractionImages WHERE fAttractionId = @id";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@id", id);
-
-                    connection.Open();
-
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        if (this._attractionImage.fImage == null)
-                            this._attractionImage.fImage = new List<byte[]>();
-                        while (reader.Read())
+                        command.Parameters.AddWithValue("@id", id);
+
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            // 取得圖片資料 
-                            this._attractionImage.fImage.Add(reader["fImage"] as byte[]);
-                        }
-                        if (this._attractionImage.fImage.Count > 0)
-                        {
-                            // 將二進制資料轉換成圖片
-                            if (index < 0) return;
-                            using (MemoryStream ms = new MemoryStream(this._attractionImage.fImage[index]))
+                            if (this._attractionImage.fImage == null)
+                                this._attractionImage.fImage = new List<byte[]>();
+                            while (reader.Read())
                             {
-                                pictureBox1.Image = Image.FromStream(ms);
+                                // 取得圖片資料 
+                                this._attractionImage.fImage.Add(reader["fImage"] as byte[]);
+                            }
+                            if (this._attractionImage.fImage.Count > 0)
+                            {
+                                // 將二進制資料轉換成圖片
+                                if (index < 0) return;
+                                using (MemoryStream ms = new MemoryStream(this._attractionImage.fImage[index]))
+                                {
+                                    pictureBox1.Image = Image.FromStream(ms);
+                                }
                             }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }
