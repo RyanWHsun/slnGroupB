@@ -1,4 +1,6 @@
-﻿namespace Attractions {
+﻿using System.Drawing;
+
+namespace Attractions {
     partial class FormAttractionList {
         /// <summary>
         /// 設計工具所需的變數。
@@ -325,6 +327,7 @@
             this.label1.Size = new System.Drawing.Size(48, 24);
             this.label1.TabIndex = 44;
             this.label1.Text = "狀態";
+            this.label1.BackColor = Color.FromArgb(240, 255, 240);
             // 
             // label2
             // 
@@ -335,6 +338,7 @@
             this.label2.Size = new System.Drawing.Size(86, 24);
             this.label2.TabIndex = 45;
             this.label2.Text = "開放時間";
+            this.label2.BackColor = Color.FromArgb(240, 255, 240);
             // 
             // label3
             // 
@@ -345,6 +349,8 @@
             this.label3.Size = new System.Drawing.Size(86, 24);
             this.label3.TabIndex = 46;
             this.label3.Text = "結束時間";
+            this.label3.BackColor = Color.FromArgb(240, 255, 240);
+
             // 
             // label4
             // 

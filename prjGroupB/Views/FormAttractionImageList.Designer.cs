@@ -243,7 +243,7 @@
             // 
             // pcbImage
             // 
-            this.pcbImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pcbImage.BackColor = System.Drawing.Color.Honeydew;
             this.pcbImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pcbImage.Location = new System.Drawing.Point(0, 0);
             this.pcbImage.Name = "pcbImage";
@@ -251,6 +251,7 @@
             this.pcbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbImage.TabIndex = 0;
             this.pcbImage.TabStop = false;
+            this.pcbImage.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -284,6 +285,7 @@
             this.label1.Size = new System.Drawing.Size(67, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "景點ID";
+            this.label1.Visible = false;
             // 
             // label2
             // 
@@ -294,6 +296,7 @@
             this.label2.Size = new System.Drawing.Size(86, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "景點名稱";
+            this.label2.Visible = false;
             // 
             // label3
             // 
@@ -304,6 +307,7 @@
             this.label3.Size = new System.Drawing.Size(48, 24);
             this.label3.TabIndex = 2;
             this.label3.Text = "描述";
+            this.label3.Visible = false;
             // 
             // lbAttractionId
             // 

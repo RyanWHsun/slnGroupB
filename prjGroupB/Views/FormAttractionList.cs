@@ -131,7 +131,7 @@ namespace Attractions
             con.Close();
 
             dataGridView1.DataSource = _ds.Tables[0];
-            //resetGridStyle();
+            resetGridStyle();
         }
 
         // 按下"新增景點"按鈕
@@ -601,7 +601,7 @@ namespace Attractions
                         sql += "OR fOpeningTime < @fOpeningTime ";
                         break;
                     case "後":
-                        sql += "OR fOpeningTime > @fOpeningTime ";
+                        sql += "OR fOpeningTime >= @fOpeningTime ";
                         break;
                     default:
                         break;
@@ -616,7 +616,7 @@ namespace Attractions
                         sql += "OR fClosingTime < @fClosingTime ";
                         break;
                     case "後":
-                        sql += "OR fClosingTime > @fClosingTime ";
+                        sql += "OR fClosingTime >= @fClosingTime ";
                         break;
                     default:
                         break;
@@ -670,8 +670,7 @@ namespace Attractions
             {
                 MessageBox.Show("ERROR");
             }
-
-            //resetGridStyle();
+            resetGridStyle();
         }
 
         // 雙擊 dataGridView1 欄位，開啟編輯頁面
@@ -813,6 +812,22 @@ namespace Attractions
                 dataGridView1.Columns["fAttractionCategoryName"].HeaderText = "分類名稱";
                 dataGridView1.Columns["fAttractionCategoryName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+
+            // 設定 ToolStrip 的背景色
+            toolStrip1.BackColor = Color.FromArgb(240, 255, 240);
+            toolStrip2.BackColor = Color.FromArgb(240, 255, 240);
+            toolStrip3.BackColor = Color.FromArgb(240, 255, 240);
+            // 設定 DataGridView 的背景色（整體背景）
+            dataGridView1.BackgroundColor = Color.FromArgb(240, 255, 240);
+
+            // 設定 dataGridVIew 標頭不採用預設樣式
+            dataGridView1.EnableHeadersVisualStyles = false;
+
+            // 設定 dataGridVIew 標頭樣式
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro; 
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; 
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("微軟正黑體", 14, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             bool isColorChanged = false;
             foreach (DataGridViewRow r in dataGridView1.Rows)

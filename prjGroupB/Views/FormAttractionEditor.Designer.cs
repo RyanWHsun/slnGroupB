@@ -422,7 +422,7 @@ namespace Attractions.Views {
             this.fbWebsiteURL.Location = new System.Drawing.Point(35, 375);
             this.fbWebsiteURL.Margin = new System.Windows.Forms.Padding(4);
             this.fbWebsiteURL.Name = "fbWebsiteURL";
-            this.fbWebsiteURL.Size = new System.Drawing.Size(316, 30);
+            this.fbWebsiteURL.Size = new System.Drawing.Size(316, 35);
             this.fbWebsiteURL.TabIndex = 14;
             // 
             // fbPhoneNumber

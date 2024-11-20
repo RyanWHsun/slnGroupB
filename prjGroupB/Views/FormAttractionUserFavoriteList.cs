@@ -74,6 +74,7 @@ namespace prjGroupB.Views
 
                 }
             }
+            resetGridStyle();
         }
 
         private void tsbInsert_Click(object sender, EventArgs e)
@@ -222,6 +223,21 @@ namespace prjGroupB.Views
             dataGridView1.Columns["fAttractionName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns["fCreatedDate"].HeaderText = "建立時間";
             dataGridView1.Columns["fCreatedDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // 設定 ToolStrip 的背景色
+            toolStrip1.BackColor = Color.FromArgb(240, 255, 240);
+            // 設定 DataGridView 的背景色（整體背景）
+            dataGridView1.BackgroundColor = Color.FromArgb(240, 255, 240);
+
+            // 設定 dataGridVIew 標頭不採用預設樣式
+            dataGridView1.EnableHeadersVisualStyles = false;
+
+            // 設定 dataGridVIew 標頭樣式
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("微軟正黑體", 14, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            
             bool isColorChanged = false;
             foreach (DataGridViewRow r in dataGridView1.Rows)
             {
