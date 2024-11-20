@@ -31,7 +31,7 @@ namespace prjGroupB.Views.User
                 _user.fUserNickName = txtNickName.Text;
                  _user.fUserSex = (String)CboxUserSex.SelectedItem;//下拉式選單
                 _user.fUserBirthday = DateTime.Parse(dateTimeUserBirthday.Text);//日期選單
-                _user.fUserPhone = Convert.ToInt32(txtUserPhone.Text);
+                _user.fUserPhone = txtUserPhone.Text;
                 _user.fUserEmail = txtUserEmail.Text;
                 _user.fUserAddress = txtUserAddress.Text;
                 _user.fUserComeDate = DateTime.Now;
@@ -50,7 +50,7 @@ namespace prjGroupB.Views.User
                 txtNickName.Text = _user.fUserNickName;
                 CboxUserSex.SelectedItem = _user.fUserSex;
                 dateTimeUserBirthday.Text = _user.fUserBirthday.ToString();
-                txtUserPhone.Text = _user.fUserPhone.ToString();
+                txtUserPhone.Text = _user.fUserPhone;
                 txtUserEmail.Text = _user.fUserEmail;
                 txtUserAddress.Text = _user.fUserAddress;
                 txtUserPassword.Text = _user.fUserPassword;

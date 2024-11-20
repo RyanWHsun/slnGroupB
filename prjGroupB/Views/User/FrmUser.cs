@@ -162,7 +162,7 @@ namespace prjGroupB.Views
             }
             x.fUserSex = (string)row["fUserSex"];//下拉式選單
             x.fUserBirthday = Convert.ToDateTime(row["fUserBirthday"]);//日期選單
-            x.fUserPhone = Convert.ToInt32(row["fUserPhone"]);
+            x.fUserPhone = (string)row["fUserPhone"];
             x.fUserEmail = (string)row["fUserEmail"];
             x.fUserAddress = (string)row["fUserAddress"];
             x.fUserPassword = (string)row["fUserPassword"];
@@ -207,17 +207,17 @@ namespace prjGroupB.Views
             displayUsersbySql(sql, true);
         }
 
-        private void 一般用戶ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SetRank1_Click(object sender, EventArgs e)
         {
             SetTheRank(1);
         }
 
-        private void 幽靈用戶ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SetRank2_Click(object sender, EventArgs e)
         {
             SetTheRank(2);
         }
 
-        private void 管理員ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SetRank99_Click(object sender, EventArgs e)
         {
             SetTheRank(99);
         }

@@ -15,7 +15,7 @@ namespace prjGroupB.Views.User
         public string fUserNickName { get; set; }
         public string fUserSex { get; set; }
         public DateTime fUserBirthday { get; set; }
-        public int fUserPhone {  get; set; }
+        public string fUserPhone {  get; set; }
         public string fUserEmail {  get; set; }
         public string fUserAddress {  get; set; }
         public DateTime fUserComeDate {  get; set; }

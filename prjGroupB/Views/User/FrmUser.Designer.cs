@@ -144,14 +144,14 @@
             this.幽靈用戶ToolStripMenuItem.Name = "幽靈用戶ToolStripMenuItem";
             this.幽靈用戶ToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
             this.幽靈用戶ToolStripMenuItem.Text = "幽靈用戶";
-            this.幽靈用戶ToolStripMenuItem.Click += new System.EventHandler(this.幽靈用戶ToolStripMenuItem_Click);
+            this.幽靈用戶ToolStripMenuItem.Click += new System.EventHandler(this.SetRank2_Click);
             // 
             // 一般用戶ToolStripMenuItem
             // 
             this.一般用戶ToolStripMenuItem.Name = "一般用戶ToolStripMenuItem";
             this.一般用戶ToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
             this.一般用戶ToolStripMenuItem.Text = "一般用戶";
-            this.一般用戶ToolStripMenuItem.Click += new System.EventHandler(this.一般用戶ToolStripMenuItem_Click);
+            this.一般用戶ToolStripMenuItem.Click += new System.EventHandler(this.SetRank1_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -163,7 +163,7 @@
             this.管理員ToolStripMenuItem.Name = "管理員ToolStripMenuItem";
             this.管理員ToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
             this.管理員ToolStripMenuItem.Text = "管理員";
-            this.管理員ToolStripMenuItem.Click += new System.EventHandler(this.管理員ToolStripMenuItem_Click);
+            this.管理員ToolStripMenuItem.Click += new System.EventHandler(this.SetRank99_Click);
             // 
             // FrmUser
             // 
