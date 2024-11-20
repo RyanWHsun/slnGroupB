@@ -42,15 +42,15 @@
             this.btnFind = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.pcbUserPosts = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.pcbUserPosts = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbUserPosts)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbUserPosts)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInsert
@@ -105,11 +105,12 @@
             // flpBtnCategory
             // 
             this.flpBtnCategory.AutoScroll = true;
+            this.flpBtnCategory.AutoSize = true;
             this.flpBtnCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpBtnCategory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpBtnCategory.Location = new System.Drawing.Point(3, 163);
             this.flpBtnCategory.Name = "flpBtnCategory";
-            this.flpBtnCategory.Size = new System.Drawing.Size(224, 641);
+            this.flpBtnCategory.Size = new System.Drawing.Size(245, 641);
             this.flpBtnCategory.TabIndex = 6;
             this.flpBtnCategory.WrapContents = false;
             // 
@@ -163,10 +164,10 @@
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(224)))));
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.5F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -190,8 +191,20 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(230, 807);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(251, 807);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // pcbUserPosts
+            // 
+            this.pcbUserPosts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pcbUserPosts.Image = ((System.Drawing.Image)(resources.GetObject("pcbUserPosts.Image")));
+            this.pcbUserPosts.Location = new System.Drawing.Point(3, 3);
+            this.pcbUserPosts.Name = "pcbUserPosts";
+            this.pcbUserPosts.Size = new System.Drawing.Size(245, 74);
+            this.pcbUserPosts.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbUserPosts.TabIndex = 7;
+            this.pcbUserPosts.TabStop = false;
+            this.pcbUserPosts.Click += new System.EventHandler(this.pcbUserPosts_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -200,7 +213,7 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.flpUserPosts, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(374, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(463, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -231,18 +244,6 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(631, 74);
             this.tableLayoutPanel5.TabIndex = 10;
             // 
-            // pcbUserPosts
-            // 
-            this.pcbUserPosts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pcbUserPosts.Image = ((System.Drawing.Image)(resources.GetObject("pcbUserPosts.Image")));
-            this.pcbUserPosts.Location = new System.Drawing.Point(3, 3);
-            this.pcbUserPosts.Name = "pcbUserPosts";
-            this.pcbUserPosts.Size = new System.Drawing.Size(224, 74);
-            this.pcbUserPosts.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcbUserPosts.TabIndex = 7;
-            this.pcbUserPosts.TabStop = false;
-            this.pcbUserPosts.Click += new System.EventHandler(this.pcbUserPosts_Click);
-            // 
             // FrmUserPosts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -254,13 +255,15 @@
             this.Text = "FrmUserPosts";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmUserPosts_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmUserPosts_Paint);
             this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbUserPosts)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbUserPosts)).EndInit();
             this.ResumeLayout(false);
 
         }

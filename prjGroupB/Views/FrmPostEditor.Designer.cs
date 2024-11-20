@@ -47,6 +47,7 @@
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnLast = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
+            this.lblHint = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPost)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +93,7 @@
             // lblUpdatedName
             // 
             this.lblUpdatedName.AutoSize = true;
-            this.lblUpdatedName.Location = new System.Drawing.Point(19, 634);
+            this.lblUpdatedName.Location = new System.Drawing.Point(19, 619);
             this.lblUpdatedName.Name = "lblUpdatedName";
             this.lblUpdatedName.Size = new System.Drawing.Size(77, 12);
             this.lblUpdatedName.TabIndex = 5;
@@ -102,7 +103,7 @@
             // lblUpdated
             // 
             this.lblUpdated.AutoSize = true;
-            this.lblUpdated.Location = new System.Drawing.Point(102, 634);
+            this.lblUpdated.Location = new System.Drawing.Point(102, 619);
             this.lblUpdated.Name = "lblUpdated";
             this.lblUpdated.Size = new System.Drawing.Size(33, 12);
             this.lblUpdated.TabIndex = 6;
@@ -236,12 +237,22 @@
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // lblHint
+            // 
+            this.lblHint.AutoSize = true;
+            this.lblHint.Location = new System.Drawing.Point(19, 640);
+            this.lblHint.Name = "lblHint";
+            this.lblHint.Size = new System.Drawing.Size(110, 12);
+            this.lblHint.TabIndex = 18;
+            this.lblHint.Text = "* 雙擊圖片即可刪除";
+            // 
             // FrmPostEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(231)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(484, 661);
+            this.Controls.Add(this.lblHint);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnLast);
             this.Controls.Add(this.btnPrevious);
@@ -259,6 +270,8 @@
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.picPost);
             this.Controls.Add(this.rtbContent);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmPostEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmPostEditor";
@@ -287,5 +300,6 @@
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Label lblHint;
     }
 }

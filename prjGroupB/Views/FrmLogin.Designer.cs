@@ -30,9 +30,9 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
-            this.btnRegister = new System.Windows.Forms.Button();
             this.loginBox1 = new prjGroupB.Views.LoginBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -68,6 +68,17 @@
             this.panel1.Size = new System.Drawing.Size(344, 91);
             this.panel1.TabIndex = 1;
             // 
+            // btnRegister
+            // 
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(224)))));
+            this.btnRegister.Location = new System.Drawing.Point(0, 14);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(77, 29);
+            this.btnRegister.TabIndex = 2;
+            this.btnRegister.Text = "註冊";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -93,17 +104,6 @@
             this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // btnRegister
-            // 
-            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(224)))));
-            this.btnRegister.Location = new System.Drawing.Point(0, 14);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(77, 29);
-            this.btnRegister.TabIndex = 2;
-            this.btnRegister.Text = "註冊";
-            this.btnRegister.UseVisualStyleBackColor = false;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            // 
             // loginBox1
             // 
             this.loginBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -122,6 +122,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(584, 321);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(550, 330);
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

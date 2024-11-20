@@ -26,9 +26,9 @@ namespace prjGroupB.Views
         }
         private void btnOk_Click(object sender, EventArgs e)
         {
-            if (message.Length > 10)
+            if (message.Length > 8)
             {
-                MessageBox.Show("請輸入十個字以內");
+                MessageBox.Show("請輸入八個字以內");
                 return;
             }
             this.isOK = DialogResult.OK;

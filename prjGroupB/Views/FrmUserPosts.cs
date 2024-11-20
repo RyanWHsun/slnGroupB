@@ -76,7 +76,6 @@ namespace prjGroupB.Views
         private void FrmUserPosts_Load(object sender, EventArgs e)
         {
             displayUserPosts();
-            setBtnCategory();
         }
         private void displayUserPosts(string s)
         {
@@ -91,6 +90,7 @@ namespace prjGroupB.Views
                     userCategoryPosts.Add(post);
                 }
             }
+            userCategoryPosts.Reverse();
             foreach (CPost userPost in userCategoryPosts)
             {
                 PostBox postBox = new PostBox();
@@ -106,6 +106,7 @@ namespace prjGroupB.Views
             flpUserPosts.Controls.Clear();
             flpUserPosts.SuspendLayout();
             List<CPost> userPosts = _manager.getUserPosts();
+            userPosts.Reverse();
             foreach (CPost userPost in userPosts)
             {
                 PostBox postBox = new PostBox();
@@ -140,9 +141,8 @@ namespace prjGroupB.Views
                 btn.Text = category;
                 btn.Click += this.btnCategory_click;
                 btn.MouseDown += this.btnCategory_MouseDown;
-
-                btn.Width = flpBtnCategory.Width - 2;
-                btn.Height = flpBtnCategory.Height / 10;
+                btn.Width = flpBtnCategory.Width - SystemInformation.VerticalScrollBarWidth - 3;
+                btn.Height = flpBtnCategory.ClientSize.Height / 10;
                 btn.Font = new Font("微軟正黑體", btn.Height / 3, FontStyle.Bold);
                 btn.TextAlign = ContentAlignment.MiddleLeft;
                 btn.ForeColor = Color.Black;
@@ -153,8 +153,8 @@ namespace prjGroupB.Views
             }
             Button btnInsertCategory = new Button();
             btnInsertCategory.Text = "+";
-            btnInsertCategory.Width = flpBtnCategory.Width - 2;
-            btnInsertCategory.Height = (int)(flpBtnCategory.Height / 10 / 1.5);
+            btnInsertCategory.Width = flpBtnCategory.ClientSize.Width - SystemInformation.VerticalScrollBarWidth - 3;
+            btnInsertCategory.Height = (int)(flpBtnCategory.ClientSize.Height / 10 / 1.5);
             btnInsertCategory.Font = new Font("微軟正黑體", btnInsertCategory.Height / 2, FontStyle.Bold);
             btnInsertCategory.Click += this.btnInsertCategory_Click;
             flpBtnCategory.Controls.Add(btnInsertCategory);
@@ -202,6 +202,7 @@ namespace prjGroupB.Views
         {
             flpUserPosts.Controls.Clear();
             List<CPost> userPosts = _manager.getUserPosts();
+            userPosts.Reverse();
             foreach (CPost userPost in userPosts)
             {
                 PostBox postBox = new PostBox();
@@ -225,6 +226,11 @@ namespace prjGroupB.Views
         private void pcbUserPosts_Click(object sender, EventArgs e)
         {
             displayUserPosts();
+        }
+
+        private void FrmUserPosts_Paint(object sender, PaintEventArgs e)
+        {
+            setBtnCategory();
         }
     }
 }

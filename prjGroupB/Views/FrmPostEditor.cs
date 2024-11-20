@@ -139,6 +139,7 @@ namespace prjGroupB.Views
             rtbContent.ReadOnly = true;
             picPost.Enabled = false;
             btnPost.Enabled = false;
+            lblHint.Visible = false;
             setRtb();
         }
 
