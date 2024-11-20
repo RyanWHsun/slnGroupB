@@ -70,7 +70,7 @@
     <Compile Include="Models\CProductDisplay.cs" />
     <Compile Include="Models\CProductImage.cs" />
     <Compile Include="Models\CUserSession.cs" />
-    <Compile Include="Views\EventComboboxItem.cs" />
+    <Compile Include="Models\EventComboboxItem.cs" />
     <Compile Include="Views\EventImageBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
