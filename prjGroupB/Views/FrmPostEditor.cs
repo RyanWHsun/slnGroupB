@@ -35,7 +35,8 @@ namespace prjGroupB.Views
         {
             int lineCount = rtbContent.GetLineFromCharIndex(rtbContent.TextLength) + 1;
             int maxLines = 7;
-            int lineHeight = rtbContent.Font.Height;
+            //int lineHeight = rtbContent.Font.Height;
+            int lineHeight = 26;
             int maxHeight = maxLines * lineHeight + rtbContent.Margin.Top + rtbContent.Margin.Bottom;
             if (lineCount * lineHeight > maxHeight)
             {
@@ -56,7 +57,7 @@ namespace prjGroupB.Views
 
         private void btnIsPicture_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "房間照片|*.png|房間照片|*.jpg";
+            openFileDialog1.Filter = "文章照片|*.png|文章照片|*.jpg";
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
 
@@ -173,11 +174,6 @@ namespace prjGroupB.Views
             if (_pictureManager == null)
                 return;
             _pictureManager.moveLast();
-        }
-        private void islblUpdatedVisiable(bool isVisiable)
-        {
-            lblUpdatedName.Visible = isVisiable;
-            lblUpdated.Visible = isVisiable;
         }
         private void getTagByContent(RichTextBox richTextBox, CPost post)
         {

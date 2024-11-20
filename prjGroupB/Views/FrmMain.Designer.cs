@@ -44,11 +44,13 @@
             this.btnCreateOrder = new System.Windows.Forms.ToolStripButton();
             this.btnRegister = new System.Windows.Forms.ToolStripButton();
             this.btnLogin = new System.Windows.Forms.ToolStripButton();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(213)))), ((int)(((byte)(166)))));
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolStrip1.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -69,8 +71,8 @@
             this.btnLogin});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(150, 840);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(102, 525);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -80,7 +82,7 @@
             this.btnUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnUsers.Image")));
             this.btnUsers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(141, 36);
+            this.btnUsers.Size = new System.Drawing.Size(97, 36);
             this.btnUsers.Text = "會員管理";
             this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
@@ -90,7 +92,7 @@
             this.btnPosts.Image = ((System.Drawing.Image)(resources.GetObject("btnPosts.Image")));
             this.btnPosts.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPosts.Name = "btnPosts";
-            this.btnPosts.Size = new System.Drawing.Size(141, 36);
+            this.btnPosts.Size = new System.Drawing.Size(97, 36);
             this.btnPosts.Text = "文章管理";
             this.btnPosts.Click += new System.EventHandler(this.btnPosts_Click);
             // 
@@ -100,7 +102,7 @@
             this.btnAttractions.Image = ((System.Drawing.Image)(resources.GetObject("btnAttractions.Image")));
             this.btnAttractions.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAttractions.Name = "btnAttractions";
-            this.btnAttractions.Size = new System.Drawing.Size(141, 36);
+            this.btnAttractions.Size = new System.Drawing.Size(97, 36);
             this.btnAttractions.Text = "景點管理";
             this.btnAttractions.Click += new System.EventHandler(this.btnAttractions_Click);
             // 
@@ -110,7 +112,7 @@
             this.btnEvents.Image = ((System.Drawing.Image)(resources.GetObject("btnEvents.Image")));
             this.btnEvents.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEvents.Name = "btnEvents";
-            this.btnEvents.Size = new System.Drawing.Size(141, 36);
+            this.btnEvents.Size = new System.Drawing.Size(97, 36);
             this.btnEvents.Text = "活動管理";
             this.btnEvents.Click += new System.EventHandler(this.btnEvents_Click);
             // 
@@ -120,7 +122,7 @@
             this.btnProducts.Image = ((System.Drawing.Image)(resources.GetObject("btnProducts.Image")));
             this.btnProducts.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(141, 36);
+            this.btnProducts.Size = new System.Drawing.Size(97, 36);
             this.btnProducts.Text = "商品管理";
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
@@ -130,14 +132,14 @@
             this.btnOrders.Image = ((System.Drawing.Image)(resources.GetObject("btnOrders.Image")));
             this.btnOrders.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnOrders.Name = "btnOrders";
-            this.btnOrders.Size = new System.Drawing.Size(141, 36);
+            this.btnOrders.Size = new System.Drawing.Size(97, 36);
             this.btnOrders.Text = "訂單管理";
             this.btnOrders.Click += new System.EventHandler(this.btnOrders_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(97, 6);
             // 
             // btnClose
             // 
@@ -145,7 +147,7 @@
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(141, 36);
+            this.btnClose.Size = new System.Drawing.Size(97, 36);
             this.btnClose.Text = "關閉";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -155,48 +157,44 @@
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(141, 36);
+            this.btnExit.Size = new System.Drawing.Size(97, 36);
             this.btnExit.Text = "結束";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(97, 6);
             // 
             // btnUserPosts
             // 
-            this.btnUserPosts.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnUserPosts.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnUserPosts.Image = ((System.Drawing.Image)(resources.GetObject("btnUserPosts.Image")));
             this.btnUserPosts.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUserPosts.Name = "btnUserPosts";
-            this.btnUserPosts.Size = new System.Drawing.Size(141, 35);
+            this.btnUserPosts.Size = new System.Drawing.Size(97, 36);
             this.btnUserPosts.Text = "個人文章";
             this.btnUserPosts.Click += new System.EventHandler(this.btnUserPosts_Click);
             // 
             // btnCreateOrder
             // 
-            this.btnCreateOrder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnCreateOrder.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnCreateOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateOrder.Image")));
             this.btnCreateOrder.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCreateOrder.Name = "btnCreateOrder";
-            this.btnCreateOrder.Size = new System.Drawing.Size(141, 35);
-            this.btnCreateOrder.Text = "新增訂單";
+            this.btnCreateOrder.Size = new System.Drawing.Size(97, 36);
+            this.btnCreateOrder.Text = "商品瀏覽";
             this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);
             // 
             // btnRegister
             // 
-            this.btnRegister.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnRegister.Font = new System.Drawing.Font("微軟正黑體", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnRegister.Image = ((System.Drawing.Image)(resources.GetObject("btnRegister.Image")));
             this.btnRegister.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(141, 35);
+            this.btnRegister.Size = new System.Drawing.Size(97, 36);
             this.btnRegister.Text = "活動報名";
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-
             // 
             // btnLogin
             // 
@@ -204,18 +202,28 @@
             this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
             this.btnLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(141, 36);
+            this.btnLogin.Size = new System.Drawing.Size(72, 36);
             this.btnLogin.Text = "登出";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // pnlMain
+            // 
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(102, 0);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(753, 525);
+            this.pnlMain.TabIndex = 3;
+            // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1571, 840);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(224)))));
+            this.ClientSize = new System.Drawing.Size(855, 525);
+            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.toolStrip1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmMain";
             this.Text = "Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -243,6 +251,7 @@
         private System.Windows.Forms.ToolStripButton btnLogin;
         private System.Windows.Forms.ToolStripButton btnCreateOrder;
         private System.Windows.Forms.ToolStripButton btnRegister;
+        private System.Windows.Forms.Panel pnlMain;
     }
 }
 

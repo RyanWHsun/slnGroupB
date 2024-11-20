@@ -62,7 +62,7 @@
             // 
             // picPost
             // 
-            this.picPost.BackColor = System.Drawing.SystemColors.Control;
+            this.picPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(231)))), ((int)(((byte)(203)))));
             this.picPost.Location = new System.Drawing.Point(73, 159);
             this.picPost.Name = "picPost";
             this.picPost.Size = new System.Drawing.Size(348, 200);
@@ -110,12 +110,14 @@
             // 
             // btnPost
             // 
+            this.btnPost.FlatAppearance.BorderSize = 0;
+            this.btnPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPost.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnPost.Location = new System.Drawing.Point(404, 623);
+            this.btnPost.Image = ((System.Drawing.Image)(resources.GetObject("btnPost.Image")));
+            this.btnPost.Location = new System.Drawing.Point(414, 601);
             this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(58, 31);
+            this.btnPost.Size = new System.Drawing.Size(45, 45);
             this.btnPost.TabIndex = 7;
-            this.btnPost.Text = "發送";
             this.btnPost.UseVisualStyleBackColor = true;
             this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
             // 
@@ -151,8 +153,10 @@
             // 
             // btnIsPicture
             // 
+            this.btnIsPicture.FlatAppearance.BorderSize = 0;
+            this.btnIsPicture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIsPicture.Image = ((System.Drawing.Image)(resources.GetObject("btnIsPicture.Image")));
-            this.btnIsPicture.Location = new System.Drawing.Point(427, 39);
+            this.btnIsPicture.Location = new System.Drawing.Point(424, 34);
             this.btnIsPicture.Name = "btnIsPicture";
             this.btnIsPicture.Size = new System.Drawing.Size(35, 35);
             this.btnIsPicture.TabIndex = 11;
@@ -185,41 +189,49 @@
             // 
             // btnFirst
             // 
-            this.btnFirst.Location = new System.Drawing.Point(73, 365);
+            this.btnFirst.FlatAppearance.BorderSize = 0;
+            this.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFirst.Image = ((System.Drawing.Image)(resources.GetObject("btnFirst.Image")));
+            this.btnFirst.Location = new System.Drawing.Point(165, 365);
             this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(39, 23);
+            this.btnFirst.Size = new System.Drawing.Size(35, 35);
             this.btnFirst.TabIndex = 14;
-            this.btnFirst.Text = "<<";
             this.btnFirst.UseVisualStyleBackColor = true;
             this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(118, 365);
+            this.btnPrevious.FlatAppearance.BorderSize = 0;
+            this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevious.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevious.Image")));
+            this.btnPrevious.Location = new System.Drawing.Point(206, 365);
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(39, 23);
+            this.btnPrevious.Size = new System.Drawing.Size(35, 35);
             this.btnPrevious.TabIndex = 15;
-            this.btnPrevious.Text = "<";
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnLast
             // 
-            this.btnLast.Location = new System.Drawing.Point(382, 365);
+            this.btnLast.FlatAppearance.BorderSize = 0;
+            this.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLast.Image = ((System.Drawing.Image)(resources.GetObject("btnLast.Image")));
+            this.btnLast.Location = new System.Drawing.Point(288, 365);
             this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(39, 23);
+            this.btnLast.Size = new System.Drawing.Size(35, 35);
             this.btnLast.TabIndex = 16;
-            this.btnLast.Text = ">>";
             this.btnLast.UseVisualStyleBackColor = true;
             this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(337, 365);
+            this.btnNext.FlatAppearance.BorderSize = 0;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
+            this.btnNext.Location = new System.Drawing.Point(247, 365);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(39, 23);
+            this.btnNext.Size = new System.Drawing.Size(35, 35);
             this.btnNext.TabIndex = 17;
-            this.btnNext.Text = ">";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
@@ -227,7 +239,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(253)))), ((int)(((byte)(247)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(231)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(484, 661);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnLast);

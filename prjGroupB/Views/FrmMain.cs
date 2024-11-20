@@ -35,6 +35,7 @@ namespace prjGroupB
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
+            isPnlVisiable(false);
             FrmUser f = new FrmUser();
             f.MdiParent = this;
             f.Show();
@@ -42,6 +43,7 @@ namespace prjGroupB
 
         private void btnPosts_Click(object sender, EventArgs e)
         {
+            isPnlVisiable(false);
             FrmPosts f = new FrmPosts();
             f.MdiParent = this;
             f.Show();
@@ -49,6 +51,7 @@ namespace prjGroupB
 
         private void btnAttractions_Click(object sender, EventArgs e)
         {
+            isPnlVisiable(false);
             FormAttractionMain f = new FormAttractionMain();
             f.MdiParent = this;
             f.Show();
@@ -56,6 +59,7 @@ namespace prjGroupB
 
         private void btnEvents_Click(object sender, EventArgs e)
         {
+            isPnlVisiable(false);
             FrmEvents f = new FrmEvents();
             f.MdiParent = this;
             f.Show();
@@ -63,6 +67,7 @@ namespace prjGroupB
 
         private void btnProducts_Click(object sender, EventArgs e)
         {
+            isPnlVisiable(false);
             FrmProducts f = new FrmProducts();
             f.MdiParent = this;
             f.Show();
@@ -70,6 +75,7 @@ namespace prjGroupB
 
         private void btnOrders_Click(object sender, EventArgs e)
         {
+            isPnlVisiable(false);
             FrmOrders f = new FrmOrders();
             f.MdiParent = this;
             f.Show();
@@ -77,6 +83,7 @@ namespace prjGroupB
 
         private void btnUserPosts_Click(object sender, EventArgs e)
         {
+            isPnlVisiable(false);
             FrmUserPosts f = new FrmUserPosts();
             f.MdiParent = this;
             f.Show();
@@ -86,13 +93,19 @@ namespace prjGroupB
         {
             while (this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();
+            isPnlVisiable(true);
             login();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (this.ActiveMdiChild != null)
+            {
                 this.ActiveMdiChild.Close();
+                isPnlVisiable(false);
+            }
+            if (this.MdiChildren.Length == 0)
+                isPnlVisiable(true);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -112,15 +125,21 @@ namespace prjGroupB
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            isPnlVisiable(false);
             FrmEventRegistrationForm registrationForm = new FrmEventRegistrationForm();
             registrationForm.ShowDialog();
         }
 
         private void btnCreateOrder_Click(object sender, EventArgs e)
         {
+            isPnlVisiable(false);
             FrmPlaceOrder f = new FrmPlaceOrder();
             f.MdiParent = this;
             f.Show();
+        }
+        private void isPnlVisiable(bool isVisiable)
+        {
+            pnlMain.Visible = isVisiable;
         }
     }
 }
