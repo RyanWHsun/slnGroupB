@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -194,6 +195,14 @@ namespace prjGroupB.Views
             foreach (Match match in matches)
             {
                 post.fTags.Add(match.ToString());
+            }
+        }
+
+        private void FrmPostEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.isOK != DialogResult.OK)
+            {
+                this.isOK = DialogResult.Cancel;
             }
         }
     }

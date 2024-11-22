@@ -15,7 +15,6 @@ namespace prjGroupB.Models
         public event D afterImageMoved;
         private int _position = 0;
         private List<byte[]> _listImages;
-        private List<byte[]> _tempImages;
         public CPostPictureManager(List<byte[]> listImages)
         {
             _listImages = listImages;
@@ -36,18 +35,11 @@ namespace prjGroupB.Models
             if (_listImages.Count <= 0)
                 return;
             int tempPosition = _position;
-            _tempImages = new List<byte[]>(_listImages);
             _listImages.RemoveAt(_position);
             MessageBox.Show("照片已刪除");
             _position = tempPosition -1;
             if (_position < 0)
                 _position = 0;
-            afterImageMoved();
-        }
-        public void recoverImage()
-        {
-            _listImages = new List<byte[]>(_listImages);
-            _position = 0;
             afterImageMoved();
         }
         public void moveFirst()

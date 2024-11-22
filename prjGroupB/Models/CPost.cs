@@ -8,6 +8,7 @@ namespace prjGroupB.Models
 {
     public class CPost
     {
+        public CPost() { }
         private List<byte[]> _fImages;
         private List<string> _fTags;
         public int fPostId { get; set; }

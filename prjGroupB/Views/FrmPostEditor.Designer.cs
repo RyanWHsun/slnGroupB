@@ -275,6 +275,7 @@
             this.Name = "FrmPostEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmPostEditor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPostEditor_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.picPost)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
