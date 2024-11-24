@@ -130,11 +130,6 @@ namespace prjGroupB.Views
                 _manager.update(f.post);
                 displayUserPosts();
             }
-            if (f.isOK == DialogResult.Cancel)
-            {
-                displayUserPosts();
-
-            }
             _selected = null;
         }
         private void setBtnCategory()

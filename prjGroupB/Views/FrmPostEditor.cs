@@ -20,6 +20,7 @@ namespace prjGroupB.Views
     {
         private CPost _post;
         private CPostPictureManager _pictureManager;
+        private List<byte[]> _originalImages = new List<byte[]>();
         public DialogResult isOK { get; set; }
         public FrmPostEditor()
         {
@@ -74,7 +75,7 @@ namespace prjGroupB.Views
         }
         private void picPost_DoubleClick(object sender, EventArgs e)
         {
-            if(_pictureManager == null)
+            if (_pictureManager == null)
                 return;
             _pictureManager.removeImage();
         }
@@ -111,6 +112,7 @@ namespace prjGroupB.Views
             set
             {
                 _post = value;
+                copyImages(_post.fImages);
                 txtTitle.Text = _post.fTitle;
                 cmbCategory.SelectedItem = _post.fCategory;
                 if (_post.fIsPublic)
@@ -202,7 +204,22 @@ namespace prjGroupB.Views
         {
             if (this.isOK != DialogResult.OK)
             {
-                this.isOK = DialogResult.Cancel;
+                if (_post == null)
+                    return ;
+                _post.fImages = _originalImages;
+            }
+        }
+        private void copyImages(List<byte[]> images)
+        {
+            _originalImages = new List<byte[]>();
+            foreach (byte[] image in images)
+            {
+                byte[] copy = new byte[image.Length];
+                for (int i = 0; i < image.Length; i++)
+                {
+                    copy[i] = image[i];
+                }
+                _originalImages.Add(copy);
             }
         }
     }
