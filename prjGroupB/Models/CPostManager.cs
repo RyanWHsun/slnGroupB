@@ -342,7 +342,7 @@ namespace prjGroupB.Models
             sql += "LEFT JOIN tPostCategories AS c ";
             sql += "ON p.fCategoryId = c.fCategoryId ";
             sql += "WHERE p.fUserId = @K_FUSERID ";
-            sql += "ORDER BY fPostId";
+            sql += "ORDER BY fCreatedAt";
             SqlConnection con = new SqlConnection();
             con.ConnectionString = _connectionString;
             con.Open();

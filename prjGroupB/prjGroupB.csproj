@@ -485,6 +485,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmUserPosts.resx">
       <DependentUpon>FrmUserPosts.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PostBox.resx">
       <DependentUpon>PostBox.cs</DependentUpon>
